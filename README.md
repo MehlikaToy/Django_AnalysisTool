@@ -11,6 +11,6 @@ $ python manage.py runserver
 ```
 
 ##### Authors
-* Calvin Yin (calviny823@gmail.com)
+* Calvin Yin (calvin_yin@umail.ucsb.edu)
 * Jasmine Kim (jkim0110@ucla.edu)
 * Gerry Meixiong (geraldmx@stanford.edu)
