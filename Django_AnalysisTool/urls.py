@@ -19,4 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markov/', include('markov.urls')),
+    url(r'^$', 'markov.views.index'),
+
 ]
