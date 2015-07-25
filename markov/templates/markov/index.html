@@ -11,11 +11,14 @@
 
     <title>Analysis Tool</title>
 
+    {% load staticfiles %}
+
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'markov/css/bootstrap.min.css' %}" />
 
     <!-- Custom CSS -->
-    <link href="css/grayscale.css" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="{% static 'markov/css/grayscale.css' %}" />
+
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
