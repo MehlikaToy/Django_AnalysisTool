@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b03929a-c651-4704-a58e-55391fbfe3c0" name="Default" comment="progress">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/home/templates/home/index.html" afterPath="$PROJECT_DIR$/home/templates/home/index.html" />
+    <list default="true" id="7b03929a-c651-4704-a58e-55391fbfe3c0" name="Default" comment="quick fix">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/templates/markov/questionnaire.html" afterPath="$PROJECT_DIR$/markov/templates/markov/questionnaire.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Django_AnalysisTool.iws" />
@@ -28,11 +28,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/home/templates/home/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.46206897" vertical-offset="111" max-vertical-offset="4180">
-                  <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.30574712" vertical-offset="0" max-vertical-offset="4180">
+                  <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
                   <folding>
                     <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -102,12 +102,24 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="questionnaire.html" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="questionnaire.html" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/markov/templates/markov/questionnaire.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.12910533" vertical-offset="0" max-vertical-offset="883">
-                  <caret line="6" column="0" selection-start-line="4" selection-start-column="22" selection-end-line="6" selection-end-column="0" />
-                  <folding />
+                <state vertical-scroll-proportion="0.14827587" vertical-offset="3310" max-vertical-offset="4180">
+                  <caret line="181" column="21" selection-start-line="181" selection-start-column="21" selection-end-line="181" selection-end-column="21" />
+                  <folding>
+                    <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#0;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#1;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#2;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#3;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#4;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#5;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#option#6;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#input#0;n#p#1;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -145,8 +157,8 @@
         <option value="$PROJECT_DIR$/markov/views.py" />
         <option value="$PROJECT_DIR$/markov/urls.py" />
         <option value="$PROJECT_DIR$/Django_AnalysisTool/urls.py" />
-        <option value="$PROJECT_DIR$/markov/templates/markov/questionnaire.html" />
         <option value="$PROJECT_DIR$/home/templates/home/index.html" />
+        <option value="$PROJECT_DIR$/markov/templates/markov/questionnaire.html" />
       </list>
     </option>
   </component>
@@ -509,7 +521,11 @@
       <created>1438034714421</created>
       <updated>1438034714421</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="quick fix">
+      <created>1438035470348</created>
+      <updated>1438035470348</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -555,7 +571,8 @@
     <MESSAGE value="bootstrap testing" />
     <MESSAGE value="stuff and stuff i don't really know anymore stuff is hard" />
     <MESSAGE value="progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="progress" />
+    <MESSAGE value="quick fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="quick fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -747,18 +764,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/markov/templates/markov/questionnaire.html">
+    <entry file="file://$PROJECT_DIR$/home/templates/home/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12910533" vertical-offset="0" max-vertical-offset="883">
-          <caret line="6" column="0" selection-start-line="4" selection-start-column="22" selection-end-line="6" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.30574712" vertical-offset="0" max-vertical-offset="4180">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#0;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#1;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#2;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#3;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#4;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#5;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#option#6;n#select#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#p#1;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/home/templates/home/index.html">
+    <entry file="file://$PROJECT_DIR$/markov/templates/markov/questionnaire.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46206897" vertical-offset="111" max-vertical-offset="4180">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.14827587" vertical-offset="3310" max-vertical-offset="4180">
+          <caret line="181" column="21" selection-start-line="181" selection-start-column="21" selection-end-line="181" selection-end-column="21" />
           <folding>
             <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#form#0;n#div#0;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
