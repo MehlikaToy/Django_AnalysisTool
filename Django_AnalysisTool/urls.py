@@ -21,6 +21,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'home.views.index'),
+    url(r'^markov/', include('markov.urls', namespace='markov')),
 
 ]
 

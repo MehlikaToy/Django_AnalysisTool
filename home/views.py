@@ -16,6 +16,3 @@ def index(request):
     template = loader.get_template('home/index.html')
     return render_to_response('home/index.html', locals(), context_instance = RequestContext(request))
 
-def ResultsView(request):
-    template = loader.get_template('home/results.html')
-    return render_to_response('home/results.html', locals(), context_instance = RequestContext(request))
