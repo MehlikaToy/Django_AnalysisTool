@@ -83,7 +83,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Hepatitis B Decision Tool</h1>
                         <p class="intro-text">Prediction Model for Hepatitis B in the World.<br>Created at Stanford Asian Liver Center</p>
-                        <a href="#about" class="btn btn-circle page-scroll">
+                        <a href="/markov" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
@@ -126,42 +126,37 @@
     <section id="webtool" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                    <table position="absolute" width="850px" >
-                        <tr>
-                            <td width = "200">
                             <h3 style="text-align: center;"> <strong> Inputs </strong> </h3>
-                            <p style="text-align: center">Is the patient HBsAg Positive?</p> <br>
-                            <form action="#" enctype="multipart/form-data" method="post"> 
-                            <p style="text-align: center">
-                                <input type="button" id="HBPY" value="Yes" style="color:black; background-color:#42dca3">
-                                <input type="button" id="HBPN" value="No" style="color:black; background-color:#42dca3">
-                            </p> 
-                            <p style="text-align: center"> Age: 
+                            <!--<p style="text-align: center">Is the patient HBsAg Positive?</p> <br>-->
+                            <form action="#" enctype="multipart/form-data" method="post">
+                            {% csrf_token %}
+
+                            <!--<p style="text-align: center">-->
+                                <!--<input type="button" id="HBPY" value="Yes" style="color:black; background-color:#42dca3">-->
+                                <!--<input type="button" id="HBPN" value="No" style="color:black; background-color:#42dca3">-->
+                            <!--</p>-->
+
+                            <p style="text-align: center"> Age:
                                 <select name="age" style="background-color:#42dca3">
-                                    <option value="over30" style="color:black">Over 30 years old</option>
-                                    <option value="under30" style="color:black">30 years old or younger</option>
+                                    <option value="ageGroup1" style="color:black">5-14 </option>
+                                    <option value="ageGroup2" style="color:black">15-24</option>
+                                    <option value="ageGroup3" style="color:black">25-34</option>
+                                    <option value="ageGroup4" style="color:black">35-44</option>
+                                    <option value="ageGroup5" style="color:black">45-54</option>
+                                    <option value="ageGroup6" style="color:black">55-64</option>
+                                    <option value="ageGroup7" style="color:black">65+  </option>
                                 </select>
                             </p>
-                            <p style="text-align: center"> HBV DNA Levels 
-                                <select name="DNALevel" style="background-color:#42dca3">
-                                    <option value="under2k" style="color:black"> Less than 2000 IU/mL </option>
-                                    <option value="2k-20k" style="color:black"> 2000 - 20,000 IU/mL </option>
-                                    <option value="over20k" style="color:black"> Greater than 20,000 IU/mL</option>
-                                </select>
-                            </p>
+
+                            <!--<p style="text-align: center"> HBV DNA Levels-->
+                                <!--<select name="DNALevel" style="background-color:#42dca3">-->
+                                    <!--<option value="under2k" style="color:black"> Less than 2000 IU/mL </option>-->
+                                    <!--<option value="2k-20k" style="color:black"> 2000 - 20,000 IU/mL </option>-->
+                                    <!--<option value="over20k" style="color:black"> Greater than 20,000 IU/mL</option>-->
+                                <!--</select>-->
+                            <!--</p>-->
+                            <p><input style="background-color:#42dca3" type="submit" value="Submit" /></p>
                             </form>
-                            </td>
-
-                            <td width="30"> </td>
-
-                            <!-- The second column of the table; "Predictions"-->
-                            <td width="300">
-                            <h3 style="text-align:center;"><strong>Predictions</strong></h3>
-                            <div><p style="text-align:center;">Please select the proper inputs and click submit.</p>
-                            </div>
-                            </td>
-                        </tr>
-                    </table>
             </div>
         </div>
     </section>

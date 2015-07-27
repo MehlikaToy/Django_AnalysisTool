@@ -20,8 +20,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^markov/', include('markov.urls')),
-    url(r'^$', 'markov.views.index'),
+    url(r'^$', 'home.views.index'),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()

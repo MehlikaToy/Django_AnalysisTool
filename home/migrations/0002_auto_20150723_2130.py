@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('markov', '0001_initial'),
+        ('home', '0001_initial'),
     ]
 
     operations = [
