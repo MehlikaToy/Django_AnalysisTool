@@ -93,14 +93,25 @@
     <section id="ageSection" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
-                <form name="age" action="#" enctype="multipart/form-data" method="post">
+
+
+                <form action="your-name/" method="post">
                     {% csrf_token %}
-                    <p style="text-align: center"> Please enter age and stage for Patient <br><br>
-                        Age: <input style="color:black" name="age" type="number" id="age" min="1" max="100"><br><br>
-                        Stages: <input style="color:black" name="stage" type="number" id="state" min="1" max="100"><br><br>
-                        <a class="btn btn-default btn-lg"><span class="network-name"><input type="submit" value="OK"></span></a>
-                    </p>
+                    <label for="your_name">Your name: </label>
+                    <input style="color:black" id="your_name" type="text" name="your_name" maxlength="100" value="{{ current_name }}">
+                    <input style="color:black" type="submit" value="OK">
                 </form>
+
+
+
+                <!--<form name="age" action="#" enctype="multipart/form-data" method="post">-->
+                    <!--{% csrf_token %}-->
+                    <!--<p style="text-align: center"> Please enter age and stage for Patient <br><br>-->
+                        <!--Age: <input style="color:black" name="age" type="number" id="age" min="1" max="100"><br><br>-->
+                        <!--Stages: <input style="color:black" name="stage" type="number" id="state" min="1" max="100"><br><br>-->
+                        <!--<a class="btn btn-default btn-lg"><span class="network-name"><input type="submit" value="OK"></span></a>-->
+                    <!--</p>-->
+                <!--</form>-->
             </div>
         </div>
     </section>
