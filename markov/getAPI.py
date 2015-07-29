@@ -2,7 +2,7 @@ import urllib2
 import json
 import pprint
 import collections
-import flowchart as fc
+# import flowchart as fc
 
 pp = pprint.PrettyPrinter(indent=4)
 
@@ -25,13 +25,15 @@ def stuff():
         finalDict[questionDict[key]] = answerDict[key]
 
     finalDict =  convert(finalDict)
+    print finalDict
     for q, ans in finalDict.iteritems():
         if ("Does" in q):
             fc.firstQ(ans)
-        
-    return finalDict
-    # {'Does your HBsAg patient have Cirrhosis': '1', 'Patient Age?': '4', 'ALT Levels?': '', 'HBV DNA Levels': '', 'Patient Stage?': '6'}
 
+    return finalDict
+# {'How old is your patient? (years)': '6', 'Does your HBsAg patient have Cirrhosis?': '1', 
+# "What is your patient's ALT level?": '', 'How many years do you wish to see yourself in?': '5', 
+# "What is your patient's HBV DNA level?": ''}
 
 def convert(data):
     if isinstance(data, basestring):

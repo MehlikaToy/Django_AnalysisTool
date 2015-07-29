@@ -24,9 +24,12 @@ def ALT(age):
 			print "Please enter either 1, 2, or 3."
 
 
-# The first path of the algorithm
+
 def yesCirr():	
-	pass 		# Get user input (age, stage, health state) and pass into MM
+	# markov model inputs
+	trt_m = "Node_4: 1"
+	# run first time
+	no_trt_m = "Node_30: 1"
 
 def noCirr():
 	while(1):
@@ -49,7 +52,5 @@ def firstQ(answer):
 	# Ask if HBsAg positive (Cirrhosis)
 	if (answer == 1):
 		yesCirr()
-		break
 	else:
 		noCirr()
-		break
