@@ -29,7 +29,7 @@ def parse(finalDict):
 			ALT = ans
 			print ALT
 		elif ("How many years do you wish to see yourself in" in q):
-			stage = ans
+			stage = int(ans)
 		elif ("What is your patient's HBV DNA level" in q):
 			HBV_DNA = ans
 			print HBV_DNA
@@ -74,11 +74,11 @@ def noCirr():
 			g3.append(Node05(0.5))
 
 
+def ageStage():
+	return age, stage
 
 def getInitNodes():
-	print "graph 1:",g1
-	print "graph 2:",g2
-	print "graph 3:",g3
+	return g1, g2 ,g3
 
 
 

@@ -4,7 +4,7 @@ import os
 from getAPI import stuff
 from django.views import generic
 from flowchart import *
-from nodes_monitor import *
+from markov_cy import *
 
 # # Create your views here.
 
@@ -27,11 +27,15 @@ def resultsView(request):
     output = stuff()
 
     parse(output)
-    getInitNodes()
+    g1, g2, g3 = getInitNodes()
+    age, stage = ageStage()
+    print age, stage
+    output1 = markovMain(age = age, total_stages = stage , initialList=g1)
+    # print output1
 
-    output = ",  ".join(["=".join([key, str(val)]) for key, val in output.items()])
+    output1 = ", ".join(["=".join([key, str(val)]) for key, val in output1.items()])
     context = RequestContext(request,{
-        'stuff': output,
+        'stuff': output1,
         })
 
     return HttpResponse(template.render(context))
