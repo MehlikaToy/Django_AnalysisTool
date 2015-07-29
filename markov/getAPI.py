@@ -1,6 +1,7 @@
 import urllib2
 import json
 import pprint
+import collections
 
 pp = pprint.PrettyPrinter(indent=4)
 
@@ -13,7 +14,26 @@ def stuff():
     for question in data.get("questions"):
         questionDict[str(question.get('id'))] = question.get('question')
 
-    print questionDict
+    answerDict = data['responses'][0].get("answers")
 
-    # for answer in
-    print data['responses'][0].get("answers")
+    finalDict = {}
+    for key in questionDict.keys():
+        # print questionDict[key]
+        # print answerDict[key]
+        # print "*****"
+        finalDict[questionDict[key]] = answerDict[key]
+
+    finalDict =  convert(finalDict)
+    #TODO: Use this to create the initial nodes that will be needed for markov.
+    return finalDict
+
+
+def convert(data):
+    if isinstance(data, basestring):
+        return str(data)
+    elif isinstance(data, collections.Mapping):
+        return dict(map(convert, data.iteritems()))
+    elif isinstance(data, collections.Iterable):
+        return type(data)(map(convert, data))
+    else:
+        return data

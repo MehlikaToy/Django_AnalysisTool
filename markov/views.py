@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.template import RequestContext, loader
 import os
 from getAPI import stuff
@@ -21,9 +21,14 @@ def questionnaire(request):
     return render_to_response('markov/questionnaire.html', locals(), context_instance = RequestContext(request))
 
 def resultsView(request):
-    print stuff()
     template = loader.get_template('markov/results.html')
-    return render_to_response('markov/results.html', locals(), context_instance = RequestContext(request))
+    output = stuff()
+    output = ",  ".join(["=".join([key, str(val)]) for key, val in output.items()])
+    context = RequestContext(request,{
+        'stuff': output,
+        })
+    return HttpResponse(template.render(context))
+    # return render_to_response('markov/results.html', locals(), context_instance = RequestContext(request))
 
 def get_name(request):
     # if this is a POST request we need to process the form data
