@@ -1,5 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.template import RequestContext, loader
+import os
+from getAPI import stuff
 from django.views import generic
 
 
@@ -17,6 +19,11 @@ from .forms import NameForm
 def questionnaire(request):
     template = loader.get_template('markov/questionnaire.html')
     return render_to_response('markov/questionnaire.html', locals(), context_instance = RequestContext(request))
+
+def resultsView(request):
+    print stuff()
+    template = loader.get_template('markov/results.html')
+    return render_to_response('markov/results.html', locals(), context_instance = RequestContext(request))
 
 def get_name(request):
     # if this is a POST request we need to process the form data
