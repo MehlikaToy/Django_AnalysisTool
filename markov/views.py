@@ -3,7 +3,7 @@ from django.template import RequestContext, loader
 import os
 from getAPI import stuff
 from django.views import generic
-
+# from flowchart as fc
 
 # # Create your views here.
 
@@ -22,10 +22,14 @@ def questionnaire(request):
 
 def resultsView(request):
     template = loader.get_template('markov/results.html')
+    
     output = stuff()
+    # fc.parse(output)
+
     output = ",  ".join(["=".join([key, str(val)]) for key, val in output.items()])
     context = RequestContext(request,{
         'stuff': output,
         })
+
     return HttpResponse(template.render(context))
     # return render_to_response('markov/results.html', locals(), context_instance = RequestContext(request))

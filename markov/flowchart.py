@@ -1,9 +1,28 @@
+"""
+	Author: Jasmine Kim
+	Developed July 2015
+	Flowchart algorithm
+"""
+
 import sys
+import stuff from getAPI
+from nodes_monitor import * 
+
+
+
+trt_m = []
+no_trt_m = []
+
+
+# Parse through dictionary of questions and answers
+def parse(finalDict):
+	for q, ans in finalDict.iteritems():
+        if ("Does" in q):
+            firstQ(ans)
 
 
 # The second path of the algorithm
 def initThM(age):
-	
 	pass
 
 # age (int), ALT (char)
@@ -27,7 +46,7 @@ def ALT(age):
 
 def yesCirr():	
 	# markov model inputs
-	trt_m = "Node_4: 1"
+	trt_m = 
 	# run first time
 	no_trt_m = "Node_30: 1"
 
@@ -54,3 +73,10 @@ def firstQ(answer):
 		yesCirr()
 	else:
 		noCirr()
+
+
+
+
+
+
+
