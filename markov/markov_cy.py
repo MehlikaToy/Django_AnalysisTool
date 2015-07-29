@@ -4,7 +4,7 @@ Made July 2015
 Markov Model Emulator of Hepatitis B
 '''
 
-from nodes_cy import *
+from nodes_monitor import *
 
 
 # Touch this part
@@ -18,7 +18,7 @@ stage_timeFrame = 1  # in years
 
 # initialList = [Node04(0.019), Node05(0.012), Node06(0.013), Node26(0.611), Node28(0.148), Node29(0.094), Node30(0.103)]
 
-initialList = getInitialNodes(flowchart)
+# initialList = getInitialNodes(flowchart)
 
 
 # Don't touch this part

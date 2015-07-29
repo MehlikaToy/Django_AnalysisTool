@@ -5,74 +5,83 @@
 """
 
 import sys
-import stuff from getAPI
 from nodes_monitor import * 
 
 
 
-trt_m = []
-no_trt_m = []
+g1 = []
+g2 = []
+g3 = []
+answer = age = stage = 0
+ALT = HBV_DNA = ""
 
 
+# First method to call.
 # Parse through dictionary of questions and answers
 def parse(finalDict):
+	global g1, g2, g3, answer, age, ALT, stage, HBV_DNA
 	for q, ans in finalDict.iteritems():
-        if ("Does" in q):
-            firstQ(ans)
+		if ("Does your HBsAg patient have Cirrhosis" in q):
+			answer = ans
+		elif ("How old is your patient" in q):
+			age = int(ans)
+		elif ("What is your patient's ALT level" in q):
+			ALT = ans
+			print ALT
+		elif ("How many years do you wish to see yourself in" in q):
+			stage = ans
+		elif ("What is your patient's HBV DNA level" in q):
+			HBV_DNA = ans
+			print HBV_DNA
 
-
-# The second path of the algorithm
-def initThM(age):
-	pass
-
-# age (int), ALT (char)
-def deferThM(age, ALT):
-	pass		# depends on what combinations we will be given from Dr. Toy
-
-
-def ALT(age):
-	while(1):
-		input_ALT = raw_input("Choose your ALT: 1-Persistently Abnormal, 2-Intermittently Abnormal, 3-Persistently Abnormal. ")
-		if(input_ALT == '1'):
-			initThM(age)
-			break
-		elif(input_ALT == '2' or input_ALT == '3'):
-			deferThM(age, input_ALT)
-			break
-		else:
-			print "Please enter either 1, 2, or 3."
-
-
-
-def yesCirr():	
-	# markov model inputs
-	trt_m = 
-	# run first time
-	no_trt_m = "Node_30: 1"
-
-def noCirr():
-	while(1):
-		input_age = input("Please input your age: ")
-		print "You entered", input_age
-
-		if(input_age > 30):
-			ALT(input_age)
-			break
-		elif(input_age <= 30 and input_age >= 5):
-			# ALT is persisitently normal, HBV DNA < 2000
-			deferThM(input_age, '3')
-			break
-		else:
-			print "Please enter a valid age."
-
-
-
-def firstQ(answer):
-	# Ask if HBsAg positive (Cirrhosis)
-	if (answer == 1):
+	if (answer == '1'):
 		yesCirr()
 	else:
 		noCirr()
+
+
+# Append to g1 and g2 arrays.
+def yesCirr():																	# 1
+	g1.append(Node04(1))
+	g2.append(Node30(1))
+
+
+def noCirr():
+	global g1, g2, g3
+	if(age <= 30):
+		print ALT, HBV_DNA
+		if(ALT == "Persistently Abnormal" and HBV_DNA == ">20,000 IU/ml"):		# 6
+			g1.append(Node36(1))
+			g2.append(Node26(1))
+			g3.append(Node04(0.5))
+			g3.append(Node05(0.5))
+		else:																	# 7, 8
+			g1.append(Node36(1))
+			g2.append(Node26(1))
+	elif(age >30):
+		if(HBV_DNA == "<2000 IU/ml" or HBV_DNA == "2000-20,000 IU/ml"):		# 3, 5
+			g1.append(Node36(1))
+			g2.append(Node26(1))
+		elif(ALT == "Persistently Abnormal"):									# 2
+			g1.append(Node04(0.5))
+			g1.append(Node05(0.5))
+			g2.append(Node28(0.5))
+			g2.append(Node29(0.5))
+		else:																	# 4
+			g1.append(Node36(1))
+			g2.append(Node26(1))
+			g3.append(Node04(0.5))
+			g3.append(Node05(0.5))
+
+
+
+def getInitNodes():
+	print "graph 1:",g1
+	print "graph 2:",g2
+	print "graph 3:",g3
+
+
+
 
 
 

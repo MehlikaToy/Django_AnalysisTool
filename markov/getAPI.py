@@ -27,10 +27,9 @@ def stuff():
 
     finalDict =  convert(finalDict)
     print finalDict
+    
     return finalDict
-# {'How old is your patient? (years)': '6', 'Does your HBsAg patient have Cirrhosis?': '1', 
-# "What is your patient's ALT level?": '', 'How many years do you wish to see yourself in?': '5', 
-# "What is your patient's HBV DNA level?": ''}
+
 
 def convert(data):
     if isinstance(data, basestring):

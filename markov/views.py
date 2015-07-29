@@ -3,7 +3,8 @@ from django.template import RequestContext, loader
 import os
 from getAPI import stuff
 from django.views import generic
-# from flowchart as fc
+from flowchart import *
+from nodes_monitor import *
 
 # # Create your views here.
 
@@ -24,7 +25,9 @@ def resultsView(request):
     template = loader.get_template('markov/results.html')
     
     output = stuff()
-    # fc.parse(output)
+
+    parse(output)
+    getInitNodes()
 
     output = ",  ".join(["=".join([key, str(val)]) for key, val in output.items()])
     context = RequestContext(request,{

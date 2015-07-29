@@ -163,7 +163,7 @@ def getMort(age):
     else:
         return dic['100']
 
-def getInitialNodes(age):
+# def getInitialNodes(age):
     HBsAg = None
     CHB = None
     CHBneg = None
@@ -226,6 +226,7 @@ def getInitialNodes(age):
     PcirrNH = round((Cirr - Cirr * tested_rate * followup_rate * treatment_rate) / population, 3) 			#30
 
     return [Node26(PHBsAgNH), Node04(PCHB), Node15(PCHBNH), Node05(PCHBneg), Node29(PCHBnegNH), Node06(Pcirr), Node30(PcirrNH)]
+
 
 
 #Basic Calculation Functions
