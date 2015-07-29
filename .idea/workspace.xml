@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b03929a-c651-4704-a58e-55391fbfe3c0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/markov/getAPI.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/markov/templates/markov/results.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/templates/markov/questionnaire.html" afterPath="$PROJECT_DIR$/markov/templates/markov/questionnaire.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/urls.py" afterPath="$PROJECT_DIR$/markov/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/views.py" afterPath="$PROJECT_DIR$/markov/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Django_AnalysisTool.iws" />
@@ -494,7 +489,11 @@
       <created>1438121617577</created>
       <updated>1438121617578</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="typeform edit slightly working">
+      <created>1438130328217</created>
+      <updated>1438130328217</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -544,7 +543,8 @@
     <MESSAGE value="herp the derp" />
     <MESSAGE value="if it breaks go back to here" />
     <MESSAGE value="if it breaks go back to here 7/28: 3:13" />
-    <option name="LAST_COMMIT_MESSAGE" value="if it breaks go back to here 7/28: 3:13" />
+    <MESSAGE value="typeform edit slightly working" />
+    <option name="LAST_COMMIT_MESSAGE" value="typeform edit slightly working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
