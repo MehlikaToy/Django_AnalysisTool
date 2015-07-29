@@ -286,7 +286,7 @@ class Node01(BasicNode):
         self.probValUT =  [pVar  , 0     , dVar]
         self.probValAFF = [pVar  , 0.01  , dVar]
 
-pMonitor = 0.35
+
 
 class Node02(BasicNode):
 
@@ -296,7 +296,7 @@ class Node02(BasicNode):
         self.originValue = OV
         self.varName = "HBsAg +"
         self.destStates = [Node36    ,       Node26]
-        self.probValUT =  [pMonitor  , 1 - pMonitor]
+        self.probValUT =  [0.35  , 1 - 0.35]
 
 class Node03(BasicNode):
 
@@ -658,4 +658,5 @@ class Node36(BasicNode):
         self.probValAT =  [0.0107, 0.0143 , 0.00049, 0.00167 , dVar  ,  pVar ]
         self.probValAFR = [0.0165, 0.0278 , 0.00068, 0.00167 , dVar  ,  pVar ]
         self.probValAFF = [0.0183, 0.0202 , 0.00150, 0.00167 , dVar  ,  pVar ]
+
 

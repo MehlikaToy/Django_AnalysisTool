@@ -33,6 +33,11 @@ def resultsView(request):
     output1 = markovMain(age = age, total_stages = stage , initialList=g1)
     # print output1
 
+    cumm = 0
+    for i in output1.values():
+        cumm += i
+    print cumm
+
     output1 = ", ".join(["=".join([key, str(val)]) for key, val in output1.items()])
     context = RequestContext(request,{
         'stuff': output1,
@@ -40,3 +45,5 @@ def resultsView(request):
 
     return HttpResponse(template.render(context))
     # return render_to_response('markov/results.html', locals(), context_instance = RequestContext(request))
+
+
