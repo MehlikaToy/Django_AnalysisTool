@@ -259,7 +259,11 @@ def pVarReplace(list):
 def dVarReplace(list, age):
     if dVar in list:
         dIndex = list.index(dVar)
-        list[dIndex] = getMort(age - 1)
+        dRate = getMort(age-1)
+        if dRate == 1:
+            for i in range(0,len(list)):
+                list[i] = 0.0
+        list[dIndex] = dRate
     return list
 
 def trimList(array):   # sums up all nodes with same name to create a neat array
