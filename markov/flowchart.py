@@ -20,6 +20,9 @@ ALT = HBV_DNA = ""
 # Parse through dictionary of questions and answers
 def parse(finalDict):
 	global g1, g2, g3, answer, age, ALT, stage, HBV_DNA
+	g1 = []
+	g2 = []
+	g3 = []
 	for q, ans in finalDict.iteritems():
 		if ("Does your HBsAg patient have Cirrhosis" in q):
 			answer = ans
