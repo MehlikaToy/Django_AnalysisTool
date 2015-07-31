@@ -5,7 +5,6 @@ from flowchart import *
 from markov_cy import *
 import json
 import decimal
-
 # # Create your views here.
 
 # def index(request):
@@ -20,7 +19,7 @@ def questionnaire(request):
     return render_to_response('markov/questionnaire.html', locals(), context_instance = RequestContext(request))
 
 def resultsView(request):
-    # template = loader.get_template('markov/results.html')
+    template = loader.get_template('markov/results.html')
 
     output = stuff()
 
@@ -31,7 +30,7 @@ def resultsView(request):
     # print output1
 
     #dictionary to list
-    dictList =[]
+    dictList =[['Health States', 'Percentage']]
     for key, value in output1.iteritems():
         temp = [key,value]
         dictList.append(temp)
@@ -42,18 +41,5 @@ def resultsView(request):
         cumm += i
     print cumm
 
-    # output1 = ", ".join(["=".join([key, str(val)]) for key, val in output1.items()])
-    # context = RequestContext(request,{
-    #     'stuff': dictList,
-    #     })
 
-    # return HttpResponse(template.render(context))
-    return render_to_response('markov/results.html', {
-        'array': json.dumps(dictList, cls=DecimalEncoder),
-    })
-
-class DecimalEncoder(json.JSONEncoder):
-    def default(self, o):
-        if isinstance(o, decimal.Decimal):
-            return float(o)
-        return super(DecimalEncoder, self).default(o)
+    return render_to_response('markov/results.html', {'array': json.dumps(dictList)})

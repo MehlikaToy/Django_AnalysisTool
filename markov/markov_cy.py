@@ -74,8 +74,6 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
 
     output = {}
     for i in newList:
-        print i.getVarName()
-        print i .getOriginValue()
         output[i.getVarName()] = i.getOriginValue()
     return output
 
