@@ -79,8 +79,3 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
         output[i.getVarName()] = i.getOriginValue()
     return output
 
-    if round(sumList(initialList), 10) == round(sumList(newList), 10):
-        print "No Data Leak"
-    else:
-        print "Data Leak Check Node Values"
-

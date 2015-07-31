@@ -32,6 +32,41 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+        // Load the Visualization API and the piechart package.
+        google.load('visualization', '1.0', {'packages':['corechart']});
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Health States');
+        data.addColumn('number', 'Percentage');
+        data.addRows([["HBsAg SeroclearanceNH", 0.006614060184678363], ["Death Other NH", 0.012471902856565808], ["Cirrhosis Long Term Rx with resistance", 0.0004886873557760647], ["CHBe- longterm Rx", 0.027517862126402955], ["Sustained Virological Response", 0.5461783774379609], ["DecompCirr NH", 0.003782609749168191], ["Cirrhosis e- longterm Rx with resistance", 0.00028662958332213685], ["DecompCirr", 0.00030035172628358847], ["HBsAg + NH", 0.02680049586410649], ["CHB Long Term with Rx with Resistance", 0.00216726326491339], ["CHBe+NH", 0.01464885348652778], ["HCC", 0.0006321850130161111], ["Death HBV", 0.02176185557803582], ["HCC NH", 0.005356985473290626], ["Death (Other)", 0.030310451587120913], ["Cirrhosis e- longterm Rx", 0.004710585019838069], ["CHBe- longterm Rx resistance", 0.009283468314495336], ["Cirrhosis Long Term Rx", 3.241613958599655e-05], ["HBsAg Seroclearance", 0.0015067169500192887], ["Death HBV NH", 0.12223135907863512], ["Cirrhosis NH", 0.03078710342267647], ["HBeAg Seroconversion", 0.006833163259471616], ["Liver Transplantation NH", 0.007019912347576409], ["HBeAg SeroconversionNH", 0.017191702447051715], ["Liver Transplantation", 0.0010581189954652064], ["CHB Long Term Rx", 0.0004995248051599813], ["CHB e- diseaseNH", 0.09952735793285555]]);
+
+        // Set chart options
+        var options = {'title':'End States of Markov Model',
+                     'width':800,
+                     'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+
+        //var djangoData = {{ array|safe }};
+        //var data = google.visualization.arrayToDataTable(djangoData);
+
+    }
+    </script>
+
 </head>
 
 
@@ -92,7 +127,8 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Your Responses</h2>
-                <p>{{stuff}}</p>
+                <div id="chart_div" align="center" style="width:800; height:600"></div>
+                <p>{{array}}</p>
             </div>
         </div>
     </section>
