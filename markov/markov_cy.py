@@ -68,9 +68,45 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
             if not str(node.getVarName()) in cummDict:
                 cummDict[str(node.getVarName())] = node.getOriginValue()
             else:
-                cummDict[str(node.getVarName())] += (node.getOriginValue())
-
+                # cummDict[str(node.getVarName())] += (node.getOriginValue())
+                # TODO somehow implement to actual cumm here.
+                for i in oldList:
+                    if node.getVarName() == i.getVarName():
+                        temp = node.getOriginValue() - i.getOriginValue()
+                        if temp > 0:
+                            cummDict[str(node.getVarName())] += temp
+        print ""
+        print age, "!!!!!!!"
+        printCummTestValues(newList)
+        print ''
+        try:
+            print 'Cirrhosis NH Cumm:                         ', round(cummDict['Cirrhosis NH'],5)
+            print 'Cirrhosis Initial Rx Cumm:                 ', round(cummDict['Cirrhosis Initial Rx'],5)
+        except:
+            pass
+        try:
+            print 'HCC Cumm:                                  ', round(cummDict['HCC'],5)
+            print 'HCC NH Cumm                                ', round(cummDict['HCC NH'],5)
+        except:
+            pass
+        try:
+            print 'Liver Transplantation Cumm:                ', round(cummDict['Liver Transplantation'],5)
+            print 'Liver Transplantation NH Cumm              ', round(cummDict['Liver Transplantation NH'],5)
+        except:
+            pass
+        try:
+            print 'Death HBV Cumm:                            ', round(cummDict['Death HBV'],5)
+            print 'Death HBV NH Cumm                          ', round(cummDict['Death HBV NH'],5)
+        except:
+            pass
+        print "*******"
         age += stage_timeFrame
+
+    print cummDict
+    sum = 0
+    for value in cummDict.values():
+        sum += value
+    print sum
 
     output = {}
     for i in newList:

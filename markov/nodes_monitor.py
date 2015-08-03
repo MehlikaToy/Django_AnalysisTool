@@ -230,6 +230,14 @@ def getMort(age):
 
 
 #Basic Calculation Functions
+def printCummTestValues(list):
+    for i in list:
+        if i.getVarName() == 'Cirrhosis NH' or i.getVarName() == 'Cirrhosis Initial Rx' or i.getVarName() == 'HCC' or i.getVarName() == 'HCC NH':
+            print ("%-40s %10.5f" % (i.getVarName(), round(i.getOriginValue(),5),))
+        if i.getVarName() == 'Liver Transplantation NH' or i.getVarName() == 'Death HBV NH' or i.getVarName() == 'Liver Transplantation' or i.getVarName == 'Death HBV':
+            print ("%-40s %10.5f" % (i.getVarName(), round(i.getOriginValue(),5),))
+
+
 def printList(list):
     for i in list:
         print ("%-40s %10.5f" % (i.getVarName(), round(i.getOriginValue(),5),))
@@ -427,7 +435,7 @@ class Node14(BasicNode):
         super(Node14, self).__init__(1)
         self.ID = type(self).__name__
         self.originValue = OV
-        self.varName = "Cirrohosis Initial Rx"
+        self.varName = "Cirrhosis Initial Rx"
         self.destStates = [Node10, Node15, Node08, Node24]
         self.probValUT =  [0.22  , pVar  , 0.009 , dVar]
 
