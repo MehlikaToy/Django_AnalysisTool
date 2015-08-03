@@ -117,10 +117,8 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
         # age += stage_timeFrame
 
     finalDict = {}
-    print sorted(tempDict)
     for j in sorted(tempDict):
         finalDict[j] = tempDict[j]
-    print sorted(finalDict)
     output = {}
     for i in newList:
         output[i.getVarName()] = i.getOriginValue()

@@ -37,8 +37,6 @@ def resultsView(request):
         temp = [sortedOutput1A[i*2], output1A[sortedOutput1A[i*2]]*1000000, output1A[sortedOutput1A[i*2+1]]*1000000]
         cummList.append(temp)
 
-    print cummList
-
     cumm = 0
     for i in output1.values():
         cumm += i
