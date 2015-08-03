@@ -48,10 +48,6 @@
         // draws it.
         function drawChart() {
 
-<<<<<<< HEAD
-            // Set chart options
-            var options = {'title':'End States of Markov Model',
-=======
             // create Data
             var djangoData1 = {{ array|safe }};
             var data1 = google.visualization.arrayToDataTable(djangoData1);
@@ -61,7 +57,6 @@
 
             // Set chart options
             var options1 = {'title':'End States of Markov Model',
->>>>>>> 97e6659d90dd1e8d527d65981f23dcad3aa835b4
                          'titleTextStyle': { color: 'white'},
                          'is3D':true,
                          sliceVisibilityThreshold: .05,
@@ -71,39 +66,6 @@
                          legend: {textStyle: {color: 'white', fontSize: 12}}
                          };
 
-<<<<<<< HEAD
-            var djangoData = {{ array|safe }};
-            var data = google.visualization.arrayToDataTable(djangoData);
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-
-            /*
-            chart.selectedSlice = -1;
-            // The event listener to explode out the slices
-            function selectListener(){
-                var temp = chart.getSelection();
-                var selectedItem = temp[0];
-                if (selectedItem) {
-                    var rowNumber = parseInt(selectedItem.row);
-
-                    if(chart.selectedSlice != -1){    // If we have a selection, unexplode it
-                        options.slices[chart.selectedSlice] = {offset:'0'};
-                    }
-                    if(chart.selectedSlice == rowNumber){ // If this is already selected, unselect it
-                        chart.selectedSlice = -1;
-                    }else{  // else explode it
-                        options.slices[rowNumber] = {offset:'.2'};
-                        chart.selectedSlice = rowNumber;
-                    }
-
-                    chart.draw(data, options);
-                }
-            }
-            google.visualization.events.addListener(chart, 'select', selectListener);
-            */
-            // Instantiate and draw our chart, passing in some options.
-            chart.draw(data, options);
-        }
-=======
             var options2 = {
                 'width':800,
                 'height':600,
@@ -141,7 +103,6 @@
             chart2.draw(data2, options2);
         }
 
->>>>>>> 97e6659d90dd1e8d527d65981f23dcad3aa835b4
     </script>
 
 </head>
