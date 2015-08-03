@@ -10,7 +10,7 @@ pp = pprint.PrettyPrinter(indent=4)
 def stuff():
     response = urllib2.urlopen("https://api.typeform.com/v0/form/TOsSUX?key=6289137c9f94850a29203f5fd601c826a202d259&completed=true&offset=0&limit=1?order_by[]=completed&order_by[]=date_land,desc")
     data = json.loads(response.read())
-    pp.pprint(data)
+    # pp.pprint(data)
 
     questionDict = {}
     for question in data.get("questions"):
@@ -26,8 +26,8 @@ def stuff():
         finalDict[questionDict[key]] = answerDict[key]
 
     finalDict =  convert(finalDict)
-    print finalDict
-    
+    # print finalDict
+
     return finalDict
 
 

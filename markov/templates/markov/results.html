@@ -32,12 +32,13 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
 
         // Load the Visualization API and the piechart package.
         google.load('visualization', '1.0', {'packages':['corechart']});
+        google.load('visualization', '1', {packages: ['corechart', 'bar']});
 
         // Set a callback to run when the Google Visualization API is loaded.
         google.setOnLoadCallback(drawChart);
@@ -47,49 +48,61 @@
         // draws it.
         function drawChart() {
 
-        // Set chart options
-        var options = {'title':'End States of Markov Model',
-                     'titleTextStyle': { color: 'white'},
-                     'is3D':true,
-                     sliceVisibilityThreshold: .05,
-                     'width':800,
-                     'height':600,
-                     backgroundColor:'black',
-                     legend: {textStyle: {color: 'white', fontSize: 12}}
-                     };
+            // create Data
+            var djangoData1 = {{ array|safe }};
+            var data1 = google.visualization.arrayToDataTable(djangoData1);
 
-        var djangoData = {{ array|safe }};
-        var data = google.visualization.arrayToDataTable(djangoData);
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            var djangoData2 = {{ array1|safe }};
+            var data2 = google.visualization.arrayToDataTable(djangoData2);
 
-/*
-        chart.selectedSlice = -1;
-        // The event listener to explode out the slices
-        function selectListener(){
-            var temp = chart.getSelection();
-            var selectedItem = temp[0];
-            if (selectedItem) {
-                var rowNumber = parseInt(selectedItem.row);
+            // Set chart options
+            var options1 = {'title':'End States of Markov Model',
+                         'titleTextStyle': { color: 'white'},
+                         'is3D':true,
+                         sliceVisibilityThreshold: .05,
+                         'width':800,
+                         'height':600,
+                         backgroundColor:'black',
+                         legend: {textStyle: {color: 'white', fontSize: 12}}
+                         };
 
-                if(chart.selectedSlice != -1){    // If we have a selection, unexplode it
-                    options.slices[chart.selectedSlice] = {offset:'0'};
+            var options2 = {
+                'width':800,
+                'height':600,
+                colors: ['#42dca3', '#49B7A8'],
+                backgroundColor: 'black',
+                dataOpacity: 0.75,
+                title: 'Select States Cumulative Results (per 1 Mil)',
+                titleTextStyle: {color:'White', fontSize: '20'},
+                legend:{
+                    position: 'right',
+                    textStyle: {color: 'white', fontSize: 16},
+                },
+                vAxis: {
+                        title: 'People',
+                        titleTextStyle: {color: 'white'},
+                        textStyle: {color: 'white'},
+                        baselineColor: '#CCC',
+                        gridlines: {color: '#CCC'},
+                        logScale: true,
+                        format: 'short',
+                        },
+                hAxis:{
+                        title: 'States',
+                        slantedText: true,
+                        titleTextStyle: {color: 'white'},
+                        textStyle: {color: 'white'},
                 }
-                if(chart.selectedSlice == rowNumber){ // If this is already selected, unselect it
-                    chart.selectedSlice = -1;
-                }else{  // else explode it
-                    options.slices[rowNumber] = {offset:'.2'};
-                    chart.selectedSlice = rowNumber;
-                }
 
-                chart.draw(data, options);
-            }
+            };
+
+            var chart1 = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
+            chart1.draw(data1, options1);
+
+            var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart2.draw(data2, options2);
         }
-        google.visualization.events.addListener(chart, 'select', selectListener);
-*/
-        // Instantiate and draw our chart, passing in some options.
-        chart.draw(data, options);
 
-    }
     </script>
 
 </head>
@@ -152,7 +165,8 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Your Responses</h2>
-                <div id="chart_div" align="center" style="width:800; height:600"></div>
+                <div id="pie_chart_div"></div>
+                <div id="chart_div"style= "width:800; height:800"></div>
             </div>
         </div>
     </section>
@@ -171,9 +185,9 @@
                     <li>
                         <a href="https://github.com/colphin/Analysis_Tool" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
                     </li>
-                    <!-- <li>
+                   <li>
                         <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
         </div>
