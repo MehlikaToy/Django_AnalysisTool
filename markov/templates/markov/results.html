@@ -47,49 +47,48 @@
         // draws it.
         function drawChart() {
 
-        // Set chart options
-        var options = {'title':'End States of Markov Model',
-                     'titleTextStyle': { color: 'white'},
-                     'is3D':true,
-                     sliceVisibilityThreshold: .05,
-                     'width':800,
-                     'height':600,
-                     backgroundColor:'black',
-                     legend: {textStyle: {color: 'white', fontSize: 12}}
-                     };
+            // Set chart options
+            var options = {'title':'End States of Markov Model',
+                         'titleTextStyle': { color: 'white'},
+                         'is3D':true,
+                         sliceVisibilityThreshold: .05,
+                         'width':800,
+                         'height':600,
+                         backgroundColor:'black',
+                         legend: {textStyle: {color: 'white', fontSize: 12}}
+                         };
 
-        var djangoData = {{ array|safe }};
-        var data = google.visualization.arrayToDataTable(djangoData);
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            var djangoData = {{ array|safe }};
+            var data = google.visualization.arrayToDataTable(djangoData);
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
 
-/*
-        chart.selectedSlice = -1;
-        // The event listener to explode out the slices
-        function selectListener(){
-            var temp = chart.getSelection();
-            var selectedItem = temp[0];
-            if (selectedItem) {
-                var rowNumber = parseInt(selectedItem.row);
+            /*
+            chart.selectedSlice = -1;
+            // The event listener to explode out the slices
+            function selectListener(){
+                var temp = chart.getSelection();
+                var selectedItem = temp[0];
+                if (selectedItem) {
+                    var rowNumber = parseInt(selectedItem.row);
 
-                if(chart.selectedSlice != -1){    // If we have a selection, unexplode it
-                    options.slices[chart.selectedSlice] = {offset:'0'};
+                    if(chart.selectedSlice != -1){    // If we have a selection, unexplode it
+                        options.slices[chart.selectedSlice] = {offset:'0'};
+                    }
+                    if(chart.selectedSlice == rowNumber){ // If this is already selected, unselect it
+                        chart.selectedSlice = -1;
+                    }else{  // else explode it
+                        options.slices[rowNumber] = {offset:'.2'};
+                        chart.selectedSlice = rowNumber;
+                    }
+
+                    chart.draw(data, options);
                 }
-                if(chart.selectedSlice == rowNumber){ // If this is already selected, unselect it
-                    chart.selectedSlice = -1;
-                }else{  // else explode it
-                    options.slices[rowNumber] = {offset:'.2'};
-                    chart.selectedSlice = rowNumber;
-                }
-
-                chart.draw(data, options);
             }
+            google.visualization.events.addListener(chart, 'select', selectListener);
+            */
+            // Instantiate and draw our chart, passing in some options.
+            chart.draw(data, options);
         }
-        google.visualization.events.addListener(chart, 'select', selectListener);
-*/
-        // Instantiate and draw our chart, passing in some options.
-        chart.draw(data, options);
-
-    }
     </script>
 
 </head>
