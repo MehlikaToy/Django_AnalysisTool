@@ -22,6 +22,7 @@ def resultsView(request):
     parse(output)
     g1, g2, g3 = getInitNodes()
     age, stage = ageStage()
+    answer, ALT, HBV_DNA = cirrALT_DNA()
     response = markovMain(age=age, total_stages=stage, initialList=g1)
     output1 = response['output']
     output1A = response['finalList']
@@ -44,8 +45,16 @@ def resultsView(request):
     # print cumm
 
 
+    inputs = "Your " + str(age) + " year old patient "
+    if(int(answer)):              # if no cirrhosis
+        inputs += "has Cirrhosis."
+    else:
+        inputs += "doesn't have Cirrhosis with a " + ALT + " ALT level and an HBV DNA level that is " + HBV_DNA + '.'
+
+
     return render_to_response('markov/results.html',
                               {'array': json.dumps(dictList),
                                 'array1': json.dumps(cummList),
-                                'deathHBV': json.dumps(deathHBV)
+                                'deathHBV': json.dumps(deathHBV),
+                                'inputStr': inputs
                               })

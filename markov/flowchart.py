@@ -80,6 +80,9 @@ def noCirr():
 def ageStage():
 	return age, stage
 
+def cirrALT_DNA():
+	return answer, ALT, HBV_DNA
+
 def getInitNodes():
 	return g1, g2 ,g3
 
