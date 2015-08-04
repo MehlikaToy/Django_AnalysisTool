@@ -27,6 +27,9 @@ def resultsView(request):
     output1 = response['output']
     output1A = response['finalList']
     deathHBV = response['DeathHBV']
+    cirrhosis = response['Cirrhosis']
+    hcc = response['HCC']
+    lt = response['LT']
 
     # dictionary to list
     dictList =[['Health States', 'Percentage']]
@@ -56,5 +59,8 @@ def resultsView(request):
                               {'array': json.dumps(dictList),
                                 'array1': json.dumps(cummList),
                                 'deathHBV': json.dumps(deathHBV),
+                                'cirrhosis': json.dumps(cirrhosis),
+                                'hcc': json.dumps(hcc),
+                                'lt': json.dumps(lt),
                                 'inputStr': inputs
                               })

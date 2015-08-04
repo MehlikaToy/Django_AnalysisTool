@@ -140,12 +140,19 @@
 	font-weight: lighter;
 }
 
+.graph-row{
+	display: inline-block;
+	width: 970px;
+	margin:0 auto;
+}
 
+#linechart1, #linechart3{
+	float: left;
+}
 
-
-
-
-
+#linechart2, #linechart4{
+	float: right;
+}
 
 
 

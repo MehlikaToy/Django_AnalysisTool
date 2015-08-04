@@ -17,6 +17,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'home/css/grayscale.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/style.css' %}" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     <!-- Custom Fonts -->
@@ -58,6 +59,15 @@
 
             var djangoData3 = {{ deathHBV|safe }};
             var data3 = google.visualization.arrayToDataTable(djangoData3);
+
+            var djangoData4 = {{ cirrhosis|safe }};
+            var data4 = google.visualization.arrayToDataTable(djangoData4);
+
+            var djangoData5 = {{ hcc|safe }};
+            var data5 = google.visualization.arrayToDataTable(djangoData5);
+
+            var djangoData6 = {{ lt|safe }};
+            var data6 = google.visualization.arrayToDataTable(djangoData6);
 
             // Set chart options
             // var options1 = {'title':'End States of Markov Model',
@@ -106,17 +116,82 @@
 
             var options3 = {
                 title: "Death HBV",
+                titleTextStyle :{
+                    fontSize:22,
+                    fontName:'Raleway',
+                },
                 colors: ['pink', '#49B7A8'],
-                width: 600,
-                height: 600,
-                explorer:{},
+                width: 475,
+                height: 475,
                 vAxis: {
-                    title:'Percentage',
+                    title:'Percentage (%)',
                 },
                 hAxis:{
-
+                    title:'Year',
+                },
+                legend:{
+                    position:'top',
                 }
+            };
 
+            var options4 = {
+                title: "Cirrhosis",
+                titleTextStyle :{
+                    fontSize:22,
+                    fontName:'Raleway',
+                },
+                colors: ['pink', '#49B7A8'],
+                width: 475,
+                height: 475,
+                vAxis: {
+                    title:'Percentage (%)',
+                },
+                hAxis:{
+                    title:'Year',
+                },
+                legend:{
+                    position:'top',
+                }
+            };
+
+            var options5 = {
+                title: "HCC",
+                titleTextStyle :{
+                    fontSize:22,
+                    fontName:'Raleway',
+                },
+                colors: ['pink', '#49B7A8'],
+                width: 475,
+                height: 475,
+                vAxis: {
+                    title:'Percentage (%)',
+                },
+                hAxis:{
+                    title:'Year',
+                },
+                legend:{
+                    position:'top',
+                }
+            };
+
+            var options6 = {
+                title: "Liver Transplantation",
+                titleTextStyle :{
+                    fontSize:22,
+                    fontName:'Raleway',
+                },
+                colors: ['pink', '#49B7A8'],
+                width: 475,
+                height: 475,
+                vAxis: {
+                    title:'Percentage (%)',
+                },
+                hAxis:{
+                    title:'Year',
+                },
+                legend:{
+                    position:'top',
+                }
             };
 
             // var chart1 = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
@@ -127,6 +202,15 @@
 
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
             chart3.draw(data3, options3);
+
+            var chart4 = new google.visualization.LineChart(document.getElementById('linechart2'));
+            chart4.draw(data4, options4);
+
+            var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
+            chart5.draw(data5, options5);
+
+            var chart6 = new google.visualization.LineChart(document.getElementById('linechart4'));
+            chart6.draw(data6, options6);
 
         }
 
@@ -178,7 +262,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">Results</h1>
                         <p class="intro-text">Treated and Untreated Survival Rates of Patients<br>Created at Stanford Asian Liver Center</p>
-                        <a href="/markov" class="btn btn-circle page-scroll">
+                        <a href="#Result" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
@@ -189,15 +273,23 @@
 
     <!-- About Section -->
     <section id="Result" class="container content-section text-center">
-        <div class="row">
+        <div class="row" style="margin:0">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Your Responses</h2>
-                    <div id="user-input">
-                        <p>{{inputStr}}</p>
-                    </div>
+                <div id="user-input">
+                    <p>{{inputStr}}</p>
+                </div>
 <!--                 <div id="pie_chart_div"></div>
- -->                 <div id="chart_div" style= "width:800; height:800"></div>
-                    <div id="linechart1"></div>
+-->                <div id="chart_div" style= "width:750; height:750"></div>
+            </div>
+
+            <div class="graph-row">
+                <div id="linechart1"></div>
+                <div id="linechart2"></div>
+            </div>
+            <div class="graph-row">
+                <div id="linechart3"></div>
+                <div id="linechart4"></div>
             </div>
         </div>
     </section>

@@ -20,8 +20,10 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
     oldList = initialList
     newList = []
 
-    DeathHBV = [['Stages', 'Treatment', 'Natural History']]
-
+    DeathHBV = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
+    Cirrhosis = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
+    HCC = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
+    LT = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
 
     age += 1
 
@@ -64,15 +66,36 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
         print '########################'
         printList(newList)
 
-        temp = [curr_stage ,0, 0]
+        t_death = [curr_stage ,0, 0]
+        t_cirr = [curr_stage ,0, 0]
+        t_hcc = [curr_stage ,0, 0]
+        t_lt =[curr_stage ,0, 0]
+
         for i in newList:
             if i.getVarName() == 'Death HBV':
-                temp[1] = i.getOriginValue()*100
+                t_death[1] = i.getOriginValue()*100
             if i.getVarName() == 'Death HBV NH':
-                temp[2] = i.getOriginValue()*100
-        DeathHBV.append(temp)
+                t_death[2] = i.getOriginValue()*100
 
-        print DeathHBV
+            if i.getVarName() == 'Cirrhosis Initial Rx':
+                t_cirr[1] = i.getOriginValue()*100
+            if i.getVarName() == 'Cirrhosis NH':
+                t_cirr[2] = i.getOriginValue()*100
+
+            if i.getVarName() == 'HCC':
+                t_hcc[1] = i.getOriginValue()*100
+            if i.getVarName() == 'HCC NH':
+                t_hcc[2] = i.getOriginValue()*100
+
+            if i.getVarName() == 'Liver Transplantation':
+                t_lt[1] = i.getOriginValue()*100
+            if i.getVarName() == 'Liver Transplantation NH':
+                t_lt[2] = i.getOriginValue()*100
+        DeathHBV.append(t_death)
+        Cirrhosis.append(t_cirr)
+        HCC.append(t_hcc)
+        LT.append(t_lt)
+        # print DeathHBV
 
 
         for node in newList:
@@ -161,5 +184,5 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
     print '########################'
 
 
-    return {'output': output, 'finalList': finalList, 'DeathHBV': DeathHBV}
+    return {'output': output, 'finalList': finalList, 'DeathHBV': DeathHBV, 'Cirrhosis': Cirrhosis, 'HCC': HCC, 'LT': LT}
 
