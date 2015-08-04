@@ -22,7 +22,7 @@
 .btn-square:focus {
     outline: 0;
     color: black;
-    background: rgba(255,127,80,1);
+    background: rgba(255,127,80,1);					/* coral */
 }
 
 .btn-square i.animated {
