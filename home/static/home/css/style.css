@@ -9,9 +9,9 @@
 	height: 75px;
 	padding: 7px;
 	margin-bottom: 10px;
-	border: 2px solid #2cc48a;
+	border: 2px solid black;
     font-size: 40px;
-    color: #2cc48a;
+    color: black;
     background: 0 0;
     -webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
@@ -20,10 +20,9 @@
 
 .btn-square:hover,
 .btn-square:focus {
-
     outline: 0;
-    color: #2cc48a;
-    background: rgba(44,196,138,.2);
+    color: black;
+    background: rgba(255,127,80,1);
 }
 
 .btn-square i.animated {
@@ -85,7 +84,7 @@
 
 #arrow:hover{
 	transform: scale(1.2);
-	color: #2cc48a;
+	color: rgba(255,127,80,1);
 }
 
 /*use it now link*/
@@ -123,11 +122,11 @@
 }
 
 .team-profile a{
-	color: white;
+	color: #000;
 }
 
 .team-profile a:hover{
-	color: #2cc48a;
+	color: #49b7a8;			/* jade */
 }
 
 .team-profile-img{
