@@ -6,12 +6,6 @@ Markov Model Emulator of Hepatitis B
 
 from nodes_monitor import *
 
-
-# Touch this part
-age = 35
-total_stages = 15
-endemicity = 1
-stage_timeFrame = 1  # in years
 # The initial Probabilities
 
 
@@ -64,17 +58,26 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
 
         newList = trimList(newList)
 
+        DeathHBV = []
+        for i in newList:
+            temp = [0, 0]
+            if i.getVarName() == 'Death HBV':
+                temp[0] = i.getOriginValue
+            if i.getVarName() == 'Death HBV NH':
+                temp [1] = i.getOriginValue
+            DeathHBV.append(temp)
+
+
         for node in newList:
             if not str(node.getVarName()) in cummDict:
                 cummDict[str(node.getVarName())] = node.getOriginValue()
             else:
-                # cummDict[str(node.getVarName())] += (node.getOriginValue())
-                # TODO somehow implement to actual cumm here.
                 for i in oldList:
                     if node.getVarName() == i.getVarName():
                         temp = node.getOriginValue() - i.getOriginValue()
                         if temp > 0:
                             cummDict[str(node.getVarName())] += temp
+
 
     tempDict = {}
     for key in cummDict.keys():
@@ -87,6 +90,8 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
             key == 'Death HBV NH' or\
             key == 'Death HBV':
                 tempDict[key] = round(cummDict[key], 5)
+
+    print tempDict
 
 
         print ""
@@ -116,11 +121,38 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
         print "*******"
         age += stage_timeFrame
 
-    finalDict = {}
-    for j in sorted(tempDict):
-        finalDict[j] = tempDict[j]
+    # finalDict = {}
+    # for j in sorted(tempDict):
+    #     finalDict[j] = tempDict[j]
     output = {}
     for i in newList:
         output[i.getVarName()] = i.getOriginValue()
-    return output, finalDict
+
+    finalList = [['Cirrhosis', 0, 0], ['HCC', 0, 0], ['Liver Transplantation', 0, 0], ['Death HBV', 0, 0]]
+    try:
+        finalList[0][1] = (tempDict['Cirrhosis Initial Rx'])
+        finalList[0][2] = (tempDict['Cirrhosis NH'])
+    except:
+        pass
+    try:
+        finalList[1][1] = (tempDict['HCC'])
+        finalList[1][2] = (tempDict['HCC NH'])
+    except:
+        pass
+    try:
+        finalList[2][1] = (tempDict['Liver Transplantation'])
+        finalList[2][2] = (tempDict['Liver Transplantation NH'])
+    except:
+        pass
+    try:
+        finalList[3][1] = (tempDict['Death HBV'])
+        finalList[3][2] = (tempDict['Death HBV NH'])
+    except:
+        pass
+
+    print 'CUMM', finalList
+    print '########################'
+
+
+    return output, finalList
 

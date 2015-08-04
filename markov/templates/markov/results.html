@@ -69,7 +69,7 @@
             var options2 = {
                 'width':800,
                 'height':600,
-                colors: ['pink', '#49B7A8'],
+                colors: ['#42dca3', '#49B7A8'],
                 backgroundColor: 'black',
                 dataOpacity: 0.75,
                 title: 'Select States Cumulative Results (per 1 Mil)',
@@ -79,13 +79,13 @@
                     textStyle: {color: 'white', fontSize: 16},
                 },
                 vAxis: {
-                        title: 'Percentages',
+                        title: 'People',
                         titleTextStyle: {color: 'white'},
                         textStyle: {color: 'white'},
                         baselineColor: '#CCC',
                         gridlines: {color: '#CCC'},
-                        logScale: false,
-                        // format: '',
+                        logScale: true,
+                        format: 'short',
                         },
                 hAxis:{
                         title: 'States',
