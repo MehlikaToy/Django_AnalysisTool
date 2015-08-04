@@ -57,31 +57,31 @@
 
             // Set chart options
             var options1 = {'title':'End States of Markov Model',
-                         'titleTextStyle': { color: 'white'},
+                         'titleTextStyle': { color: 'black'},
                          'is3D':true,
                          sliceVisibilityThreshold: .05,
                          'width':800,
                          'height':600,
-                         backgroundColor:'black',
-                         legend: {textStyle: {color: 'white', fontSize: 12}}
+                         backgroundColor:'white',
+                         legend: {textStyle: {color: 'black', fontSize: 12}}
                          };
 
             var options2 = {
                 'width':800,
                 'height':600,
                 colors: ['pink', '#49B7A8'],
-                backgroundColor: 'black',
+                backgroundColor: 'white',
                 dataOpacity: 0.75,
                 title: 'Select States Cumulative Results (per 1 Mil)',
-                titleTextStyle: {color:'White', fontSize: '20'},
+                titleTextStyle: {color:'black', fontSize: '20'},
                 legend:{
                     position: 'right',
                     textStyle: {color: 'white', fontSize: 16},
                 },
                 vAxis: {
                         title: 'Percentages',
-                        titleTextStyle: {color: 'white'},
-                        textStyle: {color: 'white'},
+                        titleTextStyle: {color: 'black'},
+                        textStyle: {color: 'black'},
                         baselineColor: '#CCC',
                         gridlines: {color: '#CCC'},
                         logScale: false,
@@ -90,8 +90,8 @@
                 hAxis:{
                         title: 'States',
                         slantedText: true,
-                        titleTextStyle: {color: 'white'},
-                        textStyle: {color: 'white'},
+                        titleTextStyle: {color: 'black'},
+                        textStyle: {color: 'black'},
                 }
 
             };
@@ -195,7 +195,7 @@
 
     <footer>
         <div class="container text-center">
-            <p>Copyright &copy; Asian Liver Center 2015</p>
+            <p>Copyright &copy; <a href="http://liver.stanford.edu/" target="_blank">Asian Liver Center 2015</a></p>
         </div>
     </footer>
 
