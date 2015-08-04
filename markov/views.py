@@ -22,7 +22,10 @@ def resultsView(request):
     parse(output)
     g1, g2, g3 = getInitNodes()
     age, stage = ageStage()
-    output1, output1A = markovMain(age=age, total_stages=stage, initialList=g1)
+    response = markovMain(age=age, total_stages=stage, initialList=g1)
+    output1 = response['output']
+    output1A = response['finalList']
+    deathHBV = response['DeathHBV']
 
     # dictionary to list
     dictList =[['Health States', 'Percentage']]

@@ -20,6 +20,9 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
     oldList = initialList
     newList = []
 
+    DeathHBV = []
+
+
     age += 1
 
     for curr_stage in range(1, total_stages+1):
@@ -58,14 +61,18 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
 
         newList = trimList(newList)
 
-        DeathHBV = []
+        print '########################'
+        printList(newList)
+
+        temp = [curr_stage ,0, 0]
         for i in newList:
-            temp = [0, 0]
             if i.getVarName() == 'Death HBV':
-                temp[0] = i.getOriginValue
+                temp[1] = i.getOriginValue()
             if i.getVarName() == 'Death HBV NH':
-                temp [1] = i.getOriginValue
-            DeathHBV.append(temp)
+                temp[2] = i.getOriginValue()
+        DeathHBV.append(temp)
+
+        print DeathHBV
 
 
         for node in newList:
@@ -154,5 +161,5 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
     print '########################'
 
 
-    return output, finalList
+    return {'output': output, 'finalList': finalList, 'DeathHBV': DeathHBV}
 
