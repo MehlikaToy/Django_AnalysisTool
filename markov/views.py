@@ -46,5 +46,6 @@ def resultsView(request):
 
     return render_to_response('markov/results.html',
                               {'array': json.dumps(dictList),
-                                'array1': json.dumps(cummList)
+                                'array1': json.dumps(cummList),
+                                'deathHBV': json.dumps(deathHBV)
                               })

@@ -20,7 +20,7 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
     oldList = initialList
     newList = []
 
-    DeathHBV = []
+    DeathHBV = [['Stages', 'Treatment', 'Natural History']]
 
 
     age += 1

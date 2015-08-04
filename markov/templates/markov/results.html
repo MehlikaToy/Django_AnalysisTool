@@ -37,8 +37,9 @@
     <script type="text/javascript">
 
         // Load the Visualization API and the piechart package.
-        google.load('visualization', '1.0', {'packages':['corechart']});
+        google.load('visualization', '1.0', {packages:['corechart']});
         google.load('visualization', '1', {packages: ['corechart', 'bar']});
+        google.load('visualization', '1.1',{packages: ['line']});
 
         // Set a callback to run when the Google Visualization API is loaded.
         google.setOnLoadCallback(drawChart);
@@ -49,22 +50,25 @@
         function drawChart() {
 
             // create Data
-            var djangoData1 = {{ array|safe }};
-            var data1 = google.visualization.arrayToDataTable(djangoData1);
+            // var djangoData1 = {{ array|safe }};
+            // var data1 = google.visualization.arrayToDataTable(djangoData1);
 
             var djangoData2 = {{ array1|safe }};
             var data2 = google.visualization.arrayToDataTable(djangoData2);
 
+            var djangoData3 = {{ deathHBV|safe }};
+            var data3 = google.visualization.arrayToDataTable(djangoData3);
+
             // Set chart options
-            var options1 = {'title':'End States of Markov Model',
-                         'titleTextStyle': { color: 'black'},
-                         'is3D':true,
-                         sliceVisibilityThreshold: .05,
-                         'width':800,
-                         'height':600,
-                         backgroundColor:'white',
-                         legend: {textStyle: {color: 'black', fontSize: 12}}
-                         };
+            // var options1 = {'title':'End States of Markov Model',
+            //              'titleTextStyle': { color: 'black'},
+            //              'is3D':true,
+            //              sliceVisibilityThreshold: .05,
+            //              'width':800,
+            //              'height':600,
+            //              backgroundColor:'white',
+            //              legend: {textStyle: {color: 'black', fontSize: 12}}
+            //              };
 
             var options2 = {
                 'width':800,
@@ -101,11 +105,23 @@
 
             };
 
-            var chart1 = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
-            chart1.draw(data1, options1);
+            var options3 = {
+                chart:{
+                    title: 'Death by HBV'
+                },
+                width: 600,
+                height: 600,
+            };
+
+            // var chart1 = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
+            // chart1.draw(data1, options1);
 
             var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div'));
             chart2.draw(data2, options2);
+
+            var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
+            chart3.draw(data3, options3);
+
         }
 
     </script>
@@ -170,8 +186,9 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Your Responses</h2>
-                <div id="pie_chart_div"></div>
-                <div id="chart_div"style= "width:800; height:800"></div>
+<!--                 <div id="pie_chart_div"></div>
+ -->                 <div id="chart_div" style= "width:800; height:800"></div>
+                    <div id="linechart1"></div>
             </div>
         </div>
     </section>
