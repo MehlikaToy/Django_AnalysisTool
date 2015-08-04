@@ -34,7 +34,7 @@ def resultsView(request):
     cummList = [['State', 'Treatment', 'Natural History']]
     sortedOutput1A = sorted(output1A)
     for i in range(len(sortedOutput1A)/2):
-        temp = [sortedOutput1A[i*2], output1A[sortedOutput1A[i*2]]*1000000, output1A[sortedOutput1A[i*2+1]]*1000000]
+        temp = [sortedOutput1A[i*2], output1A[sortedOutput1A[i*2]]*100, output1A[sortedOutput1A[i*2+1]]*100]
         cummList.append(temp)
 
     cumm = 0

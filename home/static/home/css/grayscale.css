@@ -147,8 +147,8 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
-    background-color: #000;
+    /*background: url(../img/jade_world_map.jpg) no-repeat bottom center scroll;*/
+    background-color: #49b7a8;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;

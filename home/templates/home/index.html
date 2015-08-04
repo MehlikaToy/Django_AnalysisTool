@@ -26,6 +26,7 @@
 
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:200, 300, 400" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -34,7 +35,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
@@ -59,16 +59,16 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="#about" style="color: #000;">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#download"> Previous Webtool</a>
+                        <a class="page-scroll" href="#download"  style="color: #000;"> Previous Webtool</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Team</a>
+                        <a class="page-scroll" href="#contact"  style="color: #000;">Team</a>
                     </li>
                      <li>
-                        <a class="page-scroll" href="#team">Contact</a>
+                        <a class="page-scroll" href="#team" style="color: #000;">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -83,13 +83,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Hepatitis B Decision Tool</h1>
-                        <p class="intro-text" style="font-family:'Lobster', cursive; letter-spacing: 2px;">Created at Stanford Asian Liver Center</p>
+                        <h1 class="brand-heading" style="font-family: 'Raleway'; color: #000; text-transform: none;">Hepatitis B Decision Tool</h1>
+                        <p class="intro-text" style="font-family:'Lobster', cursive; letter-spacing: 2px; ">Created at Stanford Asian Liver Center</p>
                         <div class="row" style="margin-top: 0">
                             <a href="/markov" class="btn btn-square">Start</a>
                         </div>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
+                        <a href="#about" class="page-scroll">
+                            <i class="fa fa-angle-double-down animated" id="arrow"></i>
                         </a>
                     </div>
                 </div>
@@ -146,17 +146,19 @@
                     </ul>
                     <ul class="team-row">
                         <li class="team-profile">
-                            <img class="team-profile-img" src="{% static 'home/img/team/calvin.png' %}">
+                            <a href="http://calvin.ismyreal.name/" target="_blank"><img class="team-profile-img" src="{% static 'home/img/team/calvin.png' %}">
                             <h4 class="team-name">Calvin Yin</h4>
-                            
+                            </a>
                         </li>
                         <li class="team-profile">
-                            <img class="team-profile-img" src="{% static 'home/img/team/jasmine.png' %}">
-                            <h4 class="team-name">Ji Min Kim</h4>
+                            <a href="http://jkim0110.bol.ucla.edu/" target="_blank"><img class="team-profile-img" src="{% static 'home/img/team/jasmine.png' %}">
+                            <h4 class="team-name">Jasmine Kim</h4>
+                            </a>
                         </li>
                         <li class="team-profile">
-                            <img class="team-profile-img" src="{% static 'home/img/team/gerry.png' %}">
+                            <a href="https://www.linkedin.com/in/gmeixiong" target="_blank"><img class="team-profile-img" src="{% static 'home/img/team/gerry.png' %}">
                             <h4 class="team-name">Gerry Meixiong</h4>
+                            </a>
                         </li>
                     </ul>
             </div>
@@ -170,7 +172,6 @@
                 <h2>Contact The Asian Liver Center</h2>
                 <p>Feel free to email us to provide some feedback!</p>
                 <!-- <p><a href="mailto:research.cs.alc@gmail.com">research.cs.alc@gmail.com</a></p> -->
-                
 
                 <ul class="list-inline banner-social-buttons">
                     <li>
@@ -185,7 +186,7 @@
                 </ul>
                 <ul class="list-inline banner-social-buttons" style="padding-top: 75px;">
                     <li>
-                        <a href="/markov" class="link">Use It Now</a>
+                        <a href="http://liver.stanford.edu/jrc/index.html" class="link">Join the campaign</a>
                     </li>
                 </ul>
             </div>
@@ -220,3 +221,4 @@
 </body>
 
 </html>
+

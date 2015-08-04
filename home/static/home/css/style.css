@@ -20,6 +20,7 @@
 
 .btn-square:hover,
 .btn-square:focus {
+
     outline: 0;
     color: #2cc48a;
     background: rgba(44,196,138,.2);
@@ -77,6 +78,15 @@
     }
 }
 
+#arrow{
+	color: white;
+	font-size: 50px;
+}
+
+#arrow:hover{
+	transform: scale(1.2);
+	color: #2cc48a;
+}
 
 /*use it now link*/
 .link{
