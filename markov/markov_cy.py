@@ -67,9 +67,9 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
         temp = [curr_stage ,0, 0]
         for i in newList:
             if i.getVarName() == 'Death HBV':
-                temp[1] = i.getOriginValue()
+                temp[1] = i.getOriginValue()*100
             if i.getVarName() == 'Death HBV NH':
-                temp[2] = i.getOriginValue()
+                temp[2] = i.getOriginValue()*100
         DeathHBV.append(temp)
 
         print DeathHBV

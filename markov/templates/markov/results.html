@@ -73,7 +73,6 @@
             var options2 = {
                 'width':800,
                 'height':600,
-                colors: ['#42dca3', '#49B7A8'],
                 backgroundColor: 'black',
                 colors: ['pink', '#49B7A8'],
                 backgroundColor: 'white',
@@ -106,11 +105,18 @@
             };
 
             var options3 = {
-                chart:{
-                    title: 'Death by HBV'
-                },
+                title: "Death HBV",
+                colors: ['pink', '#49B7A8'],
                 width: 600,
                 height: 600,
+                explorer:{},
+                vAxis: {
+                    title:'Percentage',
+                },
+                hAxis:{
+
+                }
+
             };
 
             // var chart1 = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
