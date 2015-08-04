@@ -94,32 +94,32 @@ def markovMain(age = 35, total_stages = 15, endemicity = 1, stage_timeFrame = 1,
     print tempDict
 
 
-        print ""
-        print age, "!!!!!!!"
-        printCummTestValues(newList)
-        print ''
-        try:
-            print 'Cirrhosis NH Cumm:                         ', round(cummDict['Cirrhosis NH'],5)
-            print 'Cirrhosis Initial Rx Cumm:                 ', round(cummDict['Cirrhosis Initial Rx'],5)
-        except:
-            pass
-        try:
-            print 'HCC Cumm:                                  ', round(cummDict['HCC'],5)
-            print 'HCC NH Cumm                                ', round(cummDict['HCC NH'],5)
-        except:
-            pass
-        try:
-            print 'Liver Transplantation Cumm:                ', round(cummDict['Liver Transplantation'],5)
-            print 'Liver Transplantation NH Cumm              ', round(cummDict['Liver Transplantation NH'],5)
-        except:
-            pass
-        try:
-            print 'Death HBV Cumm:                            ', round(cummDict['Death HBV'],5)
-            print 'Death HBV NH Cumm                          ', round(cummDict['Death HBV NH'],5)
-        except:
-            pass
-        print "*******"
-        age += stage_timeFrame
+        # print ""
+        # print age, "!!!!!!!"
+        # printCummTestValues(newList)
+        # print ''
+        # try:
+        #     print 'Cirrhosis NH Cumm:                         ', round(cummDict['Cirrhosis NH'],5)
+        #     print 'Cirrhosis Initial Rx Cumm:                 ', round(cummDict['Cirrhosis Initial Rx'],5)
+        # except:
+        #     pass
+        # try:
+        #     print 'HCC Cumm:                                  ', round(cummDict['HCC'],5)
+        #     print 'HCC NH Cumm                                ', round(cummDict['HCC NH'],5)
+        # except:
+        #     pass
+        # try:
+        #     print 'Liver Transplantation Cumm:                ', round(cummDict['Liver Transplantation'],5)
+        #     print 'Liver Transplantation NH Cumm              ', round(cummDict['Liver Transplantation NH'],5)
+        # except:
+        #     pass
+        # try:
+        #     print 'Death HBV Cumm:                            ', round(cummDict['Death HBV'],5)
+        #     print 'Death HBV NH Cumm                          ', round(cummDict['Death HBV NH'],5)
+        # except:
+        #     pass
+        # print "*******"
+        # age += stage_timeFrame
 
     # finalDict = {}
     # for j in sorted(tempDict):
