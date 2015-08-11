@@ -28,14 +28,15 @@ def parse(finalDict):
 			answer = ans
 		elif ("How old is your patient" in q):
 			age = int(ans)
+			print "age:",age
 		elif ("What is your patient's ALT level" in q):
 			ALT = ans
-			print ALT
+			print "(flowchart.py) ALT:", ALT
 		elif ("How many years do you wish to see yourself in" in q):
 			stage = int(ans)
 		elif ("What is your patient's HBV DNA level" in q):
 			HBV_DNA = ans
-			print HBV_DNA
+			print "(flowchart.py) HBV_DNA:", HBV_DNA
 
 	if (answer == '1'):
 		yesCirr()
@@ -52,7 +53,7 @@ def yesCirr():																	# 1
 def noCirr():
 	global g1, g2, g3
 	if(age <= 30):
-		print ALT, HBV_DNA
+		# print ALT, HBV_DNA
 		if(ALT == "Persistently Abnormal" and HBV_DNA == ">20,000 IU/ml"):		# 6
 			g1.append(Node36(1))
 			g2.append(Node26(1))
@@ -78,6 +79,7 @@ def noCirr():
 
 
 def ageStage():
+	stage = 20
 	return age, stage
 
 def cirrALT_DNA():

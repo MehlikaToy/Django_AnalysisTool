@@ -13,20 +13,22 @@ def stuff():
     # pp.pprint(data)
 
     questionDict = {}
-    for question in data.get("questions"):
+    for question in data.get(str("questions")):
         questionDict[str(question.get('id'))] = question.get('question')
+
 
     answerDict = data['responses'][0].get("answers")
 
     finalDict = {}
     for key in questionDict.keys():
+        # if("" in answerDict):
+        #     continue
         # print questionDict[key]
-        # print answerDict[key]
-        # print "*****"
+        # finalDict[questionDict[key]] = "bleh"
         finalDict[questionDict[key]] = answerDict[key]
 
     finalDict =  convert(finalDict)
-    # print finalDict
+    print "(getAPI.py) FINALDICT: ", finalDict
 
     return finalDict
 

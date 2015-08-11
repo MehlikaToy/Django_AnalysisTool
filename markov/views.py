@@ -5,7 +5,7 @@ from flowchart import *
 from markov_cy import *
 import json
 import decimal
-# # Create your views here.
+# Create your views here.
 
 def index(request):
     template = loader.get_template('home/index.html')
@@ -18,7 +18,11 @@ def questionnaire(request):
     return render_to_response('markov/questionnaire.html', locals(), context_instance = RequestContext(request))
 
 def resultsView(request):
+
+    # returns finalDict from getAPI.py
+    # ie. {'How old is your patient?': '38', ... }
     output = stuff()
+
     parse(output)
     g1, g2, g3 = getInitNodes()
     age, stage = ageStage()

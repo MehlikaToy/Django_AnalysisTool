@@ -163,7 +163,7 @@ def getMort(age):
     else:
         return dic['100']
 
-# def getInitialNodes(age):
+def getInitialNodes(age):
     HBsAg = None
     CHB = None
     CHBneg = None
