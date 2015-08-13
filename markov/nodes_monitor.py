@@ -19,6 +19,8 @@ class BasicNode(object):
         self.probValAT =  None
         self.probValAFR = None
         self.probValAFF = None
+        self.guac = 0
+
 
     def __str__(self):
         return str(self.originValue)
@@ -50,12 +52,16 @@ class BasicNode(object):
     def getProbValAFF(self):
         return self.probValAFF
 
+    def getGuac(self):
+        return self.guac
 
-    def nextStage(self,destStates, originVal, probList):
+    def nextStage(self,destStates, originVal, probList, currNode = None):
         temp = []
         for i in range(0, len(destStates)):
             tempNode = destStates[i](originVal * probList[i])
             temp.append(tempNode)
+            if tempNode.getID() == currNode:
+                tempNode.guac = tempNode.getOriginValue()
         return temp
 
 def getMort(age):
@@ -227,8 +233,6 @@ def getInitialNodes(age):
 
     return [Node26(PHBsAgNH), Node04(PCHB), Node15(PCHBNH), Node05(PCHBneg), Node29(PCHBnegNH), Node06(Pcirr), Node30(PcirrNH)]
 
-
-
 #Basic Calculation Functions
 def printCummTestValues(list):
     for i in list:
@@ -236,7 +240,6 @@ def printCummTestValues(list):
             print ("%-40s %10.5f" % (i.getVarName(), round(i.getOriginValue(),5),))
         if i.getVarName() == 'Liver Transplantation NH' or i.getVarName() == 'Death HBV NH' or i.getVarName() == 'Liver Transplantation' or i.getVarName == 'Death HBV':
             print ("%-40s %10.5f" % (i.getVarName(), round(i.getOriginValue(),5),))
-
 
 def printList(list):
     for i in list:

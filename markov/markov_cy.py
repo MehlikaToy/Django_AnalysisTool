@@ -20,6 +20,8 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
     oldList = initialList
     newList = []
 
+    guacDict = {}
+
     DeathHBV = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
     Cirrhosis = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
     HCC = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
@@ -54,17 +56,22 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
 
             temp = dVarReplace(temp, age)
             temp = pVarReplace(temp)
+            temp = node.nextStage(node.getDestStates(), node.getOriginValue(), temp, currNode = node.getID())
 
-
-            temp = node.nextStage(node.getDestStates(), node.getOriginValue(), temp)
+            for i in temp:
+                if i.getGuac() != 0:
+                    guacDict[i.getVarName()] = i.getGuac()
 
             for i in temp:
                 newList.append(i)
 
         newList = trimList(newList)
 
-        print "did this work"
-        printList(newList)
+        for node in newList:
+            try:
+                cummDict[node.getVarName()] += node.getOriginValue() - guacDict[node.getVarName()]
+            except:
+                cummDict[node.getVarName()] = node.getOriginValue()
 
         t_death = [curr_stage ,0, 0]
         t_cirr = [curr_stage ,0, 0]
@@ -95,88 +102,30 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
         Cirrhosis.append(t_cirr)
         HCC.append(t_hcc)
         LT.append(t_lt)
-        # print DeathHBV
 
-
-        for node in newList:
-            if not str(node.getVarName()) in cummDict:
-                cummDict[str(node.getVarName())] = node.getOriginValue()
-            else:
-                for i in oldList:
-                    if node.getVarName() == i.getVarName():
-                        temp = node.getOriginValue() - i.getOriginValue()
-                        if temp > 0:
-                            cummDict[str(node.getVarName())] += temp
-
-
-    tempDict = {}
-    for key in cummDict.keys():
-        if key == 'Cirrhosis NH' or\
-            key == 'Cirrhosis Initial Rx' or\
-            key == 'HCC NH' or\
-            key == 'HCC' or\
-            key == 'Liver Transplantation NH' or\
-            key == 'Liver Transplantation' or\
-            key == 'Death HBV NH' or\
-            key == 'Death HBV':
-                tempDict[key] = round(cummDict[key], 5)
-
-    print tempDict
-
-
-    # print ""
-    # print age, "!!!!!!!"
-    # printCummTestValues(newList)
-    # print ''
-    # try:
-    #     print 'Cirrhosis NH Cumm:                         ', round(cummDict['Cirrhosis NH'],5)
-    #     print 'Cirrhosis Initial Rx Cumm:                 ', round(cummDict['Cirrhosis Initial Rx'],5)
-    # except:
-    #     pass
-    # try:
-    #     print 'HCC Cumm:                                  ', round(cummDict['HCC'],5)
-    #     print 'HCC NH Cumm                                ', round(cummDict['HCC NH'],5)
-    # except:
-    #     pass
-    # try:
-    #     print 'Liver Transplantation Cumm:                ', round(cummDict['Liver Transplantation'],5)
-    #     print 'Liver Transplantation NH Cumm              ', round(cummDict['Liver Transplantation NH'],5)
-    # except:
-    #     pass
-    # try:
-    #     print 'Death HBV Cumm:                            ', round(cummDict['Death HBV'],5)
-    #     print 'Death HBV NH Cumm                          ', round(cummDict['Death HBV NH'],5)
-    # except:
-    #     pass
-    # print "*******"
-    # age += stage_timeFrame
-
-    # finalDict = {}
-    # for j in sorted(tempDict):
-    #     finalDict[j] = tempDict[j]
     output = {}
     for i in newList:
         output[i.getVarName()] = i.getOriginValue()
 
     finalList = [['Cirrhosis', 0, 0], ['HCC', 0, 0], ['Liver Transplantation', 0, 0], ['Death HBV', 0, 0]]
     try:
-        finalList[0][1] = (tempDict['Cirrhosis Initial Rx'])
-        finalList[0][2] = (tempDict['Cirrhosis NH'])
+        finalList[0][1] = (cummDict['Cirrhosis Initial Rx'])
+        finalList[0][2] = (cummDict['Cirrhosis NH'])
     except:
         pass
     try:
-        finalList[1][1] = (tempDict['HCC'])
-        finalList[1][2] = (tempDict['HCC NH'])
+        finalList[1][1] = (cummDict['HCC'])
+        finalList[1][2] = (cummDict['HCC NH'])
     except:
         pass
     try:
-        finalList[2][1] = (tempDict['Liver Transplantation'])
-        finalList[2][2] = (tempDict['Liver Transplantation NH'])
+        finalList[2][1] = (cummDict['Liver Transplantation'])
+        finalList[2][2] = (cummDict['Liver Transplantation NH'])
     except:
         pass
     try:
-        finalList[3][1] = (tempDict['Death HBV'])
-        finalList[3][2] = (tempDict['Death HBV NH'])
+        finalList[3][1] = (cummDict['Death HBV'])
+        finalList[3][2] = (cummDict['Death HBV NH'])
     except:
         pass
 
