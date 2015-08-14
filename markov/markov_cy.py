@@ -68,7 +68,8 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
         newList = trimList(newList)
 
         for node in newList:
-            try:
+            try: # for this part if it is just (=) then it is the amount of people that enter in that state
+                 # if it is (+=) then it is instead the cumulative amount of people   
                 cummDict[node.getVarName()] += node.getOriginValue() - guacDict[node.getVarName()]
             except:
                 cummDict[node.getVarName()] = node.getOriginValue()
@@ -80,24 +81,24 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
 
         for i in newList:
             if i.getVarName() == 'Death HBV':
-                t_death[1] = i.getOriginValue()*100
+                t_death[1] = round(i.getOriginValue()*100,3)
             if i.getVarName() == 'Death HBV NH':
-                t_death[2] = i.getOriginValue()*100
+                t_death[2] = round(i.getOriginValue()*100,3)
 
             if i.getVarName() == 'Cirrhosis Initial Rx':
-                t_cirr[1] = i.getOriginValue()*100
+                t_cirr[1] = round(i.getOriginValue()*100,3)
             if i.getVarName() == 'Cirrhosis NH':
-                t_cirr[2] = i.getOriginValue()*100
+                t_cirr[2] = round(i.getOriginValue()*100,3)
 
             if i.getVarName() == 'HCC':
-                t_hcc[1] = i.getOriginValue()*100
+                t_hcc[1] = round(i.getOriginValue()*100,3)
             if i.getVarName() == 'HCC NH':
-                t_hcc[2] = i.getOriginValue()*100
+                t_hcc[2] = round(i.getOriginValue()*100,3)
 
             if i.getVarName() == 'Liver Transplantation':
-                t_lt[1] = i.getOriginValue()*100
+                t_lt[1] = round(i.getOriginValue()*100,3)
             if i.getVarName() == 'Liver Transplantation NH':
-                t_lt[2] = i.getOriginValue()*100
+                t_lt[2] = round(i.getOriginValue()*100,3)
         DeathHBV.append(t_death)
         Cirrhosis.append(t_cirr)
         HCC.append(t_hcc)

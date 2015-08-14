@@ -54,20 +54,35 @@
             // var djangoData1 = {{ array|safe }};
             // var data1 = google.visualization.arrayToDataTable(djangoData1);
 
-            var djangoData2 = {{ array1|safe }};
-            var data2 = google.visualization.arrayToDataTable(djangoData2);
+            // var djangoData2 = {{ array1|safe }};
+            // var data2 = google.visualization.arrayToDataTable(djangoData2);
 
-            var djangoData3 = {{ deathHBV|safe }};
-            var data3 = google.visualization.arrayToDataTable(djangoData3);
+            var djangoData3_1 = {{ deathHBV1|safe }};
+            var data3_1 = google.visualization.arrayToDataTable(djangoData3_1);
+            var djangoData3_2 = {{ deathHBV2|safe }};
+            var data3_2 = google.visualization.arrayToDataTable(djangoData3_2);
+            var joinedData3 = google.visualization.data.join(data3_1, data3_2, 'full', [[0, 0]], [1, 2], [1, 2]);
 
-            var djangoData4 = {{ cirrhosis|safe }};
-            var data4 = google.visualization.arrayToDataTable(djangoData4);
 
-            var djangoData5 = {{ hcc|safe }};
-            var data5 = google.visualization.arrayToDataTable(djangoData5);
+            var djangoData4_1 = {{ cirrhosis1|safe }};
+            var data4_1 = google.visualization.arrayToDataTable(djangoData4_1);
+            var djangoData4_2 = {{ cirrhosis2|safe }};
+            var data4_2 = google.visualization.arrayToDataTable(djangoData4_2);
+            var joinedData4 = google.visualization.data.join(data4_1, data4_2, 'full', [[0, 0]], [1, 2], [1, 2]);
 
-            var djangoData6 = {{ lt|safe }};
-            var data6 = google.visualization.arrayToDataTable(djangoData6);
+
+            var djangoData5_1 = {{ hcc1|safe }};
+            var data5_1 = google.visualization.arrayToDataTable(djangoData5_1);
+            var djangoData5_2 = {{ hcc2|safe }};
+            var data5_2 = google.visualization.arrayToDataTable(djangoData5_2);
+            var joinedData5 = google.visualization.data.join(data5_1, data5_2, 'full', [[0, 0]], [1, 2], [1, 2]);
+
+
+            var djangoData6_1 = {{ lt1|safe }};
+            var data6_1 = google.visualization.arrayToDataTable(djangoData6_1);
+            var djangoData6_2 = {{ lt2|safe }};
+            var data6_2 = google.visualization.arrayToDataTable(djangoData6_2);
+            var joinedData6 = google.visualization.data.join(data6_1, data6_2, 'full', [[0, 0]], [1, 2], [1, 2]);
 
             // Set chart options
             // var options1 = {'title':'End States of Markov Model',
@@ -80,41 +95,41 @@
             //              legend: {textStyle: {color: 'black', fontSize: 12}}
             //              };
 
-            var options2 = {
-                'width':800,
-                'height':600,
-                backgroundColor: 'black',
-                colors: ['#ff7f50', '#49b7a8'],
-                backgroundColor: 'white',
-                dataOpacity: 0.75,
-                title: 'Select States Cumulative Results',
-                titleTextStyle: {color:'black', fontSize: '22', fontName: 'Raleway'},
-                legend:{
-                    position: 'right',
-                    textStyle: {color: 'black', fontSize: 16},
-                },
-                vAxis: {
-                        title: 'People',
-                        titleTextStyle: {
-                            color: 'white',
-                        },
-                        textStyle: {color: 'white'},
-                        title: 'Probabilities',
-                        titleTextStyle: {color: 'black'},
-                        textStyle: {color: 'black'},
-                        baselineColor: '#CCC',
-                        gridlines: {color: '#CCC'},
-                        logScale: false,
-                        format: 'short',
-                        },
-                hAxis:{
-                        title: 'States',
-                        slantedText: true,
-                        titleTextStyle: {color: 'black'},
-                        textStyle: {color: 'black'},
-                }
+            // var options2 = {
+            //     'width':800,
+            //     'height':600,
+            //     backgroundColor: 'black',
+            //     colors: ['#ff7f50', '#49b7a8'],
+            //     backgroundColor: 'white',
+            //     dataOpacity: 0.75,
+            //     title: 'Select States Cumulative Results',
+            //     titleTextStyle: {color:'black', fontSize: '22', fontName: 'Raleway'},
+            //     legend:{
+            //         position: 'right',
+            //         textStyle: {color: 'black', fontSize: 16},
+            //     },
+            //     vAxis: {
+            //             title: 'People',
+            //             titleTextStyle: {
+            //                 color: 'white',
+            //             },
+            //             textStyle: {color: 'white'},
+            //             title: 'Probabilities',
+            //             titleTextStyle: {color: 'black'},
+            //             textStyle: {color: 'black'},
+            //             baselineColor: '#CCC',
+            //             gridlines: {color: '#CCC'},
+            //             logScale: false,
+            //             format: 'short',
+            //             },
+            //     hAxis:{
+            //             title: 'States',
+            //             slantedText: true,
+            //             titleTextStyle: {color: 'black'},
+            //             textStyle: {color: 'black'},
+            //     }
 
-            };
+            // };
 
             var options3 = {
                 title: "Death HBV",
@@ -122,7 +137,7 @@
                     fontSize:22,
                     fontName:'Raleway',
                 },
-                colors: ['#ff7f50', '#49B7A8'],
+                // colors: ['#ff7f50', '#49B7A8'],
                 width: 475,
                 height: 475,
                 vAxis: {
@@ -199,22 +214,29 @@
             // var chart1 = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
             // chart1.draw(data1, options1);
 
-            var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-            chart2.draw(data2, options2);
+            // var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            // chart2.draw(data2, options2);
 
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
-            chart3.draw(data3, options3);
+            chart3.draw(joinedData3, options3);
 
             var chart4 = new google.visualization.LineChart(document.getElementById('linechart2'));
-            chart4.draw(data4, options4);
+            chart4.draw(joinedData4, options4);
 
             var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
-            chart5.draw(data5, options5);
+            chart5.draw(joinedData5, options5);
 
             var chart6 = new google.visualization.LineChart(document.getElementById('linechart4'));
-            chart6.draw(data6, options6);
-
+            chart6.draw(joinedData6, options6);
         }
+            // var chart = new google.visualization.LineChart(document.querySelector('#linechart1'));
+            //     chart.draw(joinedData3, {
+            //         height: 300,
+            //         width: 600,
+            //         interpolateNulls: true
+            //     });
+            // }
+            // google.load('visualization', '1', {packages:['corechart'], callback: drawChart});
 
     </script>
 
