@@ -7,8 +7,8 @@ Markov States of Hepatitis B
 pVar = -1.0
 dVar = -2.0
 
-p_adhr = 1
-p_moni = 1
+p_adhr = 0.5
+p_moni = 0.5
 
 class BasicNode(object):
 

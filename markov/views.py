@@ -31,9 +31,11 @@ def resultsView(request):
     response1 = markovMain(age=age, total_stages=stage, initialList=g1)
     # print response1
     response2 = markovMain(age=age, total_stages=stage, initialList=g2)
-    # print "response 1:",response1
+    print "response 1:",response1
     print ""
-    # print "response 2:",response2
+    print "g2:",g2
+    print ""
+    print "response 2:",response2
     print ""
 
     deathHBV1 = response1['DeathHBV']

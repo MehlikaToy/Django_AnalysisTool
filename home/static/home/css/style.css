@@ -154,7 +154,21 @@
 	float: right;
 }
 
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotateY(0deg);
+  }
+  to { 
+    -webkit-transform: rotateY(360deg);
+  }
+}
 
+.glyphicon-globe{
+    -webkit-animation-name:             rotate; 
+    -webkit-animation-duration:         3.0s; 
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-animation-timing-function: linear;
+}
 
 
 
