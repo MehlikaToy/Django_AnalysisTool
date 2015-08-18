@@ -79,7 +79,7 @@ def noCirr():
 
 
 def ageStage():
-	stage = 20
+	stage = 5
 	return age, stage
 
 def cirrALT_DNA():

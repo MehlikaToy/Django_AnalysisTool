@@ -61,7 +61,19 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
 
         newList = trimList(newList)
 
+        def getCummDict(query):
+            try:
+                return cummDict[query]
+            except:
+                return 0
+
+        t_death = [curr_stage ,0, 0]
+        t_cirr = [curr_stage ,0, 0]
+        t_hcc = [curr_stage ,0, 0]
+        t_lt =[curr_stage ,0, 0]
+
         for node in newList:
+
             try:
                 cummDict[node.getVarName()] += (node.getOriginValue() - guacDict[node.getVarName()]) * cohortPop
 
@@ -70,24 +82,35 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
                     cummDict[node.getVarName()] += node.getOriginValue() * cohortPop
                 except:
                     cummDict[node.getVarName()] = node.getOriginValue() * cohortPop
-
-        def getCummDict(query):
-            try:
-                return cummDict[query]
-            except:
-                return 0
+        
 
         sumListCirrhosios = [ getCummDict('Cirrhosis Initial Rx')\
-                            , getCummDict('Cirrhosis')\
-                            , getCummDict('Cirrhosis Long Term Rx')\
-                            , getCummDict('Cirrhosis Long Term Rx with resistance')\
-                            , getCummDict('Cirrhosis e- initial Rx')\
-                            , getCummDict('Cirrhosis e- longterm Rx')]
+                        , getCummDict('Cirrhosis')\
+                        , getCummDict('Cirrhosis Long Term Rx')\
+                        , getCummDict('Cirrhosis Long Term Rx with resistance')\
+                        , getCummDict('Cirrhosis e- initial Rx')\
+                        , getCummDict('Cirrhosis e- longterm Rx')]
 
-        t_death = [curr_stage ,0, 0]
-        t_cirr = [curr_stage ,0, 0]
-        t_hcc = [curr_stage ,0, 0]
-        t_lt =[curr_stage ,0, 0]
+        t_death[1] = round(getCummDict('Death HBV'), 3)
+        t_death[2] = round(getCummDict('Death HBV NH'), 3)
+
+        t_cirr[1] = round(sum(sumListCirrhosios) - cirrIgn * cohortPop, 3)
+        t_cirr[2] = round(getCummDict('Cirrhosis NH'), 3)
+
+        t_hcc[1] = round(getCummDict('HCC'), 3)
+        t_hcc[2] = round(getCummDict('HCC NH'), 3)
+
+        t_lt[1] = round(getCummDict('Liver Transplantation'), 3)
+        t_lt[2] = round(getCummDict('Liver Transplantation NH'), 3)
+
+        DeathHBV.append(t_death)
+        Cirrhosis.append(t_cirr)
+        HCC.append(t_hcc)
+        LT.append(t_lt)
+       
+        
+
+        
 
         # for i in newList:
         #     if i.getVarName() == 'Death HBV':
@@ -110,22 +133,22 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
         #     if i.getVarName() == 'Liver Transplantation NH':
         #         t_lt[2] = round(i.getOriginValue()*100,3)
 
-        t_death[1] = round(getCummDict('Death HBV'), 3)
-        t_death[2] = round(getCummDict('Death HBV NH'), 3)
+        # t_death[1] = round(getCummDict('Death HBV'), 3)
+        # t_death[2] = round(getCummDict('Death HBV NH'), 3)
 
-        t_cirr[1] = round(sum(sumListCirrhosios) - cirrIgn * cohortPop, 3)
-        t_cirr[2] = round(getCummDict('Cirrhosis NH'), 3)
+        # t_cirr[1] = round(sum(sumListCirrhosios) - cirrIgn * cohortPop, 3)
+        # t_cirr[2] = round(getCummDict('Cirrhosis NH'), 3)
 
-        t_hcc[1] = round(getCummDict('HCC'), 3)
-        t_hcc[2] = round(getCummDict('HCC NH'), 3)
+        # t_hcc[1] = round(getCummDict('HCC'), 3)
+        # t_hcc[2] = round(getCummDict('HCC NH'), 3)
 
-        t_lt[1] = round(getCummDict('Liver Transplantation'), 3)
-        t_lt[2] = round(getCummDict('Liver Transplantation NH'), 3)
+        # t_lt[1] = round(getCummDict('Liver Transplantation'), 3)
+        # t_lt[2] = round(getCummDict('Liver Transplantation NH'), 3)
 
-        DeathHBV.append(t_death)
-        Cirrhosis.append(t_cirr)
-        HCC.append(t_hcc)
-        LT.append(t_lt)
+        # DeathHBV.append(t_death)
+        # Cirrhosis.append(t_cirr)
+        # HCC.append(t_hcc)
+        # LT.append(t_lt)
 
     output = {}
     for i in newList:
@@ -133,25 +156,27 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
 
     finalList = [['Cirrhosis', 0, 0], ['HCC', 0, 0], ['Liver Transplantation', 0, 0], ['Death HBV', 0, 0]]
     try:
-        finalList[0][1] = (cummDict['Cirrhosis Initial Rx'])
-        finalList[0][2] = (cummDict['Cirrhosis NH'])
+        finalList[0][1] = round(sum(sumListCirrhosios) - cirrIgn * cohortPop, 3)
+        finalList[0][2] = round(getCummDict('Cirrhosis NH'), 3)
     except:
         pass
     try:
-        finalList[1][1] = (cummDict['HCC'])
-        finalList[1][2] = (cummDict['HCC NH'])
+        finalList[1][1] = round(getCummDict('HCC'), 3)
+        finalList[1][2] = round(getCummDict('HCC NH'), 3)
     except:
         pass
     try:
-        finalList[2][1] = (cummDict['Liver Transplantation'])
-        finalList[2][2] = (cummDict['Liver Transplantation NH'])
+        finalList[2][1] = round(getCummDict('Liver Transplantation'), 3)
+        finalList[2][2] = round(getCummDict('Liver Transplantation NH'), 3)
     except:
         pass
     try:
-        finalList[3][1] = (cummDict['Death HBV'])
-        finalList[3][2] = (cummDict['Death HBV NH'])
+        finalList[3][1] = round(getCummDict('Death HBV'), 3)
+        finalList[3][2] = round(getCummDict('Death HBV NH'), 3)
     except:
         pass
+
+    print finalList
 
 
 

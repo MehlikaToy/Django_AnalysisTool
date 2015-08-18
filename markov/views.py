@@ -27,16 +27,19 @@ def resultsView(request):
     g1, g2, g3 = getInitNodes()
     age, stage = ageStage()
     answer, ALT, HBV_DNA = cirrALT_DNA()
-
+    print 'g1: age %s, stage %s' % (age, stage)
+    printList(g1)
     response1 = markovMain(age=age, total_stages=stage, initialList=g1)
     # print response1
+    print 'g2: age %s, stage %s' % (age, stage)
+    printList(g2)
     response2 = markovMain(age=age, total_stages=stage, initialList=g2)
-    print "response 1:",response1
-    print ""
-    print "g2:",g2
-    print ""
-    print "response 2:",response2
-    print ""
+    # print "response 1:",response1
+    # print ""
+    # print "g2:",g2
+    # print ""
+    # print "response 2:",response2
+    # print ""
 
     deathHBV1 = response1['DeathHBV']
     deathHBV2 = response2['DeathHBV']
