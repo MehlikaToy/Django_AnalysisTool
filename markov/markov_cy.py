@@ -6,7 +6,10 @@ Markov Model Emulator of Hepatitis B
 
 from nodes_monitor import *
 
-def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, initialList=[]):
+def markovMain(age = 38, total_stages = 20, endemicity = 1, stage_timeFrame = 1, initialList=[]):
+    print 'RUNNING MARKOV FOR: Age: %s, Stage: %s With Inital List' % (age, total_stages)
+    printList(initialList)
+
     # Don't touch this part
     cummDict = {}
     oldList = initialList
@@ -14,10 +17,10 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
 
     guacDict = {}
 
-    DeathHBV = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
-    Cirrhosis = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
-    HCC = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
-    LT = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
+    DeathHBV = [['Stages', 'Treatment (dotted)', 'Natural History (solid)'],[0,0,0]]
+    Cirrhosis = [['Stages', 'Treatment (dotted)', 'Natural History (solid)'],[0,0,0]]
+    HCC = [['Stages', 'Treatment (dotted)', 'Natural History (solid)'],[0,0,0]]
+    LT = [['Stages', 'Treatment (dotted)', 'Natural History (solid)'],[0,0,0]]
 
     cirrIgn = 0
 
@@ -107,6 +110,8 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
         Cirrhosis.append(t_cirr)
         HCC.append(t_hcc)
         LT.append(t_lt)
+
+        print DeathHBV
        
         
 
