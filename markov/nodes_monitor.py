@@ -11,7 +11,7 @@ p_adhr = 1
 p_moni = 1
 
 # Touch this part
-cohortPop = 10000
+cohortPop = 100
 
 class BasicNode(object):
 
