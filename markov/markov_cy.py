@@ -113,14 +113,14 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
         t_death[1] = round(getCummDict('Death HBV'), 3)
         t_death[2] = round(getCummDict('Death HBV NH'), 3)
 
-        t_death[1] = round(sum(sumListCirrhosios) - cirrIgn * cohortPop, 3)
-        t_death[2] = round(getCummDict('Cirrhosis NH'), 3)
+        t_cirr[1] = round(sum(sumListCirrhosios) - cirrIgn * cohortPop, 3)
+        t_cirr[2] = round(getCummDict('Cirrhosis NH'), 3)
 
-        t_death[1] = round(getCummDict('HCC'), 3)
-        t_death[2] = round(getCummDict('HCC NH'), 3)
+        t_hcc[1] = round(getCummDict('HCC'), 3)
+        t_hcc[2] = round(getCummDict('HCC NH'), 3)
 
-        t_death[1] = round(getCummDict('Liver Transplantation'), 3)
-        t_death[2] = round(getCummDict('Liver Transplantation NH'), 3)
+        t_lt[1] = round(getCummDict('Liver Transplantation'), 3)
+        t_lt[2] = round(getCummDict('Liver Transplantation NH'), 3)
 
         DeathHBV.append(t_death)
         Cirrhosis.append(t_cirr)
