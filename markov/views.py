@@ -27,31 +27,29 @@ def resultsView(request):
     g1, g2, g3 = getInitNodes()
     age, stage = ageStage()
     answer, ALT, HBV_DNA = cirrALT_DNA()
-    response = markovMain(age=age, total_stages=stage, initialList=g1)
-    output1 = response['output']
-    output1A = response['finalList']
-    deathHBV = response['DeathHBV']
-    cirrhosis = response['Cirrhosis']
-    hcc = response['HCC']
-    lt = response['LT']
 
-    # dictionary to list
-    dictList =[['Health States', 'Percentage']]
-    # convert the dict to the nested list
-    for key, value in output1.iteritems():
-        temp = [key,value]
-        dictList.append(temp)
+    response1 = markovMain(age=age, total_stages=stage, initialList=g1)
+    # print response1
+    response2 = markovMain(age=age, total_stages=stage, initialList=g2)
+    print "response 1:",response1
+    print ""
+    print "g2:",g2
+    print ""
+    print "response 2:",response2
+    print ""
 
-    cummList = [['State', 'Treatment', 'Natural History']]
-    for i in output1A:
-        cummList.append(i)
+    deathHBV1 = response1['DeathHBV']
+    deathHBV2 = response2['DeathHBV']
 
-    cumm = 0
-    for i in output1.values():
-        cumm += i
-    # print cumm
+    cirrhosis1 = response1['Cirrhosis']
+    cirrhosis2 = response2['Cirrhosis']
 
-
+    hcc1 = response1['HCC']
+    hcc2 = response2['HCC']
+    
+    lt1 = response1['LT']
+    lt2 = response2['LT']
+    
     inputs = "Your " + str(age) + " year old patient "
     if(int(answer)):              # if no cirrhosis
         inputs += "has Cirrhosis."
@@ -59,12 +57,44 @@ def resultsView(request):
         inputs += "doesn't have Cirrhosis with a " + ALT + " ALT level and an HBV DNA level that is " + HBV_DNA + '.'
 
 
-    return render_to_response('markov/results.html',
-                              {'array': json.dumps(dictList),
-                                'array1': json.dumps(cummList),
-                                'deathHBV': json.dumps(deathHBV),
-                                'cirrhosis': json.dumps(cirrhosis),
-                                'hcc': json.dumps(hcc),
-                                'lt': json.dumps(lt),
-                                'inputStr': inputs
-                              })
+    # Print test:
+    # print deathHBV2
+
+    # deathHBV3 = []
+    # cirrhosis3 = []
+    # hcc3 = []
+    # lt3 = []
+    dumpDict = {
+        'deathHBV1': json.dumps(deathHBV1),
+        'deathHBV2': json.dumps(deathHBV2),
+        'cirrhosis1': json.dumps(cirrhosis1),
+        'cirrhosis2': json.dumps(cirrhosis2),
+        'hcc1': json.dumps(hcc1),
+        'hcc2': json.dumps(hcc2),
+        'lt1': json.dumps(lt1),
+        'lt2': json.dumps(lt2),
+        'inputStr': inputs
+    }
+
+    # dictionary to list
+    # dictList =[['Health States', 'Percentage']]
+    # convert the dict to the nested list
+    # for key, value in output1.iteritems():
+    #     temp = [key,value]
+    #     dictList.append(temp)
+
+    # cummList1 = [['State', 'Treatment', 'Natural History']]
+    # cummList2 = [['State', 'Treatment', 'Natural History']]
+    # cummList3 = [['State', 'Treatment', 'Natural History']]
+    # for i in output1A:
+    #     cummList1.append(i)
+    # for j in output2A:
+    #     cummList2.append(j)
+    # for k in output3A:
+    #     cummList3.append(k)
+
+
+
+    
+
+    return render_to_response('markov/results.html', dumpDict)

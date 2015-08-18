@@ -64,6 +64,7 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
         for node in newList:
             try:
                 cummDict[node.getVarName()] += (node.getOriginValue() - guacDict[node.getVarName()]) * cohortPop
+
             except:
                 try:
                     cummDict[node.getVarName()] += node.getOriginValue() * cohortPop

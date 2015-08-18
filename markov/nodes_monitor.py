@@ -63,6 +63,7 @@ class BasicNode(object):
 
     def nextStage(self,destStates, originVal, probList, cirrIgn, currNode = None):
         temp = []
+
         for i in range(0, len(destStates)):
             tempNode = destStates[i](originVal * probList[i]) 
             temp.append(tempNode)
@@ -72,6 +73,7 @@ class BasicNode(object):
             if tempNode.isCirrhosis and currNode.isCirrhosis and tempNode.getID() != currNode.getID():
                 cirrIgn += tempNode.getOriginValue()
         return temp, cirrIgn
+
 
 def getMort(age):
     dic = {'5': 3.5524154231776503E-4,

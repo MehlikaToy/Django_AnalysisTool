@@ -25,6 +25,7 @@
 
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,20 +55,35 @@
             // var djangoData1 = {{ array|safe }};
             // var data1 = google.visualization.arrayToDataTable(djangoData1);
 
-            var djangoData2 = {{ array1|safe }};
-            var data2 = google.visualization.arrayToDataTable(djangoData2);
+            // var djangoData2 = {{ array1|safe }};
+            // var data2 = google.visualization.arrayToDataTable(djangoData2);
 
-            var djangoData3 = {{ deathHBV|safe }};
-            var data3 = google.visualization.arrayToDataTable(djangoData3);
+            var djangoData3_1 = {{ deathHBV1|safe }};
+            var data3_1 = google.visualization.arrayToDataTable(djangoData3_1);
+            var djangoData3_2 = {{ deathHBV2|safe }};
+            var data3_2 = google.visualization.arrayToDataTable(djangoData3_2);
+            var joinedData3 = google.visualization.data.join(data3_1, data3_2, 'full', [[0, 0]], [1, 2], [1, 2]);
 
-            var djangoData4 = {{ cirrhosis|safe }};
-            var data4 = google.visualization.arrayToDataTable(djangoData4);
 
-            var djangoData5 = {{ hcc|safe }};
-            var data5 = google.visualization.arrayToDataTable(djangoData5);
+            var djangoData4_1 = {{ cirrhosis1|safe }};
+            var data4_1 = google.visualization.arrayToDataTable(djangoData4_1);
+            var djangoData4_2 = {{ cirrhosis2|safe }};
+            var data4_2 = google.visualization.arrayToDataTable(djangoData4_2);
+            var joinedData4 = google.visualization.data.join(data4_1, data4_2, 'full', [[0, 0]], [1, 2], [1, 2]);
 
-            var djangoData6 = {{ lt|safe }};
-            var data6 = google.visualization.arrayToDataTable(djangoData6);
+
+            var djangoData5_1 = {{ hcc1|safe }};
+            var data5_1 = google.visualization.arrayToDataTable(djangoData5_1);
+            var djangoData5_2 = {{ hcc2|safe }};
+            var data5_2 = google.visualization.arrayToDataTable(djangoData5_2);
+            var joinedData5 = google.visualization.data.join(data5_1, data5_2, 'full', [[0, 0]], [1, 2], [1, 2]);
+
+
+            var djangoData6_1 = {{ lt1|safe }};
+            var data6_1 = google.visualization.arrayToDataTable(djangoData6_1);
+            var djangoData6_2 = {{ lt2|safe }};
+            var data6_2 = google.visualization.arrayToDataTable(djangoData6_2);
+            var joinedData6 = google.visualization.data.join(data6_1, data6_2, 'full', [[0, 0]], [1, 2], [1, 2]);
 
             // Set chart options
             // var options1 = {'title':'End States of Markov Model',
@@ -80,49 +96,49 @@
             //              legend: {textStyle: {color: 'black', fontSize: 12}}
             //              };
 
-            var options2 = {
-                'width':800,
-                'height':600,
-                backgroundColor: 'black',
-                colors: ['#ff7f50', '#49b7a8'],
-                backgroundColor: 'white',
-                dataOpacity: 0.75,
-                title: 'Select States Cumulative Results',
-                titleTextStyle: {color:'black', fontSize: '22', fontName: 'Raleway'},
-                legend:{
-                    position: 'right',
-                    textStyle: {color: 'black', fontSize: 16},
-                },
-                vAxis: {
-                        title: 'People',
-                        titleTextStyle: {
-                            color: 'white',
-                        },
-                        textStyle: {color: 'white'},
-                        title: 'Probabilities',
-                        titleTextStyle: {color: 'black'},
-                        textStyle: {color: 'black'},
-                        baselineColor: '#CCC',
-                        gridlines: {color: '#CCC'},
-                        logScale: false,
-                        format: 'short',
-                        },
-                hAxis:{
-                        title: 'States',
-                        slantedText: true,
-                        titleTextStyle: {color: 'black'},
-                        textStyle: {color: 'black'},
-                }
+            // var options2 = {
+            //     'width':800,
+            //     'height':600,
+            //     backgroundColor: 'black',
+            //     colors: ['#ff7f50', '#49b7a8'],
+            //     backgroundColor: 'white',
+            //     dataOpacity: 0.75,
+            //     title: 'Select States Cumulative Results',
+            //     titleTextStyle: {color:'black', fontSize: '22', fontName: 'Raleway'},
+            //     legend:{
+            //         position: 'right',
+            //         textStyle: {color: 'black', fontSize: 16},
+            //     },
+            //     vAxis: {
+            //             title: 'People',
+            //             titleTextStyle: {
+            //                 color: 'white',
+            //             },
+            //             textStyle: {color: 'white'},
+            //             title: 'Probabilities',
+            //             titleTextStyle: {color: 'black'},
+            //             textStyle: {color: 'black'},
+            //             baselineColor: '#CCC',
+            //             gridlines: {color: '#CCC'},
+            //             logScale: false,
+            //             format: 'short',
+            //             },
+            //     hAxis:{
+            //             title: 'States',
+            //             slantedText: true,
+            //             titleTextStyle: {color: 'black'},
+            //             textStyle: {color: 'black'},
+            //     }
 
-            };
+            // };
 
             var options3 = {
                 title: "Death HBV",
                 titleTextStyle :{
-                    fontSize:22,
+                    fontSize:26,
                     fontName:'Raleway',
                 },
-                colors: ['#ff7f50', '#49B7A8'],
+                // colors: ['#ff7f50', '#49B7A8'],
                 width: 475,
                 height: 475,
                 vAxis: {
@@ -133,16 +149,17 @@
                 },
                 legend:{
                     position:'top',
+                    maxLines: 2,
                 }
             };
 
             var options4 = {
                 title: "Cirrhosis",
                 titleTextStyle :{
-                    fontSize:22,
+                    fontSize:26,
                     fontName:'Raleway',
                 },
-                colors: ['#ff7f50', '#49B7A8'],
+                // colors: ['#ff7f50', '#49B7A8'],
                 width: 475,
                 height: 475,
                 vAxis: {
@@ -153,16 +170,17 @@
                 },
                 legend:{
                     position:'top',
+                    maxLines: 2,
                 }
             };
 
             var options5 = {
                 title: "HCC",
                 titleTextStyle :{
-                    fontSize:22,
+                    fontSize:26,
                     fontName:'Raleway',
                 },
-                colors: ['#ff7f50', '#49B7A8'],
+                // colors: ['#ff7f50', '#49B7A8'],
                 width: 475,
                 height: 475,
                 vAxis: {
@@ -173,16 +191,17 @@
                 },
                 legend:{
                     position:'top',
+                    maxLines: 2,
                 }
             };
 
             var options6 = {
                 title: "Liver Transplantation",
                 titleTextStyle :{
-                    fontSize:22,
+                    fontSize:26,
                     fontName:'Raleway',
                 },
-                colors: ['#ff7f50', '#49B7A8'],
+                // colors: ['#ff7f50', '#49B7A8'],
                 width: 475,
                 height: 475,
                 vAxis: {
@@ -193,28 +212,36 @@
                 },
                 legend:{
                     position:'top',
+                    maxLines: 2,
                 }
             };
 
             // var chart1 = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
             // chart1.draw(data1, options1);
 
-            var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-            chart2.draw(data2, options2);
+            // var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            // chart2.draw(data2, options2);
 
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
-            chart3.draw(data3, options3);
+            chart3.draw(joinedData3, options3);
 
             var chart4 = new google.visualization.LineChart(document.getElementById('linechart2'));
-            chart4.draw(data4, options4);
+            chart4.draw(joinedData4, options4);
 
             var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
-            chart5.draw(data5, options5);
+            chart5.draw(joinedData5, options5);
 
             var chart6 = new google.visualization.LineChart(document.getElementById('linechart4'));
-            chart6.draw(data6, options6);
-
+            chart6.draw(joinedData6, options6);
         }
+            // var chart = new google.visualization.LineChart(document.querySelector('#linechart1'));
+            //     chart.draw(joinedData3, {
+            //         height: 300,
+            //         width: 600,
+            //         interpolateNulls: true
+            //     });
+            // }
+            // google.load('visualization', '1', {packages:['corechart'], callback: drawChart});
 
     </script>
 
@@ -231,7 +258,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="../../">
-                    <i class="fa fa-play-circle"></i>  <span class="light">ALC</span> Analysis Tool
+                    <i class="fa fa-play-circle"></i>  <span class="light">Home</span>
                 </a>
             </div>
 
@@ -260,12 +287,12 @@
     <header class="intro">
         <div class="intro-body">
             <div class="container">
-                <div class="row">
+                <div class="row" style="margin-top: 0;">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading">Results</h1>
-                        <p class="intro-text">Treated and Untreated Survival Rates of Patients<br>Created at Stanford Asian Liver Center</p>
-                        <a href="#Result" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
+                        <h1 class="brand-heading" style="color: #fff; text-transform: none; font-size:130px;">Results</h1>
+                        <p class="intro-text" style="color: #000; font-family:'Lobster', cursive; letter-spacing: 2px; ">Treated and Untreated Survival Rates of Patients</p>
+                        <a href="#Result" class="page-scroll">
+                            <i class="fa fa-angle-double-down animated" id="arrow"></i>
                         </a>
                     </div>
                 </div>
@@ -300,9 +327,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact The Asian Liver Center</h2>
-                <p>Feel free to email us to provide some feedback!</p>
-                <p><a href="mailto:research.cs.alc@gmail.com">research.cs.alc@gmail.com</a>
-                </p>
+                <p>Feel free to <a href="mailto:research.cs.alc@gmail.com" target="_blank">email</a> us to provide some feedback!</p>
                 <ul class="list-inline banner-social-buttons">
                     <li>
                         <a href="https://twitter.com/asianliverctr" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
@@ -314,6 +339,18 @@
                         <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
                     </li>
                 </ul>
+                <ul class="list-inline banner-social-buttons" style="padding-top: 75px;">
+
+                    <li>
+                        <a href="http://liver.stanford.edu/jrc/index.html" class="link">
+                        <span class="glyphicon glyphicon glyphicon-globe" aria-hidden="true" style="display:block; font-size: 50px; padding-bottom: 10px; color:black;"></span>
+                            Join the campaign
+                        </a>
+                    </li>
+                </ul>
+
+                <h3 style="padding-top: 120px;">Want to help out or get to know us better?</h3>
+                <p>Read about or reach out to the team <a href="/#team">here</a>.</p>
             </div>
         </div>
     </section>
