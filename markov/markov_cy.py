@@ -6,14 +6,6 @@ Markov Model Emulator of Hepatitis B
 
 from nodes_monitor import *
 
-# The initial Probabilities
-
-
-
-# initialList = [Node04(0.019), Node05(0.012), Node06(0.013), Node26(0.611), Node28(0.148), Node29(0.094), Node30(0.103)]
-# initialList = [Node06(1)]
-# initialList = getInitialNodes(flowchart)
-
 def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, initialList=[]):
     # Don't touch this part
     cummDict = {}
@@ -27,9 +19,11 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
     HCC = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
     LT = [['Stages', 'Treatment', 'Natural History'],[0,0,0]]
 
-    age += 1
+    cirrIgn = 0
 
     for curr_stage in range(1, total_stages+1):
+
+        age += 1
 
         if curr_stage != 1:
             oldList = newList
@@ -56,7 +50,7 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
 
             temp = dVarReplace(temp, age)
             temp = pVarReplace(temp)
-            temp = node.nextStage(node.getDestStates(), node.getOriginValue(), temp, currNode = node.getID())
+            temp, cirrIgn = node.nextStage(node.getDestStates(), node.getOriginValue(), temp, cirrIgn, currNode = node)
 
             for i in temp:
                 if i.getGuac() != 0:
@@ -69,35 +63,64 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
 
         for node in newList:
             try:
-                cummDict[node.getVarName()] += node.getOriginValue() - guacDict[node.getVarName()]
+                cummDict[node.getVarName()] += (node.getOriginValue() - guacDict[node.getVarName()]) * cohortPop
             except:
-                cummDict[node.getVarName()] = node.getOriginValue()
+                try:
+                    cummDict[node.getVarName()] += node.getOriginValue() * cohortPop
+                except:
+                    cummDict[node.getVarName()] = node.getOriginValue() * cohortPop
+
+        def getCummDict(query):
+            try:
+                return cummDict[query]
+            except:
+                return 0
+
+        sumListCirrhosios = [ getCummDict('Cirrhosis Initial Rx')\
+                            , getCummDict('Cirrhosis')\
+                            , getCummDict('Cirrhosis Long Term Rx')\
+                            , getCummDict('Cirrhosis Long Term Rx with resistance')\
+                            , getCummDict('Cirrhosis e- initial Rx')\
+                            , getCummDict('Cirrhosis e- longterm Rx')]
 
         t_death = [curr_stage ,0, 0]
         t_cirr = [curr_stage ,0, 0]
         t_hcc = [curr_stage ,0, 0]
         t_lt =[curr_stage ,0, 0]
 
-        for i in newList:
-            if i.getVarName() == 'Death HBV':
-                t_death[1] = i.getOriginValue()*100
-            if i.getVarName() == 'Death HBV NH':
-                t_death[2] = i.getOriginValue()*100
+        # for i in newList:
+        #     if i.getVarName() == 'Death HBV':
+        #         t_death[1] = round(i.getOriginValue()*100,3)
+        #     if i.getVarName() == 'Death HBV NH':
+        #         t_death[2] = round(i.getOriginValue()*100,3)
 
-            if i.getVarName() == 'Cirrhosis Initial Rx':
-                t_cirr[1] = i.getOriginValue()*100
-            if i.getVarName() == 'Cirrhosis NH':
-                t_cirr[2] = i.getOriginValue()*100
+        #     if i.getVarName() == 'Cirrhosis Initial Rx':
+        #         t_cirr[1] = round(i.getOriginValue()*100,3)
+        #     if i.getVarName() == 'Cirrhosis NH':
+        #         t_cirr[2] = round(i.getOriginValue()*100,3)
 
-            if i.getVarName() == 'HCC':
-                t_hcc[1] = i.getOriginValue()*100
-            if i.getVarName() == 'HCC NH':
-                t_hcc[2] = i.getOriginValue()*100
+        #     if i.getVarName() == 'HCC':
+        #         t_hcc[1] = round(i.getOriginValue()*100,3)
+        #     if i.getVarName() == 'HCC NH':
+        #         t_hcc[2] = round(i.getOriginValue()*100,3)
 
-            if i.getVarName() == 'Liver Transplantation':
-                t_lt[1] = i.getOriginValue()*100
-            if i.getVarName() == 'Liver Transplantation NH':
-                t_lt[2] = i.getOriginValue()*100
+        #     if i.getVarName() == 'Liver Transplantation':
+        #         t_lt[1] = round(i.getOriginValue()*100,3)
+        #     if i.getVarName() == 'Liver Transplantation NH':
+        #         t_lt[2] = round(i.getOriginValue()*100,3)
+
+        t_death[1] = round(getCummDict('Death HBV'), 3)
+        t_death[2] = round(getCummDict('Death HBV NH'), 3)
+
+        t_death[1] = round(sum(sumListCirrhosios) - cirrIgn * cohortPop, 3)
+        t_death[2] = round(getCummDict('Cirrhosis NH'), 3)
+
+        t_death[1] = round(getCummDict('HCC'), 3)
+        t_death[2] = round(getCummDict('HCC NH'), 3)
+
+        t_death[1] = round(getCummDict('Liver Transplantation'), 3)
+        t_death[2] = round(getCummDict('Liver Transplantation NH'), 3)
+
         DeathHBV.append(t_death)
         Cirrhosis.append(t_cirr)
         HCC.append(t_hcc)
@@ -129,8 +152,6 @@ def markovMain(age = 35, total_stages = 5, endemicity = 1, stage_timeFrame = 1, 
     except:
         pass
 
-    print 'CUMM', finalList
-    print '########################'
 
 
     return {'output': output, 'finalList': finalList, 'DeathHBV': DeathHBV, 'Cirrhosis': Cirrhosis, 'HCC': HCC, 'LT': LT}
