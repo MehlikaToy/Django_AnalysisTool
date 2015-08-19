@@ -141,18 +141,36 @@
 }
 
 .graph-row{
-	display: inline-block;
-	width: 970px;
 	margin:0 auto;
+    width: 1400px;
+    display: inline;
 }
 
-#linechart1, #linechart3{
-	float: left;
+#print-content{
+    width: 1400px;
+    display: inline;
 }
 
-#linechart2, #linechart4{
-	float: right;
+#Result{
+    height:0;
+    display: inline;
+    padding:0;
 }
+
+.row{
+    margin: 150px 0 0 0;
+}
+
+#linechart1, #linechart2, #linechart3{
+    display: inline-block;
+}
+
+#table_div{
+    text-align: center;
+    width: 750px;
+    display: inline-block;
+}
+
 
 @-webkit-keyframes rotate {
   from {
@@ -170,6 +188,17 @@
     -webkit-animation-timing-function: linear;
 }
 
+
+
+@page{
+    size: A4;
+}
+
+@media print{
+    #print-content{
+
+    }
+}
 
 
 
