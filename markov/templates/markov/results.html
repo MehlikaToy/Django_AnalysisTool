@@ -39,6 +39,15 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
 
+        function printDiv(divName) {
+            alert('hi')
+            var printContents = document.getElementById(divName).innerHTML;
+            w=window.open();
+            w.document.write(printContents);
+            w.print();
+            w.close();
+        }
+
         // Load the Visualization API and the piechart package.
         google.load('visualization', '1.0', {'packages':['corechart']});
         google.load('visualization', '1', {'packages': ['corechart', 'bar']});
@@ -260,20 +269,26 @@
                 </div>
                 <div id="chart_div" style= "width:750; height:750"></div>
             </div>
-
-            <div class="graph-row">
-                <div id="linechart1"></div>
-                <div id="linechart2"></div>
+            <div id = 'print-content'>
+                <div class="graph-row">
+                    <div id="linechart1"></div>
+                    <div id="linechart2"></div>
+                </div>
+                <div class="graph-row">
+                    <div id="linechart3"></div>
+                    <div id="linechart4"></div>
+                </div>
+                <div id="table_div" style="text-align:center;"></div>
             </div>
-            <div class="graph-row">
-                <div id="linechart3"></div>
-                <div id="linechart4"></div>
-            </div>
-            <div id="table_div" style="text-align:center;"></div>
         </div>
     </section>
 
     <section id="Contact" class="container content-section text-center">
+        <div id="print-content">
+            <form>
+                <input type="button" onclick="printDiv('print-content')" value="Print Results"/>
+            </form>
+        </div>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact The Asian Liver Center</h2>
