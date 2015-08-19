@@ -26,7 +26,7 @@
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,500,600' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,24 +40,19 @@
     <script type="text/javascript">
 
         // Load the Visualization API and the piechart package.
-        google.load('visualization', '1.0', {packages:['corechart']});
-        google.load('visualization', '1', {packages: ['corechart', 'bar']});
-        google.load('visualization', '1.1',{packages: ['line']});
+        google.load('visualization', '1.0', {'packages':['corechart']});
+        google.load('visualization', '1', {'packages': ['corechart', 'bar']});
+        google.load('visualization', '1.1',{'packages': ['line']});
+        google.load("visualization", "1.0", {'packages':['table']});
 
         // Set a callback to run when the Google Visualization API is loaded.
         google.setOnLoadCallback(drawChart);
+        
 
         // Callback that creates and populates a data table,
         // instantiates the pie chart, passes in the data and
         // draws it.
         function drawChart() {
-
-            // create Data
-            // var djangoData1 = {{ array|safe }};
-            // var data1 = google.visualization.arrayToDataTable(djangoData1);
-
-            // var djangoData2 = {{ array1|safe }};
-            // var data2 = google.visualization.arrayToDataTable(djangoData2);
 
             var djangoData3_1 = {{ deathHBV1|safe }};
             var data3_1 = google.visualization.arrayToDataTable(djangoData3_1);
@@ -86,55 +81,9 @@
             var data6_2 = google.visualization.arrayToDataTable(djangoData6_2);
             var joinedData6 = google.visualization.data.join(data6_1, data6_2, 'full', [[0, 0]], [1, 2], [1, 2]);
 
-            // Set chart options
-            // var options1 = {'title':'End States of Markov Model',
-            //              'titleTextStyle': { color: 'black'},
-            //              'is3D':true,
-            //              sliceVisibilityThreshold: .05,
-            //              'width':800,
-            //              'height':600,
-            //              backgroundColor:'white',
-            //              legend: {textStyle: {color: 'black', fontSize: 12}}
-            //              };
-
-            // var options2 = {
-            //     'width':800,
-            //     'height':600,
-            //     backgroundColor: 'black',
-            //     colors: ['#ff7f50', '#49b7a8'],
-            //     backgroundColor: 'white',
-            //     dataOpacity: 0.75,
-            //     title: 'Select States Cumulative Results',
-            //     titleTextStyle: {color:'black', fontSize: '22', fontName: 'Raleway'},
-            //     legend:{
-            //         position: 'right',
-            //         textStyle: {color: 'black', fontSize: 16},
-            //     },
-            //     vAxis: {
-            //             title: 'People',
-            //             titleTextStyle: {
-            //                 color: 'white',
-            //             },
-            //             textStyle: {color: 'white'},
-            //             title: 'Probabilities',
-            //             titleTextStyle: {color: 'black'},
-            //             textStyle: {color: 'black'},
-            //             baselineColor: '#CCC',
-            //             gridlines: {color: '#CCC'},
-            //             logScale: false,
-            //             format: 'short',
-            //             },
-            //     hAxis:{
-            //             title: 'States',
-            //             slantedText: true,
-            //             titleTextStyle: {color: 'black'},
-            //             textStyle: {color: 'black'},
-            //     }
-
-            // };
 
             var options3 = {
-                title: "Death HBV",
+                title: "Mortality Rate HBV",
                 titleTextStyle :{
                     fontSize:26,
                     fontName:'Raleway',
@@ -229,12 +178,6 @@
                 }
             };
 
-            // var chart1 = new google.visualization.PieChart(document.getElementById('pie_chart_div'));
-            // chart1.draw(data1, options1);
-
-            // var chart2 = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-            // chart2.draw(data2, options2);
-
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
             chart3.draw(joinedData3, options3);
 
@@ -246,18 +189,12 @@
 
             var chart6 = new google.visualization.LineChart(document.getElementById('linechart4'));
             chart6.draw(joinedData6, options6);
+
+            var table = new google.visualization.Table(document.getElementById('table_div'));
+            table.draw(joinedData3, {showRowNumber: true, width: '100%', height: '100%'});
+            console.log(joinedData3);
         }
-            // var chart = new google.visualization.LineChart(document.querySelector('#linechart1'));
-            //     chart.draw(joinedData3, {
-            //         height: 300,
-            //         width: 600,
-            //         interpolateNulls: true
-            //     });
-            // }
-            // google.load('visualization', '1', {packages:['corechart'], callback: drawChart});
-
     </script>
-
 </head>
 
 
@@ -303,7 +240,7 @@
                 <div class="row" style="margin-top: 0;">
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading" style="color: #fff; text-transform: none; font-size:130px;">Results</h1>
-                        <p class="intro-text" style="color: #000; font-family:'Lobster', cursive; letter-spacing: 2px; ">Treated and Untreated Survival Rates of Patients</p>
+                        <p class="intro-text" style="color: #000; font-family:'Raleway'; font-weight: 600; font-size: 35px; letter-spacing: 2px; ">Treated and Untreated Survival Rates of Patients</p>
                         <a href="#Result" class="page-scroll">
                             <i class="fa fa-angle-double-down animated" id="arrow"></i>
                         </a>
@@ -321,8 +258,7 @@
                 <div id="user-input">
                     <p>{{inputStr}}</p>
                 </div>
-<!--                 <div id="pie_chart_div"></div>
--->                <div id="chart_div" style= "width:750; height:750"></div>
+                <div id="chart_div" style= "width:750; height:750"></div>
             </div>
 
             <div class="graph-row">
@@ -333,6 +269,7 @@
                 <div id="linechart3"></div>
                 <div id="linechart4"></div>
             </div>
+            <div id="table_div" style="text-align:center;"></div>
         </div>
     </section>
 
@@ -347,9 +284,6 @@
                     </li>
                     <li>
                         <a href="https://github.com/colphin/Analysis_Tool" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                   <li>
-                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
                     </li>
                 </ul>
                 <ul class="list-inline banner-social-buttons" style="padding-top: 75px;">
