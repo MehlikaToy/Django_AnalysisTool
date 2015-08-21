@@ -9,14 +9,14 @@ Markov Model Emulator of Hepatitis B
 # from nodes_monitor_e2 import *
 from nodes_monitor_e3 import *
 
-def markovMain(age = 38, total_stages = 20, endemicity = 3, stage_timeFrame = 1, initialList=[]):
+def markovMain(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1, initialList=[]):
 
 
-    print  '\n\nINITIAL LIST Stage: BASE, Age: %s' % (age)
+    print '>>> INITIAL LIST Stage: BASE, Age: %s' % (age)
     printList(initialList)
-    print '\n#######################'
-
+    print '>>> COST'
     printCost(initialList, 0, total_stages)
+    print '>>> UTILITY'
     printUtility(initialList, 0, total_stages, age)
 
     # Don't touch this part
@@ -121,6 +121,21 @@ def markovMain(age = 38, total_stages = 20, endemicity = 3, stage_timeFrame = 1,
         cumulativeCost += sumCost(newList, curr_stage, total_stages)
         cumulativeQALY += sumUtility(newList, curr_stage, age, total_stages)
 
+        print '\nCUMM Current Stage:', curr_stage-1, 'Age:', age
+        try:
+            print 'HCC : ', getCummDict('HCC')
+            print 'HCC NH : ', getCummDict('HCC NH')
+            print 'Death HBV: ', getCummDict('Death HBV')
+            print 'Death HBV NH:', getCummDict('Death HBV NH')
+            print 'Cirrhosis: ', cummCirr * cohortPop
+            print 'Cirrhosis NH: ', getCummDict('Cirrhosis NH')
+            print 'Cirrhosis Total:', (cummCirr * cohortPop) + getCummDict('Cirrhosis NH')
+        except:
+            pass
+
+        print '\n#######################'
+
+    print Cirrhosis
 
     output = {}
     for i in newList:

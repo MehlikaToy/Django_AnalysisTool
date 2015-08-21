@@ -27,11 +27,11 @@ uSeroclearance = 1
 tested_rate = 0.58
 followup_rate = 0.587
 treatment_rate = 0.33
-p_adherence = 1
-p_monitor = 1
+p_adherence = 0.65
+p_monitor = 0
 
 # Touch this part
-cohortPop = 100
+cohortPop = 10000
 
 def getUCirr(age):
     if age <= 24:
@@ -146,8 +146,19 @@ class BasicNode(object):
 
             if tempNode.getID() == currNode.getID():
                 tempNode.guac += tempNode.getOriginValue()
-            if tempNode.isCirrhosis and currNode.isCirrhosis and tempNode.getID() != currNode.getID():
+            if tempNode.isCirrhosis and not currNode.isCirrhosis:
                 cirrIgn += tempNode.getOriginValue()
+
+            # DEBUG ONLY
+            # if tempNode.isCirrhosis and currNode.isCirrhosis:
+            #     print "C_IGN", currNode.getID(), '->', tempNode.getID(), round(tempNode.getOriginValue() * cohortPop, 3)
+            # elif tempNode.getID() == currNode.getID():
+            #     print "N_RPT", currNode.getID(), '->', tempNode.getID(), round(tempNode.getOriginValue() * cohortPop, 3)
+            # elif tempNode.isCirrhosis and not currNode.isCirrhosis:
+            #     print '^^^^^', currNode.getID(), '->', tempNode.getID(), round(tempNode.getOriginValue() * cohortPop, 3)
+            # else:
+            #     print "     ", currNode.getID(), '->', tempNode.getID(), round(tempNode.getOriginValue() * cohortPop, 3)
+
         return temp, cirrIgn
 
 
@@ -767,6 +778,7 @@ class Node22(BasicNode):
         super(Node22, self).__init__(1)
         self.ID = type(self).__name__
         self.originValue = OV
+        self.isCirrhosis = True
         self.varName = "Cirrhosis e- longterm Rx with resistance"
         self.destStates = [Node10, Node22, Node07, Node08, Node23, Node24]
         self.probValUT =  [0.005 ,   pVar,  0.079,  0.029, 0.0478,   dVar]
@@ -857,6 +869,7 @@ class Node30(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "Cirrhosis NH"
+        self.isCirrhosis = True
         self.destStates = [Node30, Node31, Node32, Node34, Node35]
         self.probValUT =  [pVar  , 0.039 , 0.05  , 0.0555, dVar]
 

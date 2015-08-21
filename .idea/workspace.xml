@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7b03929a-c651-4704-a58e-55391fbfe3c0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/markov_cy.py" afterPath="$PROJECT_DIR$/markov/markov_cy.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/nodes_monitor_e1.py" afterPath="$PROJECT_DIR$/markov/nodes_monitor_e1.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/nodes_monitor_e2.py" afterPath="$PROJECT_DIR$/markov/nodes_monitor_e2.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/nodes_monitor_e3.py" afterPath="$PROJECT_DIR$/markov/nodes_monitor_e3.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/templates/markov/results.html" afterPath="$PROJECT_DIR$/markov/templates/markov/results.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/views.py" afterPath="$PROJECT_DIR$/markov/views.py" />
     </list>
     <ignored path="Django_AnalysisTool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,31 +28,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/markov/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="411" max-vertical-offset="1976">
+              <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="results.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/markov/templates/markov/results.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.5740743" vertical-offset="2796" max-vertical-offset="5928">
+              <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="markov_cy.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/markov/markov_cy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41304347" vertical-offset="2166" max-vertical-offset="3040">
-              <caret line="133" column="12" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nodes_monitor_e1.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="8854" max-vertical-offset="16340">
-              <caret line="488" column="8" selection-start-line="488" selection-start-column="8" selection-end-line="491" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nodes_monitor_e2.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="9063" max-vertical-offset="16416">
-              <caret line="492" column="50" selection-start-line="492" selection-start-column="50" selection-end-line="492" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.5277778" vertical-offset="228" max-vertical-offset="3325">
+              <caret line="37" column="62" selection-start-line="37" selection-start-column="62" selection-end-line="37" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -61,11 +61,28 @@
       <file leaf-file-name="nodes_monitor_e3.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6329" max-vertical-offset="14022">
-              <caret line="553" column="46" selection-start-line="553" selection-start-column="46" selection-end-line="553" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="8378" max-vertical-offset="10621">
+              <caret line="361" column="0" selection-start-line="361" selection-start-column="0" selection-end-line="361" selection-end-column="0" />
               <folding>
-                <element signature="e#3087#6520#0" expanded="false" />
-                <element signature="e#6552#10493#0" expanded="false" />
+                <element signature="e#509#690#0" expanded="false" />
+                <element signature="e#721#903#0" expanded="false" />
+                <element signature="e#927#1110#0" expanded="false" />
+                <element signature="e#1133#1316#0" expanded="false" />
+                <element signature="e#3785#7218#0" expanded="false" />
+                <element signature="e#7250#11191#0" expanded="false" />
+                <element signature="e#11226#15138#0" expanded="false" />
+                <element signature="e#15181#19219#0" expanded="false" />
+                <element signature="e#19283#19780#0" expanded="false" />
+                <element signature="e#19807#19911#0" expanded="false" />
+                <element signature="e#19936#20011#0" expanded="false" />
+                <element signature="e#20059#20351#0" expanded="false" />
+                <element signature="e#20407#20715#0" expanded="false" />
+                <element signature="e#20761#21013#0" expanded="false" />
+                <element signature="e#21067#21336#0" expanded="false" />
+                <element signature="e#21368#21449#0" expanded="false" />
+                <element signature="e#21512#21775#0" expanded="false" />
+                <element signature="e#21809#22029#0" expanded="false" />
+                <element signature="e#22116#22469#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -106,22 +123,22 @@
         <option value="$PROJECT_DIR$/markov/urls.py" />
         <option value="$PROJECT_DIR$/home/templates/home/index.html" />
         <option value="$PROJECT_DIR$/markov/getAPI.py" />
-        <option value="$PROJECT_DIR$/markov/views.py" />
-        <option value="$PROJECT_DIR$/markov/templates/markov/results.html" />
         <option value="$USER_HOME$/Desktop/test/markov_cy.py" />
         <option value="$USER_HOME$/Desktop/test/nodes_monitor.py" />
         <option value="$PROJECT_DIR$/markov/nodes_monitor.py" />
-        <option value="$PROJECT_DIR$/markov/markov_cy.py" />
         <option value="$PROJECT_DIR$/markov/nodes_monitor_e1.py" />
         <option value="$PROJECT_DIR$/markov/nodes_monitor_e2.py" />
+        <option value="$PROJECT_DIR$/markov/views.py" />
         <option value="$PROJECT_DIR$/markov/nodes_monitor_e3.py" />
+        <option value="$PROJECT_DIR$/markov/templates/markov/results.html" />
+        <option value="$PROJECT_DIR$/markov/markov_cy.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="962" />
+    <option name="x" value="4" />
     <option name="y" value="23" />
-    <option name="width" value="958" />
+    <option name="width" value="1277" />
     <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -208,6 +225,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="markov" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -517,14 +538,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="962" y="23" width="958" height="1057" extended-state="0" />
+    <frame x="4" y="23" width="1277" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943678" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11846318" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1178344" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -539,26 +560,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943678" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11846318" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4144527" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
@@ -901,13 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/markov/templates/markov/results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24022989" vertical-offset="1634" max-vertical-offset="5928">
-          <caret line="97" column="28" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/markov/getAPI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="874">
@@ -931,14 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/markov/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1976">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="8854" max-vertical-offset="16340">
@@ -957,19 +943,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="6329" max-vertical-offset="14022">
-          <caret line="553" column="46" selection-start-line="553" selection-start-column="46" selection-end-line="553" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="8378" max-vertical-offset="10621">
+          <caret line="361" column="0" selection-start-line="361" selection-start-column="0" selection-end-line="361" selection-end-column="0" />
           <folding>
-            <element signature="e#3087#6520#0" expanded="false" />
-            <element signature="e#6552#10493#0" expanded="false" />
+            <element signature="e#509#690#0" expanded="false" />
+            <element signature="e#721#903#0" expanded="false" />
+            <element signature="e#927#1110#0" expanded="false" />
+            <element signature="e#1133#1316#0" expanded="false" />
+            <element signature="e#3785#7218#0" expanded="false" />
+            <element signature="e#7250#11191#0" expanded="false" />
+            <element signature="e#11226#15138#0" expanded="false" />
+            <element signature="e#15181#19219#0" expanded="false" />
+            <element signature="e#19283#19780#0" expanded="false" />
+            <element signature="e#19807#19911#0" expanded="false" />
+            <element signature="e#19936#20011#0" expanded="false" />
+            <element signature="e#20059#20351#0" expanded="false" />
+            <element signature="e#20407#20715#0" expanded="false" />
+            <element signature="e#20761#21013#0" expanded="false" />
+            <element signature="e#21067#21336#0" expanded="false" />
+            <element signature="e#21368#21449#0" expanded="false" />
+            <element signature="e#21512#21775#0" expanded="false" />
+            <element signature="e#21809#22029#0" expanded="false" />
+            <element signature="e#22116#22469#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/markov/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1057" max-vertical-offset="1976">
+          <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/markov/templates/markov/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5740743" vertical-offset="2796" max-vertical-offset="5928">
+          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/markov/markov_cy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41304347" vertical-offset="2166" max-vertical-offset="3040">
-          <caret line="133" column="12" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.5277778" vertical-offset="228" max-vertical-offset="3325">
+          <caret line="37" column="62" selection-start-line="37" selection-start-column="62" selection-end-line="37" selection-end-column="62" />
           <folding />
         </state>
       </provider>
