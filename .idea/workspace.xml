@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b03929a-c651-4704-a58e-55391fbfe3c0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/markov/nodes_monitor.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Django_AnalysisTool.iml" afterPath="$PROJECT_DIR$/.idea/Django_AnalysisTool.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/markov_cy.py" afterPath="$PROJECT_DIR$/markov/markov_cy.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/nodes_monitor_e1.py" afterPath="$PROJECT_DIR$/markov/nodes_monitor_e1.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/nodes_monitor_e2.py" afterPath="$PROJECT_DIR$/markov/nodes_monitor_e2.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/markov/nodes_monitor_e3.py" afterPath="$PROJECT_DIR$/markov/nodes_monitor_e3.py" />
     </list>
     <ignored path="Django_AnalysisTool.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,28 +31,8 @@
       <file leaf-file-name="markov_cy.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/markov/markov_cy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54347825" vertical-offset="2242" max-vertical-offset="3971">
-              <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/markov/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1976">
-              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nodes_monitor_e2.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3318" max-vertical-offset="16245">
-              <caret line="197" column="19" selection-start-line="197" selection-start-column="19" selection-end-line="197" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.41304347" vertical-offset="2166" max-vertical-offset="3040">
+              <caret line="133" column="12" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -62,8 +41,18 @@
       <file leaf-file-name="nodes_monitor_e1.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3489" max-vertical-offset="16188">
-              <caret line="198" column="19" selection-start-line="197" selection-start-column="7" selection-end-line="198" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="8854" max-vertical-offset="16340">
+              <caret line="488" column="8" selection-start-line="488" selection-start-column="8" selection-end-line="491" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nodes_monitor_e2.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="9063" max-vertical-offset="16416">
+              <caret line="492" column="50" selection-start-line="492" selection-start-column="50" selection-end-line="492" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -72,9 +61,12 @@
       <file leaf-file-name="nodes_monitor_e3.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4541" max-vertical-offset="17537">
-              <caret line="253" column="21" selection-start-line="253" selection-start-column="21" selection-end-line="253" selection-end-column="21" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="6329" max-vertical-offset="14022">
+              <caret line="553" column="46" selection-start-line="553" selection-start-column="46" selection-end-line="553" selection-end-column="46" />
+              <folding>
+                <element signature="e#3087#6520#0" expanded="false" />
+                <element signature="e#6552#10493#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -119,10 +111,10 @@
         <option value="$USER_HOME$/Desktop/test/markov_cy.py" />
         <option value="$USER_HOME$/Desktop/test/nodes_monitor.py" />
         <option value="$PROJECT_DIR$/markov/nodes_monitor.py" />
-        <option value="$PROJECT_DIR$/markov/nodes_monitor_e3.py" />
-        <option value="$PROJECT_DIR$/markov/nodes_monitor_e2.py" />
-        <option value="$PROJECT_DIR$/markov/nodes_monitor_e1.py" />
         <option value="$PROJECT_DIR$/markov/markov_cy.py" />
+        <option value="$PROJECT_DIR$/markov/nodes_monitor_e1.py" />
+        <option value="$PROJECT_DIR$/markov/nodes_monitor_e2.py" />
+        <option value="$PROJECT_DIR$/markov/nodes_monitor_e3.py" />
       </list>
     </option>
   </component>
@@ -532,7 +524,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943678" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11846318" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11846318" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -565,7 +557,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11846318" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4144527" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4144527" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
@@ -939,30 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4541" max-vertical-offset="17537">
-          <caret line="253" column="21" selection-start-line="253" selection-start-column="21" selection-end-line="253" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3489" max-vertical-offset="16188">
-          <caret line="198" column="19" selection-start-line="197" selection-start-column="7" selection-end-line="198" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3318" max-vertical-offset="16245">
-          <caret line="197" column="19" selection-start-line="197" selection-start-column="19" selection-end-line="197" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/markov/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1976">
@@ -971,10 +939,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="8854" max-vertical-offset="16340">
+          <caret line="488" column="8" selection-start-line="488" selection-start-column="8" selection-end-line="491" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9063" max-vertical-offset="16416">
+          <caret line="492" column="50" selection-start-line="492" selection-start-column="50" selection-end-line="492" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/markov/nodes_monitor_e3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6329" max-vertical-offset="14022">
+          <caret line="553" column="46" selection-start-line="553" selection-start-column="46" selection-end-line="553" selection-end-column="46" />
+          <folding>
+            <element signature="e#3087#6520#0" expanded="false" />
+            <element signature="e#6552#10493#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/markov/markov_cy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54347825" vertical-offset="2242" max-vertical-offset="3971">
-          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.41304347" vertical-offset="2166" max-vertical-offset="3040">
+          <caret line="133" column="12" selection-start-line="133" selection-start-column="12" selection-end-line="133" selection-end-column="12" />
           <folding />
         </state>
       </provider>

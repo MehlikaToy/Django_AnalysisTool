@@ -425,6 +425,12 @@ def sumUtility(list, stage, age, total_stages):
             sum += i.getOriginValue() * getUtility(i.getVarName(), stage, age)
     return sum
 
+def getOrginValSum(list):
+    sum = 0
+    for node in list:
+        sum += node.getOriginValue()
+    return sum
+
 #Prob List Manipulation Functions
 def pVarReplace(list):
     pVarOcc = 0
@@ -481,7 +487,10 @@ class Node02(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "HBsAg +"
-        self.destStates = [Node36    ,       Node26]
+        if (p_monitor == 0):
+            self.destStates = [Node26, Node26]
+        else:
+            self.destStates = [Node36    , Node26]
         self.probValUT =  [p_monitor      ,    1 - p_monitor]
 
 class Node03(BasicNode):

@@ -27,11 +27,12 @@ uSeroclearance = 1
 tested_rate = 0.58
 followup_rate = 0.587
 treatment_rate = 0.33
-p_adherence = 1
-p_monitor = 1
+
+p_adherence = 0.65
+p_monitor = 0
 
 # Touch this part
-cohortPop = 100
+cohortPop = 10000
 
 def getUCirr(age):
     if age <= 24:
@@ -137,18 +138,16 @@ class BasicNode(object):
     def getGuac(self):
         return self.guac
 
-    def nextStage(self,destStates, originVal, probList, cirrIgn, currNode = None):
+    def nextStage(self,destStates, originVal, probList, cummCirr, currNode = None):
         temp = []
-
         for i in range(0, len(destStates)):
-            tempNode = destStates[i](originVal * probList[i]) 
+            tempNode = destStates[i](originVal * probList[i])
             temp.append(tempNode)
-
             if tempNode.getID() == currNode.getID():
                 tempNode.guac += tempNode.getOriginValue()
-            if tempNode.isCirrhosis and currNode.isCirrhosis and tempNode.getID() != currNode.getID():
-                cirrIgn += tempNode.getOriginValue()
-        return temp, cirrIgn
+            if tempNode.isCirrhosis and not currNode.isCirrhosis:
+                cummCirr += tempNode.getOriginValue()
+        return temp, cummCirr
 
 
 def getMort(age):
@@ -462,6 +461,12 @@ def trimList(array):   # sums up all nodes with same name to create a neat array
             i += 1
     return resultList
 
+def getOrginValSum(list):
+    sum = 0
+    for node in list:
+        sum += node.getOriginValue()
+    return sum
+
 #The Nodes
 class Node01(BasicNode):
 
@@ -481,7 +486,10 @@ class Node02(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "HBsAg +"
-        self.destStates = [Node36    ,       Node26]
+        if (p_monitor == 0):
+            self.destStates = [Node26, Node26]
+        else:
+            self.destStates = [Node36    , Node26]
         self.probValUT =  [p_monitor      ,  1 - p_monitor]
 
 class Node03(BasicNode):
