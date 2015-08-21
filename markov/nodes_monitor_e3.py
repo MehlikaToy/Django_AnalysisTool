@@ -3,15 +3,83 @@ Author: Gerry Meixiong
 Made July 2015
 Markov States of Hepatitis B
 '''
+import math 
 
 pVar = -1.0
 dVar = -2.0
 
-p_adhr = 1
-p_moni = 1
+cCHB = 693
+cCirr = 2035
+cDecompCirr = 7068
+cEntecavir = 5987
+cHCC = 15600
+cLT = 125000
+cMonitor = 120
+discountC = 0.03
+discountU = 0.03
+uCHB = 0.85
+uCHBinactive = 0.95
+uCHBseroclearance = 0.99
+uResolution = 1
+uSVR = 1
+uSeroclearance = 1
+
+tested_rate = 0.58
+followup_rate = 0.587
+treatment_rate = 0.33
+p_adherence = 1
+p_monitor = 1
 
 # Touch this part
 cohortPop = 100
+
+def getUCirr(age):
+    if age <= 24:
+        return 0.68
+    elif age <= 34:
+        return 0.7
+    elif age <= 44:
+        return 0.68
+    elif age <= 54:
+        return 0.7
+    else:
+        return 0.66
+
+def getUDecompCirr(age):
+    if age <= 24:
+        return 0.3
+    elif age <= 34:
+        return 0.31
+    elif age <= 44:
+        return 0.38
+    elif age <= 54:
+        return 0.35
+    else:
+        return 0.37
+
+def getUHCC(age):
+    if age <= 24:
+        return 0.32
+    elif age <= 34:
+        return 0.37
+    elif age <= 44:
+        return 0.41
+    elif age <= 54:
+        return 0.39
+    else:
+        return 0.41
+
+def getULT(age):
+    if age <= 24:
+        return 0.62
+    elif age <= 34:
+        return 0.68
+    elif age <= 44:
+        return 0.69
+    elif age <= 54:
+        return 0.68
+    else:
+        return 0.66
 
 class BasicNode(object):
 
@@ -21,6 +89,8 @@ class BasicNode(object):
         self.varName = None
         self.destStates = []
         self.probValUT =  None
+        self.probValATF = None
+        self.probValUTF = None
         self.probValLET = None
         self.probValAT =  None
         self.probValAFR = None
@@ -42,6 +112,12 @@ class BasicNode(object):
 
     def getDestStates(self):
         return self.destStates
+
+    def getProbValUTF(self):
+        return self.probValUTF
+
+    def getProbValATF(self):
+        return self.probValATF
 
     def getProbValUT(self):
         return self.probValUT
@@ -181,68 +257,184 @@ def getMort(age):
         return dic['100']
 
 def getInitialNodes(age):
-    HBsAg = None
-    CHB = None
-    CHBneg = None
-    Cirr = None
-    population = None
     if (age <= 14):
-        HBsAg = 195054
-        CHB = 53165
-        CHBneg = 33825
-        Cirr = 36912
-        population = 318956
-    if (age >= 15 and age <= 24):
-        HBsAg = 195054
-        CHB = 53165
-        CHBneg = 33825
-        Cirr = 36912
-        population = 318956
-    if (age >= 25 and age <= 34):
-        HBsAg = 195054
-        CHB = 53165
-        CHBneg = 33825
-        Cirr = 36912
-        population = 318956
-    if (age >= 35 and age <= 44):
-        HBsAg = 195054
-        CHB = 53165
-        CHBneg = 33825
-        Cirr = 36912
-        population = 318956
-    if (age >= 45 and age <= 54):
-        HBsAg = 195054
-        CHB = 53165
-        CHBneg = 33825
-        Cirr = 36912
-        population = 318956
-    if (age >= 55 and age <= 64):
-        HBsAg = 195054
-        CHB = 53165
-        CHBneg = 33825
-        Cirr = 36912
-        population = 318956
-    if (age >= 65):
-        HBsAg = 195054
-        CHB = 53165
-        CHBneg = 33825
-        Cirr = 36912
-        population = 318956
+        totalPopulation = 2353120
+        HBsAgPrevalence = .0180
+        HBeAgPosRate = .948717948717949
+        HBeAgNegRate = .0512820512820513
+        ActiveCHBePosRate = .361
+        ActiveCHBeNegRate = .100
+        CirrHBePos = .240
+        CirrHBeNeg = .150
+    if age >= 15 and age <= 24:
+        totalPopulation = 3098760
+        HBsAgPrevalence = .1050
+        HBeAgPosRate = .86046511627907
+        HBeAgNegRate = .13953488372093
+        ActiveCHBePosRate = .378
+        ActiveCHBeNegRate = .333
+        CirrHBePos = .240
+        CirrHBeNeg = .150
+    if age >= 25 and age <= 34:
+        totalPopulation = 3216600
+        HBsAgPrevalence = .0860
+        HBeAgPosRate = .744336569579288
+        HBeAgNegRate = .255663430420712
+        ActiveCHBePosRate = .517
+        ActiveCHBeNegRate = .292
+        CirrHBePos = .260
+        CirrHBeNeg = .170
+    if age >= 35 and age <= 44:
+        totalPopulation = 3752420
+        HBsAgPrevalence = .0850
+        HBeAgPosRate = .538461538461538
+        HBeAgNegRate = .461538461538462
+        ActiveCHBePosRate = .436
+        ActiveCHBeNegRate = .333
+        CirrHBePos = .290
+        CirrHBeNeg = .310
+    if age >= 45 and age <= 54:
+        totalPopulation = 3123800
+        HBsAgPrevalence = .0850
+        HBeAgPosRate = .446327683615819
+        HBeAgNegRate = .553672316384181
+        ActiveCHBePosRate = .416
+        ActiveCHBeNegRate = .491
+        CirrHBePos = .580
+        CirrHBeNeg = .430
+    if age >= 55 and age <= 64:
+        totalPopulation = 1455000
+        HBsAgPrevalence = .0890
+        HBeAgPosRate = .453488372093023
+        HBeAgNegRate = .546511627906977
+        ActiveCHBePosRate = .400
+        ActiveCHBeNegRate = .448
+        CirrHBePos = .580
+        CirrHBeNeg = .430
+    if age >= 65:
+        totalPopulation = 2200300
+        HBsAgPrevalence = .0890
+        HBeAgPosRate = .434782608695652
+        HBeAgNegRate = .565217391304348
+        ActiveCHBePosRate = .425
+        ActiveCHBeNegRate = .666
+        CirrHBePos = .580
+        CirrHBeNeg = .430
 
-    tested_rate = 0.58
-    followup_rate = 0.587
-    treatment_rate = 0.33
+    population = int(round(totalPopulation * HBsAgPrevalence, 0))
 
-    PHBsAg = 0                                                                                              #2
-    PHBsAgNH = round(float(HBsAg) / population, 3)                                                              #26
-    PCHB = round((CHB * tested_rate * followup_rate * treatment_rate) / population, 3)                      #4
-    PCHBNH = round((CHB - CHB * tested_rate * followup_rate * treatment_rate) / population, 3)              #28
-    PCHBneg = round((CHBneg * tested_rate * followup_rate * treatment_rate) / population, 3)                #5
+    HBsAg = int(round((totalPopulation * HBsAgPrevalence) - (totalPopulation * HBsAgPrevalence * HBeAgPosRate
+    * ActiveCHBePosRate) - (totalPopulation * HBsAgPrevalence * HBeAgNegRate * ActiveCHBeNegRate), 0))
+
+    CHB = int(round((totalPopulation * HBsAgPrevalence * HBeAgPosRate * ActiveCHBePosRate) - (totalPopulation
+    * HBsAgPrevalence * HBeAgPosRate * ActiveCHBePosRate * CirrHBePos), 0))
+
+    CHBneg = int(round((totalPopulation * HBsAgPrevalence * HBeAgNegRate * ActiveCHBeNegRate) - (totalPopulation
+    * HBsAgPrevalence * HBeAgNegRate * ActiveCHBeNegRate * CirrHBeNeg), 0))
+
+    Cirr = int(round((totalPopulation * HBsAgPrevalence * HBeAgPosRate * ActiveCHBePosRate
+    * CirrHBePos) + (totalPopulation * HBsAgPrevalence * HBeAgNegRate * ActiveCHBeNegRate * CirrHBeNeg), 0))
+
+    PCHB = round((CHB * tested_rate * followup_rate * treatment_rate) / population, 2)                      #4
+    PCHBNH = round((CHB - CHB * tested_rate * followup_rate * treatment_rate) / population, 2)              #28
+    PCHBneg = (CHBneg * tested_rate * followup_rate * treatment_rate) / population                          #5
     PCHBnegNH = round((CHBneg - CHBneg * tested_rate * followup_rate * treatment_rate) / population, 3)     #29
     Pcirr = round((Cirr * tested_rate * followup_rate * treatment_rate) / population, 3)                    #6
     PcirrNH = round((Cirr - Cirr * tested_rate * followup_rate * treatment_rate) / population, 3)           #30
+    PHBsAg = round((HBsAg * tested_rate * followup_rate) / population, 3)
+    PHBsAgNH = 1 - PHBsAg - PCHB - PCHBNH - PCHBneg - PCHBnegNH - Pcirr - PcirrNH                         #26
 
-    return [Node26(PHBsAgNH), Node04(PCHB), Node15(PCHBNH), Node05(PCHBneg), Node29(PCHBnegNH), Node06(Pcirr), Node30(PcirrNH)]
+    if p_monitor == 0:
+        PHBsAg = 0
+
+    return [Node02(PHBsAg), Node26(PHBsAgNH), Node04(PCHB), Node15(PCHBNH), Node05(PCHBneg), Node29(PCHBnegNH), Node06(Pcirr), Node30(PcirrNH)]
+
+def getCost(varName, stage):
+    dic = {"HBsAg Seroclearance" : 0,                                                                  #1
+    "HBsAg +" : 0,                                                                                     #2
+    "HBeAg Seroconversion" : (cCHB + cEntecavir) / math.pow(1 + discountC, stage),                     #3
+    "CHBe+" : cCHB / math.pow(1 + discountC, stage),                                                   #4
+    "CHBe- disease" : cCHB / math.pow(1 + discountC, stage),                                           #5
+    "Cirrhosis" : cCirr / math.pow(1 + discountC, stage),                                              #6
+    "DecompCirr" : cDecompCirr / math.pow(1 + discountC, stage),                                       #7
+    "HCC" : cHCC / math.pow(1 + discountC, stage),                                                     #8
+    "Liver Transplantation" : cLT / math.pow(1 + discountC, stage),                                    #9
+    "Sustained Virological Response" : cEntecavir / math.pow(1 + discountC, stage),                    #10
+    "CHB initial Rx" : (cCHB + cEntecavir) / math.pow(1 + discountC, stage),                           #11
+    "CHB Long Term Rx" : (cCHB + cEntecavir) / math.pow(1 + discountC, stage),                         #12
+    "CHB Long Term with Rx with Resistance" : (cCHB + cEntecavir) / math.pow(1 + discountC, stage),    #13
+    "Cirrhosis Initial Rx" : (cCirr + cEntecavir) / math.pow(1 + discountC, stage),                    #14
+    "Cirrhosis Long Term Rx" : (cCirr + cEntecavir) / math.pow(1 + discountC, stage),                  #15
+    "Cirrhosis Long Term Rx with resistance" : (cCirr + cEntecavir) / math.pow(1 + discountC, stage),  #16
+    "CHBe- initial Rx" : (cCHB + cEntecavir) / math.pow(1 + discountC, stage),                         #17
+    "CHBe- longterm Rx" : (cCHB + cEntecavir) / math.pow(1 + discountC, stage),                        #18
+    "CHBe- longterm Rx resistance" : (cCHB + cEntecavir) / math.pow(1 + discountC, stage),             #19
+    "Cirrhosis e- initial Rx" : (cCirr + cEntecavir) / math.pow(1 + discountC, stage),                 #20
+    "Cirrhosis e- longterm Rx" : (cCirr + cEntecavir) / math.pow(1 + discountC, stage),                #21
+    "Cirrhosis e- longterm Rx with resistance" : (cCirr + cEntecavir) / math.pow(1 + discountC, stage),#22
+    "Death HBV" : 0,                                                                                   #23
+    "Death (Other)" : 0,                                                                               #24
+    "HBsAg SeroclearanceNH" : 0,                                                                       #25
+    "HBsAg + NH" : 0,                                                                                  #26
+    "HBeAg SeroconversionNH" : cCHB / math.pow(1 + discountC, stage),                                  #27
+    "CHBe+NH" : cCHB / math.pow(1 + discountC, stage),                                                 #28
+    "CHB e- diseaseNH" : cCHB / math.pow(1 + discountC, stage),                                        #29
+    "Cirrhosis NH" : cCirr / math.pow(1 + discountC, stage),                                           #30
+    "DecompCirr NH" : cDecompCirr / math.pow(1 + discountC, stage),                                    #31
+    "HCC NH" : cHCC / math.pow(1 + discountC, stage),                                                  #32
+    "Liver Transplantation NH" : cLT / math.pow(1 + discountC, stage),                                 #33
+    "Death HBV NH" : 0,                                                                                #34
+    "Death Other NH" : 0,                                                                              #35
+    "HBsAg + Monitor" : cMonitor / math.pow(1 + discountC, stage)                                      #36
+    }
+    if str(varName) in dic.keys():
+        return dic[str(varName)]
+
+def getUtility(varName, stage, age):
+    uCirr = getUCirr(age)
+    uDecompCirr = getUDecompCirr(age)
+    uHCC = getUHCC(age)
+    uLiverTransplant = getULT(age)
+
+    dic = {"HBsAg Seroclearance" : uSeroclearance / math.pow(1 + discountU, stage),                    #1
+    "HBsAg +" : uCHBinactive / math.pow(1 + discountU, stage),                                         #2
+    "HBeAg Seroconversion" : uCHBinactive / math.pow(1 + discountU, stage),                            #3
+    "CHBe+" : uCHB / math.pow(1 + discountU, stage),                                                   #4
+    "CHBe- disease" : uCHB / math.pow(1 + discountU, stage),                                           #5
+    "Cirrhosis" : uCirr / math.pow(1 + discountU, stage),                                              #6
+    "DecompCirr" : uDecompCirr / math.pow(1 + discountU, stage),                                       #7
+    "HCC" : uHCC / math.pow(1 + discountU, stage),                                                     #8
+    "Liver Transplantation" : uLiverTransplant / math.pow(1 + discountU, stage),                       #9
+    "Sustained Virological Response" : uSVR / math.pow(1 + discountU, stage),                          #10
+    "CHB initial Rx" : uCHB / math.pow(1 + discountU, stage),                                          #11
+    "CHB Long Term Rx" : uCHB / math.pow(1 + discountU, stage),                                        #12
+    "CHB Long Term with Rx with Resistance" : uCHB / math.pow(1 + discountU, stage),                   #13
+    "Cirrhosis Initial Rx" : uCirr / math.pow(1 + discountU, stage),                                   #14
+    "Cirrhosis Long Term Rx" : uCirr / math.pow(1 + discountU, stage),                                 #15
+    "Cirrhosis Long Term Rx with resistance" : uCirr / math.pow(1 + discountU, stage),                 #16
+    "CHBe- initial Rx" : uCHB / math.pow(1 + discountU, stage),                                        #17
+    "CHBe- longterm Rx" : uCHB / math.pow(1 + discountU, stage),                                       #18
+    "CHBe- longterm Rx resistance" : uCHB / math.pow(1 + discountU, stage),                            #19
+    "Cirrhosis e- initial Rx" : uCirr / math.pow(1 + discountU, stage),                                #20
+    "Cirrhosis e- longterm Rx" : uCirr / math.pow(1 + discountU, stage),                               #21
+    "Cirrhosis e- longterm Rx with resistance" : uCirr / math.pow(1 + discountU, stage),               #22
+    "Death HBV" : 0,                                                                                   #23
+    "Death (Other)" : 0,                                                                               #24
+    "HBsAg SeroclearanceNH" : uSeroclearance / math.pow(1 + discountU, stage),                         #25
+    "HBsAg + NH" : uCHBinactive / math.pow(1 + discountU, stage),                                      #26
+    "HBeAg SeroconversionNH" : uCHBinactive / math.pow(1 + discountU, stage),                          #27
+    "CHBe+NH" : uCHB / math.pow(1 + discountU, stage),                                                 #28
+    "CHB e- diseaseNH" : uCHB / math.pow(1 + discountU, stage),                                        #29
+    "Cirrhosis NH" : uCirr / math.pow(1 + discountU, stage),                                           #30
+    "DecompCirr NH" : uDecompCirr / math.pow(1 + discountU, stage),                                    #31
+    "HCC NH" : uHCC / math.pow(1 + discountU, stage),                                                  #32
+    "Liver Transplantation NH" : uLiverTransplant / math.pow(1 + discountU, stage),                    #33
+    "Death HBV NH" : 0,                                                                                #34
+    "Death Other NH" : 0,                                                                              #35
+    "HBsAg + Monitor" : uCHBinactive / math.pow(1 + discountU, stage)                                  #36
+    }
+    if str(varName) in dic.keys():
+        return dic[str(varName)]
 
 #Basic Calculation Functions
 def printCummTestValues(list):
@@ -260,6 +452,38 @@ def sumList(list):
     sum = 0
     for i in list:
         sum += i.getOriginValue()
+    return sum
+
+def printCost(list, stage, total_stages):
+    for i in list:
+        if stage == 0 or stage == total_stages:
+            print ("%-40s %10f" % (i.getVarName(), i.getOriginValue() * getCost(i.getVarName(), stage) * 0.5))
+        else:
+            print ("%-40s %10f" % (i.getVarName(), i.getOriginValue() * getCost(i.getVarName(), stage)))
+
+def printUtility(list, stage, total_stages, age):
+    for i in list:
+        if stage == 0 or stage == total_stages:
+            print ("%-40s %10f" % (i.getVarName(), i.getOriginValue() * getUtility(i.getVarName(), stage, age) * 0.5))
+        else:
+            print ("%-40s %10f" % (i.getVarName(), i.getOriginValue() * getUtility(i.getVarName(), stage, age)))
+
+def sumCost(list, stage, total_stages):
+    sum = 0
+    for i in list:
+        if(stage == 0 or stage == total_stages):
+            sum += i.getOriginValue() * getCost(i.getVarName(), stage) * 0.5
+        else:
+            sum += i.getOriginValue() * getCost(i.getVarName(), stage)
+    return sum
+
+def sumUtility(list, stage, age, total_stages):
+    sum = 0
+    for i in list:
+        if (stage == 0 or stage == total_stages):
+            sum += i.getOriginValue() * getUtility(i.getVarName(), stage, age) * 0.5
+        else:
+            sum += i.getOriginValue() * getUtility(i.getVarName(), stage, age)
     return sum
 
 #Prob List Manipulation Functions
@@ -321,7 +545,7 @@ class Node02(BasicNode):
         self.originValue = OV
         self.varName = "HBsAg +"
         self.destStates = [Node36    , Node26]
-        self.probValUT =  [p_moni    , 1 - p_moni]
+        self.probValUT =  [p_monitor    , 1 - p_monitor]
 
 class Node03(BasicNode):
 
@@ -334,7 +558,7 @@ class Node03(BasicNode):
         self.probValUT =  [pVar  , 0.008 , 0.029 , 0.029 ,  dVar]
         self.probValAT =  [pVar  , 0.007 , 0.038 , 0.038 ,  dVar]
         self.probValAFR = [pVar  , 0.003 , 0.086 , 0.086 ,  dVar]
-        self.secBranch =  [1     , 1     , p_adhr,1-p_adhr,  1]
+        self.secBranch =  [1     , 1     , p_adherence,1-p_adherence,  1]
 
 class Node04(BasicNode):
 
@@ -346,7 +570,7 @@ class Node04(BasicNode):
         self.destStates = [Node11, Node28 , Node03 , Node17 , Node29 , Node14 , Node30 , Node24]
         self.probValLET = [pVar  , pVar   , 0.09   , 0.019  , 0.019  , 0.001  , 0.001  ,  dVar ]
         self.probValAT =  [pVar  , pVar   , 0.07   , 0.019  , 0.019  , 0.0235 , 0.0235 ,  dVar ]
-        self.secBranch =  [p_adhr,1-p_adhr, 1      ,p_adhr  ,1-p_adhr, p_adhr ,1-p_adhr,  1]
+        self.secBranch =  [p_adherence,1-p_adherence, 1      ,p_adherence  ,1-p_adherence, p_adherence ,1-p_adherence,  1]
 
 class Node05(BasicNode):
 
@@ -357,7 +581,7 @@ class Node05(BasicNode):
         self.varName = "CHBe- disease"
         self.destStates = [Node17, Node29, Node14, Node30, Node24]
         self.probValUT =  [pVar  , pVar  , 0.0235, 0.0235, dVar]
-        self.secBranch =  [p_adhr,1-p_adhr, p_adhr,1-p_adhr, 1 ]
+        self.secBranch =  [p_adherence,1-p_adherence, p_adherence,1-p_adherence, 1 ]
 
 class Node06(BasicNode):
 
@@ -369,7 +593,7 @@ class Node06(BasicNode):
         self.isCirrhosis = True
         self.destStates = [Node14, Node30, Node24]
         self.probValUT =  [pVar  , pVar  , dVar]
-        self.secBranch =  [p_adhr,1-p_adhr, 1 ]
+        self.secBranch =  [p_adherence,1-p_adherence, 1 ]
 
 class Node07(BasicNode):
 

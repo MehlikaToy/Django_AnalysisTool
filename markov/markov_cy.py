@@ -4,11 +4,18 @@ Made July 2015
 Markov Model Emulator of Hepatitis B
 '''
 
-from nodes_monitor import *
 
-def markovMain(age = 38, total_stages = 20, endemicity = 1, stage_timeFrame = 1, initialList=[]):
+# from nodes_monitor_e1 import *
+# from nodes_monitor_e2 import *
+from nodes_monitor_e3 import *
+
+def markovMain(age = 38, total_stages = 20, endemicity = 3, stage_timeFrame = 1, initialList=[]):
+
+
     print 'RUNNING MARKOV FOR: Age: %s, Stage: %s With Inital List' % (age, total_stages)
     printList(initialList)
+    printCost(initialList, 0, total_stages)
+    printUtility(initialList, 0, total_stages, age)
 
     # Don't touch this part
     cummDict = {}
@@ -23,6 +30,8 @@ def markovMain(age = 38, total_stages = 20, endemicity = 1, stage_timeFrame = 1,
     LT = [['Stages', 'Treatment (dotted)', 'Natural History (solid)'],[0,0,0]]
 
     cirrIgn = 0
+    cumulativeCost = sumCost(oldList, 0, total_stages)
+    cumulativeQALY = sumUtility(oldList, 0, age, total_stages)
 
     for curr_stage in range(1, total_stages+1):
 
@@ -38,6 +47,10 @@ def markovMain(age = 38, total_stages = 20, endemicity = 1, stage_timeFrame = 1,
                 temp = node.getProbValAFF()
             elif age - 1 >= 40 and node.getProbValAFR():
                 temp = node.getProbValAFR()
+            elif age - 1 <= 25 and node.getProbValUTF():
+                temp = node.getProbValUTF()
+            elif age - 1 > 25 and node.getProbValATF():
+                temp = node.getProbValATF()
             elif age - 1 <= 30 and node.getProbValLET():
                 temp = node.getProbValLET()
             elif age - 1 >= 30 and node.getProbValAT():
@@ -112,7 +125,8 @@ def markovMain(age = 38, total_stages = 20, endemicity = 1, stage_timeFrame = 1,
         LT.append(t_lt)
 
         print DeathHBV
-       
+        cumulativeCost += sumCost(newList, curr_stage, total_stages)
+        cumulativeQALY += sumUtility(newList, curr_stage, age, total_stages)
         
 
         
