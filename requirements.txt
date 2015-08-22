@@ -2,6 +2,3 @@ dj-database-url==0.3.0
 Django==1.8.3
 gunicorn==19.3.0
 django-toolbelt==0.0.1
-static3==0.5.1
-wsgiref==0.1.2
-requests==2.3.0
