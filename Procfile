@@ -1,1 +1,1 @@
-web: gunicorn Django_AnalysisTool.wsgi --timeout 120 --keep-alive 5 -b 0.0.0.0:5000
+web: gunicorn Django_AnalysisTool.wsgi:application
