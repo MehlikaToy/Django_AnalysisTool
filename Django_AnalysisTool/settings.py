@@ -14,8 +14,12 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import dj_database_url
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CURRENT_PATH = os.path.abspath(os.path.dirname(__file__).decode('utf-8'))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+# CURRENT_PATH = os.path.abspath(os.path.dirname(__file__).decode('utf-8'))
+CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -110,12 +114,13 @@ MEDIA_URL = '/media/'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_ROOT = 'static/'
+# STATIC_ROOT = 'static/'
+STATIC_ROOT = 'staticfiles'
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-                    os.path.join(CURRENT_PATH, 'static'),
+    os.path.join(CURRENT_PATH, 'static'),
 )
 
 
