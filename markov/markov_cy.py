@@ -39,8 +39,6 @@ def markovMain(age = 49, total_stages = 20, endemicity = 3, stage_timeFrame = 1,
 
         age += 1
 
-        print 'AGE:', age-1
-
         if curr_stage != 1:
             oldList = newList
             newList = []
@@ -49,57 +47,44 @@ def markovMain(age = 49, total_stages = 20, endemicity = 3, stage_timeFrame = 1,
 
 
             try:
-                print '0'
                 temp = node.getProbValUT()
             except:
                 pass
             try:
-                print '1'
                 if age - 1 >= 50 and node.getProbValAFF():
                     temp = node.getProbValAFF()
             except:
                 pass
             try:
-                print '2'
                 if age - 1 >= 40 and node.getProbValAFR():
                     temp = node.getProbValAFR()
             except:
                 pass
             try:
-                print '3'
                 if age - 1 > 25 and node.getProbValATF():
                     temp = node.getProbValATF()
             except:
                 pass
             try:
-                print '4'
                 if (age - 1 <= 25) and (node.getProbValUTF()):
                     temp = node.getProbValUTF()
             except:
                 pass
             try:
-                print '5'
-                print node.getProbValLET()
                 if age - 1 <= 30 and node.getProbValLET():
                     temp = node.getProbValLET()
             except:
                 pass
             try:
-                print '6'
                 if age - 1 <= 30 and node.getProbValLET():
                     temp = node.getProbValLET()
             except:
                 pass
             try:
-                print '7'
                 if age - 1 >= 30 and node.getProbValAT():
                     temp = node.getProbValAT()
             except:
                 pass
-
-
-            print temp
-
             try:
                 for i in range(0, len(temp)):
                     temp[i] = temp[i] * node.secBranch[i]
