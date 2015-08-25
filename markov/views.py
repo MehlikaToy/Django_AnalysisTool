@@ -2,7 +2,9 @@ from django.http import HttpResponse
 from django.template import loader
 from getAPI import stuff
 from flowchart import *
-from markov_cy import *
+from markov_cy_e1 import *
+from markov_cy_e2 import *
+from markov_cy_e3 import *
 import json
 import decimal
 
@@ -28,17 +30,34 @@ def resultsView(request):
     # returns finalDict from getAPI.py
     # ie. {'How old is your patient?': '38', ... }
 
-    parse()
+    endemicity = parse()
+    parse2()
     g1, g2, g3 = getInitNodes()
     age, stage = ageStage()
     answer, ALT, HBV_DNA = cirrALT_DNA()
     print '##############\ng1:'
     printList(g1)
-    response1 = markovMain(age=age, initialList=g1)
+
+    if endemicity == 1:
+        response1 = markovMain1(age=age, initialList=g1)
+    else if endemicity == 2:
+        response1 = markovMain2(age=age, initialList=g1)
+    else: 
+        response1 = markovMain3(age=age, initialList=g1)
+
+    # response1 = markovMain(age=age, initialList=g1)
     # print response1
     print '#############\ng2:'
     printList(g2)
-    response2 = markovMain(age=age, initialList=g2)
+
+    if endemicity == 1:
+        response2 = markovMain1(age=age, initialList=g2)
+    else if endemicity == 2:
+        response2 = markovMain2(age=age, initialList=g2)
+    else: 
+        response2 = markovMain3(age=age, initialList=g2)
+
+    # response2 = markovMain(age=age, initialList=g2)
     # print "response 1:",response1
     # print ""
     # print "g2:",g2

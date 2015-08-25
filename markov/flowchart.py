@@ -8,7 +8,7 @@ import gspread
 import json
 from oauth2client.client import SignedJwtAssertionCredentials
 import sys
-from nodes_monitor_e3 import *
+# from nodes_monitor_e3 import *
 import ssl
 
 
@@ -55,7 +55,7 @@ def parse():
 	for col in range(1,7):
 		arr.append(wks.cell(lowestRow, col).value)
 
-	global g1, g2, g3, answer, age, ALT, HBV_DNA
+	global g1, g2, g3, answer, age, ALT, endem, HBV_DNA
 	g1 = []
 	g2 = []
 	g3 = []
@@ -68,13 +68,23 @@ def parse():
 
 
 	if(arr[4] == "Low"):
-		endem = 3
+		endem = 1
 	elif(arr[4]=="Intermediate"):
 		endem = 2
 	elif(arr[4]=="High"):
-		endem = 1
+		endem = 3
+
+	return endem
+
+if endem == 1:
+	from nodes_monitor_e1 import *
+else if endem == 2:
+	from nodes_monitor_e2 import *
+else: 
+	from nodes_monitor_e3 import *
 
 
+def parse2():
 	if (answer == "Yes"):
 		yesCirr()
 	else:
