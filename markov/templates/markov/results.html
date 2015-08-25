@@ -63,25 +63,38 @@
         // draws it.
         function drawChart() {
 
-            var djangoData3_1 = {{ deathHBV1|safe }};
-            var data3_1 = google.visualization.arrayToDataTable(djangoData3_1);
-            var djangoData3_2 = {{ deathHBV2|safe }};
-            var data3_2 = google.visualization.arrayToDataTable(djangoData3_2);
-            var joinedData3 = google.visualization.data.join(data3_1, data3_2, 'full', [[0, 0]], [1,2], [1,2]);
+            // var djangoData3_1 = {{ deathHBV1|safe }};
+            // var data3_1 = google.visualization.arrayToDataTable(djangoData3_1);
+            // var djangoData3_2 = {{ deathHBV2|safe }};
+            // var data3_2 = google.visualization.arrayToDataTable(djangoData3_2);
+            // var joinedData3 = google.visualization.data.join(data3_1, data3_2, 'full', [[0, 0]], [1,2], [1,2]);
 
 
-            var djangoData4_1 = {{ cirrhosis1|safe }};
-            var data4_1 = google.visualization.arrayToDataTable(djangoData4_1);
-            var djangoData4_2 = {{ cirrhosis2|safe }};
-            var data4_2 = google.visualization.arrayToDataTable(djangoData4_2);
-            var joinedData4 = google.visualization.data.join(data4_1, data4_2, 'full', [[0, 0]], [2], [2]);
+            // var djangoData4_1 = {{ cirrhosis1|safe }};
+            // var data4_1 = google.visualization.arrayToDataTable(djangoData4_1);
+            // var djangoData4_2 = {{ cirrhosis2|safe }};
+            // var data4_2 = google.visualization.arrayToDataTable(djangoData4_2);
+            // var joinedData4 = google.visualization.data.join(data4_1, data4_2, 'full', [[0, 0]], [2], [2]);
 
 
-            var djangoData5_1 = {{ hcc1|safe }};
-            var data5_1 = google.visualization.arrayToDataTable(djangoData5_1);
-            var djangoData5_2 = {{ hcc2|safe }};
-            var data5_2 = google.visualization.arrayToDataTable(djangoData5_2);
-            var joinedData5 = google.visualization.data.join(data5_1, data5_2, 'full', [[0, 0]], [2], [2]);
+            // var djangoData5_1 = {{ hcc1|safe }};
+            // var data5_1 = google.visualization.arrayToDataTable(djangoData5_1);
+            // var djangoData5_2 = {{ hcc2|safe }};
+            // var data5_2 = google.visualization.arrayToDataTable(djangoData5_2);
+            // var joinedData5 = google.visualization.data.join(data5_1, data5_2, 'full', [[0, 0]], [2], [2]);
+
+            var djangoDataTable = {{ tableArr|safe }};
+            var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
+
+            var djangoData1 = {{ deathHBV_Final|safe }}
+            var data1 = google.visualization.arrayToDataTable(djangoData1);
+
+            var djangoData2 = {{ hcc_Final|safe }}
+            var data2 = google.visualization.arrayToDataTable(djangoData2);
+
+            var djangoData3 = {{ cirrhosis_Final|safe }}
+            var data3 = google.visualization.arrayToDataTable(djangoData3);
+
 
 
             var options3 = {
@@ -128,7 +141,7 @@
             };
 
             var options5 = {
-                title: "HCC",
+                title: "Liver Cancer",
                 titleTextStyle :{
                     fontSize:26,
                     fontName:'Raleway',
@@ -150,17 +163,16 @@
             };
 
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
-            chart3.draw(joinedData3, options3);
+            chart3.draw(data1, options3);
 
             var chart4 = new google.visualization.LineChart(document.getElementById('linechart2'));
-            chart4.draw(joinedData4, options4);
+            chart4.draw(data3, options4);
 
             var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
-            chart5.draw(joinedData5, options5);
+            chart5.draw(data2, options5);
 
             var table = new google.visualization.Table(document.getElementById('table_div'));
-            table.draw(joinedData5, {showRowNumber: false});
-            console.log(joinedData5);
+            table.draw(dataTable, {showRowNumber: false});
         }
     </script>
 </head>
@@ -218,7 +230,7 @@
         </div>
     </header>
 
-    <!-- About Section -->
+    <!-- Results Section -->
     <section id="Result" class="container content-section text-center">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
@@ -238,6 +250,27 @@
                     <div id="linechart4"></div>
                 </div>
                 <div id="table_div"></div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <h2>WHO Recommendation</h2>
+            <div id="user-input">
+                <p>{{whoRec}}</p>
+            </div>
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2> Treatment </h2>
+                <p>
+                    <h4>Every 6 Months</h4><p> DETECTION OF HCC (person with cirrhosis or HCC family history).</p>
+                        <h4>Every 12 Months</h4><p> DISEASE PROGRESSION AND/OR TREATMENT RESPONSE IN ALL<br> Adherence at each visit, if on treatment<br> ALT, HBV DNA and HBeAg<br> Clinical criteria and NITs (APRI in adults or FibroScan)
+                                                    </p>
+                        <h4>Baseline and Every 12 months</h4><p> TOXICITY MONITORING IN PERSONS ON TREATMENT: Renal functiona and risk factors for renal dysfunction</p>
+                      
+                </p>
+                <h2> Monitor </h2>
+                <p>All persons with CHB should be monitored regularly for disease activity/progression and detection of HCC, and after stopping treatment for evidence of reactivation. More frequent monitoring maybe required in those with more advanced liver disease, during the first year of treatment or where adherence is a concern, and in those with abnormal ALT and HBV DNA levels >2000 IU/mL, not yet on treatment.</p>
+
+
             </div>
         </div>
     </section>

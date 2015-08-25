@@ -26,10 +26,10 @@ def markovMain3(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1
 
     guacDict = {}
 
-    DeathHBV = [['Stages', 'Treatment (dotted)', 'Natural History (solid)'],[0,0,0]]
-    Cirrhosis = [['Stages', 'Treatment (dotted)', 'Natural History (solid)'],[0,0,0]]
-    HCC = [['Stages', 'Treatment (dotted)', 'Natural History (solid)'],[0,0,0]]
-    LT = [['Stages', 'Treatment (dotted)', 'Natural History (solid)'],[0,0,0]]
+    DeathHBV = [['Stages', 'Treatment (dotted)', 'Natural History (solid)']]
+    Cirrhosis = [['Stages', 'Treatment (dotted)', 'Natural History (solid)']]
+    HCC = [['Stages', 'Treatment (dotted)', 'Natural History (solid)']]
+    LT = [['Stages', 'Treatment (dotted)', 'Natural History (solid)']]
 
     assert 1 == getOrginValSum(oldList), 'Initial List is %.2f not 1' % (getOrginValSum(oldList))
 
@@ -46,6 +46,7 @@ def markovMain3(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1
             newList = []
 
         for node in oldList:
+
 
             if age - 1 >= 50 and node.getProbValAFF():
                 temp = node.getProbValAFF()
@@ -121,21 +122,21 @@ def markovMain3(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1
         cumulativeCost += sumCost(newList, curr_stage, total_stages)
         cumulativeQALY += sumUtility(newList, curr_stage, age, total_stages)
 
-        print '\nCUMM Current Stage:', curr_stage-1, 'Age:', age
-        try:
-            print 'HCC : ', getCummDict('HCC')
-            print 'HCC NH : ', getCummDict('HCC NH')
-            print 'Death HBV: ', getCummDict('Death HBV')
-            print 'Death HBV NH:', getCummDict('Death HBV NH')
-            print 'Cirrhosis: ', cummCirr * cohortPop
-            print 'Cirrhosis NH: ', getCummDict('Cirrhosis NH')
-            print 'Cirrhosis Total:', (cummCirr * cohortPop) + getCummDict('Cirrhosis NH')
-        except:
-            pass
+    #     print '\nCUMM Current Stage:', curr_stage-1, 'Age:', age
+    #     try:
+    #         print 'HCC : ', getCummDict('HCC')
+    #         print 'HCC NH : ', getCummDict('HCC NH')
+    #         print 'Death HBV: ', getCummDict('Death HBV')
+    #         print 'Death HBV NH:', getCummDict('Death HBV NH')
+    #         print 'Cirrhosis: ', cummCirr * cohortPop
+    #         print 'Cirrhosis NH: ', getCummDict('Cirrhosis NH')
+    #         print 'Cirrhosis Total:', (cummCirr * cohortPop) + getCummDict('Cirrhosis NH')
+    #     except:
+    #         pass
 
-        print '\n#######################'
+    #     print '\n#######################'
 
-    print Cirrhosis
+    # print Cirrhosis
 
     output = {}
     for i in newList:

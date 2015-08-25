@@ -66,7 +66,6 @@ def parse():
 	ALT = arr[2]
 	HBV_DNA = arr[3]
 
-
 	if(arr[4] == "Low"):
 		endem = 1
 	elif(arr[4]=="Intermediate"):
@@ -78,7 +77,7 @@ def parse():
 
 if endem == 1:
 	from nodes_monitor_e1 import *
-else if endem == 2:
+elif endem == 2:
 	from nodes_monitor_e2 import *
 else: 
 	from nodes_monitor_e3 import *
@@ -96,6 +95,11 @@ def yesCirr():																	# 1
 	g1.append(Node04(1))
 	g2.append(Node30(1))
 
+def getWhoRec():
+	if answer == 'Yes' or (age >= 30 and ALT == "Persistently Abnormal" and HBV_DNA == ">20,000 IU/ml"):
+		return 'Monitor and Treatment'
+	else:
+		return 'Monitor'
 
 def noCirr():
 	global g1, g2, g3

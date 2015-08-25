@@ -27,6 +27,7 @@ uSeroclearance = 1
 tested_rate = 0.58
 followup_rate = 0.587
 treatment_rate = 0.33
+
 p_adherence = 1
 p_monitor = 1
 

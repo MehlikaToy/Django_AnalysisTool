@@ -35,24 +35,21 @@ def resultsView(request):
     g1, g2, g3 = getInitNodes()
     age, stage = ageStage()
     answer, ALT, HBV_DNA = cirrALT_DNA()
-    print '##############\ng1:'
-    printList(g1)
+
 
     if endemicity == 1:
         response1 = markovMain1(age=age, initialList=g1)
-    else if endemicity == 2:
+    elif endemicity == 2:
         response1 = markovMain2(age=age, initialList=g1)
     else: 
         response1 = markovMain3(age=age, initialList=g1)
 
     # response1 = markovMain(age=age, initialList=g1)
     # print response1
-    print '#############\ng2:'
-    printList(g2)
 
     if endemicity == 1:
         response2 = markovMain1(age=age, initialList=g2)
-    else if endemicity == 2:
+    elif endemicity == 2:
         response2 = markovMain2(age=age, initialList=g2)
     else: 
         response2 = markovMain3(age=age, initialList=g2)
@@ -76,13 +73,36 @@ def resultsView(request):
     
     lt1 = response1['LT']
     lt2 = response2['LT']
+
+    deathHBV_Final = [['Stages','Natural History', 'Treatment']]
+    cirrhosis_Final = [['Stages','Natural History', 'Treatment']]
+    hcc_Final = [['Stages','Natural History', 'Treatment']]
+    for i in range(0, len(deathHBV1)-1):
+        deathHBV_Final.append([i, deathHBV2[i+1][2], deathHBV1[i+1][1]])
+        hcc_Final.append([i,hcc2[i+1][2], hcc1[i+1][1]])
+        cirrhosis_Final.append([i,cirrhosis2[i+1][2], cirrhosis1[i+1][1]])
     
+    tableArr = [['Stage', 'DeathHBV NH', 'DeathHBV Treatment', 'Liver Cancer NH', 'Liver Cancer Treatment', 'Cirrhosis NH', 'Cirrhosis Treatment']]
+    getStage = 5
+    while getStage <= 40:
+        tableArr.append([getStage,
+                        deathHBV2[getStage+1][2],
+                        deathHBV1[getStage+1][1],
+                        hcc2[getStage+1][2],
+                        hcc1[getStage+1][1],
+                        cirrhosis2[getStage+1][2],
+                        cirrhosis1[getStage+1][1]]
+                        )
+        getStage = getStage*2
+
+
     inputs = "Your " + str(age) + " year old patient "
     if(answer == 'Yes'):              # if no cirrhosis
         inputs += "has Cirrhosis."
     else:
         inputs += "doesn't have Cirrhosis with a " + ALT + " ALT level and an HBV DNA level that is " + HBV_DNA + '.'
 
+    whoRec = 'Your patient needs ' + getWhoRec()
 
     # Print test:
     # print deathHBV2
@@ -91,16 +111,26 @@ def resultsView(request):
     # cirrhosis3 = []
     # hcc3 = []
     # lt3 = []
+
+    print json.dumps(deathHBV1)
+    print '#####'
+    print json.dumps(deathHBV_Final)
+
     dumpDict = {
-        'deathHBV1': json.dumps(deathHBV1),
-        'deathHBV2': json.dumps(deathHBV2),
-        'cirrhosis1': json.dumps(cirrhosis1),
-        'cirrhosis2': json.dumps(cirrhosis2),
-        'hcc1': json.dumps(hcc1),
-        'hcc2': json.dumps(hcc2),
-        'lt1': json.dumps(lt1),
-        'lt2': json.dumps(lt2),
-        'inputStr': inputs
+        'deathHBV_Final': json.dumps(deathHBV_Final),
+        'hcc_Final': json.dumps(hcc_Final),
+        'cirrhosis_Final': json.dumps(cirrhosis_Final),
+        # 'deathHBV1': json.dumps(deathHBV1),
+        # 'deathHBV2': json.dumps(deathHBV2),
+        # 'cirrhosis1': json.dumps(cirrhosis1),
+        # 'cirrhosis2': json.dumps(cirrhosis2),
+        # 'hcc1': json.dumps(hcc1),
+        # 'hcc2': json.dumps(hcc2),
+        # 'lt1': json.dumps(lt1),
+        # 'lt2': json.dumps(lt2),
+        'inputStr': inputs,
+        'whoRec': whoRec,
+        'tableArr': tableArr,
     }
 
     # dictionary to list

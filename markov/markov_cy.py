@@ -7,7 +7,7 @@ Markov Model Emulator of Hepatitis B
 
 from nodes_monitor_e3 import *
 
-def markovMain(age = 49, total_stages = 20, endemicity = 3, stage_timeFrame = 1, initialList=[]):
+def markovMain(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1, initialList=[]):
 
 
     print '>>> INITIAL LIST Stage: BASE, Age: %s' % (age)
@@ -45,7 +45,7 @@ def markovMain(age = 49, total_stages = 20, endemicity = 3, stage_timeFrame = 1,
 
         for node in oldList:
 
-
+            # The try function are so that Django doesn't somehow mess everything up.
             try:
                 temp = node.getProbValUT()
             except:
@@ -66,7 +66,7 @@ def markovMain(age = 49, total_stages = 20, endemicity = 3, stage_timeFrame = 1,
             except:
                 pass
             try:
-                if (age - 1 <= 25) and (node.getProbValUTF()):
+                if age - 1 <= 25 and node.getProbValUTF():
                     temp = node.getProbValUTF()
             except:
                 pass
@@ -85,6 +85,7 @@ def markovMain(age = 49, total_stages = 20, endemicity = 3, stage_timeFrame = 1,
                     temp = node.getProbValAT()
             except:
                 pass
+
             try:
                 for i in range(0, len(temp)):
                     temp[i] = temp[i] * node.secBranch[i]

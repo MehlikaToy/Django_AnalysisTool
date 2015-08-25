@@ -27,11 +27,13 @@ uSeroclearance = 1
 tested_rate = 0.58
 followup_rate = 0.587
 treatment_rate = 0.33
-p_adherence = 0.65
-p_monitor = 0
+
+p_adherence = 1
+p_monitor = 1
 
 # Touch this part
-cohortPop = 10000
+cohortPop = 100
+
 
 def getUCirr(age):
     if age <= 24:
