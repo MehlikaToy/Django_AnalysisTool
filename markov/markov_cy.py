@@ -5,11 +5,9 @@ Markov Model Emulator of Hepatitis B
 '''
 
 
-# from nodes_monitor_e1 import *
-# from nodes_monitor_e2 import *
 from nodes_monitor_e3 import *
 
-def markovMain(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1, initialList=[]):
+def markovMain(age = 49, total_stages = 20, endemicity = 3, stage_timeFrame = 1, initialList=[]):
 
 
     print '>>> INITIAL LIST Stage: BASE, Age: %s' % (age)
@@ -41,26 +39,66 @@ def markovMain(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1,
 
         age += 1
 
+        print 'AGE:', age-1
+
         if curr_stage != 1:
             oldList = newList
             newList = []
 
         for node in oldList:
 
-            if age - 1 >= 50 and node.getProbValAFF():
-                temp = node.getProbValAFF()
-            elif age - 1 >= 40 and node.getProbValAFR():
-                temp = node.getProbValAFR()
-            elif age - 1 <= 25 and node.getProbValUTF():
-                temp = node.getProbValUTF()
-            elif age - 1 > 25 and node.getProbValATF():
-                temp = node.getProbValATF()
-            elif age - 1 <= 30 and node.getProbValLET():
-                temp = node.getProbValLET()
-            elif age - 1 >= 30 and node.getProbValAT():
-                temp = node.getProbValAT()
-            else:
+
+            try:
+                print '0'
                 temp = node.getProbValUT()
+            except:
+                pass
+            try:
+                print '1'
+                if age - 1 >= 50 and node.getProbValAFF():
+                    temp = node.getProbValAFF()
+            except:
+                pass
+            try:
+                print '2'
+                if age - 1 >= 40 and node.getProbValAFR():
+                    temp = node.getProbValAFR()
+            except:
+                pass
+            try:
+                print '3'
+                if age - 1 > 25 and node.getProbValATF():
+                    temp = node.getProbValATF()
+            except:
+                pass
+            try:
+                print '4'
+                if (age - 1 <= 25) and (node.getProbValUTF()):
+                    temp = node.getProbValUTF()
+            except:
+                pass
+            try:
+                print '5'
+                print node.getProbValLET()
+                if age - 1 <= 30 and node.getProbValLET():
+                    temp = node.getProbValLET()
+            except:
+                pass
+            try:
+                print '6'
+                if age - 1 <= 30 and node.getProbValLET():
+                    temp = node.getProbValLET()
+            except:
+                pass
+            try:
+                print '7'
+                if age - 1 >= 30 and node.getProbValAT():
+                    temp = node.getProbValAT()
+            except:
+                pass
+
+
+            print temp
 
             try:
                 for i in range(0, len(temp)):
@@ -80,6 +118,7 @@ def markovMain(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1,
                 newList.append(i)
 
         newList = trimList(newList)
+
 
         def getCummDict(query):
             try:
@@ -121,21 +160,20 @@ def markovMain(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1,
         cumulativeCost += sumCost(newList, curr_stage, total_stages)
         cumulativeQALY += sumUtility(newList, curr_stage, age, total_stages)
 
-        print '\nCUMM Current Stage:', curr_stage-1, 'Age:', age
-        try:
-            print 'HCC : ', getCummDict('HCC')
-            print 'HCC NH : ', getCummDict('HCC NH')
-            print 'Death HBV: ', getCummDict('Death HBV')
-            print 'Death HBV NH:', getCummDict('Death HBV NH')
-            print 'Cirrhosis: ', cummCirr * cohortPop
-            print 'Cirrhosis NH: ', getCummDict('Cirrhosis NH')
-            print 'Cirrhosis Total:', (cummCirr * cohortPop) + getCummDict('Cirrhosis NH')
-        except:
-            pass
+        # print '\nCUMM Current Stage:', curr_stage-1, 'Age:', age
+        # try:
+        #     print 'HCC : ', getCummDict('HCC')
+        #     print 'HCC NH : ', getCummDict('HCC NH')
+        #     print 'Death HBV: ', getCummDict('Death HBV')
+        #     print 'Death HBV NH:', getCummDict('Death HBV NH')
+        #     print 'Cirrhosis: ', cummCirr * cohortPop
+        #     print 'Cirrhosis NH: ', getCummDict('Cirrhosis NH')
+        #     print 'Cirrhosis Total:', (cummCirr * cohortPop) + getCummDict('Cirrhosis NH')
+        # except:
+        #     pass
 
-        print '\n#######################'
+        # print '\n#######################'
 
-    print Cirrhosis
 
     output = {}
     for i in newList:

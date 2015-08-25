@@ -8,9 +8,8 @@ import gspread
 import json
 from oauth2client.client import SignedJwtAssertionCredentials
 import sys
-from nodes_monitor import *
+from nodes_monitor_e3 import *
 import ssl
-
 
 
 """
@@ -38,30 +37,23 @@ ALT = HBV_DNA = ""
 # Parse through dictionary of questions and answers
 def parse():
 	# json_key = json.load(jsonfile)
+
+	if hasattr(ssl, '_create_unverified_context'):
+		ssl._create_default_https_context = ssl._create_unverified_context
+
 	scope = ['https://spreadsheets.google.com/feeds']
 
 	credentials = SignedJwtAssertionCredentials(jsonfile['client_email'], jsonfile['private_key'], scope)
 
-	print "HELLO"
-
 	gc = gspread.authorize(credentials)
 
-	print "NOT WKS ERROR"
-
 	wks = gc.open("Markov Questions (Responses)").sheet1
-
-
-	print wks
 
 	lowestRow = wks.row_count - 1000 # this is magic don't touch
 
 	arr = []
 	for col in range(1,7):
 		arr.append(wks.cell(lowestRow, col).value)
-	print lowestRow
-
-	print "HORROR:", arr
-
 
 	global g1, g2, g3, answer, age, ALT, HBV_DNA
 	g1 = []

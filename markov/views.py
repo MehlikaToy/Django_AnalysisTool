@@ -5,6 +5,7 @@ from flowchart import *
 from markov_cy import *
 import json
 import decimal
+
 # Create your views here.
 
 def index(request):
@@ -58,7 +59,7 @@ def resultsView(request):
     lt2 = response2['LT']
     
     inputs = "Your " + str(age) + " year old patient "
-    if(int(answer)):              # if no cirrhosis
+    if(answer == 'Yes'):              # if no cirrhosis
         inputs += "has Cirrhosis."
     else:
         inputs += "doesn't have Cirrhosis with a " + ALT + " ALT level and an HBV DNA level that is " + HBV_DNA + '.'

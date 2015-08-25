@@ -113,14 +113,14 @@ class BasicNode(object):
     def getDestStates(self):
         return self.destStates
 
-    def getProbValUTF(self):
-        if self.probValUTF == None:
-            return False
-        else:
-            return self.probValUTF
-
     def getProbValATF(self):
         return self.probValATF
+
+    def getProbValUTF(self):
+        try:
+            return self.probValUTF
+        except:
+            return None
 
     def getProbValUT(self):
         return self.probValUT
@@ -142,9 +142,8 @@ class BasicNode(object):
 
     def nextStage(self,destStates, originVal, probList, cirrIgn, currNode = None):
         temp = []
-
         for i in range(0, len(destStates)):
-            tempNode = destStates[i](originVal * probList[i]) 
+            tempNode = destStates[i](originVal * probList[i])
             temp.append(tempNode)
 
             if tempNode.getID() == currNode.getID():
