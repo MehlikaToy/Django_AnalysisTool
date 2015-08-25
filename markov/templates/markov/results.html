@@ -67,21 +67,21 @@
             var data3_1 = google.visualization.arrayToDataTable(djangoData3_1);
             var djangoData3_2 = {{ deathHBV2|safe }};
             var data3_2 = google.visualization.arrayToDataTable(djangoData3_2);
-            var joinedData3 = google.visualization.data.join(data3_1, data3_2, 'full', [[0, 0]], [1, 2], [1, 2]);
+            var joinedData3 = google.visualization.data.join(data3_1, data3_2, 'full', [[0, 0]], [1,2], [1,2]);
 
 
             var djangoData4_1 = {{ cirrhosis1|safe }};
             var data4_1 = google.visualization.arrayToDataTable(djangoData4_1);
             var djangoData4_2 = {{ cirrhosis2|safe }};
             var data4_2 = google.visualization.arrayToDataTable(djangoData4_2);
-            var joinedData4 = google.visualization.data.join(data4_1, data4_2, 'full', [[0, 0]], [1, 2], [1, 2]);
+            var joinedData4 = google.visualization.data.join(data4_1, data4_2, 'full', [[0, 0]], [2], [2]);
 
 
             var djangoData5_1 = {{ hcc1|safe }};
             var data5_1 = google.visualization.arrayToDataTable(djangoData5_1);
             var djangoData5_2 = {{ hcc2|safe }};
             var data5_2 = google.visualization.arrayToDataTable(djangoData5_2);
-            var joinedData5 = google.visualization.data.join(data5_1, data5_2, 'full', [[0, 0]], [1, 2], [1, 2]);
+            var joinedData5 = google.visualization.data.join(data5_1, data5_2, 'full', [[0, 0]], [2], [2]);
 
 
             var options3 = {
@@ -90,10 +90,8 @@
                     fontSize:26,
                     fontName:'Raleway',
                 },
-                colors: ['#ff7f50','#ff7f50', '#49B7A8', '#49B7A8'],
-                series: {0: {lineDashStyle: [2, 2]},
-                        2: {lineDashStyle: [2, 2]}
-                        },
+                colors: ['#ff7f50','#49B7A8'],
+                
                 width: 400,
                 height: 400,
                 vAxis: {
@@ -114,10 +112,7 @@
                     fontSize:26,
                     fontName:'Raleway',
                 },
-                colors: ['#ff7f50','#ff7f50', '#49B7A8', '#49B7A8'],
-                series: {0: {lineDashStyle: [2, 2]},
-                        2: {lineDashStyle: [2, 2]}
-                        },
+                colors: ['#ff7f50','#49B7A8'],
                 width: 400,
                 height: 400,
                 vAxis: {
@@ -138,10 +133,8 @@
                     fontSize:26,
                     fontName:'Raleway',
                 },
-                colors: ['#ff7f50','#ff7f50', '#49B7A8', '#49B7A8'],
-                series: {0: {lineDashStyle: [2, 2]},
-                        2: {lineDashStyle: [2, 2]}
-                        },
+                colors: ['#ff7f50','#49B7A8'],
+                
                 width: 400,
                 height: 400,
                 vAxis: {
@@ -166,8 +159,8 @@
             chart5.draw(joinedData5, options5);
 
             var table = new google.visualization.Table(document.getElementById('table_div'));
-            table.draw(joinedData3, {showRowNumber: false});
-            console.log(joinedData3);
+            table.draw(joinedData5, {showRowNumber: false});
+            console.log(joinedData5);
         }
     </script>
 </head>

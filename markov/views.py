@@ -13,28 +13,31 @@ def index(request):
 
 from django.shortcuts import render_to_response, RequestContext
 
+# def questionnaire(request):
+#     template = loader.get_template('markov/questionnaire.html')
+#     return render_to_response('markov/questionnaire.html', locals(), context_instance = RequestContext(request))
+
 def questionnaire(request):
-    template = loader.get_template('markov/questionnaire.html')
-    return render_to_response('markov/questionnaire.html', locals(), context_instance = RequestContext(request))
+    template = loader.get_template('markov/form.html')
+    return render_to_response('markov/form.html', locals(), context_instance = RequestContext(request))
+
 
 def resultsView(request):
 
     # returns finalDict from getAPI.py
     # ie. {'How old is your patient?': '38', ... }
-    output = stuff()
 
-    parse(output)
+    parse()
     g1, g2, g3 = getInitNodes()
     age, stage = ageStage()
     answer, ALT, HBV_DNA = cirrALT_DNA()
     print '##############\ng1:'
-    # printList(g1)
-    # response1 = markovMain(age=age, total_stages=stage, initialList=g1)
-    response1 = markovMain(initialList=[Node28(0.5), Node29(0.5)])
+    printList(g1)
+    response1 = markovMain(age=age, initialList=g1)
     # print response1
     print '#############\ng2:'
-    # response2 = markovMain(age=age, total_stages=stage, initialList=g2)
-    response2 = markovMain(initialList=[Node02(0.0), Node04(0.009), Node05(0.017), Node06(0.025), Node26(0.54), Node28(0.07), Node29(0.14), Node30(0.199)])
+    printList(g2)
+    response2 = markovMain(age=age, initialList=g2)
     # print "response 1:",response1
     # print ""
     # print "g2:",g2
