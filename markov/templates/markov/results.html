@@ -114,7 +114,7 @@
                     title:'Year',
                 },
                 legend:{
-                    position:'top',
+                    position:'none',
                     maxLines: 2,
                 }
             };
@@ -135,7 +135,7 @@
                     title:'Year',
                 },
                 legend:{
-                    position:'top',
+                    position:'none',
                     maxLines: 2,
                 }
             };
@@ -157,7 +157,7 @@
                     title:'Year',
                 },
                 legend:{
-                    position:'top',
+                    position:'none',
                     maxLines: 2,
                 }
             };
@@ -172,7 +172,7 @@
             chart5.draw(data2, options5);
 
             var table = new google.visualization.Table(document.getElementById('table_div'));
-            table.draw(dataTable, {showRowNumber: false});
+            table.draw(dataTable, {showRowNumber: false, width: '100%', height: '100%'});
         }
     </script>
 </head>
@@ -243,13 +243,16 @@
             <div id='print-content'>
                 <div class="graph-row">
                     <div id="linechart1"></div>
-                    <div id="linechart2"></div>
+                    <div id="linechart3"></div>
                 </div>
                 <div class="graph-row">
-                    <div id="linechart3"></div>
+                    <div id="linechart2"></div>
                     <div id="linechart4"></div>
                 </div>
-                <div id="table_div"></div>
+                <div>
+                <h2> <span style="color:#49B7A8">Treatment</span>  |  <span style="color:#ff7f50">Natural History</span> </h2>
+                </div>
+                <div width="500px"id="table_div"></div>
             </div>
         </div>
         <br>
@@ -259,6 +262,7 @@
                 <p>{{whoRec}}</p>
             </div>
             <div class="col-lg-8 col-lg-offset-2">
+                <div float=left>
                 <h2> Treatment </h2>
                 <p>
                     <h4>Every 6 Months</h4><p> DETECTION OF HCC (person with cirrhosis or HCC family history).</p>
@@ -267,10 +271,11 @@
                         <h4>Baseline and Every 12 months</h4><p> TOXICITY MONITORING IN PERSONS ON TREATMENT: Renal functiona and risk factors for renal dysfunction</p>
                       
                 </p>
+                </div>
+                <div float=right>
                 <h2> Monitor </h2>
                 <p>All persons with CHB should be monitored regularly for disease activity/progression and detection of HCC, and after stopping treatment for evidence of reactivation. More frequent monitoring maybe required in those with more advanced liver disease, during the first year of treatment or where adherence is a concern, and in those with abnormal ALT and HBV DNA levels >2000 IU/mL, not yet on treatment.</p>
-
-
+                </div>
             </div>
         </div>
     </section>

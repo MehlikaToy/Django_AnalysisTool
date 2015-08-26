@@ -152,6 +152,8 @@ class BasicNode(object):
                 tempNode.guac += tempNode.getOriginValue()
             if tempNode.isCirrhosis and not currNode.isCirrhosis:
                 cirrIgn += tempNode.getOriginValue()
+            if tempNode.getID() == 'Node08':
+                print currNode.getID(), '->', tempNode.getID(), round(tempNode.getOriginValue() * cohortPop, 3)
 
             # DEBUG ONLY
             # if tempNode.isCirrhosis and currNode.isCirrhosis:

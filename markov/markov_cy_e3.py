@@ -45,6 +45,9 @@ def markovMain3(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1
             oldList = newList
             newList = []
 
+        print '##########'
+        print curr_stage
+
         for node in oldList:
 
 
@@ -68,6 +71,7 @@ def markovMain3(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1
                     temp[i] = temp[i] * node.secBranch[i]
             except:
                 pass
+
 
             temp = dVarReplace(temp, age)
             temp = pVarReplace(temp)
@@ -101,6 +105,8 @@ def markovMain3(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1
                     cummDict[node.getVarName()] += node.getOriginValue() * cohortPop
                 except:
                     cummDict[node.getVarName()] = node.getOriginValue() * cohortPop
+
+        print 'HCC is:', getCummDict('HCC')
 
         t_death[1] = round(getCummDict('Death HBV'), 3)
         t_death[2] = round(getCummDict('Death HBV NH'), 3)

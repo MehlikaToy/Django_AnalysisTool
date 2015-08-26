@@ -92,7 +92,7 @@ def parse2():
 
 # Append to g1 and g2 arrays.
 def yesCirr():																	# 1
-	g1.append(Node04(1))
+	g1.append(Node06(1))
 	g2.append(Node30(1))
 
 def getWhoRec():

@@ -82,18 +82,20 @@ def resultsView(request):
         hcc_Final.append([i,hcc2[i+1][2], hcc1[i+1][1]])
         cirrhosis_Final.append([i,cirrhosis2[i+1][2], cirrhosis1[i+1][1]])
     
-    tableArr = [['Stage', 'DeathHBV NH', 'DeathHBV Treatment', 'Liver Cancer NH', 'Liver Cancer Treatment', 'Cirrhosis NH', 'Cirrhosis Treatment']]
+    tableArr = [['Stage', 'DeathHBV NH', 'DeathHBV TM', 'Liver Cancer NH', 'Liver Cancer TM', 'Cirrhosis NH', 'Cirrhosis TM']]
     getStage = 5
     while getStage <= 40:
         tableArr.append([getStage,
-                        deathHBV2[getStage+1][2],
-                        deathHBV1[getStage+1][1],
-                        hcc2[getStage+1][2],
-                        hcc1[getStage+1][1],
-                        cirrhosis2[getStage+1][2],
-                        cirrhosis1[getStage+1][1]]
+                        str(round(deathHBV2[getStage+1][2],2))+"%",
+                        str(round(deathHBV1[getStage+1][1],2))+"%",
+                        str(round(hcc2[getStage+1][2],2))+"%",
+                        str(round(hcc1[getStage+1][1],2))+"%",
+                        str(round(cirrhosis2[getStage+1][2],2))+"%",
+                        str(round(cirrhosis1[getStage+1][1],2))+"%"]
                         )
         getStage = getStage*2
+
+    print tableArr
 
 
     inputs = "Your " + str(age) + " year old patient "
