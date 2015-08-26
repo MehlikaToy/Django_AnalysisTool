@@ -5,4 +5,3 @@ django-toolbelt==0.0.1
 gspread==0.2.5
 oauth2client
 httplib2==0.9.1
-pyOpenSSL==0.15.1

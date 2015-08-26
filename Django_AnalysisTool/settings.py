@@ -45,7 +45,6 @@ INSTALLED_APPS = (
     'gunicorn',
     'gspread',
     'oauth2client',
-    'pyOpenSSL',
     'home',
     'markov',
 )
