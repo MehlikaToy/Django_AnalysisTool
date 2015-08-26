@@ -5,12 +5,22 @@
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Questionnaire</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'markov/css/formStyle.css' %}" />
+    <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,500,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <script type="text/javascript">
+
+      $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();   
+      });
+
 
       var submitted=false;
       var myURL = document.location;
@@ -120,7 +130,7 @@
   
   <body>
     <div id="maincontainer-body">
-
+      <div id="title"><a href="">Decision Tool Questionnaire</a></div>
     <!-- Loads results page when submit button is pressed. -->
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"     
       onload="if(submitted) {window.location=buildURL('results');}">
@@ -135,16 +145,16 @@
 
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_332523929">
-              <div class="ss-q-title">1. What is your patient&#39;s age?</div>
+              <div class="ss-q-number">1. </div><div class="ss-q-title"><p>What is your patient&#39;s age?</p></div>
             </label>
-            <input type="number" name="entry.332523929" value="" id="entry_332523929" aria-label="What is your patient&#39;s age?  Must be a number between 5 and 120" title="Must be a number between 5 and 120">
+            <div class="ss-input"><input type="number" name="entry.332523929" value="" id="entry_332523929" aria-label="What is your patient&#39;s age?  Must be a number between 5 and 120" title="Must be a number between 5 and 120"></div>
           </div><!-- 1st question -->
           </br>
 
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1919644821">
-              <div class="ss-q-title">2. What is your country&#39;s endemicity?</div>
-              <div class="ss-q-help">This is how much your country is struggling.lol</div>
+              <div class="ss-q-number">2. </div><div class="ss-q-title"><p>What is your country&#39;s endemicity?</p></div>
+              <div class="ss-q-help">Indication of country's well-being</div>
             </label>
 
             <ul class="ss-choices" role="radiogroup" aria-label="What is your country&#39;s endemicity?  ">
@@ -165,7 +175,7 @@
 
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1952643675">
-              <div class="ss-q-title">3. Do you have Cirrhosis?</div>
+              <div class="ss-q-number">3. </div><div class="ss-q-title"><p>Do you have <a href='' data-toggle="tooltip" title="Cirrhosis is a disease.">Cirrhosis</a>?</p></div>
               <div class="ss-q-help">If yes, skip the next following questions and press submit.</div>
             </label>
 
@@ -184,7 +194,7 @@
 
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_81417422">
-              <div class="ss-q-title">4. If your patient does not have Cirrhosis, what is your patient&#39;s ALT level?</div>
+              <div class="ss-q-number">4. </div><div class="ss-q-title"><p>If your patient does not have Cirrhosis, what is your patient&#39;s ALT level?</p></div>
               <div class="ss-q-help" dir="auto">ALT = Alanine Aminotransferase ratio index</div>
             </label>
 
@@ -209,7 +219,8 @@
 
 
           <div class="ss-form-entry">
-            <label class="ss-q-item-label" for="entry_1802110371"><div class="ss-q-title">5. What is your patient&#39;s HBV DNA level?</div>
+            <label class="ss-q-item-label" for="entry_1802110371">
+            <div class="ss-q-number">5. </div><div class="ss-q-title"><p>What is your patient&#39;s HBV DNA level?</p></div>
             <div class="ss-q-help" dir="auto">Units in IU/ml.</div></label>
 
             <ul class="ss-choices" role="radiogroup" aria-label="What is your patient&#39;s HBV DNA level?  ">
