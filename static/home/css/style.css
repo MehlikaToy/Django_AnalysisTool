@@ -155,6 +155,7 @@
     height:0;
     display: inline;
     padding:0;
+    margin: auto;
 }
 
 .row{
@@ -170,6 +171,7 @@
     width: 750px;
     display: inline-block;
 }
+
 
 
 @-webkit-keyframes rotate {

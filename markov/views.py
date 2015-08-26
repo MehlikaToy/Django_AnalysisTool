@@ -82,7 +82,7 @@ def resultsView(request):
         hcc_Final.append([i,hcc2[i+1][2], hcc1[i+1][1]])
         cirrhosis_Final.append([i,cirrhosis2[i+1][2], cirrhosis1[i+1][1]])
     
-    tableArr = [['Stage', 'DeathHBV NH', 'DeathHBV TM', 'Liver Cancer NH', 'Liver Cancer TM', 'Cirrhosis NH', 'Cirrhosis TM']]
+    tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx', 'Cirrhosis NH', 'Cirrhosis Rx']]
     getStage = 5
     while getStage <= 40:
         tableArr.append([getStage,
