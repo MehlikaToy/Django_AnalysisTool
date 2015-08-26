@@ -46,6 +46,8 @@ INSTALLED_APPS = (
     'gspread',
     'oauth2client',
     'pyCryto',
+    'pyOpenSSL',
+    'cyptography',
     'home',
     'markov',
 )

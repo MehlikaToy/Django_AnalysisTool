@@ -6,3 +6,5 @@ gspread==0.2.5
 oauth2client
 httplib2==0.9.1
 pyCrypto==2.6.1
+pyOpenSSL==0.14
+cyptography==0.5.4
