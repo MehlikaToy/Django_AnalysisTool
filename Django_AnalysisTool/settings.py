@@ -44,9 +44,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'gunicorn',
     'gspread',
-    'OAuth',
-    'pyCryto',
-    'pyOpenSSL',
+    'oauth2client',
+    'PyCrypto',
+    'PyOpenSSL',
     'home',
     'markov',
 )
