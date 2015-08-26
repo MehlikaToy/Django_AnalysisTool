@@ -18,9 +18,40 @@
     <script type="text/javascript">
 
       $(document).ready(function(){
-          $('[data-toggle="tooltip"]').tooltip();   
-      });
+        //tooltip
+        $('[data-toggle="tooltip"]').tooltip();
 
+        // hide & show questions
+        // var $hiddenQuest = $('#hidden-q');
+        // var $cirrAnswer = document.getElementsByName("entry.1154479602");
+
+        // $(cirrAnswer).click(function () {
+        //   var $thisClicked = $(this);
+        //   console.log("you clicked yes");
+
+        //     // if ($thisClicked.hasClass('nav-active')) {
+        //     //   $thisClicked.removeClass('nav-active');
+        //     //   if(this.id == 'about'){
+        //     //     $aboutDiv.slideUp();  }
+        //     //   else if(this.id == 'social'){
+        //     //     $socialDiv.slideUp(); }
+        //     // else if(this.id == 'works'){
+        //     //     $worksDiv.slideUp();  }
+        //     // }
+        //     // else {
+        //     //     $thisClicked.addClass("nav-active");
+        //     //     if(this.id == 'about'){
+        //     //     $aboutDiv.slideDown();  }
+        //     //   else if(this.id == 'social'){
+        //     //     $socialDiv.slideDown(); }
+        //     // else if(this.id == 'works'){
+        //     //     $worksDiv.slideDown();  }
+        //     // }return false;
+        //   });
+        });
+        
+       // Enable the dropdown behavior
+      
 
       var submitted=false;
       var myURL = document.location;
@@ -81,7 +112,6 @@
           alert("Please enter your patient's age.");
           location.reload();
           document.getElementById("entry_332523929").focus();
-          
           return false;
         }
         else if(parseInt(firstAns)<5){
@@ -125,17 +155,17 @@
       }
       //your validation function ends here
     </script>
-    
   </head>
-  
+
   <body>
     <div id="maincontainer-body">
-      <div id="title"><a href="">Decision Tool Questionnaire</a></div>
+      <div id="title"><a href="">Decision Tool Questionnaire</a><hr></div>
     <!-- Loads results page when submit button is pressed. -->
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"     
       onload="if(submitted) {window.location=buildURL('results');}">
       </iframe>
 
+      <img class="map-img" src="{% static 'markov/img/globalMap.png' %}">
 
       <!-- Everything Google form -->
       <form action="https://docs.google.com/forms/d/1Wn3Z_5TcZ_LQ7Zl2-2ShZtymZMfpr6UTwEi6oxJwhAo/formResponse" method="POST" id="ss-form" onsubmit="return validate()" target="hidden_iframe">
@@ -153,20 +183,20 @@
 
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1919644821">
-              <div class="ss-q-number">2. </div><div class="ss-q-title"><p>What is your country&#39;s endemicity?</p></div>
+              <div class="ss-q-number">2. </div><div class="ss-q-title"><p>What is the <a href='' data-toggle="tooltip" title="Chronic Hep B prevalence rate">endemicity</a> of your patient's country?</p></div>
               <div class="ss-q-help">Indication of country's well-being</div>
             </label>
 
             <ul class="ss-choices" role="radiogroup" aria-label="What is your country&#39;s endemicity?  ">
               <li class="ss-choice-item">
-                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.2009824324" value="High" id="group_2009824324_1" role="radio" class="ss-q-radio" aria-label="High"></span> <span class="ss-choice-label">High</span>
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.2009824324" value="High" id="group_2009824324_1" role="radio" class="ss-q-radio" aria-label="High"></span> <span class="ss-choice-label">High - Intermediate High (>5%)</span>
                 </label>
               </li> 
               <li class="ss-choice-item">
-                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.2009824324" value="Intermediate" id="group_2009824324_2" role="radio" class="ss-q-radio" aria-label="Intermediate"> </span><span class="ss-choice-label">Intermediate</span>
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.2009824324" value="Intermediate" id="group_2009824324_2" role="radio" class="ss-q-radio" aria-label="Intermediate"> </span><span class="ss-choice-label">Intermediate Low (2% - 5%)</span>
                 </label></li> 
               <li class="ss-choice-item">
-                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.2009824324" value="Low" id="group_2009824324_3" role="radio" class="ss-q-radio" aria-label="Low"></span> <span class="ss-choice-label">Low</span>
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.2009824324" value="Low" id="group_2009824324_3" role="radio" class="ss-q-radio" aria-label="Low"></span> <span class="ss-choice-label">Low (<2%)</span>
               </label></li>
             </ul>
           </div><!-- 2nd question -->
@@ -175,7 +205,7 @@
 
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1952643675">
-              <div class="ss-q-number">3. </div><div class="ss-q-title"><p>Do you have <a href='' data-toggle="tooltip" title="Cirrhosis is a disease.">Cirrhosis</a>?</p></div>
+              <div class="ss-q-number">3. </div><div class="ss-q-title"><p>Does your patient have <a href='' data-toggle="tooltip" title="Cirrhosis is a disease.">Cirrhosis</a>?</p></div>
               <div class="ss-q-help">If yes, skip the next following questions and press submit.</div>
             </label>
 
@@ -192,10 +222,10 @@
           </br>
 
 
-          <div class="ss-form-entry">
+          <div class="ss-form-entry" id="hidden-q">
             <label class="ss-q-item-label" for="entry_81417422">
-              <div class="ss-q-number">4. </div><div class="ss-q-title"><p>If your patient does not have Cirrhosis, what is your patient&#39;s ALT level?</p></div>
-              <div class="ss-q-help" dir="auto">ALT = Alanine Aminotransferase ratio index</div>
+              <div class="ss-q-number">4. </div><div class="ss-q-title"><p>If your patient does not have Cirrhosis, what is your patient&#39;s <a href='' data-toggle="tooltip" title="alanine aminotransferase">ALT</a> level?</p></div>
+              <div class="ss-q-help">Abnormal: Under 60 U/L for men & under 38 U/L for women</br>Normal: Under 30 U/L for men & under 19 U/L for women</div>
             </label>
 
             <ul class="ss-choices" role="radiogroup" aria-label="If your patient does not have Cirrhosis, what is your patient&#39;s ALT level? ALT = Alanine Aminotransferase ratio index ">
@@ -218,7 +248,7 @@
           </br>
 
 
-          <div class="ss-form-entry">
+          <div class="ss-form-entry" id="hidden-q">
             <label class="ss-q-item-label" for="entry_1802110371">
             <div class="ss-q-number">5. </div><div class="ss-q-title"><p>What is your patient&#39;s HBV DNA level?</p></div>
             <div class="ss-q-help" dir="auto">Units in IU/ml.</div></label>
