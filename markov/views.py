@@ -99,10 +99,34 @@ def resultsView(request):
 
 
     inputs = "Your " + str(age) + " year old patient "
-    if(answer == 'Yes'):              # if no cirrhosis
+    if(answer == 'Yes'):              # if yes cirrhosis
         inputs += "has Cirrhosis."
+        answer = 1
+        getStage = 5
+        tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx']]
+
+        while getStage <= 40:
+            tableArr.append([getStage,
+                            str(round(deathHBV2[getStage+1][2],2))+"%",
+                            str(round(deathHBV1[getStage+1][1],2))+"%",
+                            str(round(hcc2[getStage+1][2],2))+"%",
+                            str(round(hcc1[getStage+1][1],2))+"%"]
+                            )
+            getStage = getStage*2
     else:
         inputs += "doesn't have Cirrhosis with a " + ALT + " ALT level and an HBV DNA level that is " + HBV_DNA + '.'
+        answer = 0
+        getStage = 5
+        while getStage <= 40:
+            tableArr.append([getStage,
+                            str(round(deathHBV2[getStage+1][2],2))+"%",
+                            str(round(deathHBV1[getStage+1][1],2))+"%",
+                            str(round(hcc2[getStage+1][2],2))+"%",
+                            str(round(hcc1[getStage+1][1],2))+"%",
+                            str(round(cirrhosis2[getStage+1][2],2))+"%",
+                            str(round(cirrhosis1[getStage+1][1],2))+"%"]
+                            )
+            getStage = getStage*2
 
     whoRec = 'Your patient needs ' + getWhoRec()
 
@@ -133,6 +157,7 @@ def resultsView(request):
         'inputStr': inputs,
         'whoRec': whoRec,
         'tableArr': tableArr,
+        'ifCirr': answer,
     }
 
     # dictionary to list

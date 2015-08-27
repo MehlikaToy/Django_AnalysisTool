@@ -201,6 +201,18 @@
 }
 
 
+#who-treatment{
+    border: solid black 3px;
+    padding: 10px;
+    height: 650px;
+}
+
+#who-monitor{
+    border: solid black 3px;
+    padding: 10px;
+    height: 650px;
+}
+
 
 
 

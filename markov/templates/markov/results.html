@@ -184,8 +184,10 @@
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
             chart3.draw(data1, options3);
 
-            var chart4 = new google.visualization.LineChart(document.getElementById('linechart2'));
-            chart4.draw(data3, options4);
+            if({{ ifCirr }} == 0){
+                var chart4 = new google.visualization.LineChart(document.getElementById('linechart2'));
+                chart4.draw(data3, options4);
+            }
 
             var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
             chart5.draw(data2, options5);
@@ -194,13 +196,14 @@
                 dataTable.setCell(y,0,String(djangoDataTable[y+1][0]),null,{'style': ' font-size:20px;'})
             }
 
-            for (j = 1; j < 7; j += 2){
+
+            for (j = 1; j < djangoDataTable.length; j += 2){
                 for (i = 0; i < 4; i++) { 
                     dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: rgba(255,127,80,0.7); font-size:18px;'})
                 }
             }
 
-            for (j = 2; j < 7; j += 2){
+            for (j = 2; j < djangoDataTable.length; j += 2){
                 for (i = 0; i < 4; i++) { 
                     dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: #49b7a8; font-size:18px;'})
                 }
@@ -287,21 +290,21 @@
                         <div id="linechart4"></div>
                     </div>
                     <div>
-                        <h2> <span style="color:#ff7f50">Natural History</span> | <span style="color:#49B7A8">Treatment</span> </h2>
+                        <h2 style="padding-top:75px;"> <span style="color:#ff7f50">Natural History</span> | <span style="color:#49B7A8">Treatment</span> </h2>
                     </div>
                     <div style= "width: 800px; height: 350px;"id="table_div"></div>
                 </div>
             </div>
             <br>
             <h2 style="margin-top: 75px;">World Health Organization's Recommendation</h2>
-            <div id="user-input">
+            <div id="user-input" style="padding-bottom: 50px;">
                 <p>{{whoRec}}</p>
             </div>
             <div style="width: 80%; display: table; margin: 0 auto">
                 <div style="display: table-row">
                     <div style="width: 50%; display: table-cell; padding-right: 25px">
-                        <div id = 'who-treatment' >
-                        <h3 style = 'color: #49b7a8'> Treatment </h3>
+                        <div id='who-treatment'>
+                        <h3 style = 'color: #49b7a8; padding-top: 10px;padding-bottom: 20px;'> Treatment </h3>
                         <p>
                             <h4 align="left">Every 6 Months</h4><p align='left'> DETECTION OF HCC (person with cirrhosis or HCC family history).</p>
                             <h4 align='left'>Every 12 Months</h4><p align='left'> DISEASE PROGRESSION AND/OR TREATMENT RESPONSE IN ALL<br> Adherence at each visit, if on treatment<br> ALT, HBV DNA and HBeAg<br> Clinical criteria and NITs (APRI in adults or FibroScan)</p>
@@ -312,7 +315,7 @@
                     </div>
                     <div style="display: table-cell; padding-left 25px;">
                         <div id = 'who-monitor' >
-                        <h3 style = 'color: #49b7a8'> Monitor </h3>
+                        <h3 style = 'color: #49b7a8; padding-top: 10px;padding-bottom: 20px;'> Monitor </h3>
                         <p align="left">All persons with CHB should be monitored regularly for disease activity/progression and detection of HCC, and after stopping treatment for evidence of reactivation. </p>
                         <p align="left">More frequent monitoring maybe required in those with more advanced liver disease, during the first year of treatment or where adherence is a concern, and in those with abnormal ALT and HBV DNA levels >2000 IU/mL, not yet on treatment.</p>
                         </div>
