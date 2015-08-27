@@ -82,20 +82,20 @@ def resultsView(request):
         hcc_Final.append([i,hcc2[i+1][2], hcc1[i+1][1]])
         cirrhosis_Final.append([i,cirrhosis2[i+1][2], cirrhosis1[i+1][1]])
     
-    tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx', 'Cirrhosis NH', 'Cirrhosis Rx']]
-    getStage = 5
-    while getStage <= 40:
-        tableArr.append([getStage,
-                        str(round(deathHBV2[getStage+1][2],2))+"%",
-                        str(round(deathHBV1[getStage+1][1],2))+"%",
-                        str(round(hcc2[getStage+1][2],2))+"%",
-                        str(round(hcc1[getStage+1][1],2))+"%",
-                        str(round(cirrhosis2[getStage+1][2],2))+"%",
-                        str(round(cirrhosis1[getStage+1][1],2))+"%"]
-                        )
-        getStage = getStage*2
+    # tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx', 'Cirrhosis NH', 'Cirrhosis Rx']]
+    # getStage = 5
+    # while getStage <= 40:
+    #     tableArr.append([getStage,
+    #                     str(round(deathHBV2[getStage+1][2],2))+"%",
+    #                     str(round(deathHBV1[getStage+1][1],2))+"%",
+    #                     str(round(hcc2[getStage+1][2],2))+"%",
+    #                     str(round(hcc1[getStage+1][1],2))+"%",
+    #                     str(round(cirrhosis2[getStage+1][2],2))+"%",
+    #                     str(round(cirrhosis1[getStage+1][1],2))+"%"]
+    #                     )
+    #     getStage = getStage*2
 
-    print tableArr
+    # print tableArr
 
 
     inputs = "Your " + str(age) + " year old patient "
@@ -104,7 +104,6 @@ def resultsView(request):
         answer = 1
         getStage = 5
         tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx']]
-
         while getStage <= 40:
             tableArr.append([getStage,
                             str(round(deathHBV2[getStage+1][2],2))+"%",
@@ -117,6 +116,7 @@ def resultsView(request):
         inputs += "doesn't have Cirrhosis with a " + ALT + " ALT level and an HBV DNA level that is " + HBV_DNA + '.'
         answer = 0
         getStage = 5
+        tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx', 'Cirrhosis NH', 'Cirrhosis Rx']]
         while getStage <= 40:
             tableArr.append([getStage,
                             str(round(deathHBV2[getStage+1][2],2))+"%",
