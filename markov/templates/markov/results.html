@@ -334,15 +334,25 @@
                 <p>Feel free to <a href="mailto:research.cs.alc@gmail.com" target="_blank">email</a> us to provide some feedback!</p>
                 <div style="padding-bottom: 20px;">
                     <form action="MAILTO:research.cs.alc@gmail.com" method="post" enctype="text/plain">
-                        Name:<br>
-                    <input type="text" name="name" value=""><br>
-                        E-mail:<br>
-                    <input type="text" name="mail" value=""><br>
+                        Name:
+                    <input type="text" name="name" value=""><br><br>
+                        E-mail:
+                    <input type="text" name="mail" value=""><br><br>
                         Comment:<br>
-                    <input type="text" name="comment" value="" size="50"><br><br>
-                    <input type="submit" value="Send">
-                    <input type="reset" value="Reset">
+                    <textarea rows="5" cols="50" name="comment" id="comment"></textarea>
+                    <br><br>
+                    <input class="btn btn-default btn-lg" type="submit" value="Send">
                     </form>
+    <!--                 <form id="contact_form" method="post"> {% csrf_token %}
+                        <input type="text" name="name" id="name" value="Your name">
+                        <br>
+                        <input type="text" name="email" id="email" value="Your e-mail">
+                        <br>
+                        <textarea rows="5" cols="50" name="message" id="message">Your message</textarea>
+                        <br>
+                        <input type="submit" name="Submit" value="Send" id="submit_button" class="unselectable">
+                        <span id="feedback"></span>
+                    </form>   -->                      
                 </div>
                 <ul class="list-inline banner-social-buttons">
                     <li>
