@@ -299,21 +299,21 @@
             <div id="user-input" style="padding-bottom: 50px;">
                 <p>{{whoRec}}</p>
             </div>
-            <div style="width: 80%; display: table; margin: 0 auto">
+            <div style="width: 80%; display: table; margin: 0 auto; border-collapse: separate; border-spacing: 10px;">
                 <div style="display: table-row">
-                    <div style="width: 50%; display: table-cell; padding-right: 25px">
-                        <div id='who-treatment'>
+                    <div id='who-row' style="width: 50%; display: table-cell; padding-right: 25px">
+                        <div>
                         <h3 style = 'color: #49b7a8; padding-top: 10px;padding-bottom: 20px;'> Treatment </h3>
                         <p>
                             <h4 align="left">Every 6 Months</h4><p align='left'> DETECTION OF HCC (person with cirrhosis or HCC family history).</p>
                             <h4 align='left'>Every 12 Months</h4><p align='left'> DISEASE PROGRESSION AND/OR TREATMENT RESPONSE IN ALL<br> Adherence at each visit, if on treatment<br> ALT, HBV DNA and HBeAg<br> Clinical criteria and NITs (APRI in adults or FibroScan)</p>
-                            <h4 align='left'>Baseline and Every 12 months</h4><p align='left'> TOXICITY MONITORING IN PERSONS ON TREATMENT: Renal functiona and risk factors for renal dysfunction</p>
+                            <h4 align='left'>Baseline and Every 12 months</h4><p align='left'> TOXICITY MONITORING IN PERSONS ON TREATMENT: Renal function and risk factors for renal dysfunction</p>
                               
                         </p>
                         </div>
                     </div>
-                    <div style="display: table-cell; padding-left 25px;">
-                        <div id = 'who-monitor' >
+                    <div id = 'who-row' style="display: table-cell; padding-left 25px;">
+                        <div>
                         <h3 style = 'color: #49b7a8; padding-top: 10px;padding-bottom: 20px;'> Monitor </h3>
                         <p align="left">All persons with CHB should be monitored regularly for disease activity/progression and detection of HCC, and after stopping treatment for evidence of reactivation. </p>
                         <p align="left">More frequent monitoring maybe required in those with more advanced liver disease, during the first year of treatment or where adherence is a concern, and in those with abnormal ALT and HBV DNA levels >2000 IU/mL, not yet on treatment.</p>
@@ -332,6 +332,18 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact The Asian Liver Center</h2>
                 <p>Feel free to <a href="mailto:research.cs.alc@gmail.com" target="_blank">email</a> us to provide some feedback!</p>
+                <div style="padding-bottom: 20px;">
+                    <form action="MAILTO:research.cs.alc@gmail.com" method="post" enctype="text/plain">
+                        Name:<br>
+                    <input type="text" name="name" value=""><br>
+                        E-mail:<br>
+                    <input type="text" name="mail" value=""><br>
+                        Comment:<br>
+                    <input type="text" name="comment" value="" size="50"><br><br>
+                    <input type="submit" value="Send">
+                    <input type="reset" value="Reset">
+                    </form>
+                </div>
                 <ul class="list-inline banner-social-buttons">
                     <li>
                         <a href="https://twitter.com/asianliverctr" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
