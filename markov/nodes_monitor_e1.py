@@ -325,6 +325,11 @@ def getCost(varName, stage):
     "Death Other NH" : 0,                                                                              #35
     "HBsAg + Monitor" : cMonitor / math.pow(1 + discountC, stage)                                      #36
     }
+
+    if p_monitor != 0:
+        dic["HBsAg +"] = cMonitor  / math.pow(1 + discountC, stage)
+        dic["HBeAg SeroconversionNH"] = 0
+
     if str(varName) in dic.keys():
         return dic[str(varName)]
 
