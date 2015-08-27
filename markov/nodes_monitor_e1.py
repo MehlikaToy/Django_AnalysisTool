@@ -150,6 +150,7 @@ class BasicNode(object):
                 tempNode.guac += tempNode.getOriginValue()
             if tempNode.isCirrhosis and not currNode.isCirrhosis:
                 cummCirr += tempNode.getOriginValue()
+                
         return temp, cummCirr
 
 

@@ -143,15 +143,14 @@ class BasicNode(object):
 
     def nextStage(self,destStates, originVal, probList, cirrIgn, currNode = None):
         temp = []
-
         for i in range(0, len(destStates)):
             tempNode = destStates[i](originVal * probList[i]) 
             temp.append(tempNode)
-
             if tempNode.getID() == currNode.getID():
                 tempNode.guac += tempNode.getOriginValue()
-            if tempNode.isCirrhosis and currNode.isCirrhosis and tempNode.getID() != currNode.getID():
+            if tempNode.isCirrhosis and not currNode.isCirrhosis:
                 cirrIgn += tempNode.getOriginValue()
+                
         return temp, cirrIgn
 
 

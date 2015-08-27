@@ -147,23 +147,10 @@ class BasicNode(object):
         for i in range(0, len(destStates)):
             tempNode = destStates[i](originVal * probList[i])
             temp.append(tempNode)
-
             if tempNode.getID() == currNode.getID():
                 tempNode.guac += tempNode.getOriginValue()
             if tempNode.isCirrhosis and not currNode.isCirrhosis:
                 cirrIgn += tempNode.getOriginValue()
-            if tempNode.getID() == 'Node08':
-                print currNode.getID(), '->', tempNode.getID(), round(tempNode.getOriginValue() * cohortPop, 3)
-
-            # DEBUG ONLY
-            # if tempNode.isCirrhosis and currNode.isCirrhosis:
-            #     print "C_IGN", currNode.getID(), '->', tempNode.getID(), round(tempNode.getOriginValue() * cohortPop, 3)
-            # elif tempNode.getID() == currNode.getID():
-            #     print "N_RPT", currNode.getID(), '->', tempNode.getID(), round(tempNode.getOriginValue() * cohortPop, 3)
-            # elif tempNode.isCirrhosis and not currNode.isCirrhosis:
-            #     print '^^^^^', currNode.getID(), '->', tempNode.getID(), round(tempNode.getOriginValue() * cohortPop, 3)
-            # else:
-            #     print "     ", currNode.getID(), '->', tempNode.getID(), round(tempNode.getOriginValue() * cohortPop, 3)
 
         return temp, cirrIgn
 
