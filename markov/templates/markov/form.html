@@ -14,7 +14,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
     <script type="text/javascript">
 
       $(document).ready(function(){
@@ -25,33 +24,27 @@
         // var $hiddenQuest = $('#hidden-q');
         // var $cirrAnswer = document.getElementsByName("entry.1154479602");
 
-        // $(cirrAnswer).click(function () {
-        //   var $thisClicked = $(this);
-        //   console.log("you clicked yes");
-
-        //     // if ($thisClicked.hasClass('nav-active')) {
-        //     //   $thisClicked.removeClass('nav-active');
-        //     //   if(this.id == 'about'){
-        //     //     $aboutDiv.slideUp();  }
-        //     //   else if(this.id == 'social'){
-        //     //     $socialDiv.slideUp(); }
-        //     // else if(this.id == 'works'){
-        //     //     $worksDiv.slideUp();  }
-        //     // }
-        //     // else {
-        //     //     $thisClicked.addClass("nav-active");
-        //     //     if(this.id == 'about'){
-        //     //     $aboutDiv.slideDown();  }
-        //     //   else if(this.id == 'social'){
-        //     //     $socialDiv.slideDown(); }
-        //     // else if(this.id == 'works'){
-        //     //     $worksDiv.slideDown();  }
-        //     // }return false;
-        //   });
+        $('input:radio[name="entry.2009824324"]').change(function(){
+          $('.first-q').addClass('.age-q');
+          $('.age-q').slideDown();
         });
-        
-       // Enable the dropdown behavior
-      
+
+        $('#entry_332523929').on('input',function(){
+          $('.age-q').addClass('.cirr-q');
+          $('.cirr-q').slideDown();
+        });
+
+        $('input:radio[name="entry.1154479602"]').change(function(){
+          if($(this).val() == 'No'){
+            console.log("you clicked yes");
+            $('.cirr-q').addClass('.hidden-class');
+            $('.hidden-class').slideDown();
+          } else{
+            $('.hidden-class').slideUp();
+          }
+        });
+      });
+      // Enable the dropdown behavior
 
       var submitted=false;
       var myURL = document.location;
@@ -60,20 +53,20 @@
         return myURL + params;
       }
 
-      function validate()
-      {
-
-        var firstAns = document.getElementById("entry_332523929").value;
-        var secondAns = document.getElementsByName("entry.2009824324");
-        for(var i=0; i<secondAns.length; i++){
-          if(secondAns[i].checked){
-            secondAns = secondAns[i].value;
+      function validate(){
+        var firstAns = document.getElementsByName("entry.2009824324");
+        
+        for(var i=0; i<firstAns.length; i++){
+          if(firstAns[i].checked){
+            firstAns = firstAns[i].value;
             break;
           }
-          else if (i == secondAns.length-1)
-            secondAns = ""
+          else if (i == firstAns.length-1)
+            firstAns = ""
         }
-        console.log(secondAns);
+        console.log(firstAns);
+
+        var secondAns = document.getElementById("entry_332523929").value;
 
         var thirdAns = document.getElementsByName("entry.1154479602");
         for(var i=0; i<thirdAns.length; i++){
@@ -173,18 +166,11 @@
       <div class="ss-form">
         <ol role="list" class="ss-question-list" style="padding-left: 0">
 
-          <div class="ss-form-entry">
-            <label class="ss-q-item-label" for="entry_332523929">
-              <div class="ss-q-number">1. </div><div class="ss-q-title"><p>What is your patient&#39;s age?</p></div>
-            </label>
-            <div class="ss-input"><input type="number" name="entry.332523929" value="" id="entry_332523929" aria-label="What is your patient&#39;s age?  Must be a number between 5 and 120" title="Must be a number between 5 and 120"></div>
-          </div><!-- 1st question -->
-          </br>
-
+        <div class="first-q">
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1919644821">
-              <div class="ss-q-number">2. </div><div class="ss-q-title"><p>What is the <a href='' data-toggle="tooltip" title="Chronic Hep B prevalence rate">endemicity</a> of your patient's country?</p></div>
-              <div class="ss-q-help">Indication of country's well-being</div>
+              <div class="ss-q-number">1. </div><div class="ss-q-title"><p>What is the <a href='' data-toggle="tooltip" title="Chronic Hep B prevalence rate">endemicity</a> of your patient's country?</p></div>
+              <div class="ss-q-help">Refer to the map above for reference.</div>
             </label>
 
             <ul class="ss-choices" role="radiogroup" aria-label="What is your country&#39;s endemicity?  ">
@@ -199,14 +185,24 @@
                 <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.2009824324" value="Low" id="group_2009824324_3" role="radio" class="ss-q-radio" aria-label="Low"></span> <span class="ss-choice-label">Low (<2%)</span>
               </label></li>
             </ul>
+          </div><!-- 1st question -->
+        </div>
+        </br>
+
+        <div class="age-q" style="display:none;">
+          <div class="ss-form-entry">
+            <label class="ss-q-item-label" for="entry_332523929">
+              <div class="ss-q-number">2. </div><div class="ss-q-title"><p>What is your patient&#39;s age?</p></div>
+            </label>
+            <div class="ss-input"><input type="number" name="entry.332523929" value="" id="entry_332523929" aria-label="What is your patient&#39;s age?  Must be a number between 5 and 120" title="Must be a number between 5 and 120"></div>
           </div><!-- 2nd question -->
-          </br>
+        </div>
+        </br>
 
-
+        <div class="cirr-q" style="display:none;">
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1952643675">
               <div class="ss-q-number">3. </div><div class="ss-q-title"><p>Does your patient have <a href='' data-toggle="tooltip" title="Cirrhosis is a disease.">Cirrhosis</a>?</p></div>
-              <div class="ss-q-help">If yes, skip the next following questions and press submit.</div>
             </label>
 
             <ul class="ss-choices" role="radiogroup" aria-label="Do you have Cirrhosis? If yes, skip the next following questions and submit. ">
@@ -219,10 +215,11 @@
               </li>
             </ul>
           </div><!-- 3rd question -->
-          </br>
+        </div>
+        </br>
 
-
-          <div class="ss-form-entry" id="hidden-q">
+        <div class="hidden-class" style="display:none;">
+          <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_81417422">
               <div class="ss-q-number">4. </div><div class="ss-q-title"><p>If your patient does not have Cirrhosis, what is your patient&#39;s <a href='' data-toggle="tooltip" title="alanine aminotransferase">ALT</a> level?</p></div>
               <div class="ss-q-help">Abnormal: Under 60 U/L for men & under 38 U/L for women</br>Normal: Under 30 U/L for men & under 19 U/L for women</div>
@@ -248,25 +245,26 @@
           </br>
 
 
-          <div class="ss-form-entry" id="hidden-q">
+          <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1802110371">
             <div class="ss-q-number">5. </div><div class="ss-q-title"><p>What is your patient&#39;s HBV DNA level?</p></div>
-            <div class="ss-q-help" dir="auto">Units in IU/ml.</div></label>
+            <div class="ss-q-help" dir="auto">Units in IU/mL.</div></label>
 
             <ul class="ss-choices" role="radiogroup" aria-label="What is your patient&#39;s HBV DNA level?  ">
               <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1142656701" value="&gt;20,000 IU/ml" id="group_1142656701_1" role="radio" class="ss-q-radio" aria-label="&gt;20,000 IU/ml"></span>
-                <span class="ss-choice-label">&gt;20,000 IU/ml</span></label>
+                <span class="ss-choice-label">&gt;20,000 IU/mL</span></label>
               </li> 
 
               <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1142656701" value="2000-20,000 IU/ml" id="group_1142656701_2" role="radio" class="ss-q-radio" aria-label="2000-20,000 IU/ml"></span>
-                <span class="ss-choice-label">2000-20,000 IU/ml</span></label>
+                <span class="ss-choice-label">2000-20,000 IU/mL</span></label>
               </li> 
 
               <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1142656701" value="&lt;2000 IU/ml" id="group_1142656701_3" role="radio" class="ss-q-radio" aria-label="&lt;2000 IU/ml"></span>
-                <span class="ss-choice-label">&lt;2000 IU/ml</span></label>
+                <span class="ss-choice-label">&lt;2000 IU/mL</span></label>
               </li>
             </ul>
           </div><!-- 5th question -->
+          </div>
 
           <div class="ss-item ss-navigate"><table id="navigation-table"><tbody><tr><td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
             <input type="submit" name="submit" value="Submit" id="ss-submit" class="jfk-button jfk-button-action "></td></tr></tbody></table>
