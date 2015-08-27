@@ -150,7 +150,7 @@ class BasicNode(object):
                 tempNode.guac += tempNode.getOriginValue()
             if tempNode.isCirrhosis and not currNode.isCirrhosis:
                 cirrIgn += tempNode.getOriginValue()
-                
+
         return temp, cirrIgn
 
 
@@ -495,10 +495,7 @@ class Node02(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "HBsAg +"
-        if (p_monitor == 0):
-            self.destStates = [Node26, Node26]
-        else:
-            self.destStates = [Node36    , Node26]
+        self.destStates = [Node36    ,       Node26]
         self.probValUT =  [p_monitor      ,    1 - p_monitor]
 
 class Node03(BasicNode):
@@ -513,7 +510,6 @@ class Node03(BasicNode):
         self.probValAT =  [pVar  , 0.007 , 0.038 , 0.038 ,  dVar]
         self.probValAFR = [pVar  , 0.003 , 0.086 , 0.086 ,  dVar]
         self.secBranch =  [1     , 1     , p_adherence , 1 - p_adherence  ,  1]
-
 
 
 class Node04(BasicNode):
@@ -864,5 +860,3 @@ class Node36(BasicNode):
         self.probValAT =  [0.0107, 0.0143 , 0.00049, 0.00167 , dVar  ,  pVar ]
         self.probValAFR = [0.0165, 0.0278 , 0.00068, 0.00167 , dVar  ,  pVar ]
         self.probValAFF = [0.0183, 0.0202 , 0.00150, 0.00167 , dVar  ,  pVar ]
-
-
