@@ -115,7 +115,10 @@ class BasicNode(object):
         return self.destStates
 
     def getProbValUTF(self):
-        return self.probValUTF
+        try:
+            return self.probValUTF
+        except:
+            return None
 
     def getProbValATF(self):
         return self.probValATF

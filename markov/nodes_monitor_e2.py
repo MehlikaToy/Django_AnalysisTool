@@ -115,7 +115,10 @@ class BasicNode(object):
         return self.destStates
 
     def getProbValUTF(self):
-        return self.probValUTF
+        try:
+            return self.probValUTF
+        except:
+            return None
 
     def getProbValATF(self):
         return self.probValATF
@@ -511,6 +514,8 @@ class Node03(BasicNode):
         self.probValAT =  [pVar  , 0.007 , 0.038 , 0.038 ,  dVar]
         self.probValAFR = [pVar  , 0.003 , 0.086 , 0.086 ,  dVar]
         self.secBranch =  [1     , 1     , p_adherence , 1 - p_adherence  ,  1]
+
+
 
 class Node04(BasicNode):
 
