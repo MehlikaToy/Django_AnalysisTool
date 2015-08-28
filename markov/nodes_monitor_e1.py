@@ -149,7 +149,7 @@ class BasicNode(object):
             if tempNode.getID() == currNode.getID():
                 tempNode.guac += tempNode.getOriginValue()
             if tempNode.isCirrhosis and not currNode.isCirrhosis:
-                cummCirr += tempNode.getOriginValue()
+                cirrIgn += tempNode.getOriginValue()
                 
         return temp, cummCirr
 
