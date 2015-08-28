@@ -223,6 +223,12 @@
             var table = new google.visualization.Table(document.getElementById('table_div'));
             table.draw(dataTable, optionsTable);
         }
+
+        $('#mailform').submit(function(){
+            var formAction = $("#selectmail").val() == "technical" ? "research.cs.alc@gmail.com" : "mtoy@stanford.edu";
+            $("#mailform").attr("action", "MAILTO:" + formAction);
+        }); 
+
     </script>
 </head>
 
@@ -340,8 +346,14 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>Contact The Asian Liver Center</h2>
                 <p>Feel free to <a href="mailto:research.cs.alc@gmail.com" target="_blank">email</a> us to provide some feedback!</p>
-                <div style="padding-bottom: 20px;">
-                    <form action="MAILTO:research.cs.alc@gmail.com" method="post" enctype="text/plain">
+                <p>For suggestions on how to improve the site, please select technical.</p>
+                <p>For questions about the data or model, please select clinical</p>
+                <div style="padding-bottom: 20px;">   
+                    <select id ="selectmail" name="email">
+                        <option value="technical">Technical</option>
+                        <option value="clinical">Clinical</option>
+                    </select> <br><br>
+                    <form id="mailform" action="MAILTO:mtoy@stanford.edu" method="post" enctype="text/plain">
                         Name:
                     <input type="text" name="name" value=""><br><br>
                         E-mail:
