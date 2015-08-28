@@ -43,6 +43,20 @@
 
     <script type="text/javascript">
 
+
+
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            console.log(printContents)
+            w=window.open();
+            w.document.write("<html><head><title>Print Page</title>");
+            w.document.write('</head><body>');
+            w.document.write(printContents);
+            w.document.write('</body></html>');
+            w.print();
+            w.close();
+        }       
+
         // function PrintDiv() {    
         //     var divToPrint = document.getElementById('divToPrint');
         //     var popupWin = window.open('', '_blank', 'width=300,height=300');
@@ -51,39 +65,37 @@
         //     popupWin.document.close();
         // }
 
-        function PrintElem(elem){
-            Popup($(elem).html());
-        }
+        // function PrintElem(elem){
+        //     Popup($(elem).html());
+        // }
 
-        function Popup(data){
-            var mywindow = window.open('', 'my div');
-            mywindow.document.write('<html><head><title>Print Page</title>');
+        // function Popup(data){
+        //     var mywindow = window.open('', 'my div');
+        //     mywindow.document.write('<html><head><title>Print Page</title>');
 
-            /*optional stylesheet*/ 
-            // mywindow.document.write(" <link rel='stylesheet' type='text/css' href='{% static 'home/css/bootstrap.min.css' %}' />");
+        //     /*optional stylesheet*/ 
+        //     // mywindow.document.write(" <link rel='stylesheet' type='text/css' href='{% static 'home/css/bootstrap.min.css' %}' />");
 
-            // mywindow.document.write("<link rel='stylesheet' type='text/css' href='{% static 'home/css/grayscale.css' %}' />");
+        //     // mywindow.document.write("<link rel='stylesheet' type='text/css' href='{% static 'home/css/grayscale.css' %}' />");
 
-            // mywindow.document.write("<link href='{% static 'home/font-awesome/css/font-awesome.min.css' %}' rel='stylesheet' type='text/css'>");
+        //     // mywindow.document.write("<link href='{% static 'home/font-awesome/css/font-awesome.min.css' %}' rel='stylesheet' type='text/css'>");
 
-            mywindow.document.write(""+
-                                    ""+
-                                    "")
+        //     mywindow.document.write("<div id="linechart1"></div>")
 
-            console.log(data)
+        //     console.log(data)
 
-            mywindow.document.write('</head><body >');
-            mywindow.document.write(data);
-            mywindow.document.write('</body></html>');
+        //     mywindow.document.write('</head><body >');
+        //     mywindow.document.write(data);
+        //     mywindow.document.write('</body></html>');
 
-            mywindow.document.close(); // necessary for IE >= 10
-            mywindow.focus(); // necessary for IE >= 10
+        //     mywindow.document.close(); // necessary for IE >= 10
+        //     mywindow.focus(); // necessary for IE >= 10
 
-            mywindow.print();
-            mywindow.close();
+        //     mywindow.print();
+        //     mywindow.close();
 
-            return true;
-        }
+        //     return true;
+        // }
 
         // Load the Visualization API and the piechart package.
         google.load('visualization', '1.0', {'packages':['corechart']});
@@ -322,7 +334,7 @@
 
     <section id="Contact" class="container content-section text-center">
         <div>
-            <input type="button" class="btn btn-square" value="Print" onclick="PrintElem('#divToPrint')" />
+            <input type="button" class="btn btn-square" value="Print" onclick="printDiv('divToPrint')" />
         </div>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2">
@@ -338,17 +350,7 @@
                     <textarea rows="5" cols="50" name="comment" id="comment"></textarea>
                     <br><br>
                     <input class="btn btn-default btn-lg" type="submit" value="Send">
-                    </form>
-    <!--                 <form id="contact_form" method="post"> {% csrf_token %}
-                        <input type="text" name="name" id="name" value="Your name">
-                        <br>
-                        <input type="text" name="email" id="email" value="Your e-mail">
-                        <br>
-                        <textarea rows="5" cols="50" name="message" id="message">Your message</textarea>
-                        <br>
-                        <input type="submit" name="Submit" value="Send" id="submit_button" class="unselectable">
-                        <span id="feedback"></span>
-                    </form>   -->                      
+                    </form>                    
                 </div>
                 <ul class="list-inline banner-social-buttons">
                     <li>

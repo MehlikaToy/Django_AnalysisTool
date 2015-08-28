@@ -37,6 +37,7 @@ def resultsView(request):
     answer, ALT, HBV_DNA = cirrALT_DNA()
 
 
+
     if endemicity == 1:
         response1 = markovMain1(age=age, initialList=g1)
     elif endemicity == 2:
@@ -138,9 +139,9 @@ def resultsView(request):
     # hcc3 = []
     # lt3 = []
 
-    print json.dumps(deathHBV1)
-    print '#####'
-    print json.dumps(deathHBV_Final)
+    # print json.dumps(deathHBV1)
+    # print '#####'
+    # print json.dumps(deathHBV_Final)
 
     dumpDict = {
         'deathHBV_Final': json.dumps(deathHBV_Final),
