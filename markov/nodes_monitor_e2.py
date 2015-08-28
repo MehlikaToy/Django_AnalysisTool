@@ -544,6 +544,7 @@ class Node06(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "Cirrhosis"
+        self.isCirrhosis = True
         self.destStates = [Node14, Node30, Node24]
         self.probValUT =  [pVar  , pVar  , dVar]
         self.secBranch =  [p_adherence  , 1 - p_adherence  , 1 ]
@@ -624,6 +625,7 @@ class Node14(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "Cirrhosis Initial Rx"
+        self.isCirrhosis = True
         self.destStates = [Node10, Node15, Node08, Node24]
         self.probValUT =  [0.22  , pVar  , 0.009 , dVar]
 
@@ -634,6 +636,7 @@ class Node15(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "Cirrhosis Long Term Rx"
+        self.isCirrhosis = True
         self.destStates = [Node10, Node15, Node16, Node07, Node08, Node23, Node24]
         self.probValUT =  [0.27  , pVar  , 0.01  , 0.0071, 0.0167, 0.0239, dVar]
 
@@ -644,6 +647,7 @@ class Node16(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "Cirrhosis Long Term Rx with resistance"
+        self.isCirrhosis = True
         self.destStates = [Node10, Node16, Node07, Node08, Node23, Node24]
         self.probValUT =  [0.05  , pVar  , 0.079 , 0.018 , 0.0478, dVar]
 
@@ -684,6 +688,7 @@ class Node20(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "Cirrhosis e- initial Rx"
+        self.isCirrhosis = True
         self.destStates = [Node10, Node21, Node08, Node24]
         self.probValUT =  [0.11  ,   pVar, 0.015,   dVar]
 
@@ -694,6 +699,7 @@ class Node21(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "Cirrhosis e- longterm Rx"
+        self.isCirrhosis = True
         self.destStates = [Node10, Node21, Node22, Node07, Node08, Node23, Node24]
         self.probValUT =  [0.11  ,   pVar,   0.01, 0.0071, 0.0167, 0.0239,   dVar]
 
@@ -704,6 +710,7 @@ class Node22(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "Cirrhosis e- longterm Rx with resistance"
+        self.isCirrhosis = True
         self.destStates = [Node10, Node22, Node07, Node08, Node23, Node24]
         self.probValUT =  [0.005 ,   pVar,  0.079,  0.029, 0.0478,   dVar]
 
@@ -795,6 +802,7 @@ class Node30(BasicNode):
         self.ID = type(self).__name__
         self.originValue = OV
         self.varName = "Cirrhosis NH"
+        self.isCirrhosis = True
         self.destStates = [Node30, Node31, Node32, Node34, Node35]
         self.probValUT =  [pVar  , 0.039 , 0.018  , 0.0555, dVar]
 
