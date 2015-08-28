@@ -5,8 +5,6 @@ Markov Model Emulator of Hepatitis B
 '''
 
 
-# from nodes_monitor_e1 import *
-# from nodes_monitor_e2 import *
 from nodes_monitor_e3 import *
 
 def markovMain3(age = 49, total_stages = 40, endemicity = 3, stage_timeFrame = 1, initialList=[]):

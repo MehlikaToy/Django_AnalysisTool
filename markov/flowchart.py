@@ -75,9 +75,13 @@ def parse():
 
 	return endem
 
-if endem == 1:
+
+def getEndem():
+	return parse()
+
+if getEndem() == 1:
 	from nodes_monitor_e1 import *
-elif endem == 2:
+elif getEndem() == 2:
 	from nodes_monitor_e2 import *
 else: 
 	from nodes_monitor_e3 import *
@@ -102,6 +106,7 @@ def getWhoRec():
 		return 'Monitor'
 
 def noCirr():
+
 	global g1, g2, g3
 	if(age <= 30):
 		# print ALT, HBV_DNA
