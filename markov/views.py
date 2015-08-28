@@ -56,7 +56,7 @@ def resultsView(request):
         response2 = markovMain3(age=age, initialList=g2)
 
     # response2 = markovMain(age=age, initialList=g2)
-    # print "response 1:",response1
+            # print "response 1:",response1
     # print ""
     # print "g2:",g2
     # print ""
