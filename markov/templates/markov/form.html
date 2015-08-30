@@ -101,29 +101,26 @@
         }
         console.log(fifthAns);
 
-        if(firstAns==""){
+        if(secondAns==""){
           alert("Please enter your patient's age.");
           location.reload();
-          document.getElementById("entry_332523929").focus();
           return false;
         }
-        else if(parseInt(firstAns)<5){
+        else if(parseInt(secondAns)<5){
           alert("Our model requires age to be greater than 4.");
           location.reload();
-          document.getElementById("entry_332523929").focus();
           return false;
         }
-        else if(parseInt(firstAns)>110){
+        else if(parseInt(secondAns)>110){
           alert("Our model requires age to be smaller than 111.");
           location.reload();
           document.getElementById("entry_332523929").focus();
           location.reload();
           return false;
         }
-        else if(secondAns==""){
+        else if(firstAns==""){
           alert("Please choose the endemicity of the patient's country.");
           location.reload();
-          document.getElementById("entry_332523929").focus();
           location.reload();
           return false;
         }
