@@ -62,6 +62,8 @@
             w.document.write("<html><head><title>Print Page</title>");
             w.document.write("{% load staticfiles %}")
             w.document.write("<link rel='stylesheet' type='text/css' href='{% static 'home/css/bootstrap.min.css' %}' />")
+            w.document.write("<link rel='stylesheet' type='text/css' href='{% static 'home/css/style.css' %}' />")
+            w.document.write("<link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>")
             w.document.write('</head><body>');
             w.document.write(printContents);
             w.document.write('</body></html>');
@@ -278,6 +280,9 @@
                     <div class="graph-row">
                         <div id="linechart2"></div>
                         <div id="linechart4"></div>
+                    </div>
+                    <div>
+                        
                     </div>
                     <div>
                         <h2 style="padding-top:75px;"> <span style="color:#ff7f50">Natural History</span> | <span style="color:#49B7A8">Treatment</span> </h2>
