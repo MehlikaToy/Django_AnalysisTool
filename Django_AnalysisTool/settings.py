@@ -28,7 +28,7 @@ CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = 'a!e&w9fin23yezq%vahl45!tzhglvy9te@vo!#z$9)p2b61j$*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
