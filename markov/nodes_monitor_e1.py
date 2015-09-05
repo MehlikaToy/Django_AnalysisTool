@@ -141,7 +141,7 @@ class BasicNode(object):
     def getGuac(self):
         return self.guac
 
-    def nextStage(self,destStates, originVal, probList, cummCirr, currNode = None):
+    def nextStage(self,destStates, originVal, probList, cirrIgn, currNode = None):
         temp = []
         for i in range(0, len(destStates)):
             tempNode = destStates[i](originVal * probList[i])
@@ -150,8 +150,8 @@ class BasicNode(object):
                 tempNode.guac += tempNode.getOriginValue()
             if tempNode.isCirrhosis and not currNode.isCirrhosis:
                 cirrIgn += tempNode.getOriginValue()
-                
-        return temp, cummCirr
+
+        return temp, cirrIgn
 
 
 def getMort(age):
