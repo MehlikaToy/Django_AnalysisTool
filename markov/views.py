@@ -98,13 +98,17 @@ def resultsView(request):
 
     # print tableArr
 
+    recommendation = getWhoRec()
 
     inputs = "Your " + str(age) + " year old patient "
     if(answer == 'Yes'):              # if yes cirrhosis
         inputs += "has Cirrhosis."
         answer = 1
         getStage = 5
-        tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx']]
+        if(recommendation == "Monitoring"):
+            tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
+        else:
+            tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx']]
         while getStage <= 40:
             tableArr.append([getStage,
                             str(round(deathHBV2[getStage+1][2],2))+"%",
@@ -117,7 +121,10 @@ def resultsView(request):
         inputs += "doesn't have Cirrhosis with a " + ALT + " ALT level and an HBV DNA level that is " + HBV_DNA + '.'
         answer = 0
         getStage = 5
-        tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx', 'Cirrhosis NH', 'Cirrhosis Rx']]
+        if(recommendation == "Monitoring"):
+            tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx', 'Cirrhosis NH', 'Cirrhosis Mx']]
+        else:
+            tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx', 'Cirrhosis NH', 'Cirrhosis Rx']]
         while getStage <= 40:
             tableArr.append([getStage,
                             str(round(deathHBV2[getStage+1][2],2))+"%",
@@ -129,7 +136,7 @@ def resultsView(request):
                             )
             getStage = getStage*2
 
-    whoRec = 'Your patient needs ' + getWhoRec()
+    whoRec = 'Your patient needs ' + recommendation
 
     # Print test:
     # print deathHBV2
