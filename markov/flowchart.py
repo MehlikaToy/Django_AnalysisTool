@@ -101,9 +101,9 @@ def yesCirr():																	# 1
 
 def getWhoRec():
 	if answer == 'Yes' or (age >= 30 and ALT == "Persistently Abnormal" and HBV_DNA == ">20,000 IU/ml"):
-		return 'Monitor and Treatment'
+		return 'Monitoring and Treatment'
 	else:
-		return 'Monitor'
+		return 'Monitoring'
 
 def noCirr():
 
