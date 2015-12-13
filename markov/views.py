@@ -167,6 +167,7 @@ def resultsView(request):
         'whoRec': whoRec,
         'tableArr': tableArr,
         'ifCirr': answer,
+        't_heading': t_heading,
     }
 
     # dictionary to list
