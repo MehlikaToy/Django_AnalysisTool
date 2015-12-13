@@ -136,7 +136,8 @@ def resultsView(request):
                             )
             getStage = getStage*2
 
-    whoRec = 'Your patient needs ' + recommendation
+    whoRec = 'Your Patient Needs ' + recommendation
+    t_heading = recommendation
 
     # Print test:
     # print deathHBV2
