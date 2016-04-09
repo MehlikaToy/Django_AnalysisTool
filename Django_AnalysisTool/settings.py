@@ -45,7 +45,7 @@ INSTALLED_APPS = (
     'gunicorn',
     'gspread',
     'home',
-    'markov',
+    'backend',
 )
 
 MIDDLEWARE_CLASSES = (
