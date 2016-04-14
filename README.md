@@ -8,6 +8,13 @@ Refer to this repo for our program of the mathematical Markov Model: [Analysis T
 
 Install the necessary framework:
 
+On mac install Postgresql if it is not already there:
+---------------------------------------------------
+brew update
+brew install --force ossp-uuid
+brew install postgresql
+pip install psycopg
+
 ```
 sudo pip install -r requirements.txt
 ```
