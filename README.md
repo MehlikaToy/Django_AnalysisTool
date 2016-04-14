@@ -5,6 +5,12 @@
 Refer to this repo for our program of the mathematical Markov Model: [Analysis Tool](https://github.com/colphin/Analysis_Tool).
 
 ##### Instructions
+
+Install the necessary framework:
+
+```
+sudo pip install -r requirements.txt
+```
 Run server locally:
 ```
 $ python manage.py runserver
