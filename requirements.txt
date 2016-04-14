@@ -3,7 +3,7 @@ Django==1.8.3
 gunicorn==19.3.0
 django-toolbelt==0.0.1
 gspread==0.2.5
-oauth2client
+oauth2client==1.5.2
 httplib2==0.9.1
 PyCrypto==2.6.1
 PyOpenSSL==0.15.1
