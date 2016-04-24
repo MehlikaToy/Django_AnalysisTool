@@ -172,7 +172,7 @@
             };
 
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
-            chart3.draw(data1, options3);
+            chart3.draw(data1, MortalityRate);
 
             if({{ ifCirr }} == 0){
                 var chart4 = new google.visualization.LineChart(document.getElementById('linechart2'));
