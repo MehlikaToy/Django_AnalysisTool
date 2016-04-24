@@ -5,6 +5,8 @@ from flowchart import *
 from markov_cy_e1 import *
 from markov_cy_e2 import *
 from markov_cy_e3 import *
+from django.shortcuts import render_to_response, RequestContext
+
 import json
 import decimal
 
@@ -14,7 +16,7 @@ def index(request):
     template = loader.get_template('home/index.html')
     return HttpResponse(template.render())
 
-from django.shortcuts import render_to_response, RequestContext
+
 
 # def questionnaire(request):
 #     template = loader.get_template('markov/questionnaire.html')
