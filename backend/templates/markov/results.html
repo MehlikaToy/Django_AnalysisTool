@@ -85,14 +85,14 @@
             var djangoDataTable = {{ tableArr|safe }};
             var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
 
-            var djangoData1 = {{ deathHBV_Final|safe }}
-            var data1 = google.visualization.arrayToDataTable(djangoData1);
+            var djangoDataDeathHBV = {{ deathHBV_Final|safe }}
+            var dataDeathHBV = google.visualization.arrayToDataTable(djangoDataDeathHBV);
 
-            var djangoData2 = {{ hcc_Final|safe }}
-            var data2 = google.visualization.arrayToDataTable(djangoData2);
+            var djangoDataHcc = {{ hcc_Final|safe }}
+            var dataHcc = google.visualization.arrayToDataTable(djangoDataHcc);
 
-            var djangoData3 = {{ cirrhosis_Final|safe }}
-            var data3 = google.visualization.arrayToDataTable(djangoData3);
+            var djangoDataCirrhosis = {{ cirrhosis_Final|safe }}
+            var dataCirrhosis = google.visualization.arrayToDataTable(djangoDataCirrhosis);
 
 
 
@@ -141,7 +141,7 @@
                 }
             };
 
-            var options5 = {
+            var LiverCancer = {
                 title: "Liver Cancer",
                 titleTextStyle :{
                     fontSize:26,
@@ -172,15 +172,15 @@
             };
 
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
-            chart3.draw(data1, MortalityRate);
+            chart3.draw(dataDeathHBV, MortalityRate);
 
             if({{ ifCirr }} == 0){
                 var chart4 = new google.visualization.LineChart(document.getElementById('linechart2'));
-                chart4.draw(data3, CirrhosisGraph;
+                chart4.draw(dataCirrhosis, CirrhosisGraph;
             }
 
             var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
-            chart5.draw(data2, options5);
+            chart5.draw(dataHcc, LiverCancer);
 
             for (y = 0; y < 4; y++){
                 dataTable.setCell(y,0,String(djangoDataTable[y+1][0]),null,{'style': ' font-size:20px;'})
