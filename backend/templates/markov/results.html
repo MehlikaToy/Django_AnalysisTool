@@ -73,10 +73,7 @@
 
 
         // Load the Visualization API and the piechart package.
-      google.charts.load('current', {
-  callback: drawChart,
-  packages: ['bar', 'corechart', 'line', 'table']
-});
+      google.load('visualization', "1.1", {'packages': ['corechart', 'bar', 'line', 'table']});
         // Set a callback to run when the Google Visualization API is loaded.
         google.setOnLoadCallback(drawChart);
         
