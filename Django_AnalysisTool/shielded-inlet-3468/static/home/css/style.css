@@ -1,0 +1,219 @@
+/*
+	custom css
+	Jasmine 2015
+*/
+
+/*start button*/
+.btn-square {
+	width: 200px;
+	height: 75px;
+	padding: 7px;
+	margin-bottom: 10px;
+	border: 2px solid black;
+    font-size: 40px;
+    color: black;
+    background: 0 0;
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+.btn-square:hover,
+.btn-square:focus {
+    outline: 0;
+    color: black;
+    background: rgba(255,127,80,1);					/* coral */
+}
+
+.btn-square i.animated {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+}
+
+.btn-square:hover i.animated {
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+}
+
+@-webkit-keyframes pulse {    
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@-moz-keyframes pulse {    
+    0% {
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -moz-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    100% {
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+#arrow{
+	color: white;
+	font-size: 50px;
+}
+
+#arrow:hover{
+	transform: scale(1.2);
+	color: rgba(255,127,80,1);
+}
+
+/*use it now link*/
+.link{
+	font-family: "Lobster", cursive;
+	font-size: 40px;
+}
+
+.link:hover{
+	font: white;
+}
+
+
+/*the team profiles*/
+
+.team-row{
+	margin-bottom: 0;
+  	padding-left: 0;
+  	min-width: 720px;
+  	list-style: none;
+}
+
+.team-row > li{
+	position: relative;
+	display: inline-block;
+}
+
+
+.team-profile{
+	display: inline;
+	margin: 20px 30px;
+	width: 180px;
+	/*list-style: none;*/
+	text-align: center;
+}
+
+.team-profile a{
+	color: #000;
+}
+
+.team-profile a:hover{
+	color: #49b7a8;			/* jade */
+}
+
+.team-profile-img{
+	width: 170px;
+	height: 180px;
+	border-radius: 90px;
+}
+
+.team-name{
+	padding: 30px 0 0 0;
+	font-weight: lighter;
+}
+
+.graph-row{
+	margin:0 auto;
+    width: 1400px;
+    display: inline;
+}
+
+#print-content{
+    width: 1400px;
+    display: inline;
+}
+
+#Result{
+    height:0;
+    display: inline;
+    padding:0;
+    margin: auto;
+}
+
+.row{
+    margin: 150px 0 0 0;
+}
+
+#linechart1, #linechart2, #linechart3{
+    display: inline-block;
+}
+
+#table_div{
+    text-align: center;
+    width: 750px;
+    display: inline-block;
+}
+
+
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotateY(0deg);
+  }
+  to { 
+    -webkit-transform: rotateY(360deg);
+  }
+}
+
+.glyphicon-globe{
+    -webkit-animation-name:             rotate; 
+    -webkit-animation-duration:         3.0s; 
+    -webkit-animation-iteration-count:  infinite;
+    -webkit-animation-timing-function: linear;
+}
+
+
+
+@page{
+    size: A4;
+}
+
+@media print{
+    #print-content{
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Analysis Tool</title>
+
+    {% load staticfiles %}
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'markov/css/bootstrap.min.css' %}" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'markov/css/grayscale.css' %}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'markov/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="../">
+                    <i class="fa fa-play-circle"></i>  <span class="light">ALC</span> Analysis Tool
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#ageSection">Age</a>
+                    </li>
+                    <!--<li>-->
+                        <!--<a class="page-scroll" href="#stage"> Stages</a>-->
+                    <!--</li>-->
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Questions</h1>
+                        <p class="intro-text">Fill out patient info below</p>
+                        <a href="/markov" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Age Section -->
+    <section id="ageSection" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+
+
+                <form action="your-name/" method="post">
+                    {% csrf_token %}
+                    <label for="your_name">Your name: </label>
+                    <input style="color:black" id="your_name" type="text" name="your_name" maxlength="100" value="{{ current_name }}">
+                    <input style="color:black" type="submit" value="OK">
+                </form>
+
+
+
+                <!--<form name="age" action="#" enctype="multipart/form-data" method="post">-->
+                    <!--{% csrf_token %}-->
+                    <!--<p style="text-align: center"> Please enter age and stage for Patient <br><br>-->
+                        <!--Age: <input style="color:black" name="age" type="number" id="age" min="1" max="100"><br><br>-->
+                        <!--Stages: <input style="color:black" name="stage" type="number" id="state" min="1" max="100"><br><br>-->
+                        <!--<a class="btn btn-default btn-lg"><span class="network-name"><input type="submit" value="OK"></span></a>-->
+                    <!--</p>-->
+                <!--</form>-->
+            </div>
+        </div>
+    </section>
+
+    <!--&lt;!&ndash; Stage Section &ndash;&gt;-->
+    <!--<section id="stage" class="content-section text-center">-->
+        <!--<div class="download-section">-->
+            <!--<div class="container">-->
+                <!--<div class="col-lg-8 col-lg-offset-2">-->
+                    <!--<form name="stage" action="#" enctype="multipart/form-data" method="post">-->
+                    <!--{% csrf_token %}-->
+                    <!--<p style="text-align: center"> Please enter age of Patient <br><br>Age:-->
+                        <!--Please Enter the amount of stages you want to run <br>-->
+                        <!--Stages: <input style="color:black" name="stage" type="number" id="state" min="1" max="100">-->
+                    <!--</p>-->
+                    <!--<a class="btn btn-default btn-lg"><span class="network-name"><input type="button" value="Click Me!" onclick="submitForms()" /></span></a>-->
+
+                        <!--<script type="text/javascript">-->
+                            <!--submitForms = function(){-->
+                                <!--document.forms["age"].submit();-->
+                                <!--document.forms["stage"].submit();-->
+                            <!--}-->
+                        <!--</script>-->
+
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</section>-->
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact The Asian Liver Center</h2>
+                <p>Feel free to email us to provide some feedback!</p>
+                <p><a href="mailto:research.cs.alc@gmail.com">research.cs.alc@gmail.com</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://twitter.com/asianliverctr" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/colphin/Analysis_Tool" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <!-- <li>
+                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; Asian Liver Center 2015</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'markov/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'markov/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'markov/js/jquery.easing.min.js' %}"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWgoJVJgzqUcbnYRL1CIfZglQN8rlMUs8&sensor=false"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'markov/js/grayscale.js' %}"></script>
+
+</body>
+
+</html>
