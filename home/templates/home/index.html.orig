@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Analysis Tool</title>
+
+    {% load staticfiles %}
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/bootstrap.min.css' %}" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/grayscale.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'home/css/style.css' %}" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <!-- Custom Fonts -->
+    <link href="{% static 'home/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:200, 300, 400" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i>  <span class="light">ALC</span> Analysis Tool
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about" style="color: #fff;">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download"  style="color: #fff;"> Previous Webtool</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#team-section"  style="color: #fff;">Team</a>
+                    </li>
+                     <li>
+                        <a class="page-scroll" href="#contact" style="color: #fff;">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading" style="font-family: 'Raleway'; color: #000; text-transform: none;">Hepatitis B Decision Tool</h1>
+                        <p class="intro-text" style="font-family:'Lora'; letter-spacing: 2px; ">Created at Stanford Asian Liver Center</p>
+                        <div class="row" style="margin-top: 0">
+                            <a href="/backend" class="btn btn-square">Start</a>
+
+                           
+                        </div>
+                        <a href="#about" class="page-scroll">
+                            <i class="fa fa-angle-double-down animated" id="arrow"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+        <!-- <div class="row"> -->
+            <div class="col-lg-8 col-lg-offset-2">
+                <!-- <h2>About Grayscale</h2>
+                <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
+                <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
+                <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p> -->
+
+                <h2> About <a href="http://liver.stanford.edu/education/whatishepb.html">Hepatitis B</a> </h2>
+                <p>Hepatitis B is a liver infection caused by the Hepatitis B virus (HBV). Hepatitis B is transmitted when blood, semen, or another body fluid from a person infected with the Hepatitis B virus enters the body of someone who is not infected. This can happen through sexual contact; sharing needles, syringes, or other drug-injection equipment; or from mother to baby at birth. </p>
+                <p>For some people, hepatitis B is an acute, or short-term, illness but for others, it can become a long-term, chronic infection. Risk for chronic infection is related to age at infection: approximately 90% of infected infants become chronically infected, compared with two to six percent of adults. Chronic Hepatitis B can lead to serious health issues, like cirrhosis or liver cancer. The best way to prevent Hepatitis B is by getting vaccinated.</p>
+                <p>This tool is developed for clinicians to help calculate their chronic hepatitis B patient’s risk for liver disease according to factors such as the endemicity of the country of origin, age, presence of cirrhosis, liver enzyme and viral load levels.  
+                The tool also highlights key recommendations from the World Health Organization chronic hepatitis B treatment guideline (2015). The cumulative disease outcomes are based on a mathematical simulation model developed by Dr. Mehlika Toy from the Asian Liver Center, Stanford School of Medicine. These are the links to the articles on the mathematical modeling and population health in various endemic countries: <a href="http://www.ncbi.nlm.nih.gov/pubmed/24990105">high endemicity</a>, <a href="http://www.ncbi.nlm.nih.gov/pubmed/22815098">intermediate endemicity</a>, <a href="http://www.ncbi.nlm.nih.gov/pubmed/19585616">low endemicity</a>, <a href="http://www.ncbi.nlm.nih.gov/pubmed/24182615">treatment</a>, <a href="http://www.ncbi.nlm.nih.gov/pubmed/23715464">Markov model</a>
+                </p>
+
+            </div>
+        <!-- </div> -->
+    </section>
+
+    <!-- Past Webtool Section -->
+    <section id="download" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Previous Webtool</h2>
+                    <p>You can check out the previous webtool here!</p>
+                    <a href="http://liver.stanford.edu/research/CHBtool.html" class="btn btn-default btn-lg">Visit Previous Web Tool</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team-section" class="container content-section text-center">
+        <div class="row" style="margin:0; padding:0;">
+            <div class="team">
+                <h2>Our Research Team</h2>
+                <ul class="team-row">
+                    <li class="team-profile">
+                        <a href="https://med.stanford.edu/profiles/mehlika-toy" target="_blank"><img class="team-profile-img" src="{% static 'home/img/team/mtoy.png' %}">
+                        <h4 class="team-name">Dr. Mehlika Toy</h4>
+                        </a>
+                    </li>
+                    <li class="team-profile">
+                        <a href="https://med.stanford.edu/profiles/samuel-so" target="_blank"><img class="team-profile-img" src="{% static 'home/img/team/so.jpg' %}">
+                        <h4 class="team-name">Dr. Samuel So</h4>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="team-row">
+                    <li class="team-profile">
+                        <a href="http://calvin.ismyreal.name/" target="_blank"><img class="team-profile-img" src="{% static 'home/img/team/calvin.jpeg' %}">
+                        <h4 class="team-name">Calvin Yin</h4>
+                        </a>
+                    </li>
+                    <li class="team-profile">
+                        <a href="http://jkim0110.bol.ucla.edu/" target="_blank"><img class="team-profile-img" src="{% static 'home/img/team/jasmine.jpeg' %}">
+                        <h4 class="team-name">Jasmine Kim</h4>
+                        </a>
+                    </li>
+                    <li class="team-profile">
+<<<<<<< HEAD
+                        <a href="http://jkim0110.bol.ucla.edu/" target="_blank"><img class="team-profile-img" src="{% static 'home/img/team/IMG_4584.JPG' %}">
+=======
+                        <a href="http://jkim0110.bol.ucla.edu/" target="_blank"><img class="team-profile-img" src="{% static 'home/img/team/IMG50.JPG' %}">
+>>>>>>> 4b93f48e5850c0a53d2d0c87136ed43484aa4d89
+                        <h4 class="team-name">Tejpal Virdi</h4>
+                        </a>
+                    </li>
+                    <li class="team-profile">
+                        <a href="mailto:research.stat.alc@gmail.com">
+                        <img class="team-profile-img" src="{% static 'home/img/team/bin.jpeg' %}">
+                        <h4 class="team-name">Bin Wei</h4>
+                        </a>
+                    </li>
+                    <li class="team-profile">
+                        <a href="https://www.linkedin.com/in/gmeixiong" target="_blank"><img class="team-profile-img" src="{% static 'home/img/team/gerry.jpeg' %}">
+                        <h4 class="team-name">Gerry Meixiong</h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Contact The Asian Liver Center</h2>
+                <p>Feel free to <a href="mailto:research.cs.alc@gmail.com" target="_blank">email</a> us to provide some feedback!</p>
+
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://twitter.com/asianliverctr" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/MehlikaToy/Django_AnalysisTool"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <!-- <li>
+                        <a href="https://plus.google.com/+Startbootstrap/posts" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                    </li> -->
+                </ul>
+                
+                <ul class="list-inline banner-social-buttons" style="padding-top: 75px;">
+
+                    <li>
+                        <a href="http://liver.stanford.edu/jrc/index.html" class="link">
+                        <span class="glyphicon glyphicon glyphicon-globe" aria-hidden="true" style="display:block; font-size: 50px; padding-bottom: 10px; color:black;"></span>
+                            Join the campaign
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div id="map"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; <a href="http://liver.stanford.edu/" target="_blank">Asian Liver Center 2015</a></p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static 'home/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'home/js/jquery.easing.min.js' %}"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWgoJVJgzqUcbnYRL1CIfZglQN8rlMUs8&sensor=false"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'home/js/grayscale.js' %}"></script>
+
+</body>
+
+</html>
+
