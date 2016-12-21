@@ -33,3 +33,4 @@ python manage.py runserver
 * Calvin Yin (calvin_yin@umail.ucsb.edu)
 * Jasmine Kim (jkim0110@ucla.edu)
 * Gerry Meixiong (geraldmx@stanford.edu)
+* Tejpal Virdi (tejpalv@stanford.edu)
