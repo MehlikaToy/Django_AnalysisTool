@@ -173,10 +173,10 @@
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
             chart3.draw(dataDeathHBV, MortalityRate);
 
-            
-            var chart4 = new google.visualization.LineChart(document.getElementById('linechart2')
-            chart4.draw(dataCirrhosis, CirrhosisGraph);
-            
+            if({{ ifCirr }} == 0){
+                var chart4 = new google.visualization.LineChart(document.getElementById('linechart2'));
+                chart4.draw(dataCirrhosis, CirrhosisGraph);
+            }
 
             var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
             chart5.draw(dataHcc, LiverCancer);
