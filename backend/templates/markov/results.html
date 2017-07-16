@@ -57,13 +57,13 @@
 
         function printDiv(divName) {
             var printContents = document.getElementById(divName).innerHTML;
-            console.log(printContents)
+            console.log(printContents);
             w=window.open();
             w.document.write("<html><head><title>Print Page</title>");
-            w.document.write("{% load staticfiles %}")
-            w.document.write("<link rel='stylesheet' type='text/css' href='{% static 'home/css/bootstrap.min.css' %}' />")
-            w.document.write("<link rel='stylesheet' type='text/css' href='{% static 'home/css/style.css' %}' />")
-            w.document.write("<link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>")
+            w.document.write("{% load staticfiles %}");
+            w.document.write("<link rel='stylesheet' type='text/css' href='{% static 'home/css/bootstrap.min.css' %}' />");
+            w.document.write("<link rel='stylesheet' type='text/css' href='{% static 'home/css/style.css' %}' />");
+            w.document.write("<link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>");
             w.document.write('</head><body>');
             w.document.write(printContents);
             w.document.write('</body></html>');
