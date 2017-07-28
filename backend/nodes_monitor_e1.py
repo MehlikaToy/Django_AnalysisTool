@@ -4,7 +4,12 @@ Made July 2015
 Markov States of Hepatitis B
 '''
 import math 
+'''
+ c = cost
+ u = utility
+ p = probability
 
+''' 
 pVar = -1.0
 dVar = -2.0
 
