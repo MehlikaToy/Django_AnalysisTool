@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 m = np.array([[0, 1], [-1, 0]])
 
-def iter(m, num):
-	return LA.matrix_power(m, num)
+def pwr(M, num):
+	return LA.matrix_power(M, num)
 
 def util(cost, m, num):
 	sum = 0

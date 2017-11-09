@@ -1,0 +1,156 @@
+/*
+	css for google form page
+*/
+
+html{
+	margin:0;
+	min-height: 100%;
+	width: 100%;
+}
+body{
+	background: #49b7a8;				/*jade*/
+}
+
+#title{
+	text-align: center;
+	font-family: 'Open Sans';
+	font-weight: 400;
+	font-size: 65px;
+
+	margin: 15px 20px 0 0;
+	padding: 10px 0 10px 0;
+}
+
+#title a{
+	color: black;
+}
+
+#title a:hover{
+	color: #49b7a8;
+}
+
+#maincontainer-body{
+	width: 950px;
+	padding: 20px 0 20px 20px;
+	margin: auto;
+	margin-bottom: 50px;
+	margin-top: 50px;
+	/*border: solid #f5f5dc 30px;*/
+
+	background: #fefefe;
+	font-family: 'Open Sans';
+	font-size: 20px;
+}
+
+@media only screen and (max-width: 479px){
+    #maincontainer-body { width: 90%; }
+}
+
+@media only screen and (max-width: 730px){
+    #maincontainer-body { width: 90%; }
+}
+
+.map-img{
+	max-width: 750px;
+	padding-bottom: 20px;
+	text-align: center;
+	margin: auto;
+	display: block;
+}
+
+#ss-form{
+	padding: 5px;
+	padding-bottom: 0;
+}
+
+ul{
+	list-style-type: none;
+}
+
+.ss-item{
+	margin-top: 25px;
+}
+
+.ss-q-number{
+	display: inline;
+	margin:auto;
+	float: left;
+}
+
+.ss-q-title{
+	display: inline;
+}
+
+a{
+	color: #49b7a8;
+}
+a:hover{
+	text-decoration: none;
+	color: black;
+}
+
+p{
+	margin: 0 0 0 30px;
+}
+
+.ss-q-help{
+	font-family: 'Open Sans';
+	font-size: 12px;
+	font-style: italic;
+	padding-left: 30px;
+}
+
+.ss-input{
+	margin: 10px 0 0 30px;
+}
+
+.ss-input input{
+	width: 50px;
+}
+
+.ss-choices{
+	padding: 10px 0 0 30px;
+	font-size: 16px;
+}
+
+input[type=radio]:not(checked){
+	margin-right: 15px;
+}
+
+#navigation-table{
+	text-align: center;
+	margin:auto;
+}
+
+#ss-submit{
+	border: solid rgba(255,127,80,1) 5px;
+	/*border-bottom: solid black 2px;*/
+
+	background: rgba(255,127,80,0.5);
+	-webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+
+    font-family: 'Open Sans';
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+#ss-submit:focus, input[type="button"]:focus {
+    outline: none;
+}
+
+#ss-submit:hover{
+	background: rgba(255,127,80,1);				/*coral*/
+}
+
+
+
+
+
+
+
+
+
+
+
