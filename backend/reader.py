@@ -6,7 +6,6 @@ Created on Sun Oct 22 20:18:32 2017
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
 
 # Loads the matrix and the list of states
