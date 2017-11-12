@@ -55,14 +55,14 @@ def resultsView(request):
         start[2] = 1
 
 
-    hbv_data = []
-    hcc_data = []
-    cirr_data = []
+    hbv_data = [['Stages','Natural History', 'Treatment']]
+    hcc_data = [['Stages','Natural History', 'Treatment']]
+    cirr_data = [['Stages','Natural History', 'Treatment']]
     for i in range(0, stages+1):
         state = mop.pwr(model, i).dot(start)
-        hbv_data.append(state[11])
-        hcc_data.append(state[4])
-        cirr_data.append(state[2])
+        hbv_data.append([i, state[11], state[11]])
+        hcc_data.append([i, state[4], state[4]])
+        cirr_data.append([i, state[2], state[2]])
         
 
     i = 5
