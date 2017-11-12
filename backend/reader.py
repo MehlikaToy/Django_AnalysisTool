@@ -7,7 +7,6 @@ Created on Sun Oct 22 20:18:32 2017
 import numpy as np
 import pandas as pd
 
-
 # Loads the matrix and the list of states
 # Note: transposing matrix since the states were entered incorrectly
 def load_matrix(file, sheet):
@@ -67,11 +66,11 @@ def fill_remain(M):
     
 
 # Putting it all together
-def generate_model(file='matrix.xlsx', age=30, female=False):
+def generate_model(file='./matrix.xlsx', age=30, female=False):
     if(female):
         age += 100
     matrix, states = load_matrix(file, 'data')
-    matrix = fill_vars(matrix, 'matrix.xlsx', age)
+    matrix = fill_vars(matrix, file, age)
     matrix = fill_empty(matrix)
     if(female):
         matrix = female_mod(matrix, file, 'gender')

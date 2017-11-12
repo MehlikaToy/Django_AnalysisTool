@@ -45,7 +45,7 @@ def resultsView(request):
         inputs += "without Cirrhosis."
     tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
 
-    model = rd.generate_model(file='matrix.xlsx', age=age, female=False)
+    model = rd.generate_model(file='./matrix.xlsx', age=age, female=False)
     start = np.zeros(len(model[0]))
     
     # for now, always start from cirrhosis
