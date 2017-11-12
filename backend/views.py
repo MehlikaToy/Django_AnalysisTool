@@ -1,14 +1,15 @@
 from django.http import HttpResponse
 from django.template import loader
 from getAPI import stuff
-from flowchart import *
-from markov_cy_e1 import *
-from markov_cy_e2 import *
-from markov_cy_e3 import *
 from django.shortcuts import render_to_response, RequestContext
 
 import json
 import decimal
+
+import numpy as np
+import flowchart as flow
+import matrixoperations as mop
+import reader as rd
 
 # Create your views here.
 
@@ -32,131 +33,54 @@ def resultsView(request):
     # returns finalDict from getAPI.py
     # ie. {'How old is your patient?': '38', ... }
 
-    endemicity = parse()
-    parse2()
-    g1, g2, g3 = getInitNodes()
-    age, stage = ageStage()
-    answer, ALT, HBV_DNA = cirrALT_DNA()
-
-
-
-    if endemicity == 1:
-        response1 = markovMain1(age=age, initialList=g1)
-    elif endemicity == 2:
-        response1 = markovMain2(age=age, initialList=g1)
-    else: 
-        response1 = markovMain3(age=age, initialList=g1)
-
-    # response1 = markovMain(age=age, initialList=g1)
-    # print response1
-
-    if endemicity == 1:
-        response2 = markovMain1(age=age, initialList=g2)
-    elif endemicity == 2:
-        response2 = markovMain2(age=age, initialList=g2)
-    else: 
-        response2 = markovMain3(age=age, initialList=g2)
-
-    # response2 = markovMain(age=age, initialList=g2)
-            # print "response 1:",response1
-    # print ""
-    # print "g2:",g2
-    # print ""
-    # print "response 2:",response2
-    # print ""
-
-    deathHBV1 = response1['DeathHBV']
-    deathHBV2 = response2['DeathHBV']
-
-    cirrhosis1 = response1['Cirrhosis']
-    cirrhosis2 = response2['Cirrhosis']
-
-    hcc1 = response1['HCC']
-    hcc2 = response2['HCC']
-    
-    lt1 = response1['LT']
-    lt2 = response2['LT']
-
-    deathHBV_Final = [['Stages','Natural History', 'Treatment']]
-    cirrhosis_Final = [['Stages','Natural History', 'Treatment']]
-    hcc_Final = [['Stages','Natural History', 'Treatment']]
-    for i in range(0, len(deathHBV1)-1):
-        deathHBV_Final.append([i, deathHBV2[i+1][2], deathHBV1[i+1][1]])
-        hcc_Final.append([i,hcc2[i+1][2], hcc1[i+1][1]])
-        cirrhosis_Final.append([i,cirrhosis2[i+1][2], cirrhosis1[i+1][1]])
-    
-    # tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx', 'Cirrhosis NH', 'Cirrhosis Rx']]
-    # getStage = 5
-    # while getStage <= 40:
-    #     tableArr.append([getStage,
-    #                     str(round(deathHBV2[getStage+1][2],2))+"%",
-    #                     str(round(deathHBV1[getStage+1][1],2))+"%",
-    #                     str(round(hcc2[getStage+1][2],2))+"%",
-    #                     str(round(hcc1[getStage+1][1],2))+"%",
-    #                     str(round(cirrhosis2[getStage+1][2],2))+"%",
-    #                     str(round(cirrhosis1[getStage+1][1],2))+"%"]
-    #                     )
-    #     getStage = getStage*2
-
-    # print tableArr
-
-    recommendation = getWhoRec()
+    endem, age, cirr, ALT, HBV_DNA = flow.parse()
+    stages = 40
+   
+    recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
 
     inputs = "Your " + str(age) + " year old patient "
-    if(answer == 'Yes'):              # if yes cirrhosis
-        inputs += "has Cirrhosis."
-        answer = 1
-        getStage = 5
-        if(recommendation == "Monitoring"):
-            tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
-        else:
-            tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx']]
-        while getStage <= 40:
-            tableArr.append([getStage,
-                            str(round(deathHBV2[getStage+1][2],2))+"%",
-                            str(round(deathHBV1[getStage+1][1],2))+"%",
-                            str(round(hcc2[getStage+1][2],2))+"%",
-                            str(round(hcc1[getStage+1][1],2))+"%"]
-                            )
-            getStage = getStage*2
+    if (cirr == 'Yes'):
+        inputs += "with Cirrhosis."
     else:
-        inputs += "doesn't have Cirrhosis with a " + ALT + " ALT level and an HBV DNA level that is " + HBV_DNA + '.'
-        answer = 0
-        getStage = 5
-        if(recommendation == "Monitoring"):
-            tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx', 'Cirrhosis NH', 'Cirrhosis Mx']]
-        else:
-            tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Rx', 'Liver Cancer NH', 'Liver Cancer Rx', 'Cirrhosis NH', 'Cirrhosis Rx']]
-        while getStage <= 40:
-            tableArr.append([getStage,
-                            str(round(deathHBV2[getStage+1][2],2))+"%",
-                            str(round(deathHBV1[getStage+1][1],2))+"%",
-                            str(round(hcc2[getStage+1][2],2))+"%",
-                            str(round(hcc1[getStage+1][1],2))+"%",
-                            str(round(cirrhosis2[getStage+1][2],2))+"%",
-                            str(round(cirrhosis1[getStage+1][1],2))+"%"]
-                            )
-            getStage = getStage*2
+        inputs += "without Cirrhosis."
+    tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
+
+    model = rd.generate_model(file='matrix.xlsx', age=age, female=False)
+    start = np.zeros(len(model[0]))
+    
+    # for now, always start from cirrhosis
+    if (cirr == 'Yes'):
+        start[2] = 1
+    else:
+        start[2] = 1
+
+
+    hbv_data = [['Stages','Natural History', 'Treatment']]
+    hcc_data = [['Stages','Natural History', 'Treatment']]
+    cirr_data = [['Stages','Natural History', 'Treatment']]
+    for i in range(0, stages+1):
+        state = mop.pwr(model, i).dot(start)
+        hbv_data.append([i, state[11], state[11]])
+        hcc_data.append([i, state[4], state[4]])
+        cirr_data.append([i, state[2], state[2]])
+        
+
+    i = 5
+    while (i <= 40):
+        tableArr.append([i,
+                         str(round(hbv_data[i-1],2))+"%",
+                         str(round(hbv_data[i-1],2))+"%",
+                         str(round(hcc_data[i-1],2))+"%",
+                         str(round(hcc_data[i-1],2))+"%"])
+        i = i*2
 
     whoRec = 'Your Patient Needs ' + recommendation
     t_heading = recommendation
 
-    # Print test:
-    # print deathHBV2
-
-    # deathHBV3 = []
-    # cirrhosis3 = []
-    # hcc3 = []
-    # lt3 = []
-
-    # print json.dumps(deathHBV1)
-    # print '#####'
-    # print json.dumps(deathHBV_Final)
-
     dumpDict = {
-        'deathHBV_Final': json.dumps(deathHBV_Final),
-        'hcc_Final': json.dumps(hcc_Final),
-        'cirrhosis_Final': json.dumps(cirrhosis_Final),
+        'deathHBV_Final': json.dumps(hbv_data),
+        'hcc_Final': json.dumps(hcc_data),
+        'cirrhosis_Final': json.dumps(cirr_data),
         # 'deathHBV1': json.dumps(deathHBV1),
         # 'deathHBV2': json.dumps(deathHBV2),
         # 'cirrhosis1': json.dumps(cirrhosis1),
@@ -168,29 +92,9 @@ def resultsView(request):
         'inputStr': inputs,
         'whoRec': whoRec,
         'tableArr': tableArr,
-        'ifCirr': answer,
+        'ifCirr': (cirr=='Yes'),
         't_heading': t_heading,
     }
-
-    # dictionary to list
-    # dictList =[['Health States', 'Percentage']]
-    # convert the dict to the nested list
-    # for key, value in output1.iteritems():
-    #     temp = [key,value]
-    #     dictList.append(temp)
-
-    # cummList1 = [['State', 'Treatment', 'Natural History']]
-    # cummList2 = [['State', 'Treatment', 'Natural History']]
-    # cummList3 = [['State', 'Treatment', 'Natural History']]
-    # for i in output1A:
-    #     cummList1.append(i)
-    # for j in output2A:
-    #     cummList2.append(j)
-    # for k in output3A:
-    #     cummList3.append(k)
-
-
-
     
 
     return render_to_response('markov/results.html', dumpDict)

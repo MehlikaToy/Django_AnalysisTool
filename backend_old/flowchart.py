@@ -38,37 +38,118 @@ ALT = HBV_DNA = ""
 def parse():
 	# json_key = json.load(jsonfile)
 
-    if (hasattr(ssl, '_create_unverified_context')):
-        ssl._create_default_https_context = ssl._create_unverified_context
+	if hasattr(ssl, '_create_unverified_context'):
+		ssl._create_default_https_context = ssl._create_unverified_context
 
-    scope = ['https://spreadsheets.google.com/feeds']
+	scope = ['https://spreadsheets.google.com/feeds']
 
-    credentials = SignedJwtAssertionCredentials(jsonfile['client_email'], jsonfile['private_key'], scope)
-    
-    gc = gspread.authorize(credentials)
-    
-    wks = gc.open("Markov Questions (Responses)").sheet1
-    
-    lowestRow = wks.row_count - 1000 # this is magic don't touch
+	credentials = SignedJwtAssertionCredentials(jsonfile['client_email'], jsonfile['private_key'], scope)
 
-    arr = []
-    for col in range(1,7):
-        arr.append(wks.cell(lowestRow, col).value)
+	gc = gspread.authorize(credentials)
 
-    endem_labels = {'Low':1, 'Intermediate':2, 'High':3}
-    
-    endem = endem_labels[arr[4]]
-    age = int(arr[5])
-    cirr = arr[1]			#cirrhosis
-    ALT = arr[2]
-    HBV_DNA = arr[3]
+	wks = gc.open("Markov Questions (Responses)").sheet1
 
-    return (endem, age, cirr, ALT, HBV_DNA)
+	lowestRow = wks.row_count - 1000 # this is magic don't touch
+
+	arr = []
+	for col in range(1,7):
+		arr.append(wks.cell(lowestRow, col).value)
+
+	global g1, g2, g3, answer, age, ALT, endem, HBV_DNA
+	g1 = []
+	g2 = []
+	g3 = []
+
+	answer = arr[1]			#cirrhosis
+	age = arr[5]
+	age = int(age)
+	ALT = arr[2]
+	HBV_DNA = arr[3]
+
+	if(arr[4] == "Low"):
+		endem = 1
+	elif(arr[4]=="Intermediate"):
+		endem = 2
+	elif(arr[4]=="High"):
+		endem = 3
+
+	return endem
 
 
+def getEndem():
+	return parse()
 
-def getWhoRec(cirr, age, ALT, HBV_DNA):
+if getEndem() == 1:
+	from nodes_monitor_e1 import *
+elif getEndem() == 2:
+	from nodes_monitor_e2 import *
+else: 
+	from nodes_monitor_e3 import *
+
+
+def parse2():
+	if (answer == "Yes"):
+		yesCirr()
+	else:
+		noCirr()
+
+
+# Append to g1 and g2 arrays.
+def yesCirr():																	# 1
+	g1.append(Node06(1))
+	g2.append(Node30(1))
+
+def getWhoRec():
 	if answer == 'Yes' or (age >= 30 and ALT == "Persistently Abnormal" and HBV_DNA == ">20,000 IU/ml"):
 		return 'Monitoring and Treatment'
 	else:
 		return 'Monitoring'
+
+def noCirr():
+
+	global g1, g2, g3
+	if(age <= 30):
+		# print ALT, HBV_DNA
+		if(ALT == "Persistently Abnormal" and HBV_DNA == ">20,000 IU/ml"):		# 6
+			g1.append(Node36(1))
+			g2.append(Node26(1))
+			g3.append(Node04(0.5))
+			g3.append(Node05(0.5))
+		else:																	# 7, 8
+			g1.append(Node36(1))
+			g2.append(Node26(1))
+	elif(age >30):
+		if(HBV_DNA == "<2000 IU/ml" or HBV_DNA == "2000-20,000 IU/ml"):		# 3, 5
+			g1.append(Node36(1))
+			g2.append(Node26(1))
+		elif(ALT == "Persistently Abnormal"):									# 2
+			g1.append(Node04(0.5))
+			g1.append(Node05(0.5))
+			g2.append(Node28(0.5))
+			g2.append(Node29(0.5))
+		else:																	# 4
+			g1.append(Node36(1))
+			g2.append(Node26(1))
+			g3.append(Node04(0.5))
+			g3.append(Node05(0.5))
+
+
+def ageStage():
+	stage = 5
+	return age, stage
+
+def cirrALT_DNA():
+	return answer, ALT, HBV_DNA
+
+def getInitNodes():
+	return g1, g2 ,g3
+
+
+
+
+
+
+
+
+
+
