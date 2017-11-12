@@ -8,4 +8,4 @@ httplib2==0.9.1
 PyCrypto==2.6.1
 PyOpenSSL==0.15.1
 numpy==1.9.2
-pandas==0.21.0
+pandas==0.20.0
