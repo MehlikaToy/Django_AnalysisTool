@@ -1,25 +1,33 @@
 """
-Created on Sun Oct 22 20:18:32 2017
-
-@author: degle
+reader.py
+Reads Excel spreadsheets and loads model data into Python.
 """
 
 import numpy as np
-import pandas as pd
 
-# Loads the matrix and the list of states
-# Note: transposing matrix since the states were entered incorrectly
+from pydata_matrix import xl
+
+
 def load_matrix(file, sheet):
-    df = pd.read_excel(file, sheetname=sheet)
-    return df.values[:,1:].transpose(), df.values[:,0]
+    """
+    Loads the matrix and the list of states.
+    Note: transposing matrix since the states were entered incorrectly.
+    """
+    data = np.array(xl[sheet], dtype='O')
+    return data[:,1:].transpose(), data[:,0]
 
-# Load variable
-def load_var(file, sheet):
-    return pd.read_excel(file, sheetname=sheet).values[:,1:]
+
+def load_var(sheet, file='matrix.xlsx'):
+    """
+    Loads data for a single variable from the spreadsheet.
+    """
+    return np.array(xl[sheet], dtype='O')[:,1:]
     
 
-# Clear NaNs
 def fill_empty(M):
+    """
+    Clears all the NaNs in the spreadsheet.
+    """
     for i in range(len(M)):
         for j in range(len(M[0])):
             if (np.isnan(M[i,j])):
@@ -37,13 +45,14 @@ def fill_prev(M):
 
 
 # Fill vars
-def fill_vars(M, file, age):
-    for r in range(len(M)):
-        for c in range(len(M[r])):
+def fill_vars(M, file, values):
+    m,n = M.shape
+    for r in range(m):
+        for c in range(n):
             if (isinstance(M[r][c], str)):
                 var = M[r][c].split()
-                var_data = fill_prev(load_var(file, var[0]))
-                M[r,c] = var_data[age%len(var_data) ,int(var[1])]
+                var_data = fill_prev(load_var(var[0], file))
+                M[r,c] = var_data[values[var[0]] ,int(var[1])]
     return M
 
 
@@ -66,11 +75,15 @@ def fill_remain(M):
     
 
 # Putting it all together
-def generate_model(file='./matrix.xlsx', age=30, female=False):
+def generate_model(file='./matrix.xlsx', female=False,
+                   age=30, cirr_year=1, trans_year=1):
     if(female):
         age += 100
     matrix, states = load_matrix(file, 'data')
-    matrix = fill_vars(matrix, file, age)
+    values = {'age':age, 'cirr_year':cirr_year, 
+              'trans_year':trans_year, 'mort':age+100*female}
+    
+    matrix = fill_vars(matrix, file, values)
     matrix = fill_empty(matrix)
     if(female):
         matrix = female_mod(matrix, file, 'gender')
@@ -79,10 +92,3 @@ def generate_model(file='./matrix.xlsx', age=30, female=False):
     return matrix, states
     
 
-
-'''    
-matrix, states = generate_model()
-for row in matrix:
-    print(list(row))
-print(states)
-'''
