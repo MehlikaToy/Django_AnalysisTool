@@ -43,7 +43,6 @@ def resultsView(request):
         inputs += "with Cirrhosis."
     else:
         inputs += "without Cirrhosis."
-    tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
 
     model, labels = rd.generate_model(file='./matrix.xlsx', age=age, female=False)
     start = np.zeros(len(model[0]))
@@ -65,13 +64,16 @@ def resultsView(request):
         cirr_data.append([i, state[2], state[2]])
         
 
+    tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
     i = 5
     while (i <= 40):
         tableArr.append([i,
-                         str(round(hbv_data[i-1][1],2))+"%",
-                         str(round(hbv_data[i-1][1],2))+"%",
-                         str(round(hcc_data[i-1][1],2))+"%",
-                         str(round(hcc_data[i-1][1],2))+"%"])
+                         str(round(hbv_data[i+1][1],2))+"%",
+                         str(round(hbv_data[i+1][1],2))+"%",
+                         str(round(hcc_data[i+1][1],2))+"%",
+                         str(round(hcc_data[i+1][1],2))+"%",
+                         str(round(cirr_data[i+1][1],2))+"%",
+                         str(round(cirr_data[i+1][1],2))+"%"])
         i = i*2
 
     whoRec = 'Your Patient Needs ' + recommendation
