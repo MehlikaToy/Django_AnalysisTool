@@ -92,7 +92,7 @@ def resultsView(request):
         'inputStr': inputs,
         'whoRec': whoRec,
         'tableArr': tableArr,
-        'ifCirr': (cirr=='Yes'),
+        'ifCirr': "true",
         't_heading': t_heading,
     }
     
