@@ -68,10 +68,10 @@ def resultsView(request):
     i = 5
     while (i <= 40):
         tableArr.append([i,
-                         str(round(hbv_data[i-1],2))+"%",
-                         str(round(hbv_data[i-1],2))+"%",
-                         str(round(hcc_data[i-1],2))+"%",
-                         str(round(hcc_data[i-1],2))+"%"])
+                         str(round(hbv_data[i-1][1],2))+"%",
+                         str(round(hbv_data[i-1][1],2))+"%",
+                         str(round(hcc_data[i-1][1],2))+"%",
+                         str(round(hcc_data[i-1][1],2))+"%"])
         i = i*2
 
     whoRec = 'Your Patient Needs ' + recommendation
