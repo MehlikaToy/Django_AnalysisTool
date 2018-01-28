@@ -114,7 +114,7 @@ class Simulation():
         """
         simp_history = []
         for state in self.history:
-            simp_history += [self._simplify(state).astype(np.float32)]
+            simp_history += [self._simplify(state)]
             
         return simp_history
 
