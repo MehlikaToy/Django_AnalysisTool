@@ -107,7 +107,7 @@ class Simulation():
         """
         simp_history = []
         for state in self.history:
-            simp_history += [np.ones(13)]  # [self._simplify(state)]
+            simp_history += [self._simplify(state).astype(np.float32)]
             
         return simp_history
 
