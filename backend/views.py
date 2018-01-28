@@ -11,6 +11,8 @@ import flowchart as flow
 import matrixoperations as mop
 import reader as rd
 
+STAGES = 40
+
 # Create your views here.
 
 def index(request):
@@ -32,32 +34,34 @@ def resultsView(request):
 
     # returns finalDict from getAPI.py
     # ie. {'How old is your patient?': '38', ... }
-
     endem, age, cirr, ALT, HBV_DNA = flow.parse()
-    stages = 40
    
+    
     recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
 
     inputs = "Your " + str(age) + " year old patient "
     if (cirr == 'Yes'):
-        inputs += "with Cirrhosis."
+        inputs += "with Cirrhosis"
     else:
-        inputs += "without Cirrhosis."
+        inputs += "without Cirrhosis, "
+        inputs += str(ALT) + 'ALT, '
+        inputs += 'and HBV DNA ' + str(HBV_DNA) + "."
+    
 
     model, labels = rd.generate_model(file='./matrix.xlsx', age=age, female=False)
     start = np.zeros(len(model[0]))
     
     # for now, always start from cirrhosis
     if (cirr == 'Yes'):
-        start[2] = 1
+        start[2] = 100
     else:
-        start[2] = 1
+        start[2] = 100
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
     hcc_data = [['Stages','Natural History', 'Treatment']]
     cirr_data = [['Stages','Natural History', 'Treatment']]
-    for i in range(0, stages+1):
+    for i in range(0, STAGES+1):
         state = mop.pwr(model, i).dot(start)
         hbv_data.append([i, state[11], state[11]])
         hcc_data.append([i, state[4], state[4]])
