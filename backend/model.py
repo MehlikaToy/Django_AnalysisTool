@@ -74,7 +74,7 @@ class Simulation():
         Advance one year.
         """
         # Load data.
-        M, labels = rd.generate_model(self.female, self.age)
+        M, labels = rd.generate_model(self.female, min(self.age, 99))
         
         # Advance state.
         next_state = M.dot(self.state)

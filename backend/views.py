@@ -59,6 +59,8 @@ def resultsView(request):
     simulator = model.Simulation(int(age), False, start)
     simulator.sim(STAGES)
     history = simulator.get_history()
+    
+    print(history[0])
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
