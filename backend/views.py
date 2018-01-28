@@ -186,7 +186,7 @@ def resultsView(request):
     inputs += '\n' + str(simulator.age)
     
     test_real_history = simulator.history
-    test_simplification = md.SIMPLIFIER
+    test_simplification = SIMPLIFIER
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
