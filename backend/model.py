@@ -109,9 +109,4 @@ class Simulation():
             simp_history += [self._simplify(state)]
             
         return simp_history
-            
-            
-            
-test = Simulation(41, False, LTDC_STATE)
-
 
