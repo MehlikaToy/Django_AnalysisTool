@@ -56,13 +56,14 @@ def resultsView(request):
     else:
         start = md.INACTIVE_STATE
     
-    simulator = md.Simulation(int(age), False, start)
+    simulator = md.Simulation(30, False, start)
     simulator.sim(STAGES)
     history = simulator.get_history()
     
 
     inputs += '\n' + str(history[0])
     inputs += '\n' + str(history[1])
+    inputs += '\n' + str(int(age))
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
