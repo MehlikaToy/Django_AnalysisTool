@@ -4,7 +4,6 @@ Reads Excel spreadsheets and loads model data into Python.
 """
 
 import numpy as np
-
 from pydata_matrix import xl
 
 
