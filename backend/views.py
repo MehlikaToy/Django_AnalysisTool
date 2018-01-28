@@ -42,7 +42,9 @@ def resultsView(request):
     if (cirr == 'Yes'):
         inputs += "with Cirrhosis."
     else:
-        inputs += "without Cirrhosis."
+        inputs += "without Cirrhosis, "
+        inputs += str(ALT).lower() + " ALT level, "
+        inputs += "and " + str(HBV_DNA) + " HBV DNA."
 
     model, labels = rd.generate_model(file='./matrix.xlsx', age=age, female=False)
     start = np.zeros(len(model[0]))
