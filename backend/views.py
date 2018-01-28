@@ -49,9 +49,9 @@ def resultsView(request):
     
     # for now, always start from cirrhosis
     if (cirr == 'Yes'):
-        start[2] = 1
+        start[2] = 100
     else:
-        start[2] = 1
+        start[2] = 100
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
