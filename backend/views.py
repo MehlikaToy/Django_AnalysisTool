@@ -96,7 +96,7 @@ def resultsView(request):
         'inputStr': inputs,
         'whoRec': whoRec,
         'tableArr': tableArr,
-        'ifCirr': "true",
+        'ifCirr': (cirr=='Yes'),
         't_heading': t_heading,
     }
     
