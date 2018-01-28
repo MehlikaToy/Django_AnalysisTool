@@ -9,7 +9,7 @@ import decimal
 import numpy as np
 import flowchart as flow
 import reader as rd
-import model
+import model as md
 
 STAGES = 40
 
@@ -50,17 +50,18 @@ def resultsView(request):
     
     start = None
     if (cirr == 'Yes'):
-        start = model.LTDC_STATE
+        start = md.LTDC_STATE
     elif (ALT == 'Persistently Abnormal' and HBV_DNA == '>20,000 IU/ml'):
-        start = model.CHB_STATE
+        start = md.CHB_STATE
     else:
-        start = model.INACTIVE_STATE
+        start = md.INACTIVE_STATE
     
-    simulator = model.Simulation(int(age), False, start)
+    simulator = md.Simulation(int(age), False, start)
     simulator.sim(STAGES)
     history = simulator.get_history()
     
-    print(history[0])
+
+    inputs += '\n' + str(start)
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
