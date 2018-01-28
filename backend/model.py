@@ -56,6 +56,7 @@ SIMPLIFIER = generate_simplifier()
 
 
 class Simulation():
+    # TODO make empty constrcuctor
     def __init__(self, age, female, start_state):
         """
         Load inital parameters.

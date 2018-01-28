@@ -56,13 +56,12 @@ def resultsView(request):
     else:
         start = md.INACTIVE_STATE
     
-    simulator = md.Simulation(30, False, start)
+    simulator = md.Simulation(30, False, md.INACTIVE_STATE)
     simulator.sim(STAGES)
-    history = simulator.get_history()
-    
+    history = simulator.get_history()    
 
     inputs += '\n' + str(history[0])
-    inputs += '\n' + str(history[1])
+    inputs += '\n' + str(history[39])
     inputs += '\n' + str(int(age))
 
 
