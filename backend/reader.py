@@ -30,7 +30,7 @@ def fill_empty(M):
     """
     for i in range(len(M)):
         for j in range(len(M[0])):
-            if (np.isnan(M[i,j])):
+            if ((not isinstance(M[i,j], str)) and np.isnan(M[i,j])):
                 M[i][j] = 0
     return M
 
@@ -49,7 +49,7 @@ def fill_vars(M, file, values):
     m,n = M.shape
     for r in range(m):
         for c in range(n):
-            if (isinstance(M[r][c], str)):
+            if (isinstance(M[r][c], str) and M[r][c] != 'id'):
                 var = M[r][c].split()
                 var_data = fill_prev(load_var(var[0], file))
                 M[r,c] = var_data[values[var[0]] ,int(var[1])]
@@ -68,26 +68,29 @@ def female_mod(M, file, sheet):
     return np.multiply(M, female)
 
 
-def fill_remain(M):
-    for c in range(len(M[0])):
-        M[c,c] = 1 - sum(M[:,c])
+# TODO
+def fill_remain(M, labels):
+    for r in range(len(M)):
+        for c in range(len(M[0])):
+            if (M[r][c] == 'id'):
+                M[r][c] = np.nan
+                M[r][c] = 1 - np.nansum(M[:,c])
     return M
     
 
 # Putting it all together
-def generate_model(file='./matrix.xlsx', female=False,
-                   age=30, cirr_year=1, trans_year=1):
+def generate_model(female=False, age=30):
+    file = None
     if(female):
         age += 100
     matrix, states = load_matrix(file, 'data')
-    values = {'age':age, 'cirr_year':cirr_year, 
-              'trans_year':trans_year, 'mort':age+100*female}
+    values = {'age':age, 'mort':age+100*female}
     
     matrix = fill_vars(matrix, file, values)
     matrix = fill_empty(matrix)
     if(female):
         matrix = female_mod(matrix, file, 'gender')
-    matrix = fill_remain(matrix)
+    matrix = fill_remain(matrix, states)
     
     return matrix, states
     

@@ -8,11 +8,13 @@ import decimal
 
 import numpy as np
 import flowchart as flow
-import matrixoperations as mop
 import reader as rd
+import model
+
+STAGES = 40
+
 
 # Create your views here.
-
 def index(request):
     template = loader.get_template('home/index.html')
     return HttpResponse(template.render())
@@ -34,10 +36,7 @@ def resultsView(request):
     # ie. {'How old is your patient?': '38', ... }
 
     endem, age, cirr, ALT, HBV_DNA = flow.parse()
-    stages = 40
    
-    recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
-
     inputs = "Your " + str(age) + " year old patient "
     if (cirr == 'Yes'):
         inputs += "with Cirrhosis."
@@ -46,24 +45,30 @@ def resultsView(request):
         inputs += str(ALT).lower() + " ALT level, "
         inputs += "and " + str(HBV_DNA) + " HBV DNA."
 
-    model, labels = rd.generate_model(file='./matrix.xlsx', age=age, female=False)
-    start = np.zeros(len(model[0]))
+    #model, labels = rd.generate_model(file='./matrix.xlsx', age=age, female=False)
+    #start = np.zeros(len(model[0]))
     
-    # for now, always start from cirrhosis
+    start = None
     if (cirr == 'Yes'):
-        start[2] = 100
+        start = model.LTDC_STATE
+    elif (ALT == 'Persistently Abnormal' and HBV_DNA == '>20,000 IU/ml'):
+        start = model.CHB_STATE
     else:
-        start[2] = 100
+        start = model.INACTIVE_STATE
+    
+    simulator = model.Simulation(int(age), False, start)
+    simulator.sim(STAGES)
+    history = simulator.get_history()
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
     hcc_data = [['Stages','Natural History', 'Treatment']]
     cirr_data = [['Stages','Natural History', 'Treatment']]
-    for i in range(0, stages+1):
-        state = mop.pwr(model, i).dot(start)
-        hbv_data.append([i, state[11], state[11]])
-        hcc_data.append([i, state[4], state[4]])
-        cirr_data.append([i, state[2], state[2]])
+    for t in range(0, STAGES+1):
+        state = history[t]
+        cirr_data.append([t, state[8], state[8]])
+        hcc_data.append([t, state[9], state[9]])
+        hbv_data.append([t, state[11], state[11]])
         
 
     tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
@@ -76,9 +81,14 @@ def resultsView(request):
                          str(round(hcc_data[i-1][1],2))+"%"])
         i = i*2
 
+
+    # Generate recommendation.
+    recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
     whoRec = 'Your Patient Needs ' + recommendation
     t_heading = recommendation
 
+
+    # Dump data.
     dumpDict = {
         'deathHBV_Final': json.dumps(hbv_data),
         'hcc_Final': json.dumps(hcc_data),
