@@ -62,7 +62,7 @@ def resultsView(request):
 
     inputs += '\n' + str(history[0])
     inputs += '\n' + str(history[39])
-    inputs += '\n' + str(int(age))
+    inputs += '\n' + str(simulator.age)
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
