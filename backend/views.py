@@ -54,7 +54,7 @@ def resultsView(request):
     
     start = None
     if (cirr == 'Yes'):
-        start = md.LTDC_STATE
+        start = md.CIRR_STATE
     elif (ALT == 'Persistently Abnormal' and HBV_DNA == '>20,000 IU/ml'):
         start = md.CHB_STATE
     else:
