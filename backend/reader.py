@@ -63,8 +63,15 @@ def fill_probs(M):
 
 
 def female_mod(M, file, sheet):
-    female = load_matrix(file, sheet) * (1/2)
-    return np.multiply(M, female)
+    female, labels = load_matrix(file, sheet)
+    
+    M_out = M[:,:]
+    for r in range(M.shape[0]):
+        for c in range(M_out.shape[1]):
+            if ( (not isinstance(M[r,c], str)) and female[r,c] == 1):
+                M_out[r,c] = M[r,c] * 0.5
+    
+    return M_out
 
 
 # TODO
@@ -80,8 +87,6 @@ def fill_remain(M, labels):
 # Putting it all together
 def generate_model(female=False, age=30):
     file = None
-    if(female):
-        age += 100
     matrix, states = load_matrix(file, 'data')
     values = {'age':age, 'mort':age+100*female}
     

@@ -112,3 +112,22 @@ class Simulation():
             simp_history += [self._simplify(state)]
             
         return simp_history
+    
+    
+if (__name__ == "__main__"):
+    start = CIRR_STATE
+    age = 45
+    female = False
+    
+    simulator = Simulation(age, female, start)
+    simulator.sim(40)
+    
+    hist = simulator.get_history()
+    for t in range(len(hist)):
+        print(t, hist[t][9] + hist[t][4])
+    
+    
+    
+    
+    
+    

@@ -76,15 +76,14 @@ def resultsView(request):
         
 
     tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
-    i = 5
-    while (i <= 40):
+    sample_indices = [6, 11, 21, 40]
+    for i in sample_indices:
         tableArr.append([i,
-                         str(round(hbv_data[i-1][1],2))+"%",
-                         str(round(hbv_data[i-1][1],2))+"%",
-                         str(round(hcc_data[i-1][1],2))+"%",
-                         str(round(hcc_data[i-1][1],2))+"%"])
-        i = i*2
-
+                         str(round(hbv_data[i][1],2))+"%",
+                         str(round(hbv_data[i][1],2))+"%",
+                         str(round(hcc_data[i][1],2))+"%",
+                         str(round(hcc_data[i][1],2))+"%"])
+        
 
     # Generate recommendation.
     recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
