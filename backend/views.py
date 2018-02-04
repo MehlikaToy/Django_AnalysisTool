@@ -61,7 +61,7 @@ def resultsView(request):
         start = md.INACTIVE_STATE
     
     simulator = md.Simulation(int(age), False, start)
-    simulator.sim(STAGES)
+    simulator.sim(STAGES+1)
     history = simulator.get_history()
 
 
@@ -76,7 +76,7 @@ def resultsView(request):
         
 
     tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
-    sample_indices = [6, 11, 21, 40]
+    sample_indices = [5, 10, 20, 40]
     for i in sample_indices:
         tableArr.append([i,
                          str(round(hbv_data[i][1],2))+"%",

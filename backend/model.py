@@ -69,7 +69,7 @@ class Simulation():
         
         self.state = np.copy(start_state)
         self.age = age
-        self.history = [np.copy(start_state)]
+        self.history = []
         
     
     def _advance(self):
