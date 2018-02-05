@@ -36,6 +36,9 @@ CHB_STATE[CHBP_INDEX] = 50
 CHB_STATE[CHBN_INDEX] = 50
 
 
+HCC_STATE_INDICES = [4, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27]
+
+
 def generate_simplifier():
     """
     Generates a matrix that simplifies states.
@@ -72,13 +75,18 @@ class Simulation():
         self.history = []
         
     
-    def _advance(self):
+    def _advance(self, term='na'):
         """
         Advance one year.
         """
         # Load data.
         M, labels = rd.generate_model(self.female, min(self.age, 99))
-        
+        if (term == 'hcc'):
+            for i in HCC_STATE_INDICES:
+                for row in range(STATE_LEN):
+                    M[row, i] = 0
+                M[i, i] = 1    
+
         # Advance state.
         next_state = M.dot(self.state)
         
@@ -95,15 +103,15 @@ class Simulation():
         return SIMPLIFIER.dot(state)
         
         
-    def sim(self, years):
+    def _sim(self, years, term='na'):
         """
         Advance many years.
         """
         for i in range(years):
-            self._advance()
+            self._advance(term)
             
 
-    def get_history(self):
+    def _get_history(self):
         """
         Return simplified version of history.
         """
@@ -114,17 +122,33 @@ class Simulation():
         return simp_history
     
     
+    def _clear_history(self):
+        self.history = []
+        self.state = self.start_state
+        self.age = self.start_age
+        
+        
+    def get_data(self, years, term='na'):
+        self._clear_history()
+        self._sim(years, term=term)
+        
+        return self._get_history()
+    
+    
 if (__name__ == "__main__"):
     start = CIRR_STATE
     age = 45
     female = False
     
     simulator = Simulation(age, female, start)
-    simulator.sim(40)
+    hist = simulator.get_data(40, term='hcc')
     
-    hist = simulator.get_history()
     for t in range(len(hist)):
-        print(t, hist[t][9] + hist[t][4])
+        print(t, hist[t][4])
+        
+    print('HBV death')
+    for t in range(len(hist)):
+        print(t, hist[t][11])
     
     
     

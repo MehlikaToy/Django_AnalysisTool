@@ -61,18 +61,17 @@ def resultsView(request):
         start = md.INACTIVE_STATE
     
     simulator = md.Simulation(int(age), False, start)
-    simulator.sim(STAGES+1)
-    history = simulator.get_history()
+    hbv_hist = simulator.get_data(STAGES+1)
+    hcc_hist = simulator.get_data(STAGES+1, term='hcc')
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
     hcc_data = [['Stages','Natural History', 'Treatment']]
     cirr_data = [['Stages','Natural History', 'Treatment']]
     for t in range(0, STAGES+1):
-        state = history[t]
-        cirr_data.append([t, state[8], state[8]])
-        hcc_data.append([t, state[9], state[9]])
-        hbv_data.append([t, state[11], state[11]])
+        cirr_data.append([t, hbv_hist[t][8], hbv_hist[t][8]])
+        hcc_data.append([t, hcc_hist[t][9], hcc_hist[t][9]])
+        hbv_data.append([t, hcc_hist[t][11], hcc_hist[t][11]])
         
 
     tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
