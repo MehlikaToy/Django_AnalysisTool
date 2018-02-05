@@ -70,18 +70,18 @@ def resultsView(request):
     cirr_data = [['Stages','Natural History', 'Treatment']]
     for t in range(0, STAGES+1):
         cirr_data.append([t, hbv_hist[t][8], hbv_hist[t][8]])
-        hcc_data.append([t, hcc_hist[t][9], hcc_hist[t][9]])
-        hbv_data.append([t, hcc_hist[t][11], hcc_hist[t][11]])
+        hcc_data.append([t, hcc_hist[t][4], hcc_hist[t][4]])
+        hbv_data.append([t, hbv_hist[t][11], hbv_hist[t][11]])
         
 
     tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
     sample_indices = [5, 10, 20, 40]
     for i in sample_indices:
         tableArr.append([i,
-                         str(round(hbv_data[i][1],2))+"%",
-                         str(round(hbv_data[i][1],2))+"%",
-                         str(round(hcc_data[i][1],2))+"%",
-                         str(round(hcc_data[i][1],2))+"%"])
+                         str(round(hbv_data[i+1][1],2))+"%",
+                         str(round(hbv_data[i+1][1],2))+"%",
+                         str(round(hcc_data[i+1][1],2))+"%",
+                         str(round(hcc_data[i+1][1],2))+"%"])
         
 
     # Generate recommendation.
