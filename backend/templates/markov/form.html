@@ -29,15 +29,18 @@
           $('.age-q').slideDown();
         });
 
-        $('input:radio[name="entry.216517997"]').change('input',function(){
+        $('input:radio[name="entry.216517997"]').change(function(){
           $('.age-q').addClass('.gender-q');
           $('.gender-q').slideDown();
         });
-
-        $('#entry_332523929').change('input',function(){
+        $('input:radio[name="entry.332523929"]').change(function(){
           $('.gender-q').addClass('.cirr-q');
           $('.cirr-q').slideDown();
         });
+        // $('#entry_332523929').change('input',function(){
+        //   $('.gender-q').addClass('.cirr-q');
+        //   $('.cirr-q').slideDown();
+        // });
 
         $('input:radio[name="entry.1154479602"]').change(function(){
           if($(this).val() == 'No'){
