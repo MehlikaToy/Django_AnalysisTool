@@ -29,7 +29,7 @@
           $('.age-q').slideDown();
         });
 
-        $('input:radio[name="entry.216517997"]').change(function(){
+        $('input:radio[name="entry.216517997"]').on('input', function(){
           $('.age-q').addClass('.gender-q');
           $('.gender-q').slideDown();
         });
