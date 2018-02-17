@@ -29,8 +29,13 @@
           $('.age-q').slideDown();
         });
 
+        $('input:radio[name="entry.216517997"]').change(function(){
+          $('.age-q').addClass('.gender-q');
+          $('.gender-q').slideDown();
+        });
+
         $('#entry_332523929').on('input',function(){
-          $('.age-q').addClass('.cirr-q');
+          $('.gender-q').addClass('.cirr-q');
           $('.cirr-q').slideDown();
         });
 
@@ -232,10 +237,20 @@
         </div>
         </br>
 
+        <div class="gender-q" style="display:none;">
+          <div class="ss-form-entry">
+            <label class="ss-q-item-label" for="entry_216517997">
+              <div class="ss-q-number">3. </div><div class="ss-q-title"><p>What is your patient&#39;s gender?</p></div>
+            </label>
+            <div class="ss-input"><input type="number" name="entry.216517997" value="" id="entry_216517997" aria-label="What is your patient&#39;s gender?  Must be a number between 5 and 120" title="Must be a number between 5 and 120"></div>
+          </div><!-- 2nd question -->
+        </div>
+        </br>
+
         <div class="cirr-q" style="display:none;">
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1952643675">
-              <div class="ss-q-number">3. </div><div class="ss-q-title"><p>Does your patient have <a href='' data-toggle="tooltip" title="NITs (APRI score>2 in adults or FibroScan)">Cirrhosis</a>?</p></div>
+              <div class="ss-q-number">4. </div><div class="ss-q-title"><p>Does your patient have <a href='' data-toggle="tooltip" title="NITs (APRI score>2 in adults or FibroScan)">Cirrhosis</a>?</p></div>
             </label>
 
             <ul class="ss-choices" role="radiogroup" aria-label="Do you have Cirrhosis? If yes, skip the next following questions and submit. ">
@@ -254,7 +269,7 @@
         <div class="hidden-class" style="display:none;">
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_81417422">
-              <div class="ss-q-number">4. </div><div class="ss-q-title"><p>If your patient does not have Cirrhosis, what is your patient&#39;s <a href='' data-toggle="tooltip" title="alanine aminotransferase">ALT</a> level?</p></div>
+              <div class="ss-q-number">5. </div><div class="ss-q-title"><p>If your patient does not have Cirrhosis, what is your patient&#39;s <a href='' data-toggle="tooltip" title="alanine aminotransferase">ALT</a> level?</p></div>
               <div class="ss-q-help">Abnormal: >60 U/L for men & >38 U/L for women</br>Normal: <30 U/L for men & <19 U/L for women</div>
             </label>
 
@@ -280,7 +295,7 @@
 
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1802110371">
-            <div class="ss-q-number">5. </div><div class="ss-q-title"><p>What is your patient&#39;s HBV DNA level?</p></div>
+            <div class="ss-q-number">6. </div><div class="ss-q-title"><p>What is your patient&#39;s HBV DNA level?</p></div>
             <div class="ss-q-help" dir="auto">Units in IU/mL.</div></label>
 
             <ul class="ss-choices" role="radiogroup" aria-label="What is your patient&#39;s HBV DNA level?  ">
