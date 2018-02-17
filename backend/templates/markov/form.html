@@ -35,10 +35,7 @@
           $('.cirr-q').slideDown();
         });
 
-        $('input:radio[name="entry.216517997"]').change(function(){
-          $('.cirr-q').addClass('.gender-q');
-          $('.gender-q').slideDown();
-        });
+        
 
         $('input:radio[name="entry.1154479602"]').change(function(){
           if($(this).val() == 'No'){
@@ -50,6 +47,11 @@
           }
         });
       });
+      
+      $('input:radio[name="entry.216517997"]').change(function(){
+          $('.cirr-q').addClass('.gender-q');
+          $('.gender-q').slideDown();
+        });
       // Enable the dropdown behavior
 
       var submitted=false;
