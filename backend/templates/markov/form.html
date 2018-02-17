@@ -29,20 +29,21 @@
           $('.age-q').slideDown();
         });
 
-        $('input:radio[name="entry.216517997"]').change(function(){
-          $('.age-q').addClass('.gender-q');
-          $('.gender-q').slideDown();
-        });
 
         $('input:radio[name="entry.332523929"]').change(function(){
-          $('.gender-q').addClass('.cirr-q');
+          $('.first-q').addClass('.cirr-q');
           $('.cirr-q').slideDown();
+        });
+
+        $('input:radio[name="entry.216517997"]').change(function(){
+          $('.cirr-q').addClass('.gender-q');
+          $('.gender-q').slideDown();
         });
 
         $('input:radio[name="entry.1154479602"]').change(function(){
           if($(this).val() == 'No'){
             console.log("you clicked yes");
-            $('.cirr-q').addClass('.hidden-class');
+            $('.gender-q').addClass('.hidden-class');
             $('.hidden-class').slideDown();
           } else{
             $('.hidden-class').slideUp();
