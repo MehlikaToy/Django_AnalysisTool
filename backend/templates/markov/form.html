@@ -26,7 +26,11 @@
 
         
         $('input:radio[name="entry.2009824324"]').change(function(){
-          $('.first-q').addClass('.age-q');
+          $('.first-q').addClass('.gender-q');
+          $('.gender-q').slideDown();
+        });
+        $('#entry_216517997').on('input',function(){
+          $('.gender-q').addClass('.age-q');
           $('.age-q').slideDown();
         });
         $('#entry_332523929').on('input',function(){
