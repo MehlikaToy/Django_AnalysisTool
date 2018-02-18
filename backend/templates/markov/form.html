@@ -26,28 +26,19 @@
 
         
         $('input:radio[name="entry.2009824324"]').change(function(){
-          $('.first-q').addClass('.gender-q');
-          $('.gender-q').slideDown();
-        });
-        // $('#entry_216517997').on('input',function(){
-        //   $('.gender-q').addClass('.age-q');
-        //   $('.age-q').slideDown();
-        // });
-
-        $('input:radio[name="entry.216517997"]').change(function(){
-          $('.gender-q').addClass('.age-q');
+          $('.first-q').addClass('.age-q');
           $('.age-q').slideDown();
         });
 
+
         $('#entry_332523929').on('input',function(){
-          $('.age-q').addClass('.cirr-q');
+          $('.age-q').addClass('.gender-q');
+          $('.gender-q').slideDown();
+        });
+        $('input:radio[name="entry.216517997"]').change(function(){
+          $('.gender-q').addClass('.cirr-q');
           $('.cirr-q').slideDown();
         });
-        // $('input:radio[name="entry.332523929"]').change(function(){
-        //   $('.age-q').addClass('.cirr-q');
-        //   $('.cirr-q').slideDown();
-        // });
-
         $('input:radio[name="entry.1154479602"]').change(function(){
           if($(this).val() == 'No'){
             console.log("you clicked yes");
@@ -240,6 +231,16 @@
           </div><!-- 1st question -->
         </div>
         </br>
+
+          <div class="age-q" style="display:none;">
+          <div class="ss-form-entry">
+            <label class="ss-q-item-label" for="entry_332523929">
+              <div class="ss-q-number">2. </div><div class="ss-q-title"><p>What is your patient&#39;s age?</p></div>
+            </label>
+            <div class="ss-input"><input type="number" name="entry.332523929" value="" id="entry_332523929" aria-label="What is your patient&#39;s age?  Must be a number between 5 and 120" title="Must be a number between 5 and 120"></div>
+          </div>
+        </div>
+        </br>
         
         <div class="gender-q" style="display:none;">
           <div class="ss-form-entry">
@@ -258,20 +259,7 @@
             </ul>
           </div>
         </div>
-        </br>
-
-          <div class="age-q" style="display:none;">
-          <div class="ss-form-entry">
-            <label class="ss-q-item-label" for="entry_332523929">
-              <div class="ss-q-number">2. </div><div class="ss-q-title"><p>What is your patient&#39;s age?</p></div>
-            </label>
-            <div class="ss-input"><input type="number" name="entry.332523929" value="" id="entry_332523929" aria-label="What is your patient&#39;s age?  Must be a number between 5 and 120" title="Must be a number between 5 and 120"></div>
-          </div>
-        </div>
-        </br>
-
-
-        
+        </br>  
 
         <div class="cirr-q" style="display:none;">
           <div class="ss-form-entry">
