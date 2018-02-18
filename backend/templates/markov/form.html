@@ -29,20 +29,24 @@
           $('.first-q').addClass('.gender-q');
           $('.gender-q').slideDown();
         });
-        $('#entry_216517997').on('input',function(){
+        // $('#entry_216517997').on('input',function(){
+        //   $('.gender-q').addClass('.age-q');
+        //   $('.age-q').slideDown();
+        // });
+
+        $('input:radio[name="entry.216517997"]').change(function(){
           $('.gender-q').addClass('.age-q');
           $('.age-q').slideDown();
         });
 
-
-        // $('#entry_332523929').on('input',function(){
-        //   $('.age-q').addClass('.cirr-q');
-        //   $('.cirr-q').slideDown();
-        // });
-        $('input:radio[name="entry.332523929"]').change(function(){
+        $('#entry_332523929').on('input',function(){
           $('.age-q').addClass('.cirr-q');
           $('.cirr-q').slideDown();
         });
+        // $('input:radio[name="entry.332523929"]').change(function(){
+        //   $('.age-q').addClass('.cirr-q');
+        //   $('.cirr-q').slideDown();
+        // });
 
         $('input:radio[name="entry.1154479602"]').change(function(){
           if($(this).val() == 'No'){
