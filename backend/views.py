@@ -39,9 +39,9 @@ def resultsView(request):
     # returns finalDict from getAPI.py
     # ie. {'How old is your patient?': '38', ... }
 
-    endem, age, cirr, ALT, HBV_DNA, arr = flow.parse()
+    endem, age, cirr, ALT, HBV_DNA, arr, gender = flow.parse()
    
-    inputs = "Your " + str(age) + " year old patient "
+    inputs = "Your " + str(age) + " year old " + str(gender) + " patient "
     if (cirr == 'Yes'):
         inputs += "with Cirrhosis."
     else:
@@ -53,15 +53,19 @@ def resultsView(request):
     #model, labels = rd.generate_model(file='./matrix.xlsx', age=age, female=False)
     #start = np.zeros(len(model[0]))
     
-    start = None
     if (cirr == 'Yes'):
         start = md.CIRR_STATE
     elif (ALT == 'Persistently Abnormal' and HBV_DNA == '>20,000 IU/ml'):
         start = md.CHB_STATE
     else:
         start = md.INACTIVE_STATE
+        
+    if (gender == 'Male'):
+        sim_gender = False
+    else:
+        sim_gender = True
     
-    simulator = md.Simulation(int(age), False, start)
+    simulator = md.Simulation(int(age), sim_gender, start)
     hbv_hist = simulator.get_data(STAGES+1)
     hcc_hist = simulator.get_data(STAGES+1, term='hcc')
     cirr_hist = simulator.get_data(STAGES+1, term='cirr')

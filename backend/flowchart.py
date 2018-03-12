@@ -52,10 +52,8 @@ def parse():
     lowestRow = wks.row_count - 1000 # this is magic don't touch
 
     arr = []
-    for col in range(1,7):
+    for col in range(1,8):
         arr.append(wks.cell(lowestRow, col).value)
-
-    arr.append(wks.row_values(lowestRow))
 
     endem_labels = {'Low':1, 'Intermediate':2, 'High':3}
     
@@ -65,7 +63,7 @@ def parse():
     ALT = arr[2]
     HBV_DNA = arr[3]
 
-    return (endem, age, cirr, ALT, HBV_DNA, arr)
+    return (endem, age, cirr, ALT, HBV_DNA)
 
 
 
