@@ -55,6 +55,8 @@ def parse():
     for col in range(1,7):
         arr.append(wks.cell(lowestRow, col).value)
 
+    arr.append(wks.row_values(lowestRow))
+
     endem_labels = {'Low':1, 'Intermediate':2, 'High':3}
     
     endem = endem_labels[arr[4]]
