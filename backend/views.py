@@ -39,7 +39,7 @@ def resultsView(request):
     # returns finalDict from getAPI.py
     # ie. {'How old is your patient?': '38', ... }
 
-    endem, age, cirr, ALT, HBV_DNA, arr, gender = flow.parse()
+    endem, age, cirr, ALT, HBV_DNA, gender = flow.parse()
    
     inputs = "Your " + str(age) + " year old " + str(gender) + " patient "
     if (cirr == 'Yes'):
@@ -48,7 +48,6 @@ def resultsView(request):
         inputs += "without Cirrhosis, "
         inputs += str(ALT).lower() + " ALT level, "
         inputs += "and " + str(HBV_DNA) + " HBV DNA."
-    inputs += '\nARRAY: ' + str(arr)
 
     #model, labels = rd.generate_model(file='./matrix.xlsx', age=age, female=False)
     #start = np.zeros(len(model[0]))
