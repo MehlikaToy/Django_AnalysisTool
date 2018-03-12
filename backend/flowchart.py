@@ -63,7 +63,7 @@ def parse():
     ALT = arr[2]
     HBV_DNA = arr[3]
 
-    return (endem, age, cirr, ALT, HBV_DNA)
+    return (endem, age, cirr, ALT, HBV_DNA, arr)
 
 
 

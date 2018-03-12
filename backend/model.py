@@ -85,14 +85,18 @@ class Simulation():
             for i in HCC_STATE_INDICES:
                 for row in range(STATE_LEN):
                     M[row, i] = 0
-                M[i, i] = 1    
-
+                M[i, i] = 1
+        elif (term == 'cirr'):
+            for row in range(STATE_LEN):
+                M[row, CIRR_INDEX] = 0
+            M[CIRR_INDEX, CIRR_INDEX] = 1
+                
         # Advance state.
         next_state = M.dot(self.state)
         
         # Update values.
         self.state = next_state
-        self.age = self.age + 1
+        # TODO should we advance age? self.age = self.age + 1
         self.history += [next_state]
      
         
@@ -136,19 +140,22 @@ class Simulation():
     
     
 if (__name__ == "__main__"):
-    start = CIRR_STATE
+    start = CHB_STATE
     age = 45
     female = False
     
     simulator = Simulation(age, female, start)
-    hist = simulator.get_data(40, term='hcc')
+    hbv_hist = simulator.get_data(40, term='na')
+    hcc_hist = simulator.get_data(40, term='hcc')
+    cirr_hist = simulator.get_data(40, term='cirr')
     
+    # Cirr: 2, HCC: 4, HBV_death: 11
+    print('Year - HCC- HBV Death - Cirr')
     for t in range(len(hist)):
-        print(t, hist[t][4])
-        
-    print('HBV death')
-    for t in range(len(hist)):
-        print(t, hist[t][11])
+        print(t, 
+              '\t', round(hcc_hist[t][4],2), 
+              '\t', round(hbv_hist[t][11], 2),
+              '\t', round(cirr_hist[t][2], 2))
     
     
     

@@ -39,7 +39,7 @@ def resultsView(request):
     # returns finalDict from getAPI.py
     # ie. {'How old is your patient?': '38', ... }
 
-    endem, age, cirr, ALT, HBV_DNA = flow.parse()
+    endem, age, cirr, ALT, HBV_DNA, arr = flow.parse()
    
     inputs = "Your " + str(age) + " year old patient "
     if (cirr == 'Yes'):
@@ -48,6 +48,7 @@ def resultsView(request):
         inputs += "without Cirrhosis, "
         inputs += str(ALT).lower() + " ALT level, "
         inputs += "and " + str(HBV_DNA) + " HBV DNA."
+    inputs += '\nARRAY: ' + str(arr)
 
     #model, labels = rd.generate_model(file='./matrix.xlsx', age=age, female=False)
     #start = np.zeros(len(model[0]))
@@ -63,25 +64,29 @@ def resultsView(request):
     simulator = md.Simulation(int(age), False, start)
     hbv_hist = simulator.get_data(STAGES+1)
     hcc_hist = simulator.get_data(STAGES+1, term='hcc')
+    cirr_hist = simulator.get_data(STAGES+1, term='cirr')
+    
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
     hcc_data = [['Stages','Natural History', 'Treatment']]
     cirr_data = [['Stages','Natural History', 'Treatment']]
     for t in range(0, STAGES+1):
-        cirr_data.append([t, hbv_hist[t][8], hbv_hist[t][8]])
+        cirr_data.append([t, cirr_hist[t][2], cirr_hist[t][2]])
         hcc_data.append([t, hcc_hist[t][4], hcc_hist[t][4]])
         hbv_data.append([t, hbv_hist[t][11], hbv_hist[t][11]])
         
 
-    tableArr = [['Years', 'DeathHBV NH', 'DeathHBV Mx', 'Liver Cancer NH', 'Liver Cancer Mx']]
+    tableArr = [['Years', 'DeathHBV', 'DeathHBV', 'Liver Cancer', 'Liver Cancer']]
+    
     sample_indices = [5, 10, 20, 40]
     for i in sample_indices:
-        tableArr.append([i,
-                         str(round(hbv_data[i+1][1],2))+"%",
-                         str(round(hbv_data[i+1][1],2))+"%",
-                         str(round(hcc_data[i+1][1],2))+"%",
-                         str(round(hcc_data[i+1][1],2))+"%"])
+        entry = [i,
+                 str(round(hbv_data[i+1][1],2))+"%",
+                 str(round(hbv_data[i+1][1],2))+"%",
+                 str(round(hcc_data[i+1][1],2))+"%",
+                 str(round(hcc_data[i+1][1],2))+"%"]
+        tableArr.append(entry)
         
 
     # Generate recommendation.
