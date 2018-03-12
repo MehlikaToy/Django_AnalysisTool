@@ -64,20 +64,24 @@ def resultsView(request):
     else:
         sim_gender = True
     
-    simulator = md.Simulation(int(age), sim_gender, start)
-    hbv_hist = simulator.get_data(STAGES+1)
-    hcc_hist = simulator.get_data(STAGES+1, term='hcc')
-    cirr_hist = simulator.get_data(STAGES+1, term='cirr')
+    simulator = md.Simulation(int(age), sim_gender, start, 'e1n')
+    hbv_nat = simulator.get_data(STAGES+1)
+    hcc_nat = simulator.get_data(STAGES+1, term='hcc')
+    cirr_nat = simulator.get_data(STAGES+1, term='cirr')
     
+    simulator = md.Simulation(int(age), sim_gender, start, 'e1t')
+    hbv_trt = simulator.get_data(STAGES+1)
+    hcc_trt = simulator.get_data(STAGES+1, term='hcc')
+    cirr_trt = simulator.get_data(STAGES+1, term='cirr')
 
 
     hbv_data = [['Stages','Natural History', 'Treatment']]
     hcc_data = [['Stages','Natural History', 'Treatment']]
     cirr_data = [['Stages','Natural History', 'Treatment']]
     for t in range(0, STAGES+1):
-        cirr_data.append([t, cirr_hist[t][2], cirr_hist[t][2]])
-        hcc_data.append([t, hcc_hist[t][4], hcc_hist[t][4]])
-        hbv_data.append([t, hbv_hist[t][11], hbv_hist[t][11]])
+        cirr_data.append([t, cirr_nat[t][2], cirr_trt[t][2]])
+        hcc_data.append([t, hcc_nat[t][4], hcc_trt[t][4]])
+        hbv_data.append([t, hbv_nat[t][11], hbv_trt[t][11]])
         
 
     tableArr = [['Years', 'DeathHBV', 'DeathHBV', 'Liver Cancer', 'Liver Cancer']]

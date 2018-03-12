@@ -5,8 +5,9 @@ Reads Excel spreadsheets and loads model data into Python.
 
 import numpy as np
 import pydata_em1_nat as e1n
+import pydata_em1_trt as e1t
 
-fl_ref = {'e1n':e1n.xl}
+fl_ref = {'e1n':e1n.xl, 'e1t':e1t.xl}
 
 def load_matrix(file, sheet):
     """

@@ -62,13 +62,14 @@ SIMPLIFIER = generate_simplifier()
 
 class Simulation():
     # TODO make empty constrcuctor
-    def __init__(self, age, female, start_state):
+    def __init__(self, age, female, start_state, file):
         """
         Load inital parameters.
         """        
         self.start_age = age
         self.female = female 
         self.start_state =  np.copy(start_state)
+        self.file = file
         
         self.state = np.copy(start_state)
         self.age = age
@@ -80,7 +81,7 @@ class Simulation():
         Advance one year.
         """
         # Load data.
-        M, labels = rd.generate_model(self.female, min(self.age, 99))
+        M, labels = rd.generate_model(self.female, min(self.age, 99), self.file)
         if (term == 'hcc'):
             for i in HCC_STATE_INDICES:
                 for row in range(STATE_LEN):
@@ -143,8 +144,9 @@ if (__name__ == "__main__"):
     start = CHB_STATE
     age = 45
     female = False
+    file = 'e1n'
     
-    simulator = Simulation(age, female, start)
+    simulator = Simulation(age, female, start, file)
     hbv_hist = simulator.get_data(40, term='na')
     hcc_hist = simulator.get_data(40, term='hcc')
     cirr_hist = simulator.get_data(40, term='cirr')
