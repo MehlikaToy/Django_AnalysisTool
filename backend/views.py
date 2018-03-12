@@ -107,9 +107,9 @@ def resultsView(request):
     t_heading = recommendation
     
     if (cirr == 'Yes'):
-        ifCirr = 1
-    else:
         ifCirr = 0
+    else:
+        ifCirr = 1
 
 
     # Dump data.
