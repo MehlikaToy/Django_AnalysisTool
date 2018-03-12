@@ -105,6 +105,11 @@ def resultsView(request):
     recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
     whoRec = 'Your Patient Needs ' + recommendation
     t_heading = recommendation
+    
+    if (cirr == 'Yes'):
+        ifCirr = 1
+    else:
+        ifCirr = 0
 
 
     # Dump data.
@@ -123,7 +128,7 @@ def resultsView(request):
         'inputStr': inputs,
         'whoRec': whoRec,
         'tableArr': tableArr,
-        'ifCirr': "true",
+        'ifCirr': ifCirr,
         't_heading': t_heading,
     }
     
