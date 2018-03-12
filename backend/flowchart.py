@@ -62,8 +62,9 @@ def parse():
     cirr = arr[1]			#cirrhosis
     ALT = arr[2]
     HBV_DNA = arr[3]
+    gender = arr[6]
 
-    return (endem, age, cirr, ALT, HBV_DNA)
+    return (endem, age, cirr, ALT, HBV_DNA, gender)
 
 
 
