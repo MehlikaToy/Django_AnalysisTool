@@ -41,7 +41,7 @@ def resultsView(request):
 
     endem, age, cirr, ALT, HBV_DNA, gender = flow.parse()
    
-    inputs = "Your " + str(age) + " year old " + str(gender) + " patient "
+    inputs = "Your " + str(age) + " year old " + str(gender).lower() + " patient "
     if (cirr == 'Yes'):
         inputs += "with Cirrhosis."
     else:
@@ -85,14 +85,19 @@ def resultsView(request):
         
 
     tableArr = [['Years', 'DeathHBV', 'DeathHBV', 'Liver Cancer', 'Liver Cancer']]
+    if (cirr != 'Yes'):
+        tableArr[0] += ['Cirrhosis', 'Cirrhosis']
     
     sample_indices = [5, 10, 20, 40]
     for i in sample_indices:
         entry = [i,
                  str(round(hbv_data[i+1][1],2))+"%",
-                 str(round(hbv_data[i+1][1],2))+"%",
+                 str(round(hbv_data[i+1][2],2))+"%",
                  str(round(hcc_data[i+1][1],2))+"%",
-                 str(round(hcc_data[i+1][1],2))+"%"]
+                 str(round(hcc_data[i+1][2],2))+"%"]
+        if (cirr != 'Yes'):
+            entry += [str(round(cirr_data[i+1][1], 2))+"%",
+                      str(round(cirr_data[i+1][2], 2))+"%"]
         tableArr.append(entry)
         
 
