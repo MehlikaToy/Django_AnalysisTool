@@ -4,23 +4,24 @@ Reads Excel spreadsheets and loads model data into Python.
 """
 
 import numpy as np
-from pydata_em1_nat import xl
+import pydata_em1_nat as e1n
 
+fl_ref = {'e1n':e1n.xl}
 
 def load_matrix(file, sheet):
     """
     Loads the matrix and the list of states.
     Note: transposing matrix since the states were entered incorrectly.
     """
-    data = np.array(xl[sheet], dtype='O')
+    data = np.array(fl_ref[file][sheet], dtype='O')
     return data[:,1:].transpose(), data[:,0]
 
 
-def load_var(sheet, file='matrix.xlsx'):
+def load_var(file, sheet):
     """
     Loads data for a single variable from the spreadsheet.
     """
-    return np.array(xl[sheet], dtype='O')[:,1:]
+    return np.array(fl_ref[file][sheet], dtype='O')[:,1:]
     
 
 def fill_empty(M):
@@ -50,7 +51,7 @@ def fill_vars(M, file, values):
         for c in range(n):
             if (isinstance(M[r][c], str) and M[r][c] != 'id'):
                 var = M[r][c].split()
-                var_data = fill_prev(load_var(var[0], file))
+                var_data = fill_prev(load_var(file, var[0]))
                 M[r,c] = var_data[values[var[0]] ,int(var[1])]
     return M
 
@@ -85,8 +86,7 @@ def fill_remain(M, labels):
     
 
 # Putting it all together
-def generate_model(female=False, age=30):
-    file = None
+def generate_model(female=False, age=30, file='e1n'):
     matrix, states = load_matrix(file, 'data')
     values = {'age':age, 'mort':age+100*female}
     

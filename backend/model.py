@@ -8,7 +8,7 @@ compute patient outcomes for different times.
 import reader as rd
 import numpy as np
 
-STATE_LEN = 31
+STATE_LEN = 32
 
 
 # State indices.
@@ -150,8 +150,8 @@ if (__name__ == "__main__"):
     cirr_hist = simulator.get_data(40, term='cirr')
     
     # Cirr: 2, HCC: 4, HBV_death: 11
-    print('Year - HCC- HBV Death - Cirr')
-    for t in range(len(hist)):
+    print('Year - HCC - HBV Death - Cirr')
+    for t in range(len(hbv_hist)):
         print(t, 
               '\t', round(hcc_hist[t][4],2), 
               '\t', round(hbv_hist[t][11], 2),
