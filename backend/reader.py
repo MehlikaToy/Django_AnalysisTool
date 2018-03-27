@@ -27,7 +27,7 @@ def load_var(file, sheet):
 
 def fill_empty(M):
     """
-    Clears all the NaNs in the spreadsheet.
+    Clears all the empty cells in the spreadsheet.
     """
     for i in range(len(M)):
         for j in range(len(M[0])):
@@ -36,8 +36,11 @@ def fill_empty(M):
     return M
 
 
-# Fill with previous
 def fill_prev(M):
+    """
+    Fills out the blank values in the variable tables using the previous
+    filled in values.
+    """
     for c in range(len(M[0])):
         for r in range(len(M)):
             if (np.isnan(M[r,c])):
@@ -45,8 +48,10 @@ def fill_prev(M):
     return M
 
 
-# Fill vars
 def fill_vars(M, file, values):
+    """
+    Fills the variables in the matrix with their respective data.
+    """
     m,n = M.shape
     for r in range(m):
         for c in range(n):
@@ -57,14 +62,20 @@ def fill_vars(M, file, values):
     return M
 
 
-# Enter probabilities of remaining in state
 def fill_probs(M):
+    """
+    DEPRECATED
+    Fill out the identity probabilities.
+    """
     for i in range(len(M)):
         M[i][i] = 1 - sum(M[:,i])
     return M
 
 
 def female_mod(M, file, sheet):
+    """
+    Modify selected cells for a female patient.
+    """
     female, labels = load_matrix(file, sheet)
     
     M_out = M[:,:]
@@ -76,8 +87,10 @@ def female_mod(M, file, sheet):
     return M_out
 
 
-# TODO
 def fill_remain(M, labels):
+    """
+    Fill identity cells.
+    """
     for r in range(len(M)):
         for c in range(len(M[0])):
             if (M[r][c] == 'id'):
@@ -86,8 +99,10 @@ def fill_remain(M, labels):
     return M
     
 
-# Putting it all together
 def generate_model(female=False, age=30, file='e1n'):
+    """
+    Generate a Markov matrix given a gender, age, and endemicity.
+    """
     matrix, states = load_matrix(file, 'data')
     values = {'age':age, 'mort':age+100*female}
     
