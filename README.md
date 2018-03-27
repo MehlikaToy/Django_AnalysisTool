@@ -34,3 +34,4 @@ python manage.py runserver
 * Jasmine Kim (jkim0110@ucla.edu)
 * Gerry Meixiong (geraldmx@stanford.edu)
 * Tejpal Virdi (tejpalv@stanford.edu)
+* Anthony Degleris (degleris@stanford.edu)
