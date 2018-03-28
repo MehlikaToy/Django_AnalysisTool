@@ -98,7 +98,7 @@ class Simulation():
         # Update values.
         self.state = next_state
         # TODO should we advance age?
-        self.age += 1
+        #self.age += 1
         self.history += [next_state]
      
         
