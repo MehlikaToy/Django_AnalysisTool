@@ -11,7 +11,7 @@ import flowchart as flow
 import reader as rd
 import model as md
 
-STAGES = 40
+STAGES = 20
 
 
 
@@ -84,11 +84,11 @@ def resultsView(request):
         hbv_data.append([t, hbv_nat[t][11], hbv_trt[t][11]])
         
 
-    tableArr = [['Years', 'DeathHBV', 'DeathHBV', 'Liver Cancer', 'Liver Cancer']]
+    tableArr = [['Years', 'DeathHBV', '', 'Liver Cancer', '']]
     if (cirr != 'Yes'):
         tableArr[0] += ['Cirrhosis', 'Cirrhosis']
     
-    sample_indices = [5, 10, 20, 40]
+    sample_indices = [5, 10, 20]
     for i in sample_indices:
         entry = [i,
                  str(round(hbv_data[i+1][1],2))+"%",

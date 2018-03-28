@@ -97,7 +97,8 @@ class Simulation():
         
         # Update values.
         self.state = next_state
-        # TODO should we advance age? self.age = self.age + 1
+        # TODO should we advance age?
+        self.age += 1
         self.history += [next_state]
      
         
@@ -141,7 +142,7 @@ class Simulation():
     
     
 if (__name__ == "__main__"):
-    start = CHB_STATE
+    start = CIRR_STATE
     age = 45
     female = False
     file = 'e1n'
