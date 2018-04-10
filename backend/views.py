@@ -94,10 +94,13 @@ def resultsView(request):
         if (cirr != 'Yes'):
             entry += [str(round(cirr_data[i+1][1], 2))+"%",
                       str(round(cirr_data[i+1][2], 2))+"%"]
+
+        if (i=20):
+            deathDiff = str(round(hbv_data[i+1][2],2) - round(hbv_data[i+1][1],2))
+            tableArr.append([deathDiff, deathDiff, deathDiff, deathDiff, deathDiff])
         tableArr.append(entry)
 
 
-    tableArr.append([0,0,0,0,0])
         
 
     # Generate recommendation.
