@@ -94,8 +94,7 @@ def resultsView(request):
                  str(round(hbv_data[i+1][1],2))+"%",
                  str(round(hbv_data[i+1][2],2))+"%",
                  str(round(hcc_data[i+1][1],2))+"%",
-                 str(round(hcc_data[i+1][2],2))+"%",
-                 str(round(hcc_data[i+1][2],2) - round(hcc_data[i+1][1s],2))+"%"]
+                 str(round(hcc_data[i+1][2],2))+"%"]
         if (cirr != 'Yes'):
             entry += [str(round(cirr_data[i+1][1], 2))+"%",
                       str(round(cirr_data[i+1][2], 2))+"%"]
