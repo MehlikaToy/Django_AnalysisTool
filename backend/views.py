@@ -14,10 +14,6 @@ import model as md
 STAGES = 20
 
 
-
-
-
-
 # Create your views here.
 def index(request):
     template = loader.get_template('home/index.html')
@@ -94,6 +90,7 @@ def resultsView(request):
                  str(round(hbv_data[i+1][1],2))+"%",
                  str(round(hbv_data[i+1][2],2))+"%",
                  str(round(hcc_data[i+1][1],2))+"%",
+                 str(round(hcc_data[i+1][2],2))+"%",
                  str(round(hcc_data[i+1][2],2))+"%"]
         if (cirr != 'Yes'):
             entry += [str(round(cirr_data[i+1][1], 2))+"%",
