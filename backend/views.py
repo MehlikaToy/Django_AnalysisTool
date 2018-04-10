@@ -95,11 +95,11 @@ def resultsView(request):
             entry += [str(round(cirr_data[i+1][1], 2))+"%",
                       str(round(cirr_data[i+1][2], 2))+"%"]
 
-        if (i==20):
-            deathDiff = str(hbv_data[i+1][2] - hbv_data[i+1][1])
-            tableArr.append([deathDiff, deathDiff, deathDiff, deathDiff, deathDiff])
+
         tableArr.append(entry)
 
+        deathDiff = str(tableArr[0][2] - tableArr[0][1])
+        tableArr.append([deathDiff, deathDiff, deathDiff, deathDiff, deathDiff])
 
         
 
