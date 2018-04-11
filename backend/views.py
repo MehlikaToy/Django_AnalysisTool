@@ -98,8 +98,8 @@ def resultsView(request):
 
         tableArr.append(entry)
 
-        deathDiff = str(hbv_data[21][1] - hbv_data[21][0])
-        tableArr.append([deathDiff, deathDiff, deathDiff, deathDiff, deathDiff])
+        deathDiff = str(hbv_data[21][2] - hbv_data[21][1])
+        tableArr.append([hbv_data[20+1][1], hbv_data[20+1][1], hcc_data[i+1][1], hcc_data[i+1][2], "pramod"])
 
         
 
