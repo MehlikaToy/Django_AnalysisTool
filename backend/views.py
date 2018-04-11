@@ -99,7 +99,7 @@ def resultsView(request):
         tableArr.append(entry)
 
         deathDiff = str(hbv_data[21][2] - hbv_data[21][1])
-        tableArr.append([hbv_data[20+1][1], hbv_data[20+1][1], hcc_data[20+1][1], hcc_data[20+1][2], "pramod"])
+        tableArr.append([hbv_data[20+1][1], hbv_data[20+1][2], hcc_data[20+1][1], hcc_data[20+1][2], "pramod"])
 
         
 
