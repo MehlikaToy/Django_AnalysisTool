@@ -99,7 +99,7 @@ def resultsView(request):
         tableArr.append(entry)
 
         deathDiff = str(round(hbv_data[20+1][1] - hbv_data[20+1][2], 2))
-        tableArr.append([hbv_data[20+1][1], hbv_data[20+1][2], hcc_data[20+1][1], hcc_data[20+1][2], deathDiff])
+
 
         
 
@@ -132,6 +132,7 @@ def resultsView(request):
         'tableArr': tableArr,
         'ifCirr': ifCirr,
         't_heading': t_heading,
+        'deathDiff': deathDiff,
     }
     
 
