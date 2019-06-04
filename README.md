@@ -35,3 +35,4 @@ python manage.py runserver
 * Gerry Meixiong (geraldmx@stanford.edu)
 * Tejpal Virdi (tejpalv@stanford.edu)
 * Anthony Degleris (degleris@stanford.edu)
+* Bin Wei (research.stat.alc@gmail.com)
