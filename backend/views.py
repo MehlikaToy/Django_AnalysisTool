@@ -1,13 +1,13 @@
 from django.http import HttpResponse
 from django.template import loader
-#from getAPI import stuff
+from getAPI import stuff
 from django.shortcuts import render_to_response, RequestContext
 
 import json
 import decimal
 
 import numpy as np
-#import flowchart as flow
+import flowchart as flow
 import reader as rd
 import model as md
 
