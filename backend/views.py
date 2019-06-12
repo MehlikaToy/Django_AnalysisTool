@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
-from getAPI import stuff
+#from getAPI import stuff
 from django.shortcuts import render_to_response, RequestContext
 
 import json
