@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
-from backend.getAPI import stuff
+from getAPI import stuff
 from django.shortcuts import render_to_response, RequestContext
 
 import json
@@ -98,7 +98,7 @@ def resultsView(request):
 
         tableArr.append(entry)
 
-        deathDiff = str(round(((hbv_data[20+1][1] - hbv_data[20+1][2]) / hbv_data[20+1][1]), 2))
+        deathDiff = str(round(hbv_data[20+1][1] - hbv_data[20+1][2], 2))
 
 
         
