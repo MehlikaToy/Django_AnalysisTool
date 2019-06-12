@@ -8,8 +8,8 @@ import decimal
 
 import numpy as np
 import .flowchart as flow
-import .reader as rd
-import .model as md
+import reader as rd
+import model as md
 
 STAGES = 20
 
