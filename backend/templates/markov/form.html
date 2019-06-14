@@ -111,13 +111,13 @@
         }
         console.log(fifthAns);
         if(firstAns==""){
-          alert("Please choose the endemicity of the patient's country.");
+          alert("Please choose the endemicity of the country.");
           location.reload();
           location.reload();
           return false;
         }
         else if(secondAns==""){
-          alert("Please enter your patient's age.");
+          alert("Please enter your age.");
           location.reload();
           return false;
         }
@@ -134,7 +134,7 @@
           return false;
         }
         else if(thirdAns==""){
-          alert("Please answer if your patient has Cirrhosis.");
+          alert("Please answer if you has Cirrhosis.");
           location.reload();
           document.getElementById("entry_1952643675").focus();
           location.reload();
@@ -142,7 +142,7 @@
         }
         else if(thirdAns=="No"){
           if(fourthAns=="" || fifthAns==""){
-            alert("Please answer questions 4 and 5 if your patient does not have Cirrhosis.");
+            alert("Please answer questions 4 and 5 if you does not have Cirrhosis.");
             location.reload();
             document.getElementById("entry_1952643675").focus();
             location.reload();
@@ -236,9 +236,9 @@
           <div class="age-q" style="display:none;">
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_332523929">
-              <div class="ss-q-number">2. </div><div class="ss-q-title"><p>What is your patient&#39;s age?</p></div>
+              <div class="ss-q-number">2. </div><div class="ss-q-title"><p>What is your&#39;s age?</p></div>
             </label>
-            <div class="ss-input"><input type="number" name="entry.332523929" value="" id="entry_332523929" aria-label="What is your patient&#39;s age?  Must be a number between 5 and 120" title="Must be a number between 5 and 120"></div>
+            <div class="ss-input"><input type="number" name="entry.332523929" value="" id="entry_332523929" aria-label="What is your&#39;s age?  Must be a number between 5 and 120" title="Must be a number between 5 and 120"></div>
           </div>
         </div>
         </br>
@@ -246,10 +246,10 @@
         <div class="gender-q" style="display:none;">
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_216517997">
-              <div class="ss-q-number">3. </div><div class="ss-q-title"><p>What is your patient's gender?</p></div>
+              <div class="ss-q-number">3. </div><div class="ss-q-title"><p>What is your gender?</p></div>
             </label>
 
-              <ul class="ss-choices" role="radiogroup" aria-label="What is your patient&#39;s gender?">
+              <ul class="ss-choices" role="radiogroup" aria-label="What is your&#39; gender?">
               <li class="ss-choice-item">
                 <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.216517997" value="Male" id="group_216517997_1" role="radio" class="ss-q-radio" aria-label="Male"></span> <span class="ss-choice-label">Male</span>
                 </label>
@@ -265,7 +265,7 @@
         <div class="cirr-q" style="display:none;">
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1952643675">
-              <div class="ss-q-number">4. </div><div class="ss-q-title"><p>Does your patient have <a href='' data-toggle="tooltip" title="NITs (APRI score>2 in adults or FibroScan)">Cirrhosis</a>?</p></div>
+              <div class="ss-q-number">4. </div><div class="ss-q-title"><p>Does your have <a href='' data-toggle="tooltip" title="NITs (APRI score>2 in adults or FibroScan)">Cirrhosis</a>?</p></div>
             </label>
 
             <ul class="ss-choices" role="radiogroup" aria-label="Do you have Cirrhosis? If yes, skip the next following questions and submit. ">
@@ -284,11 +284,11 @@
         <div class="hidden-class" style="display:none;">
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_81417422">
-              <div class="ss-q-number">5. </div><div class="ss-q-title"><p>If your patient does not have Cirrhosis, what is your patient&#39;s <a href='' data-toggle="tooltip" title="alanine aminotransferase">ALT</a> level?</p></div>
+              <div class="ss-q-number">5. </div><div class="ss-q-title"><p>If you do not have Cirrhosis, what is your&#39; <a href='' data-toggle="tooltip" title="alanine aminotransferase">ALT</a> level?</p></div>
               <div class="ss-q-help">Abnormal: >60 U/L for men & >38 U/L for women</br>Normal: <30 U/L for men & <19 U/L for women</div>
             </label>
 
-            <ul class="ss-choices" role="radiogroup" aria-label="If your patient does not have Cirrhosis, what is your patient&#39;s ALT level? ALT = Alanine Aminotransferase ratio index ">
+            <ul class="ss-choices" role="radiogroup" aria-label="If you do not have Cirrhosis, what is your&#39;s ALT level? ALT = Alanine Aminotransferase ratio index ">
               <li class="ss-choice-item">
                 <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1101946974" value="Persistently Abnormal" id="group_1101946974_1" role="radio" class="ss-q-radio" aria-label="Persistently Abnormal"></span>
                 <span class="ss-choice-label">Persistently Abnormal</span></label>
@@ -310,10 +310,10 @@
 
           <div class="ss-form-entry">
             <label class="ss-q-item-label" for="entry_1802110371">
-            <div class="ss-q-number">6. </div><div class="ss-q-title"><p>What is your patient&#39;s HBV DNA level?</p></div>
+            <div class="ss-q-number">6. </div><div class="ss-q-title"><p>What is your&#39; HBV DNA level?</p></div>
             <div class="ss-q-help" dir="auto">Units in IU/mL.</div></label>
 
-            <ul class="ss-choices" role="radiogroup" aria-label="What is your patient&#39;s HBV DNA level?  ">
+            <ul class="ss-choices" role="radiogroup" aria-label="What is your&#39; HBV DNA level?  ">
               <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1142656701" value="&gt;20,000 IU/ml" id="group_1142656701_1" role="radio" class="ss-q-radio" aria-label="&gt;20,000 IU/ml"></span>
                 <span class="ss-choice-label">&gt;20,000 IU/mL</span></label>
               </li> 
