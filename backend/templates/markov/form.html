@@ -164,10 +164,11 @@
       onload="if(submitted) {window.location=buildURL('results');}">
       </iframe>
 
-      <img class="map-img" src="{% static 'markov/img/globalMap.png' %}"> -->
+      <img class="map-img" src="{% static 'markov/img/globalMap.png' %}"> 
       <head>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
+          /*
           google.charts.load('current', {
             'packages':['geochart'],
             // Note: you will need to get a mapsApiKey for your project.
@@ -192,11 +193,12 @@
             var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
             chart.draw(data, options);
           }
+          */
     </script>
-  </head> -->
+  </head> 
   <body>
     <div id="regions_div" style="width: 900px; height: 500px;"></div>
-  </body> -->
+  </body> 
       
       
       
