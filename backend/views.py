@@ -105,7 +105,7 @@ def resultsView(request):
 
     # Generate recommendation.
     recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
-    whoRec = 'You Need' + recommendation
+    whoRec = 'You Need ' + recommendation
     t_heading = recommendation
     
     if (cirr == 'Yes'):
