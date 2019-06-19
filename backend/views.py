@@ -49,10 +49,10 @@ def resultsView(request):
     #start = np.zeros(len(model[0]))
     recommendation = 'Monitoring'
     if (cirr == 'Yes'):
-        recommendation += ' and Treatment'
+       
         start = md.CIRR_STATE
     elif (ALT == 'Persistently Abnormal' and HBV_DNA == '>20,000 IU/ml'):
-        recommendation += ' and Treatment'
+       
         start = md.CHB_STATE
     else:
         start = md.INACTIVE_STATE
@@ -111,7 +111,7 @@ def resultsView(request):
 #    if (cirr  == 'Yes' or (cirr != 'Yes' and ALT == 'Persistently Abnormal' and HBV_DNA == '>20,000 IU/ml')):
 #        recommendation += ' and Treatment'
 
-   # recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
+    recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
     whoRec = 'You Need ' + recommendation
     t_heading = recommendation
     
