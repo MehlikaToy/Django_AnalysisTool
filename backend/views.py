@@ -37,7 +37,7 @@ def resultsView(request):
     flow.parse()
     endem, age, cirr, ALT, HBV_DNA, gender = flow.parse()
    
-    inputs = "Your " + str(age) + " year old " + str(gender).lower() + " patient "
+    inputs = str(age) + " year old " + str(gender).lower()
     if (cirr == 'Yes'):
         inputs += "with Cirrhosis."
     else:
@@ -71,9 +71,9 @@ def resultsView(request):
     cirr_trt = simulator.get_data(STAGES+1, term='cirr')
 
 
-    hbv_data = [['Stages','Natural History', 'Treatment']]
-    hcc_data = [['Stages','Natural History', 'Treatment']]
-    cirr_data = [['Stages','Natural History', 'Treatment']]
+    hbv_data = [['Stages','Do Nothing', 'Treatment']]
+    hcc_data = [['Stages','Do Nothing', 'Treatment']]
+    cirr_data = [['Stages','Do Nothing', 'Treatment']]
     for t in range(0, STAGES+1):
         cirr_data.append([t, cirr_nat[t][2], cirr_trt[t][2]])
         hcc_data.append([t, hcc_nat[t][4], hcc_trt[t][4]])
@@ -82,7 +82,7 @@ def resultsView(request):
 
     tableArr = [['Years', 'DeathHBV', '', 'Liver Cancer', '']]
     if (cirr != 'Yes'):
-        tableArr[0] += ['Cirrhosis', 'Cirrhosis']
+        tableArr[0] += ['Cirrhosis', '']
     
     sample_indices = [5, 10, 20]
     for i in sample_indices:
@@ -105,7 +105,7 @@ def resultsView(request):
 
     # Generate recommendation.
     recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
-    whoRec = 'Your Patient Needs ' + recommendation
+    whoRec = 'You Need' + recommendation
     t_heading = recommendation
     
     if (cirr == 'Yes'):
