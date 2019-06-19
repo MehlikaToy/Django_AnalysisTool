@@ -104,12 +104,15 @@ def resultsView(request):
         
 
     # Generate recommendation.
-     recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
+     
 #    var recomendation = 'Monitoring'
 #    if (cirr  == 'Yes' or ALT == 'Persistently Abnormal' and HBV_DNA == '>20,000 IU/ml'):
 #        recomendation += ' and Treatment'
+
+    recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
     whoRec = 'You Need ' + recommendation
     t_heading = recommendation
+    
     
     if (cirr == 'Yes'):
         ifCirr = 0
