@@ -80,9 +80,9 @@ def resultsView(request):
         hbv_data.append([t, hbv_nat[t][11], hbv_trt[t][11]])
         
 
-    tableArr = [['Years', 'DeathHBV', '', 'Liver Cancer', '']]
+    tableArr = [['Years', 'Death Risk', '', 'Liver Cancer Risk', '']]
     if (cirr != 'Yes'):
-        tableArr[0] += ['Cirrhosis', '']
+        tableArr[0] += ['Cirrhosis Risk', '']
     
     sample_indices = [5, 10, 20]
     for i in sample_indices:
