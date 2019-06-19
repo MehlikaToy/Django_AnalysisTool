@@ -106,7 +106,7 @@ def resultsView(request):
     # Generate recommendation.
     
     recommendation = 'Monitoring'
-    if (cirr  == 'Yes' or ALT == 'Persistently Abnormal' and HBV_DNA == '>20,000 IU/ml'):
+    if (cirr  == 'Yes' or (ALT == 'Persistently Abnormal' and HBV_DNA == '>20,000 IU/ml')):
         recommendation += ' and Treatment'
 
    # recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
