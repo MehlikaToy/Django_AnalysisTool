@@ -37,7 +37,7 @@ def resultsView(request):
     flow.parse()
     endem, age, cirr, ALT, HBV_DNA, gender = flow.parse()
    
-    inputs = str(age) + " year old " + str(gender).lower()
+    inputs = str(age) + " year old " + str(gender).lower() + " "
     if (cirr == 'Yes'):
         inputs += "with Cirrhosis."
     else:
