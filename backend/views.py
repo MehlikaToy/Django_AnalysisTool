@@ -138,7 +138,7 @@ def resultsView(request):
         'recommendation': recommendation,
         'tableArr': tableArr,
         'ifCirr': ifCirr,
-        't_heading': t_heading,
+       # 't_heading': t_heading,
         'deathDiff': deathDiff,
     }
     
