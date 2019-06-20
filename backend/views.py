@@ -47,7 +47,6 @@ def resultsView(request):
 
     #model, labels = rd.generate_model(file='./matrix.xlsx', age=age, female=False)
     #start = np.zeros(len(model[0]))
-    recommendation = 'Monitoring'
     if (cirr == 'Yes'):
        
         start = md.CIRR_STATE
