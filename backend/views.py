@@ -106,13 +106,13 @@ def resultsView(request):
 
     # Generate recommendation.
     
-    recommendation = 'Monitoring'
+    recommendation = 'You Need Monitoring'
     if (cirr  == 'Yes' or (ALT == 'Persistently Abnormal' and HBV_DNA == '>20,000 IU/ml')):
         recommendation += ' and Treatment'
 
 #    recommendation = flow.getWhoRec(cirr, age, ALT, HBV_DNA)
-    whoRec = 'You Need ' + recommendation
-    t_heading = recommendation
+#    whoRec = 'You Need ' + recommendation
+#    t_heading = recommendation
     
     
     if (cirr == 'Yes'):
@@ -135,7 +135,7 @@ def resultsView(request):
         # 'lt1': json.dumps(lt1),
         # 'lt2': json.dumps(lt2),
         'inputStr': inputs,
-        'whoRec': whoRec,
+        'recommendation': recommendation,
         'tableArr': tableArr,
         'ifCirr': ifCirr,
         't_heading': t_heading,
