@@ -86,15 +86,16 @@ def resultsView(request):
         tableArr[0] += ['Cirrhosis Risk', '']
     
     sample_indices = [5, 10, 20]
-    for i in sample_indices:
-        entry = [i,
-                 str(round(hbv_data[i+1][1],2))+"%",
-                 str(round(hbv_data[i+1][2],2))+"%",
-                 str(round(hcc_data[i+1][1],2))+"%",
-                 str(round(hcc_data[i+1][2],2))+"%"]
-        if (cirr != 'Yes'):
-            entry += [str(round(cirr_data[i+1][1], 2))+"%",
-                      str(round(cirr_data[i+1][2], 2))+"%"]
+   
+  #  for i in sample_indices:
+   #     entry = [i,
+    #             str(round(hbv_data[i+1][1],2))+"%",
+     #            str(round(hbv_data[i+1][2],2))+"%",
+      #           str(round(hcc_data[i+1][1],2))+"%",
+       #          str(round(hcc_data[i+1][2],2))+"%"]
+        #if (cirr != 'Yes'):
+         #   entry += [str(round(cirr_data[i+1][1], 2))+"%",
+          #            str(round(cirr_data[i+1][2], 2))+"%"]
 
 
         tableArr.append(entry)
