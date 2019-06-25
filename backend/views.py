@@ -89,13 +89,13 @@ def resultsView(request):
    
     for i in sample_indices:
         entry = [i,
-                 str(round(hbv_data[i+1][1]))+"%",
-                 str(round(hbv_data[i+1][2]))+"%",
-                 str(round(hcc_data[i+1][1]))+"%",
-                 str(round(hcc_data[i+1][2]))+"%"]
+                 str(int(hbv_data[i+1][1]))+"%",
+                 str(int(hbv_data[i+1][2]))+"%",
+                 str(int(hcc_data[i+1][1]))+"%",
+                 str(int(hcc_data[i+1][2]))+"%"]
         if (cirr != 'Yes'):
-            entry += [str(round(cirr_data[i+1][1]))+"%",
-                      str(round(cirr_data[i+1][2]))+"%"]
+            entry += [str(int(cirr_data[i+1][1]))+"%",
+                      str(int(cirr_data[i+1][2]))+"%"]
 
 
         tableArr.append(entry)
