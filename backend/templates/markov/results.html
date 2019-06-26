@@ -98,8 +98,8 @@
 //         }
        
         function drawChart() {
-           // var djangoDataTable = {{ tableArr|safe }};
-           // var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
+            //var djangoDataTable = {{ tableArr|safe }};
+            //var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
 
             var djangoDataDeathHBV = {{ deathHBV_Final|safe }}
             var dataDeathHBV = google.visualization.arrayToDataTable(djangoDataDeathHBV);
@@ -186,8 +186,9 @@
                 'height': '100%',
                 'allowHtml': true, 
             };
-        /*
+        
              function drawMaterial() {
+               
                 var djangoDataTable = {{ tableArr|safe }};
                 var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
                 data.addColumn('number', 'Years');
@@ -211,10 +212,7 @@
             var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
             materialChart.draw(data, options);
             }
-            */
-        
-        
-
+            
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
             chart3.draw(dataDeathHBV, MortalityRate);
 
