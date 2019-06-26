@@ -1,0 +1,341 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    
+    <!--* you need to use your own name, class names, id, stylesheet, javascript function name name etc...-->
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Questionnaire</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'markov/css/formStyle.css' %}" />
+    <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,500,600' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+      $(document).ready(function(){
+        //tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // hide & show questions
+        // var $hiddenQuest = $('#hidden-q');
+        // var $cirrAnswer = document.getElementsByName("entry.1154479602");
+
+        
+        $('input:radio[name="entry.2009824324"]').change(function(){
+          $('.first-q').addClass('.age-q');
+          $('.age-q').slideDown();
+        });
+
+
+        $('#entry_332523929').on('input',function(){
+          $('.age-q').addClass('.gender-q');
+          $('.gender-q').slideDown();
+        });
+        $('input:radio[name="entry.216517997"]').change(function(){
+          $('.gender-q').addClass('.cirr-q');
+          $('.cirr-q').slideDown();
+        });
+        $('input:radio[name="entry.1154479602"]').change(function(){
+          if($(this).val() == 'No'){
+            console.log("you clicked yes");
+            $('.cirr-q').addClass('.hidden-class');
+            $('.hidden-class').slideDown();
+          } else{
+            $('.hidden-class').slideUp();
+          }
+        });
+      });
+
+        // $('input:radio[name="entry.216517997"]').change(function(){
+        //   $('.age-q').addClass('.gender-q');
+        //   $('.gender-q').slideDown();
+        // });
+
+
+      var submitted=false;
+      var myURL = document.location;
+
+      function buildURL(params){
+        return myURL + params;
+      }
+
+      function validate(){
+        var firstAns = document.getElementsByName("entry.2009824324");
+        
+        for(var i=0; i<firstAns.length; i++){
+          if(firstAns[i].checked){
+            firstAns = firstAns[i].value;
+            break;
+          }
+          else if (i == firstAns.length-1)
+            firstAns = ""
+        }
+        console.log(firstAns);
+
+        var secondAns = document.getElementById("entry_332523929").value;
+
+        var thirdAns = document.getElementsByName("entry.1154479602");
+        for(var i=0; i<thirdAns.length; i++){
+          if(thirdAns[i].checked){
+            thirdAns = thirdAns[i].value;
+            break;
+          }
+          else if (i == thirdAns.length-1)
+            thirdAns = "";
+        }
+        console.log(thirdAns);
+
+        var fourthAns = document.getElementsByName("entry.1101946974");
+        for(var i=0; i<fourthAns.length; i++){
+          if(fourthAns[i].checked){
+            fourthAns = fourthAns[i].value;
+            break;
+          }
+          else if(i==fourthAns.length-1)
+            fourthAns = "";
+        }
+        console.log(fourthAns);
+
+        var fifthAns = document.getElementsByName("entry.1142656701");
+        for(var i=0; i<fifthAns.length; i++){
+          if(fifthAns[i].checked){
+            fifthAns = fifthAns[i].value;
+            break;
+          }
+          else if(i==fifthAns.length-1)
+            fifthAns = "";
+        }
+        console.log(fifthAns);
+        if(firstAns==""){
+          alert("Please choose the endemicity of the patient's country.");
+          location.reload();
+          location.reload();
+          return false;
+        }
+        else if(secondAns==""){
+          alert("Please enter your patient's age.");
+          location.reload();
+          return false;
+        }
+        else if(parseInt(secondAns)<5){
+          alert("Our model requires age to be greater than 4.");
+          location.reload();
+          return false;
+        }
+        else if(parseInt(secondAns)>110){
+          alert("Our model requires age to be smaller than 111.");
+          location.reload();
+          document.getElementById("entry_332523929").focus();
+          location.reload();
+          return false;
+        }
+        else if(thirdAns==""){
+          alert("Please answer if your patient has Cirrhosis.");
+          location.reload();
+          document.getElementById("entry_1952643675").focus();
+          location.reload();
+          return false;
+        }
+        else if(thirdAns=="No"){
+          if(fourthAns=="" || fifthAns==""){
+            alert("Please answer questions 4 and 5 if your patient does not have Cirrhosis.");
+            location.reload();
+            document.getElementById("entry_1952643675").focus();
+            location.reload();
+            return false;
+          }
+        }
+        // alert('YOU ARE GUCCI');
+        return submitted=true;
+      }
+      //your validation function ends here
+    </script>
+  </head>
+
+  <body>
+    <div id="maincontainer-body">
+      <div id="title"><a>Decision Tool Questionnaire</a><hr></div>
+    <!-- Loads results page when submit button is pressed. -->
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"     
+      onload="if(submitted) {window.location=buildURL('results');}">
+      </iframe>
+
+      <!-- <img class="map-img" src="{% static 'markov/img/globalMap.png' %}"> -->
+<!--       <head>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {
+            'packages':['geochart'],
+            // Note: you will need to get a mapsApiKey for your project.
+            // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+            'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+          });
+          google.charts.setOnLoadCallback(drawRegionsMap);
+    
+          function drawRegionsMap() {
+            var data = google.visualization.arrayToDataTable([
+              ['Country', 'Popularity'],
+              ['Germany', 200],
+              ['United States', 300],
+              ['Brazil', 400],
+              ['Canada', 500],
+              ['France', 600],
+              ['RU', 700]
+            ]);
+    
+            var options = {};
+    
+            var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+            chart.draw(data, options);
+          }
+    </script>
+  </head> -->
+<!--   <body>
+    <div id="regions_div" style="width: 900px; height: 500px;"></div>
+  </body> -->
+      
+      
+      
+      <!-- -->
+
+      <!-- Everything Google form -->
+      <form action="https://docs.google.com/forms/d/1Wn3Z_5TcZ_LQ7Zl2-2ShZtymZMfpr6UTwEi6oxJwhAo/formResponse" method="POST" id="ss-form" onsubmit="return validate()" target="hidden_iframe">
+
+      <div class="ss-form">
+        <ol role="list" class="ss-question-list" style="padding-left: 0">
+
+        <div class="first-q">
+          <div class="ss-form-entry">
+            <label class="ss-q-item-label" for="entry_1919644821">
+              <div class="ss-q-number">1. </div><div class="ss-q-title"><p>What is the <a href='' data-toggle="tooltip" title="Chronic Hep B prevalence rate">endemicity</a> of your patient's country? Select your country</p></div>
+              <div class="ss-q-help">Refer to the map above for reference.</div>
+
+
+            </label>
+
+            <ul class="ss-choices" role="radiogroup" aria-label="What is your country&#39;s endemicity?  ">
+              <li class="ss-choice-item">
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.2009824324" value="High" id="group_2009824324_1" role="radio" class="ss-q-radio" aria-label="High"></span> <span class="ss-choice-label">High - Intermediate High (>5%)</span>
+                </label>
+              </li> 
+              <li class="ss-choice-item">
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.2009824324" value="Intermediate" id="group_2009824324_2" role="radio" class="ss-q-radio" aria-label="Intermediate"> </span><span class="ss-choice-label">Intermediate Low (2% - 5%)</span>
+                </label></li> 
+              <li class="ss-choice-item">
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.2009824324" value="Low" id="group_2009824324_3" role="radio" class="ss-q-radio" aria-label="Low"></span> <span class="ss-choice-label">Low (<2%)</span>
+              </label></li>
+            </ul>
+          </div><!-- 1st question -->
+        </div>
+        </br>
+
+          <div class="age-q" style="display:none;">
+          <div class="ss-form-entry">
+            <label class="ss-q-item-label" for="entry_332523929">
+              <div class="ss-q-number">2. </div><div class="ss-q-title"><p>What is your patient&#39;s age?</p></div>
+            </label>
+            <div class="ss-input"><input type="number" name="entry.332523929" value="" id="entry_332523929" aria-label="What is your patient&#39;s age?  Must be a number between 5 and 120" title="Must be a number between 5 and 120"></div>
+          </div>
+        </div>
+        </br>
+        
+        <div class="gender-q" style="display:none;">
+          <div class="ss-form-entry">
+            <label class="ss-q-item-label" for="entry_216517997">
+              <div class="ss-q-number">3. </div><div class="ss-q-title"><p>What is your patient's gender?</p></div>
+            </label>
+
+              <ul class="ss-choices" role="radiogroup" aria-label="What is your patient&#39;s gender?">
+              <li class="ss-choice-item">
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.216517997" value="Male" id="group_216517997_1" role="radio" class="ss-q-radio" aria-label="Male"></span> <span class="ss-choice-label">Male</span>
+                </label>
+              </li> 
+              <li class="ss-choice-item">
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.216517997" value="Female" id="group_216517997_2" role="radio" class="ss-q-radio" aria-label="Female"> </span><span class="ss-choice-label">Female</span>
+                </label></li> 
+            </ul>
+          </div>
+        </div>
+        </br>  
+
+        <div class="cirr-q" style="display:none;">
+          <div class="ss-form-entry">
+            <label class="ss-q-item-label" for="entry_1952643675">
+              <div class="ss-q-number">4. </div><div class="ss-q-title"><p>Does your patient have <a href='' data-toggle="tooltip" title="NITs (APRI score>2 in adults or FibroScan)">Cirrhosis</a>?</p></div>
+            </label>
+
+            <ul class="ss-choices" role="radiogroup" aria-label="Do you have Cirrhosis? If yes, skip the next following questions and submit. ">
+              <li class="ss-choice-item">
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1154479602" value="Yes" id="group_1154479602_1" role="radio" class="ss-q-radio" aria-label="Yes"></span> <span class="ss-choice-label">Yes</span>
+                </label>
+              </li> 
+              <li class="ss-choice-item">
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1154479602" value="No" id="group_1154479602_2" role="radio" class="ss-q-radio" aria-label="No"></span> <span class="ss-choice-label">No</span></label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        </br>
+
+        <div class="hidden-class" style="display:none;">
+          <div class="ss-form-entry">
+            <label class="ss-q-item-label" for="entry_81417422">
+              <div class="ss-q-number">5. </div><div class="ss-q-title"><p>If your patient does not have Cirrhosis, what is your patient&#39;s <a href='' data-toggle="tooltip" title="alanine aminotransferase">ALT</a> level?</p></div>
+              <div class="ss-q-help">Abnormal: >60 U/L for men & >38 U/L for women</br>Normal: <30 U/L for men & <19 U/L for women</div>
+            </label>
+
+            <ul class="ss-choices" role="radiogroup" aria-label="If your patient does not have Cirrhosis, what is your patient&#39;s ALT level? ALT = Alanine Aminotransferase ratio index ">
+              <li class="ss-choice-item">
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1101946974" value="Persistently Abnormal" id="group_1101946974_1" role="radio" class="ss-q-radio" aria-label="Persistently Abnormal"></span>
+                <span class="ss-choice-label">Persistently Abnormal</span></label>
+              </li> 
+
+              <li class="ss-choice-item">
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1101946974" value="Intermittently Abnormal" id="group_1101946974_2" role="radio" class="ss-q-radio" aria-label="Intermittently Abnormal"></span>
+                <span class="ss-choice-label">Intermittently Abnormal</span></label>
+              </li> 
+
+              <li class="ss-choice-item">
+                <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1101946974" value="Persistently Normal" id="group_1101946974_3" role="radio" class="ss-q-radio" aria-label="Persistently Normal"></span>
+                <span class="ss-choice-label">Persistently Normal</span></label>
+              </li>
+            </ul>
+          </div>
+          </br>
+
+
+          <div class="ss-form-entry">
+            <label class="ss-q-item-label" for="entry_1802110371">
+            <div class="ss-q-number">6. </div><div class="ss-q-title"><p>What is your patient&#39;s HBV DNA level?</p></div>
+            <div class="ss-q-help" dir="auto">Units in IU/mL.</div></label>
+
+            <ul class="ss-choices" role="radiogroup" aria-label="What is your patient&#39;s HBV DNA level?  ">
+              <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1142656701" value="&gt;20,000 IU/ml" id="group_1142656701_1" role="radio" class="ss-q-radio" aria-label="&gt;20,000 IU/ml"></span>
+                <span class="ss-choice-label">&gt;20,000 IU/mL</span></label>
+              </li> 
+
+              <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1142656701" value="2000-20,000 IU/ml" id="group_1142656701_2" role="radio" class="ss-q-radio" aria-label="2000-20,000 IU/ml"></span>
+                <span class="ss-choice-label">2000-20,000 IU/mL</span></label>
+              </li> 
+
+              <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1142656701" value="&lt;2000 IU/ml" id="group_1142656701_3" role="radio" class="ss-q-radio" aria-label="&lt;2000 IU/ml"></span>
+                <span class="ss-choice-label">&lt;2000 IU/mL</span></label>
+              </li>
+            </ul>
+          </div>
+          </div>
+
+          <div class="ss-item ss-navigate"><table id="navigation-table"><tbody><tr><td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+            <input type="submit" name="submit" value="Submit" id="ss-submit" class="jfk-button jfk-button-action "></td></tr></tbody></table>
+          </div>
+        </ol>
+      </form>
+
+      <!--form content ends here-->
+    </div>
+  </body>
+</html>
