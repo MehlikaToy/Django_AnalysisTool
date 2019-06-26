@@ -83,17 +83,7 @@
       google.charts.load('current', {callback: drawChart, packages: ['bar', 'corechart', 'line', 'table']}); 
       google.setOnLoadCallback(drawChart);
 
-       // google.charts.load('current', {packages: ['corechart', 'bar']});
-        //google.charts.setOnLoadCallback(drawMultSeries);
-        // Set a callback to run when the Google Visualization API is loaded.
-        
-        
-//         function drawMultSeries() {
-//             var data = new google.visualization.DataTable();
-//             data.addColumn('number', 'Do Nothing');
-//             data.addColumn('number', 'Treatment');
-
-//         }
+      
        
         function drawChart() {
             var djangoDataTable = {{ tableArr|safe }};
@@ -236,8 +226,8 @@
             var table = new google.visualization.Table(document.getElementById('table_div'));
             table.draw(dataTable, optionsTable);
         
-            var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
-            materialChart.draw(dataTable, options);
+            //var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
+            //materialChart.draw(dataTable, options);
             }
         }
 
