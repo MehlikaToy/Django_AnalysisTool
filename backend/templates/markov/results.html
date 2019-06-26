@@ -202,12 +202,14 @@
                 dataTable.setCell(y,0, String(djangoDataTable[y+1][0]) ,null,{'style': ' font-size:20px;'})
             }
 
+        // "Red" do Nothing / Naturtoryal His
             for (j = 1; j < djangoDataTable[1].length; j += 2){
                 for (i = 0; i < 3; i++) { 
-                    dataTable.setCell(i,j, "hi" /*String(djangoDataTable[i+1][j]) */ ,null,{'style': 'background-color: rgba(255,127,80,0.7); font-size:18px;'})
+                    dataTable.setCell(i,j, String(djangoDataTable[i+1][j]) ,null,{'style': 'background-color: rgba(255,127,80,0.7); font-size:18px;'})
                 }
             }
-
+        
+        //"jade" Treatment / Monitoring
             for (j = 2; j < djangoDataTable[1].length; j += 2){
                 for (i = 0; i < 3; i++) { 
                     dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: #49b7a8; font-size:18px;'})
