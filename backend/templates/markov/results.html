@@ -36,6 +36,7 @@
     <![endif]-->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
     <!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <div id="chart_div"></div> -->
     <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js" > </script> 
     <script type="text/javascript">
@@ -60,25 +61,17 @@
        
         
         // Load the Visualization API and the piechart package.
-      google.charts.load('current', {
-  callback: drawChart,
-  packages: ['bar', 'corechart', 'line', 'table']
-});
+      google.charts.load('current', {callback: drawChart,packages: ['bar', 'corechart', 'line', 'table']});
+      google.setOnLoadCallback(drawChart);
         
-       // google.charts.load('current', {packages: ['corechart', 'bar']});
-        //google.charts.setOnLoadCallback(drawMultSeries);
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.setOnLoadCallback(drawChart);
-        
-//         function drawMultSeries() {
-//             var data = new google.visualization.DataTable();
-//             data.addColumn('number', 'Do Nothing');
-//             data.addColumn('number', 'Treatment');
-//         }
-        
+
         function drawChart() {
             var djangoDataTable = {{ tableArr|safe }};
             var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
+        
+        
+                
+
             var djangoDataDeathHBV = {{ deathHBV_Final|safe }}
             var dataDeathHBV = google.visualization.arrayToDataTable(djangoDataDeathHBV);
             var djangoDataHcc = {{ hcc_Final|safe }}
@@ -166,12 +159,17 @@
             chart5.draw(dataHcc, LiverCancer);
             for (y = 0; y < 3; y++){
                 dataTable.setCell(y,0,String(djangoDataTable[y+1][0]),null,{'style': ' font-size:20px;'})
+                //dataTable.addColumn('number', djangoDataTable[y+1][0]);
+           
             }
+        
+        
             for (j = 1; j < djangoDataTable[1].length; j += 2){
                 for (i = 0; i < 3; i++) { 
                     dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: rgba(255,127,80,0.7); font-size:18px;'})
                 }
             }
+        
             for (j = 2; j < djangoDataTable[1].length; j += 2){
                 for (i = 0; i < 3; i++) { 
                     dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: #49b7a8; font-size:18px;'})
