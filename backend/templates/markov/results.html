@@ -98,8 +98,8 @@
 //         }
        
         function drawChart() {
-            //var djangoDataTable = {{ tableArr|safe }};
-            //var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
+            var djangoDataTable = {{ tableArr|safe }};
+            var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
 
             var djangoDataDeathHBV = {{ deathHBV_Final|safe }}
             var dataDeathHBV = google.visualization.arrayToDataTable(djangoDataDeathHBV);
@@ -191,9 +191,6 @@
                
                 var djangoDataTable = {{ tableArr|safe }};
                 var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
-                data.addColumn('number', 'Years');
-                data.addColumn('number', 'Motivation Level');
-                data.addColumn('number', 'Energy Level');
 
              var options = {  
                 title: 'Risk Results',
