@@ -124,9 +124,21 @@
         else if(parseInt(secondAns)<5){
           alert("Please enter an age older than 5.");
           location.reload();
+        if(firstAns==""){
+          alert("Please choose the country you were born in.");
+          location.reload();
+          location.reload();
+
+          return false;
+        }
+        else if(parseInt(secondAns)<5){
+          alert("Our model requires age to be greater than 5.");
+          alert("Please enter an age older than 5.");
+          location.reload();
           return false;
         }
         else if(parseInt(secondAns)>110){
+          
           alert("Please enter an age smaller than 111.");
           location.reload();
           document.getElementById("entry_332523929").focus();
@@ -134,12 +146,14 @@
           return false;
         }
         else if(thirdAns==""){
+          
           alert("Please select your gender.");
           location.reload();
           document.getElementById("entry_1952643675").focus();
           location.reload();
           return false;
         }
+        else if(thirdAns=="No"){
         else if(fourthAns ==""){
           alert("Please indicate whether you have Cirrhosis.");
           location.reload();
@@ -150,6 +164,7 @@
         
         else if(fourthAns=="No"){
           if(fourthAns=="" || fifthAns==""){
+            
             alert("Please answer questions 5 and 6 if you does not have Cirrhosis.");
             location.reload();
             document.getElementById("entry_1952643675").focus();
@@ -157,6 +172,7 @@
             return false;
           }
         }
+        // alert('YOU ARE GUCCI');
         return submitted=true;
       }
       //your validation function ends here
