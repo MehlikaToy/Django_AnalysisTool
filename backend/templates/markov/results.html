@@ -82,8 +82,6 @@
         // Load the Visualization API and the piechart package.
       google.charts.load('current', {callback: drawChart, packages: ['bar', 'corechart', 'line', 'table']}); 
       google.setOnLoadCallback(drawChart);
-      google.charts.load('current', {packages: ['corechart', 'bar']});
-      google.charts.setOnLoadCallback(drawMaterial);
 
        // google.charts.load('current', {packages: ['corechart', 'bar']});
         //google.charts.setOnLoadCallback(drawMultSeries);
@@ -179,20 +177,8 @@
                     maxLines: 2,
                 }
             };
-
-            var optionsTable = {
-                'showRowNumber': false,
-                'width': '100%',
-                'height': '100%',
-                'allowHtml': true, 
-            };
         
-             function drawMaterial() {
-               
-                var djangoDataTable = {{ tableArr|safe }};
-                var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
-
-             var options = {  
+            var options = {  
                 title: 'Risk Results',
                 titleTextStyle :{
                     fontSize:26,
@@ -206,9 +192,14 @@
                 }
             };
         
-            var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
-            materialChart.draw(data, options);
-            }
+
+            var optionsTable = {
+                'showRowNumber': false,
+                'width': '100%',
+                'height': '100%',
+                'allowHtml': true, 
+            };
+        
             
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
             chart3.draw(dataDeathHBV, MortalityRate);
@@ -220,6 +211,8 @@
 
             var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
             chart5.draw(dataHcc, LiverCancer);
+        
+            
 
         // years [5, 10, 20]
             for (y = 0; y < 3; y++){
@@ -242,6 +235,10 @@
 
             var table = new google.visualization.Table(document.getElementById('table_div'));
             table.draw(dataTable, optionsTable);
+        
+            var materialChart = new google.charts.Bar(document.getElementById('chart_div'));
+            materialChart.draw(dataTable, options);
+            }
         }
 
         $('#mailform').submit(function(){
