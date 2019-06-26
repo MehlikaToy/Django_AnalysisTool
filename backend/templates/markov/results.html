@@ -161,7 +161,7 @@
             var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
             chart5.draw(dataHcc, LiverCancer);
             for (y = 0; y < 3; y++){
-                dataTable.setCell(y,0,String(djangoDataTable[y+1][0]),null,{'style': 'font-size:20px; border: 1px solid black;'})
+                dataTable.setCell(y,0,String(djangoDataTable[y+1][0]),null,{'style': 'font-size:20px; border: 1px solid white;'})
                 //dataTable.addColumn('number', djangoDataTable[y+1][0]);
            
             }
@@ -169,13 +169,13 @@
         
             for (j = 1; j < djangoDataTable[1].length; j += 2){
                 for (i = 0; i < 3; i++) { 
-                    dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: rgba(255,127,80,0.7); border: 1px solid black; font-size:18px;'})
+                    dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: rgba(255,127,80,0.7); border: 1px solid white; font-size:18px;'})
                 }
             }
         
             for (j = 2; j < djangoDataTable[1].length; j += 2){
                 for (i = 0; i < 3; i++) { 
-                    dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: #49b7a8; border: 1px solid black; font-size:18px;'})
+                    dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: #49b7a8; border: 1px solid white; font-size:18px;'})
                 }
             }
             var table = new google.visualization.Table(document.getElementById('table_div'));
