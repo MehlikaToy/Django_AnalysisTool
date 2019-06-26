@@ -197,13 +197,14 @@
             var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
             chart5.draw(dataHcc, LiverCancer);
 
+        // years [5, 10, 20]
             for (y = 0; y < 3; y++){
-                dataTable.setCell(y,0, /*String(djangoDataTable[y+1][0]) */ null ,null,{'style': ' font-size:20px;'})
+                dataTable.setCell(y,0, String(djangoDataTable[y+1][0])  null ,null,{'style': ' font-size:20px;'})
             }
 
             for (j = 1; j < djangoDataTable[1].length; j += 2){
                 for (i = 0; i < 3; i++) { 
-                    dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: rgba(255,127,80,0.7); font-size:18px;'})
+                    dataTable.setCell(i,j, null/*String(djangoDataTable[i+1][j]) */,null,{'style': 'background-color: rgba(255,127,80,0.7); font-size:18px;'})
                 }
             }
 
