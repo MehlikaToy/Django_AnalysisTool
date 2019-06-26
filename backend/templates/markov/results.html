@@ -198,7 +198,7 @@
             chart5.draw(dataHcc, LiverCancer);
 
             for (y = 0; y < 3; y++){
-                dataTable.setCell(y,0,String(djangoDataTable[y+1][0]),null,{'style': ' font-size:20px;'})
+                dataTable.setCell(y,0, /*String(djangoDataTable[y+1][0]) */ null ,null,{'style': ' font-size:20px;'})
             }
 
             for (j = 1; j < djangoDataTable[1].length; j += 2){
