@@ -1,63 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
         ga('create', 'UA-66892235-1', 'auto');
         ga('send', 'pageview');
     </script>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Analysis Tool</title>
-
     {% load staticfiles %}
-
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'home/css/bootstrap.min.css' %}" />
-
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'home/css/grayscale.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'home/css/style.css' %}" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
     <!-- Custom Fonts -->
     <link href="{% static 'home/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-
     <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,500,600' rel='stylesheet' type='text/css'>
-
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <!--<div id="chart_div"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!--<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <div id="chart_div"></div> -->
     <script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.1.min.js" > </script> 
-
     <script type="text/javascript">
         
     
-
-
         //             w.document.write("<html><head><title>Print Page</title>");
 //             w.document.write("{% load staticfiles %}");
 //             w.document.write("<link rel='stylesheet' type='text/css' href='{% static 'home/css/bootstrap.min.css' %}' />");
@@ -65,7 +48,6 @@
 //             w.document.write("<link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>");
 //             w.document.write('</head><body>');
             //             w.document.write('</body></html>');
-
         
       function printDiv(divName) {
             var printContents = document.getElementById(divName).innerHTML;
@@ -75,33 +57,34 @@
             w.print();
             w.close();  
         }  
-        
-        
        
         
-
-
         // Load the Visualization API and the piechart package.
-      google.charts.load('current', {callback: drawChart, packages: ['bar', 'corechart', 'line', 'table']}); 
-      google.setOnLoadCallback(drawChart);
-
-      
-       
+      google.charts.load('current', {
+  callback: drawChart,
+  packages: ['bar', 'corechart', 'line', 'table']
+});
+        
+       // google.charts.load('current', {packages: ['corechart', 'bar']});
+        //google.charts.setOnLoadCallback(drawMultSeries);
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(drawChart);
+        
+//         function drawMultSeries() {
+//             var data = new google.visualization.DataTable();
+//             data.addColumn('number', 'Do Nothing');
+//             data.addColumn('number', 'Treatment');
+//         }
+        
         function drawChart() {
             var djangoDataTable = {{ tableArr|safe }};
             var dataTable = google.visualization.arrayToDataTable(djangoDataTable);
-
             var djangoDataDeathHBV = {{ deathHBV_Final|safe }}
             var dataDeathHBV = google.visualization.arrayToDataTable(djangoDataDeathHBV);
-
             var djangoDataHcc = {{ hcc_Final|safe }}
             var dataHcc = google.visualization.arrayToDataTable(djangoDataHcc);
-
             var djangoDataCirrhosis = {{ cirrhosis_Final|safe }}
             var dataCirrhosis = google.visualization.arrayToDataTable(djangoDataCirrhosis);
-
-
-
             var MortalityRate = {
                 title: "Death Risk",
                 titleTextStyle :{
@@ -124,7 +107,6 @@
                     maxLines: 2,
                 }
             };
-
             var CirrhosisGraph = {
                 title: "Cirrhosis Risk",
                 titleTextStyle :{
@@ -146,7 +128,6 @@
                     maxLines: 2,
                 }
             };
-
             var LiverCancer = {
                 title: "Liver Cancer Risk",
                 titleTextStyle :{
@@ -169,64 +150,43 @@
                     maxLines: 2,
                 }
             };
-        
             var optionsTable = {
                 'showRowNumber': false,
                 'width': '100%',
                 'height': '100%',
                 'allowHtml': true, 
             };
-        
-            
             var chart3 = new google.visualization.LineChart(document.getElementById('linechart1'));
             chart3.draw(dataDeathHBV, MortalityRate);
-
             if({{ ifCirr }} == 1){
                 var chart4 = new google.visualization.LineChart(document.getElementById('linechart2'));
                 chart4.draw(dataCirrhosis, CirrhosisGraph);
             }
-
             var chart5 = new google.visualization.LineChart(document.getElementById('linechart3'));
             chart5.draw(dataHcc, LiverCancer);
-        
-            
-
-        // years [5, 10, 20]
             for (y = 0; y < 3; y++){
-                dataTable.setCell(y,0, String(djangoDataTable[y+1][0]) ,null,{'style': ' font-size:20px;'})
+                dataTable.setCell(y,0,String(djangoDataTable[y+1][0]),null,{'style': ' font-size:20px;'})
             }
-
-        // "Red" do Nothing / Naturtoryal His
             for (j = 1; j < djangoDataTable[1].length; j += 2){
                 for (i = 0; i < 3; i++) { 
-                    dataTable.setCell(i,j, String(djangoDataTable[i+1][j]) ,null,{'style': 'background-color: rgba(255,127,80,0.7); font-size:18px;'})
+                    dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: rgba(255,127,80,0.7); font-size:18px;'})
                 }
             }
-        
-        //"jade" Treatment / Monitoring
             for (j = 2; j < djangoDataTable[1].length; j += 2){
                 for (i = 0; i < 3; i++) { 
                     dataTable.setCell(i,j,String(djangoDataTable[i+1][j]),null,{'style': 'background-color: #49b7a8; font-size:18px;'})
                 }
             }
-
             var table = new google.visualization.Table(document.getElementById('table_div'));
             table.draw(dataTable, optionsTable);
-        
-            }
         }
-
         $('#mailform').submit(function(){
             var formAction = $("#selectmail").val() == "technical" ? "research.cs.alc@gmail.com" : "mtoy@stanford.edu";
             $("#mailform").attr("action", "MAILTO:" + formAction);
         }); 
-
     </script>
 </head>
-
-
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-
     <!-- Results Section -->
     <section id="Result" class="container content-section text-center">
         <br><br><br>
@@ -237,7 +197,6 @@
             </div>
             <div id="chart_div" style= "width:750; height:750"></div>
         </div>
-
         
         <div id='divToPrint'>
             <div class="row">
@@ -263,11 +222,9 @@
             <div id="user-input">
             <!--    <p>Your mortality rate by HBV will decrease by {{deathDiff}}% in 20 years if monitored</p> -->
             </div>
-
             <h2 style="margin-top: 75px;"> World Health Organizations Recommendation</h2>
             <!-- <div id="user-input" style="padding-bottom: 50px;">
                 <p>{{whoRec}}</p>
-
             </div> -->
             <div style="width: 80%; display: table; margin: 0 auto; border-collapse: separate;">
                 <div style="display: table-row;">
@@ -288,7 +245,6 @@
         </center>
         </div>
     </section>
-
     <section id="Contact" class="container content-section text-center">
         <div>
             <input type="button" class="btn btn-square" value="Print" onclick="printDiv('divToPrint')" />
@@ -332,25 +288,18 @@
                 </ul>
                 
                 
-
-
             </div>
         </div>
     </section>
-
-
     <section id="Contact" class="container content-section text-center">
         <div>
             <h2> Return back to <a href="http://www.heptool.org/"> Home</a> Page </h2>
         </div>
-
     <footer>
         <div class="container text-center">
             <p>Copyright &copy; <a href="http://liver.stanford.edu/" target="_blank">Asian Liver Center</a></p>
         </div>
     </footer>
-
-
    
     <script src="{% static 'home/js/jquery.js' %}" >"</script>
     <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
@@ -358,7 +307,5 @@
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWgoJVJgzqUcbnYRL1CIfZglQN8rlMUs8&sensor=false"></script>
     <!-- Custom Theme JavaScript -->
     <script src="{% static 'home/js/grayscale.js' %}"></script>
-
 </body>
-
 </html>
