@@ -57,12 +57,12 @@ def parse():
 
     endem_labels = {'Low':1, 'Intermediate':2, 'High':3}
     
-    endem = endem_labels[arr[4]]
-    age = int(arr[5])
-    cirr = arr[1]			#cirrhosis
-    ALT = arr[2]
-    HBV_DNA = arr[3]
-    gender = arr[6]
+    endem = endem_labels[arr[1]] 
+    age = int(arr[2])
+    cirr = arr[4]			#cirrhosis
+    ALT = arr[5]
+    HBV_DNA = arr[6]
+    gender = arr[2]
 
     return (endem, age, cirr, ALT, HBV_DNA, gender)
 
