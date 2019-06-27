@@ -42,7 +42,7 @@ def parse():
     if (hasattr(ssl, '_create_unverified_context')):
         ssl._create_default_https_context = ssl._create_unverified_context
 
-    scope = ['https://spreadsheets.google.com/feeds']
+    scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
 
     credentials = SignedJwtAssertionCredentials(jsonfile['client_email'], jsonfile['private_key'], scope)
     
