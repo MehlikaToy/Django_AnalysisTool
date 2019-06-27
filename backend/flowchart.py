@@ -42,15 +42,14 @@ def parse():
     if (hasattr(ssl, '_create_unverified_context')):
         ssl._create_default_https_context = ssl._create_unverified_context
 
-    scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]
-
+    scope = ['https://spreadsheets.google.com/feeds']
     credentials = SignedJwtAssertionCredentials(jsonfile['client_email'], jsonfile['private_key'], scope)
     
     gc = gspread.authorize(credentials)
     
     wks = gc.open("Markov Questions (Responses)").sheet1
     
-    lowestRow = wks.row_count - 10000 # this is magic don't touch
+    lowestRow = wks.row_count - 1000 # this is magic don't touch
 
     arr = []
     for col in range(1,8):
