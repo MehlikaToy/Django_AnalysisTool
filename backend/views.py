@@ -34,7 +34,7 @@ def resultsView(request):
 
     # returns finalDict from getAPI.py
     # ie. {'How old is your patient?': '38', ... }
-    flow.parse()
+    #flow.parse()
     endem, age, cirr, ALT, HBV_DNA, gender = flow.parse()
    
     inputs = str(age) + " year old " + str(gender).lower() + " "
