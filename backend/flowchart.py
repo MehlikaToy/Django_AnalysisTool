@@ -50,7 +50,7 @@ def parse():
     #wks = gc.open("Markov Questions (Responses)").sheet1
     wks = gc.open_by_url('https://docs.google.com/spreadsheets/d/1p4PtvwnYHoRa9eExx3A1MS7nvmgr8gxF-7PRApco4_U/edit#gid=1544004639')
 
-    lowestRow = wks.row_count - 1000 # this is magic don't touch
+    lowestRow = wks.row_count - 10000 # this is magic don't touch
 
     arr = []
     for col in range(1,8):
