@@ -54,7 +54,7 @@ def parse():
     
     wks = gc.open("Markov Questions (Responses)").sheet1
     
-    lowestRow = wks.row_count - 1100 # this is magic don't touch
+    lowestRow = wks.row_count - 100 # this is magic don't touch
 
     arr = []
     for col in range(1,8):
