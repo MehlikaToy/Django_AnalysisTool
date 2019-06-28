@@ -51,8 +51,8 @@ def parse():
     
     gc = gspread.authorize(credentials)
     
-    #wks = gc.open("Markov Questions (Responses)").sheet1
-    wks = gc.open_by_url('https://docs.google.com/spreadsheets/d/1p4PtvwnYHoRa9eExx3A1MS7nvmgr8gxF-7PRApco4_U/edit#gid=1544004639')
+    wks = gc.open("Markov Questions (Responses)").sheet1
+    #wks = gc.open_by_url('https://docs.google.com/spreadsheets/d/1p4PtvwnYHoRa9eExx3A1MS7nvmgr8gxF-7PRApco4_U/edit#gid=1544004639')
 
     lowestRow = wks.row_count - 100 # this is magic don't touch
 
