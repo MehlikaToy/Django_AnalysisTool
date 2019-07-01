@@ -74,7 +74,7 @@ def parse():
 
 
 def getWhoRec(cirr, age, ALT, HBV_DNA):
-	if answer == 'Yes' or (age >= 30 and ALT == "Persistently Abnormal" and HBV_DNA == ">20,000 IU/ml"):
+	if cirr == 'Yes' or (age >= 30 and ALT == "Persistently Abnormal" and HBV_DNA == ">20,000 IU/ml"):
 		return 'Monitoring and Treatment'
 	else:
 		return 'Monitoring'
