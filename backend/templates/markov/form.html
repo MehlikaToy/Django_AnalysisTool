@@ -111,13 +111,13 @@
         }
         console.log(fifthAns);
         if(firstAns==""){
-          alert("Please choose the endemicity of the patient's country.");
+          alert("Please choose your country.");
           location.reload();
           location.reload();
           return false;
         }
         else if(secondAns==""){
-          alert("Please enter your patient's age.");
+          alert("Please enter your age.");
           location.reload();
           return false;
         }
@@ -134,7 +134,7 @@
           return false;
         }
         else if(thirdAns==""){
-          alert("Please answer if your patient has Cirrhosis.");
+          alert("Please answer if you have Cirrhosis.");
           location.reload();
           document.getElementById("entry_1952643675").focus();
           location.reload();
@@ -142,7 +142,7 @@
         }
         else if(thirdAns=="No"){
           if(fourthAns=="" || fifthAns==""){
-            alert("Please answer questions 4 and 5 if your patient does not have Cirrhosis.");
+            alert("Please answer questions 5 and 6 if your patient does not have Cirrhosis.");
             location.reload();
             document.getElementById("entry_1952643675").focus();
             location.reload();
