@@ -121,7 +121,7 @@
 .team-profile{
 	display: inline;
 	margin: 20px 30px;
-	width: 180px;
+	width: 100px; /*180*/
 	/*list-style: none;*/
 	text-align: center;
 }
