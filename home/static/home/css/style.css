@@ -135,8 +135,8 @@
 }
 
 .team-profile-img{
-	width: 170px;
-	height: 180px;
+	width: 100px; /*170, 180, 90*/
+	height: 100px;
 	border-radius: 90px;
 }
 
